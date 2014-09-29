@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BtecWordOpenXMLApp:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="btecopenxmlapp.war">
+      <element id="artifact" artifact-name="BtecWordOpenXMLApp:war exploded" />
+    </root>
+  </artifact>
+</component>
