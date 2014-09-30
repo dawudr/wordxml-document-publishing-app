@@ -1,0 +1,33 @@
+<configuration debug="false">
+    <property name="BTECTRANSFORMER_HOME" value="/BtecTransformer/input/Development/Writings/Unit Drafts" />
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>btec_transform_status_report.rtf</file>
+        <append>false</append>
+        <encoder>
+            <!--<pattern>%d{yyyy-MMM-dd HH:mm:ss.SSS} %level %logger{0} %msg%n</pattern>-->
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MMM-dd HH:mm:ss.SSS} %level %logger{0} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+	<!-- Configure your top level package below -->
+	<!--<logger name="com.pearson" level="INFO" />-->
+     <logger name="com.pearson" level="DEBUG" />
+    <!--<logger name="org.springframework.aop" level="trace" />-->
+	<!--<logger name="org.springframework.test" level="debug" />-->
+	<!--<logger name="org.junit" level="DEBUG" />-->
+
+ 	<!--<logger name="org.aspectj" level="trace" />-->
+
+    <root level="info">
+
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
