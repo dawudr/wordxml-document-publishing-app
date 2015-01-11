@@ -198,6 +198,20 @@
             <version>2.0.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.6.0-3</version>
+        </dependency>
+
+<!--
+        <dependency>
+            <groupId>org.cloudfoundry</groupId>
+            <artifactId>cloudfoundry-client-lib</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+-->
+
     </dependencies>
 
     <build>
@@ -217,6 +231,27 @@
                 <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
             </configuration>
         </plugin>
+
+            <!-- CloudFoundry -->
+        <plugin>
+            <groupId>org.cloudfoundry</groupId>
+            <artifactId>cf-maven-plugin</artifactId>
+            <version>1.0.4</version>
+            <configuration>
+                <target>http://api.run.pivotal.io</target>
+                <org>BtecWordOpenXMLApp</org>
+                <space>development</space>
+                <appname>btecopenxmlapp</appname>
+                <url>btecopenxmlapp.cfapps.io</url>
+                <instances>1</instances>
+                <server>
+                    <id>dawudr</id>
+                    <username>dawudr@email.com</username>
+                    <password>pass4me</password>
+                </server>
+            </configuration>
+        </plugin>
+
         </plugins>
     </build>
 

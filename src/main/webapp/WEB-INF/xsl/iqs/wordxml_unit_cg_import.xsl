@@ -4,9 +4,9 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	<xsl:strip-space elements="*"/>
 	
-	<!-- global variables -->
-	<xsl:variable name="var_uan_str">M/503/6513</xsl:variable>
-	<xsl:variable name="var_uan"><xsl:value-of select="replace($var_uan_str, '/', '_')"/></xsl:variable>
+	<!-- GLOBAL VARIABLES -->
+	<xsl:variable name="var_uan_str" select="unit/uan"/>
+	<xsl:variable name="var_uan"><xsl:value-of select="translate($var_uan_str, '/', '_')"/></xsl:variable>
     <xsl:variable name="var_level_array" as="element()*">
         <Item>Pre-Level</Item>
         <Item>Pass</Item>
@@ -14,87 +14,101 @@
         <Item>Distinction</Item>        
     </xsl:variable>	
     
-		
-	<!-- Main Root node -->
-	<xsl:template match="/">
-		<xsl:apply-templates select="specification/unit"/>
-	</xsl:template>
+
 	
+	<!-- MAIN ROOT NODE -->
+	<xsl:template match="/">
+		<xsl:apply-templates select="unit"/>
+	</xsl:template>
 	
 	
 	<!-- Unit Subnode -->	
 	<xsl:template match="unit">
-	<unit>
-	
-		<!-- uan number -->
-		<uan><xsl:value-of select="$var_uan_str"/></uan>
-					
-						
-		<!-- criteriagradegrid -->
-		<!-- Approach here is 
-		1. strip first 2 rows of all the assesment criteria tables
-		2. merge into one long table
-		3. call template to parse each column and output IQS. -->
-		<xsl:variable name="mergetables">
-		
-			<!-- get only assessment criteria tables only -->
-			<xsl:variable name="firstrow">
-				<xsl:for-each select="table">
-					<xsl:if test="./tr[1]/td[1]/ac_h1">
-						<xsl:copy-of select="./tr[1]"/>
-					</xsl:if>
-				</xsl:for-each>						
-			</xsl:variable>		
-		
-			<xsl:element name="table">
-				<!-- Filter out for Assessment Critieria tables only -->
-				<xsl:if test="table/tr[1]/td[1]/ac_h1">
-					<!-- Take first header row -->
-					<xsl:copy-of select="$firstrow/tr[1]"/>
-					<xsl:apply-templates select="table" mode="criteriagradegrid"/>
-				</xsl:if>
-			</xsl:element>
-		</xsl:variable>
-		<!-- DEBUG: <xsl:copy-of select="$mergetables"/>-->
-		
-<!--	send mergedtables variable to IQS criteriagrid-->
-		<xsl:if test="table/tr[1]/td[1]/ac_h1">
-			<xsl:call-template name="criteriagradegrid">
-				<xsl:with-param name="var_table" select="$mergetables"/>
-			</xsl:call-template>
-		</xsl:if>
-	
-
-	</unit>
+		<unit>
+			
+			<!-- uan number -->
+			<uan><xsl:value-of select="$var_uan_str"/></uan>
+			
+			
+			<!-- assessmentcriteria -->
+			<xsl:apply-templates select="section[@title = 'Assessment criteria']/table" mode="criteriagradegrid"/>
+			
+		</unit>
 	</xsl:template>
-	<!-- End Unit Subnode -->	
-	
-	
-
-	
 
 	
 	
 	<!-- TEMPLATES -->
 	
 	
-	<!-- Merge Assessment criteria tables -->
-<!--	<xsl:template match="table" mode="criteriagradegrid">
-	
-	
-	</xsl:template>
-	-->
-	
-	
-		
-	
+
 	<!-- Assumption: merge the row with Assessment Critieria data only, so skip first 2 rows -->
 	<xsl:template match="table" mode="criteriagradegrid">
-		<!-- Filter out for Assessment Critieria tables only -->
-		<!-- DEBUG: <xsl:value-of select="tr[1]/td[1]/ac_h1"/>-->					
-		<xsl:if test="tr[1]/td[1]/ac_h1">
-		<xsl:copy-of select="tr[position() > 2]"/>
-		</xsl:if>
+		<criteriagradegrid>		
+			<xsl:variable name="var_column_headers" select="./row[1]"/>	
+			<xsl:variable name="var_total_count" select="count($var_column_headers/cell)"/>
+			<xsl:variable name="var_curr_element" select="."/>
+			
+			<xsl:for-each select="$var_column_headers/cell">
+				
+				<criteriacolumn>
+					<columnnum><xsl:value-of select="position()"/></columnnum>
+					<xsl:variable name="var_curr_column_no" select="position()"/>
+					<title><xsl:value-of select="."/></title>
+					<grade>
+						<value><xsl:value-of select="."/></value>
+					</grade>
+					
+					<xsl:for-each select="$var_curr_element">
+						
+						<!--<xsl:variable name="var_learningobjectiveref" select="./row/cell/learningobjectiveref"/>-->
+						<!--DEBUG:<xsl:copy-of select="$var_curr_element"></xsl:copy-of>:DEBUG-->
+						<xsl:for-each select="./row/cell[$var_curr_column_no][@style='Assessmenttabletext']">					
+									
+<!--						
+							COLUMN:<xsl:value-of select="$var_curr_column_no"/>:COLUMN
+							DEBUG:<xsl:copy-of select="."/>:DEBUG
+							COUNT:<xsl:value-of select="position()"/>:COUNT	
+							LOREF:<xsl:value-of select="$var_learningobjectiveref"/>:LOREF
+-->										
+							<criteriacell>
+								<rownum><xsl:value-of select="position()"/></rownum>
+								<rowspan><xsl:value-of select="1"/></rowspan>
+								
+								<!--DEBUG:<xsl:value-of select="AC_criteria_title"></xsl:value-of>:DEBUG-->
+								
+								<xsl:element name="assessmentcriteria">
+									<xsl:attribute name="acid" select="concat(concat($var_uan,'.'), AC_criteria_title )"/>
+								</xsl:element>
+							</criteriacell>		
+						</xsl:for-each>								
+					</xsl:for-each>
+			
+<!--					<xsl:for-each select="row">
+						
+						<xsl:copy-of select="."></xsl:copy-of>
+						
+						<xsl:choose>
+							<xsl:when test="position() &lt; 0">
+								
+								
+								
+							</xsl:when>
+							<xsl:when test="position() &gt; 0">
+								<criteriacell>
+									<rownum><xsl:value-of select="position()"/></rownum>
+									<rowspan><xsl:value-of select="./cell[1]/@table-column-no"/></rowspan>
+								</criteriacell>
+							</xsl:when>							
+						</xsl:choose>
+						
+					</xsl:for-each>-->
+					
+				</criteriacolumn>
+			</xsl:for-each>
+			
+			
+		</criteriagradegrid>
 	</xsl:template>	
 	
 

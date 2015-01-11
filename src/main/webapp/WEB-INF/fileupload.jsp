@@ -14,7 +14,19 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
 
+
+    <script type='text/javascript'>//<![CDATA[
+    $(window).load(function(){
+        $(function(){
+            $('a, button').click(function() {
+                $(this).toggleClass('active');
+            });
+        });
+    });//]]>
+
+    </script>
     <link href="<c:url value="css/style.css" />" rel="stylesheet" type="text/css"/>
 
 </head>
@@ -48,8 +60,9 @@
                     </div>
 
                     <div class="form-actions">
-
-                        <button type="submit" class="btn btn-success">Upload Files</button>
+                        <button type="submit" class="btn btn-success has-spinner">
+                            <span class="spinner"><i class="icon-spin icon-refresh"></i></span>Upload Files
+                        </button>
                     </div>
                 </form>
             </fieldset>

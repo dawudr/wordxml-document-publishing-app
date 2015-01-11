@@ -13,6 +13,7 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,14 +67,14 @@ public class FileUploadController {
                 while (iterator.hasNext()) {
                     FileItem item = (FileItem) iterator.next();
                     if (!item.isFormField() && !item.getName().equals("")) {
-                        String fileName = item.getName();
+                        String fileName = item.getName().replaceAll("[^a-zA-Z0-9.-]", "_");;
                         String root = context.getRealPath("/");
-                        File path = new File(root + "/uploads");
+                        File path = new File(root + File.separator + "uploads");
                         if (!path.exists()) {
                             boolean status = path.mkdirs();
                         }
 
-                        File uploadedFile = new File(path + "/" + fileName);
+                        File uploadedFile = new File(path + File.separator + fileName);
                         fileNames.add(fileName);
                         logger.debug("File Path:-"
                                 + uploadedFile.getAbsolutePath());

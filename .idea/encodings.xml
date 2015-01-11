@@ -6,12 +6,24 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/FileDownloadController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/FileUploadController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/form/FileUploadForm.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/BtecUnit.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/Paragraph.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/Section.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/BtecUnitXPathXQuery.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/Unit.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/UnitBody.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/UnitHeader.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/UnitSection.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/UnitTable.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/ReportXsltTransformer.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/SemanticTagger.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/Unit2xml.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitBody2xml.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitHeader2xml.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtilHelper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/SectionHeader.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContent.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/validator/FileUploadValidator.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/Config.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/logback.xml" charset="UTF-8" />
@@ -20,4 +32,3 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/systeminfo.jsp" charset="UTF-8" />
   </component>
 </project>
-

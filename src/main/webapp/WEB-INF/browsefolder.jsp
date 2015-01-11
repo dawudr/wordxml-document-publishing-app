@@ -26,6 +26,19 @@
 
     <link href="<c:url value="css/style.css" />" rel="stylesheet" type="text/css"/>
 
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+
+
+    <script type='text/javascript'>//<![CDATA[
+    $(window).load(function(){
+        $(function(){
+            $('a, button').click(function() {
+                $(this).toggleClass('active');
+            });
+        });
+    });//]]>
+
+    </script>
 </head>
 <body>
 <nav class="navbar-override navbar-default linearBg" role="navigation">
@@ -75,7 +88,7 @@
                                                                                         </tr>--%>
                                         </table>
                             <div class="form-actions pull-right">
-                                <button type="submit" class="btn btn-success">Upload Files</button>
+                                <button type="submit" class="btn btn-success has-spinner"> <span class="spinner"><i class="icon-spin icon-refresh"></i></span> Upload Files</button>
                             </div>
                         </form>
                     </fieldset>
@@ -114,7 +127,8 @@
                                         <c:when test="${empty fileNamesMap['OpenXml']}">
                                             <form class="form-horizontal" method="post" action='convert'>
                                                 <input type="hidden" name="filename" value="<c:out value="${fileNamesMap['Word']}" />"/>
-                                                <button type="submit" class="btn btn-success" name="action" value="convert">Convert</button>
+                                                <button type="submit" class="btn btn-success has-spinner" name="action" value="convert">
+                                                    <span class="spinner"><i class="icon-spin icon-refresh"></i></span> Convert</button>
                                             </form>
                                         </c:when>
                                         <c:otherwise>
@@ -122,7 +136,8 @@
                                                 <input type="hidden" name="filename" value="<c:out value="${fileNamesMap['OpenXml']}" />"/>
                                                 <c:choose>
                                                     <c:when test="${empty fileNamesMap['IQSXml']}">
-                                                        <button type="submit" class="btn btn-success" name="action" value="transform">Transform</button>
+                                                        <button type="submit" class="btn btn-success has-spinner" name="action" value="transform">
+                                                            <span class="spinner"><i class="icon-spin icon-refresh"></i></span> Transform</button>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <button type="submit" class="btn btn-success" disabled="disabled">Transform</button>
@@ -142,7 +157,8 @@
                                         <c:out value="${fileNamesMap['OpenXml']}"/>
                                         <c:choose>
                                             <c:when test="${!empty fileNamesMap['OpenXml']}">
-                                                <button type="submit" class="btn btn-primary" name="action" value="download-openxml">Download</button>
+                                                <button type="submit" class="btn btn-primary" name="action" value="download-openxml">
+                                                    Download</button>
                                             </c:when>
                                             <c:otherwise>
                                                 <button type="submit" class="btn btn-primary" disabled="disabled">Download</button>
@@ -159,7 +175,8 @@
                                         <c:choose>
                                             <c:when test="${!empty fileNamesMap['IQSXml']}">
                                                 <input type="hidden" name="filename" value="<c:out value="${fileNamesMap['IQSXml']}" />"/>
-                                                <button type="submit" class="btn btn-primary" name="action" value="download-iqsxml">Download</button>
+                                                <button type="submit" class="btn btn-primary" name="action" value="download-iqsxml">
+                                                    Download</button>
                                             </c:when>
                                             <c:otherwise>
                                                 <button type="submit" class="btn btn-primary" disabled="disabled">Download</button>
@@ -175,7 +192,7 @@
                                         <input type="hidden" name="filename"
                                                value="<c:out value="${fileNamesMap['Word']}"/>"/>
                                         <button type="submit" class="btn btn-danger" name="action" value="delete">
-                                            Delete
+                                          Delete
                                         </button>
                                     </form>
                                 </td>

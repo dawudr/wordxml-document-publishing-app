@@ -35,7 +35,7 @@ public class BrowseFolderController {
         BrowseFolderForm browseFolderForm = new BrowseFolderForm();
 
         String root = context.getRealPath("/");
-        File path = new File(root + "/uploads");
+        File path = new File(root + File.separator + "uploads");
         if (path.exists()) {
             logger.error("File upload path found [{}]", path.getName());
 
@@ -120,7 +120,7 @@ public class BrowseFolderController {
                 .replace(".doc", BrowseFolderForm.FILE_EXT_IQS_XML);
 
         String root = context.getRealPath("/");
-        File folder = new File(root + "/uploads");
+        File folder = new File(root + File.separator + "uploads");
         if (folder.exists()) {
             File[] listFiles = folder.listFiles();
             for (File listFile : listFiles) {

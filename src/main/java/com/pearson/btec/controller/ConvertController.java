@@ -4,8 +4,7 @@ package com.pearson.btec.controller;
  * Created by Dawud on 15/09/14.
  */
 import com.pearson.btec.form.BrowseFolderForm;
-import com.pearson.btec.model.BtecUnit;
-import com.pearson.btec.service.BtecUnitXPathXQuery;
+import com.pearson.btec.service.MainDocument;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
@@ -42,14 +41,14 @@ public class ConvertController {
     ModelAndView convertfile(@RequestParam("filename") String filename, HttpServletRequest request, HttpServletResponse response)  throws Exception {
         logger.debug("In ConvertController POST Request");
 
-        BtecUnitXPathXQuery btecConvert = new BtecUnitXPathXQuery();
-        BtecUnit btecUnit = btecConvert.getWholeDocument(getDocumentFile(filename));
+        MainDocument mainDocument = new MainDocument(getDocumentFile(filename));
 
         // create the jdom
         Document jdomDoc = new Document();
         // create root element
         // add Btec Unit model
-        Element rootElement = btecUnit.toXML();
+        mainDocument.convertMainDocument();
+        Element rootElement = mainDocument.exportUnitAsXMLDOM();
         jdomDoc.setRootElement(rootElement);
 
         // Output as XML
@@ -59,14 +58,17 @@ public class ConvertController {
         xml.setFormat(Format.getPrettyFormat());
 
         // Search for other convert XML files
-        // Open XML
+        // Open XMLl
         String openxmlFilename = filename.replace(".docx", BrowseFolderForm.FILE_EXT_OPEN_XML)
                 .replace(".docm", BrowseFolderForm.FILE_EXT_OPEN_XML)
                 .replace(".doc", BrowseFolderForm.FILE_EXT_OPEN_XML);
 
-        xml.output(jdomDoc, new FileWriter(context.getRealPath("/")+"/uploads/" + openxmlFilename));
+        FileWriter fileWriter = new FileWriter(context.getRealPath("/")+ File.separator + "uploads" + File.separator + openxmlFilename);
 
+        xml.output(jdomDoc, fileWriter);
 
+        fileWriter.flush();
+        fileWriter.close();
 
         ModelAndView modelAndView = new ModelAndView("convertsuccess");
         modelAndView.addObject("filename", openxmlFilename);
@@ -79,7 +81,7 @@ public class ConvertController {
         logger.debug("In getDownloadFile Params: filename[{}]", filename);
         // get absolute path of the application
         String root = context.getRealPath("/");
-        File folder = new File(root + "/uploads");
+        File folder = new File(root + File.separator + "uploads");
         if (folder.exists()) {
             File[] listFiles = folder.listFiles();
             for (File listFile : listFiles) {
