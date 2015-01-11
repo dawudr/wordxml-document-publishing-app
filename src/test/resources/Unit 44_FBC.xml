@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unit>
+  <uan>H/123/1234</uan>
+  <dc-description>Missing</dc-description>
+  <dc-title>BTEC 2016 Specification</dc-title>
+  <author>lober_h;winser_p</author>
+  <dc-keyword>H/123/1234</dc-keyword>
+  <dc-version>15.0000</dc-version>
+  <dc-company>Pearson Education Limited 2011</dc-company>
+  <dc-application>Microsoft Office Word</dc-application>
+  <unittitle>Manufacturing Secondary Machining Processes</unittitle>
+  <level>3</level>
+  <unittype>Optional</unittype>
+  <glhvalue>60</glhvalue>
+  <section title="Unit introduction" style="UnitAhead">
+    <unitinbrief>&lt;p&gt;This unit covers how machining processes can be used to manufacture complicated shapes by the removal (cutting) of material.  This will involve the set-up and use of secondary processing machines to manufacture a component.&lt;/p&gt;</unitinbrief>
+    <introduction>&lt;p&gt;Many of the products and components we use daily would not be available without secondary machining processes. The use of these processes to manufacture a product or component is sometimes easy to spot, like a machine bearing or the nut holding in place a brake shoe on a bicycle. For other products or components, like curtains, it is less easy to spot. This is because you need to first think about how the curtains have been manufactured. Hence, the curtains are manufactured using machines containing components that have been subjected to secondary machining processes.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;As a future engineer you will need to understand and acquire practical skills in a range of machining processes. The knowledge and practical skills are required to enable engineers to design feasible solutions to engineering problems. For example, a feasible solution is one that can be manufactured using secondary machining processes. This unit will prepare learners well for a mechanical or manufacturing engineering apprenticeship or degree course and for technician level role as a machine setter and setter-operators.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;In this unit you will cover the technology and characteristics of a range of traditional, such as turning, and specialist, such as broaching, machining processes. You will develop health and safety skills required to work on secondary machining processes and gain practical skills and understanding to set-up and operate traditional secondary machining processes to manufacture a component. Finally learners will reflect on their skills and understanding applied to and behaviours whilst manufacturing a prototype component.&lt;/p&gt;</introduction>
+  </section>
+  <section title="Learning aims" style="UnitAhead">
+    <learningobjectiveref>A</learningobjectiveref>
+    <learningobjectivetext>Understand the technology and characteristics of secondary machining processes that are widely used in industry.</learningobjectivetext>
+    <learningobjectiveref>B</learningobjectiveref>
+    <learningobjectivetext>Set-up traditional secondary processing machines safely to manufacture a component.</learningobjectivetext>
+    <learningobjectiveref>C</learningobjectiveref>
+    <learningobjectivetext>Carry out traditional secondary machining processes to safely manufacture a component.</learningobjectivetext>
+    <learningobjectiveref>D</learningobjectiveref>
+    <learningobjectivetext>Review the processes used to machine a component and reflect on own performance.</learningobjectivetext>
+    <table>
+      <row data-row-no="0" table-row-no="1">
+        <cell table-column-no="1">Learning Aim</cell>
+        <cell table-column-no="2">Key teaching areas</cell>
+        <cell table-column-no="3">Suggested summary of assessment evidence</cell>
+      </row>
+      <row data-row-no="1" table-row-no="2">
+        <cell column-name="Learning Aim" style="LearningObjective" table-column-no="1">
+          <learningobjectiveref>A</learningobjectiveref>
+          <learningobjectivetext>Understand the technology and characteristics of secondary machining processes that are widely used in industry</learningobjectivetext>
+        </cell>
+        <cell column-name="Key teaching areas" style="KeyTeachingcoltext" table-column-no="2">
+          <keyteachingref>A1</keyteachingref>
+          <keyteachingtext>Traditional secondary machining processes</keyteachingtext>
+          <keyteachingref>A2</keyteachingref>
+          <keyteachingtext>Specialist secondary machining processes</keyteachingtext>
+        </cell>
+        <cell column-name="Suggested summary of assessment evidence" table-column-no="3">
+          <keyteachingassessmentevidence>&lt;p&gt;A report focussing on three different traditional and an analysis of research case studies on three different specialist processes.&lt;/p&gt;</keyteachingassessmentevidence>
+        </cell>
+      </row>
+      <row data-row-no="2" table-row-no="3">
+        <cell column-name="Learning Aim" style="LearningObjective" table-column-no="1">
+          <learningobjectiveref>B</learningobjectiveref>
+          <learningobjectivetext>Set-up traditional secondary processing machines safely to manufacture a component</learningobjectivetext>
+        </cell>
+        <cell column-name="Key teaching areas" style="KeyTeachingcoltext" table-column-no="2">
+          <keyteachingref>B1</keyteachingref>
+          <keyteachingtext>Health and safety requirements when setting up secondary process machines</keyteachingtext>
+          <keyteachingref>B2</keyteachingref>
+          <keyteachingtext>Risk assessment</keyteachingtext>
+          <keyteachingref>B3</keyteachingref>
+          <keyteachingtext>Setting up secondary process machines</keyteachingtext>
+        </cell>
+        <cell column-name="Suggested summary of assessment evidence" table-column-no="3">
+          <KTA_AssessmentEvidence>&lt;p&gt;A practical activity involving a risk assessment and the setting up of at least two traditional machining processes and the machining of a component.&lt;/p&gt;&lt;p&gt;Evidence will be a risk assessment, observation records/witness statements, annotated photographs and drawings, set-up planning notes, completed quality control documents/annotated drawings, notes explaining the health and safety requirements.&lt;/p&gt;</KTA_AssessmentEvidence>
+        </cell>
+      </row>
+      <row data-row-no="3" table-row-no="4">
+        <cell column-name="Learning Aim" style="LearningObjective" table-column-no="1">
+          <learningobjectiveref>C</learningobjectiveref>
+          <learningobjectivetext>Carry out traditional secondary machining processes to safely manufacture a component</learningobjectivetext>
+        </cell>
+        <cell column-name="Key teaching areas" style="KeyTeachingcoltext" table-column-no="2">
+          <keyteachingref>C1</keyteachingref>
+          <keyteachingtext>Features of traditional secondary machining processes</keyteachingtext>
+          <keyteachingref>C2</keyteachingref>
+          <keyteachingtext>Parameters of traditional secondary machining processes</keyteachingtext>
+          <keyteachingref>C3</keyteachingref>
+          <keyteachingtext>Quality control methods</keyteachingtext>
+        </cell>
+        <cell table-column-no="3" />
+      </row>
+      <row data-row-no="4" table-row-no="5">
+        <cell column-name="Learning Aim" style="LearningObjective" table-column-no="1">
+          <learningobjectiveref>D</learningobjectiveref>
+          <learningobjectivetext>Review the processes used to machine a component and reflect on own performance</learningobjectivetext>
+        </cell>
+        <cell column-name="Key teaching areas" style="KeyTeachingcoltext" table-column-no="2">
+          <keyteachingref>D1</keyteachingref>
+          <keyteachingtext>Lessons learnt from machining a component</keyteachingtext>
+          <keyteachingref>D2</keyteachingref>
+          <keyteachingtext>Personal performance whilst machining a component</keyteachingtext>
+        </cell>
+        <cell column-name="Suggested summary of assessment evidence" table-column-no="3">
+          <KTA_AssessmentEvidence>&lt;p&gt;A report focussing on what went well and what did not go so well when machining a component and a conclusion of improvements that could be made.&lt;/p&gt;&lt;p&gt;The report to show a professional understanding of traditional secondary machining processes.&lt;/p&gt;</KTA_AssessmentEvidence>
+        </cell>
+      </row>
+    </table>
+  </section>
+  <section title="Learning aims and unit content" style="UnitAhead">
+    <table>
+      <row data-row-no="0" table-row-no="1">
+        <cell style="LAheadingtables" table-column-no="1">
+          <learningobjectiveref>A</learningobjectiveref>
+          <learningobjectivetext>Understand the technology and characteristics of secondary machining processes that are widely used in industry</learningobjectivetext>
+        </cell>
+      </row>
+      <row data-row-no="1" table-row-no="2">
+        <cell table-column-no="1">
+          <unitcontent>&lt;p&gt;A1Traditional secondary machining processes&lt;/p&gt;&lt;p&gt;Technology and characteristics of secondary machining processes:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Drilling: &lt;/li&gt;&lt;li&gt;machine type and batch size including single spindle machines e.g. pillar (one off to small batch sizes) and radial (small to medium batch sizes).&lt;/li&gt;&lt;li&gt;features of the component e.g. countersinking, counter boring, spot facing, taping, through holes, blind holes, reamed holes&lt;/li&gt;&lt;li&gt;accuracy of components - typical dimensional tolerances = ±0.3mm to ±0.05mm and typical surface texture = 6.3µm to 1.6µm.&lt;/li&gt;&lt;li&gt;Turning:&lt;/li&gt;&lt;li&gt;machine type and batch size including centre lathe (one off to small batch size) and turret (small to large batch size)&lt;/li&gt;&lt;li&gt;features of the component e.g. flat faces, diameters (such as parallel, stepped, tapered), holes (such as drilled, bored, reamed), profile forms, threads (such as internal, external), parting off, chamfers, knurls, grooves, undercuts.&lt;/li&gt;&lt;li&gt;accuracy of components - typical dimensional tolerances = ±0.05mm to ±0.0125mm and typical surface texture = 3.2µm to 0.8µm&lt;/li&gt;&lt;li&gt;Milling:&lt;/li&gt;&lt;li&gt;machine type and batch size including horizontal (up-cut, down-cut) (one off to small batch size), vertical (one off to small batch size), universal (one off to small batch size)&lt;/li&gt;&lt;li&gt;features of the component e.g. faces (such as flat, square, parallel, angular), steps/shoulders, slots (such as open ended, enclosed/recesses, tee), holes (such as drilled, bored), profile forms (such as vee, concave, convex, gear)&lt;/li&gt;&lt;li&gt;accuracy of components - typical dimensional tolerances = ±0.1mm to ±0.025mm and typical surface texture = 3.2µm to 0.8µm&lt;/li&gt;&lt;li&gt;Grinding: &lt;/li&gt;&lt;li&gt;machine type and batch size including surface (such as horizontal, vertical) (one off to small batch size), cylindrical (such as external, internal) (one off to small batch size), centreless (medium to large batch size), universal (one off to small batch size)&lt;/li&gt;&lt;li&gt;features of the component e.g. faces (such as flat, vertical, parallel, square to each other, shoulders and faces), slots, diameters (such as parallel, tapered), bores (such as counterbores, tapered, parallel)&lt;/li&gt;&lt;li&gt;accuracy of components - typical dimensional tolerances = ±0.0125mm to ±0.002mm and typical surface texture = 0.8µm to 0.2µm&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Sustainability characteristics of traditional secondary machining processes:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Energy consumption to remove material including power requirements to operate the machine, condition of machine, condition of tooling&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Use and disposal of cutting fluids and waste materials.&lt;/p&gt;&lt;p&gt;A2Specialist secondary machining processes&lt;/p&gt;&lt;p&gt;Technology and characteristics of specialist machining processes:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Presswork: &lt;/li&gt;&lt;li&gt;machine type and batch size including single action (small to medium batch size), multiple action (medium batch to mass manufacturing) &lt;/li&gt;&lt;li&gt;features of the component e.g. blanking, notching, piercing, cropping/shearing, bending/forming&lt;/li&gt;&lt;li&gt;accuracy of components - typical dimensional tolerances = ±0.3mm to ±0.05mm.&lt;/li&gt;&lt;li&gt;Electro discharge: &lt;/li&gt;&lt;li&gt;machine type and batch size including spark erosion (small to large batch size), wire erosion (small to large batch size)&lt;/li&gt;&lt;li&gt;features of the component e.g. holes, faces (such as flat, square, parallel, angular), forms (such as concave, convex, profile, square/rectangular), other features (such as engraving, cavities, radii/arcs, slots)&lt;/li&gt;&lt;li&gt;accuracy of components - typical dimensional tolerances = ±0.1mm to ±0.05mm and typical surface texture = 6.3µm to 0.4µm.&lt;/li&gt;&lt;li&gt;Broaching: &lt;/li&gt;&lt;li&gt;machine type and batch size including horizontal (one off to medium batch size), vertical (one off to medium batch size)&lt;/li&gt;&lt;li&gt;features of the component e.g. keyways, holes (such as flat sided, square, hexagonal, octagonal), splines&lt;/li&gt;&lt;li&gt;accuracy of components - typical dimensional tolerances = ±0.05mm to ±0.01mm and typical surface texture = 6.3µm to 0.4µm.&lt;/li&gt;&lt;li&gt;Honing and lapping: &lt;/li&gt;&lt;li&gt;machine types and batch size including horizontal and vertical honing (one off to medium batch size), and rotary disc and reciprocating lapping (one off to medium batch size)&lt;/li&gt;&lt;li&gt;features of the component e.g. holes (such as through, blind, tapered), faces (such as flat, parallel, angular)&lt;/li&gt;&lt;li&gt;accuracy of components - typical dimensional tolerances = ±0.01mm to ±0.005mm and typical surface texture = 0.2µm to 0.03µm.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Sustainability characteristics of specialist secondary machining processes:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Energy consumption to remove material including power requirements to operate the machine, condition of machine, condition of tooling&lt;/li&gt;&lt;li&gt;Use and disposal of cutting fluids/electrolytes and waste materials&lt;/li&gt;&lt;/ul&gt;</unitcontent>
+        </cell>
+      </row>
+    </table>
+    <table>
+      <row data-row-no="0" table-row-no="1">
+        <cell style="LAheadingtables" table-column-no="1">
+          <learningobjectiveref>B</learningobjectiveref>
+          <learningobjectivetext>Set-up traditional secondary processing machines safely to manufacture a component.</learningobjectivetext>
+        </cell>
+      </row>
+      <row data-row-no="1" table-row-no="2">
+        <cell table-column-no="1">
+          <unitcontent>&lt;p&gt;B1Health and safety requirements when setting up secondary process machines&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Health and Safety at Work Act 1974 (HASAWA) to ensure the workplace is safe to operate in.  To include: safe set up of moving parts e.g. setting stops, preventing tooling clashes, use of machine guards to protect operator and others, choice and handling of cutting fluids/dielectric flow rate, checks for insecure components, facilities for emergency stop and machine isolation.&lt;/li&gt;&lt;li&gt;Regulations: Personal Protective Equipment at Work Regulations 1992 (as amended) (personal safety, identification of appropriate protective clothing and equipment, work area clean and tidy); Manual Handling Operations Regulations 1992 (as amended in 2002); Control of Substances Hazardous to Health (COSHH) Regulations 2002 (as amended).&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;B2Risk assessment&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Risk assessment of the work environment to include hazard identification and classification:&lt;/li&gt;&lt;li&gt;Defining a hazard including any that can cause an adverse effect e.g. moving parts of machinery, sharp objects, electricity, slippage and uneven surfaces, dust and fumes, handling and transporting, contaminants and irritation, material ejection, fire, unshielded processes.&lt;/li&gt;&lt;li&gt;Defining risk e.g. tools, materials or equipment in use, spillages of oil and chemicals, not reporting accidental breakages of tools or equipment, and not following working practices and procedures.&lt;/li&gt;&lt;li&gt;Five steps of a risk assessment; Health and Safety Executive (HSE) template&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;B3Setting up secondary process machines&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Tooling including:&lt;/li&gt;&lt;li&gt;materials and form: solid high-speed steel, tungsten carbide, abrasive stone, composite wheels&lt;/li&gt;&lt;li&gt;for drilling: drill bit, counterboring tool, centre drill, reamer, tap&lt;/li&gt;&lt;li&gt;for turning: turning tools, chamfer tools, centre drills, twist drills, taps&lt;/li&gt;&lt;li&gt;for milling: face mills, side and face cutters, slotting cutters, end mills, slot drills&lt;/li&gt;&lt;li&gt;for grinding: straight sided wheel, recessed wheel, double recessed wheel and dressing of wheels&lt;/li&gt;&lt;li&gt;Work piece holding devices including:&lt;/li&gt;&lt;li&gt;chucks: hard three jaw, magnetic&lt;/li&gt;&lt;li&gt;for drilling: clamping direct to machine table, machine vice, vee block and clamps&lt;/li&gt;&lt;li&gt;for turning: drive plate and centres, faceplates, fixed steadies&lt;/li&gt;&lt;li&gt;for milling: clamping direct to machine table, machine vice, angle plate, vee block and clamps&lt;/li&gt;&lt;li&gt;for grinding: centres, face plate, machine vices, arbors&lt;/li&gt;&lt;li&gt;speeds and feeds including:&lt;/li&gt;&lt;li&gt;for drilling: tooling revolutions per minute, linear feed rate&lt;/li&gt;&lt;li&gt;for turning: work piece revolutions per minute, linear feed rate, depth of cut for roughing and finishing&lt;/li&gt;&lt;li&gt;for milling: linear/table feed rate, milling cutter revolutions per minute, depth of cut for roughing and finishing&lt;/li&gt;&lt;li&gt;for grinding: linear/table feed rate, depth of cut for roughing and finishing, cross feed&lt;/li&gt;&lt;/ul&gt;</unitcontent>
+        </cell>
+      </row>
+    </table>
+    <table>
+      <row data-row-no="0" table-row-no="1">
+        <cell style="LAheadingtables" table-column-no="1">
+          <learningobjectiveref>C</learningobjectiveref>
+          <learningobjectivetext>Carry out traditional secondary machining processes to safely manufacture a component.</learningobjectivetext>
+        </cell>
+      </row>
+      <row data-row-no="1" table-row-no="2">
+        <cell table-column-no="1">
+          <unitcontent>&lt;p&gt;C1Features of traditional secondary machining processes.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;for drilling: through holes, counterboring, tapped hole, reamed hole&lt;/li&gt;&lt;li&gt;for turning: parallel diameters, chamfers, drilled and tapped blind hole&lt;/li&gt;&lt;li&gt;for milling: flat face, shoulder, slot and profile forms&lt;/li&gt;&lt;li&gt;for grinding: parallel diameter, flat surface&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;C2Parameters of traditional secondary machining processes &lt;/p&gt;&lt;ul&gt;&lt;li&gt;cutting fluid application, swarf removal, workpiece removal&lt;/li&gt;&lt;li&gt;for drilling: tool revolutions per minute, feed rate, swarf clearance&lt;/li&gt;&lt;li&gt;for turning: workpiece revolutions per minute, tool feed rate, depth of cut for roughing and finishing&lt;/li&gt;&lt;li&gt;for milling: linear/table feed rate, tool revolutions per minute, depth of cut for roughing and finishing)&lt;/li&gt;&lt;li&gt;for grinding: linear/table feed rate, depth of cut for roughing and finishing, cross feed, dressing of wheels&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;C3Quality control methods &lt;/p&gt;&lt;p&gt;Quality control methods including:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Components to be free from burrs, sharp edges and false cuts&lt;/li&gt;&lt;li&gt;Checks for accuracy:&lt;/li&gt;&lt;li&gt;use of equipment to check dimensional tolerance e.g. micrometer (external, internal), depth micrometer, gap gauge, slip gauges and comparator&lt;/li&gt;&lt;li&gt;use of equipment to check surface texture e.g. comparators (Rubert Gauges), portable Surface Roughness Measuring Instruments&lt;/li&gt;&lt;/ul&gt;</unitcontent>
+        </cell>
+      </row>
+    </table>
+    <table>
+      <row data-row-no="0" table-row-no="1">
+        <cell style="LAheadingtables" table-column-no="1">
+          <learningobjectiveref>D</learningobjectiveref>
+          <learningobjectivetext>Review the processes used to machine a component and reflect on own performance.</learningobjectivetext>
+        </cell>
+      </row>
+      <row data-row-no="1" table-row-no="2">
+        <cell table-column-no="1">
+          <unitcontent>&lt;p&gt;Topic D1: Lessons learnt from machining a component&lt;/p&gt;&lt;p&gt;Scope of the lessons learnt and improvements that could be: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;Health and safety skills including setting and using machines, using appropriate personal protective equipment and keeping the work area clean and tidy.&lt;/li&gt;&lt;li&gt;Traditional secondary machining skills including: the effectiveness and efficiency of setting and operating machines, sustainability considerations e.g. waste materials and energy usage and the use of quality control methods. &lt;/li&gt;&lt;li&gt;General engineering skills e.g. mathematics and interpreting drawings&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;D2Personal performance whilst machining a component &lt;/p&gt;&lt;p&gt;Understand that personal characteristics cover: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;Attitudes and behaviours including listening to others with respect, participating in discussion, sensitive towards individuals and cultural differences, shows self reliance when working independently, motivation and integrity. &lt;/li&gt;&lt;li&gt;Employability skills including planning, organising, time management, self awareness, commercial awareness and innovation / creativity, communication and literacy.&lt;/li&gt;&lt;/ul&gt;</unitcontent>
+        </cell>
+      </row>
+    </table>
+  </section>
+  <section title="Outline Programme of Suggested Assignments" style="UnitAhead">
+    <table>
+      <row data-row-no="0" table-row-no="1">
+        <cell table-column-no="1">Learning Aim :</cell>
+      </row>
+      <row data-row-no="1" table-row-no="2">
+        <cell column-name="Assignment : " table-column-no="1">
+          <SAOdescriptiontasks>&lt;p&gt;Demonstrate an understanding of a range of secondary machining processes by producing a written report.  The report should be professionally presented, contain case studies and focus on three different traditional and three different specialist processes and how these can be used to manufacture components. The tasks are to:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Select / obtain drawings and a specification of mechanical components that can be made by traditional machining processes. If available also give the learner physical components.&lt;/li&gt;&lt;li&gt;Carry out research into presswork, electro discharge and broaching processes for different components.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Produce a report that includes an evaluation of these traditional and specialist secondary machining processes and a contrast of their use for different batch sizes and considers sustainable manufacture.&lt;/p&gt;</SAOdescriptiontasks>
+        </cell>
+      </row>
+      <row data-row-no="2" table-row-no="3">
+        <cell column-name="Assignment : " table-column-no="1">
+          <SAOretake>&lt;p&gt;Select a different range of components and / or to include the process that was not originally covered.&lt;/p&gt;</SAOretake>
+        </cell>
+      </row>
+    </table>
+    <table>
+      <row data-row-no="0" table-row-no="1">
+        <cell table-column-no="1">Learning Aims :</cell>
+      </row>
+      <row data-row-no="1" table-row-no="2">
+        <cell column-name="Assignment : " table-column-no="1">
+          <SAOdescriptiontasks>&lt;p&gt;Demonstrate practical skills used to set-up and operate traditional processing machines. Produce written response on the health and safety activities and how traditional secondary processing machines have been set up and used accurately, effectively and efficiently. The evidence of the practical activity should include observation records, witness statements and annotated photographs and drawings. The tasks are to:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Select / obtain drawings and a specification for a component that can be made by drilling and turning processes involving at list six features.&lt;/li&gt;&lt;li&gt;Carry out research into the health and safety requirements when setting up drilling and turning machines and complete a risk assessment on both machining processes.&lt;/li&gt;&lt;li&gt;Set-up the machines and manufacture the component and record what was done.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Use quality control methods to check the accuracy of the machined component and record the measurements.&lt;/p&gt;</SAOdescriptiontasks>
+        </cell>
+      </row>
+      <row data-row-no="2" table-row-no="3">
+        <cell column-name="Assignment : " table-column-no="1">
+          <SAOretake>&lt;p&gt;Select a different component to machine and / or select one or two different machining processes.&lt;/p&gt;</SAOretake>
+        </cell>
+      </row>
+    </table>
+    <table>
+      <row data-row-no="0" table-row-no="1">
+        <cell table-column-no="1">Learning Aim :</cell>
+      </row>
+      <row data-row-no="1" table-row-no="2">
+        <cell column-name="Assignment : " table-column-no="1">
+          <SAOdescriptiontasks>&lt;p&gt;Review and reflect on the practical activity. Prepare a lessons learnt report (maximum length 1,000 words) to explain how health and safety, traditional secondary machining and general engineering skills were used to manufacture the components. Also, explain the personal characteristics (e.g. time management) that were used. The tasks are to:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Review and reflect on the activities that have been completed and make notes about what went well and what improvement could be made; also what would be done differently next time?&lt;/li&gt;&lt;li&gt;Analyse the notes made and draw out and differentiate between facts and opinions.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Produce a professional report, which explains the lessons learnt and improvements that can be made.&lt;/p&gt;</SAOdescriptiontasks>
+        </cell>
+      </row>
+      <row data-row-no="2" table-row-no="3">
+        <cell column-name="Assignment : " table-column-no="1">
+          <SAOretake>&lt;p&gt;Reflect on a third party demonstration of the set-up and use of traditional secondary machining processes.&lt;/p&gt;</SAOretake>
+        </cell>
+      </row>
+    </table>
+  </section>
+  <section title="Assessment criteria" style="UnitAhead">
+    <table>
+      <row data-row-no="0" table-row-no="1">
+        <cell table-column-no="1">Pass</cell>
+        <cell table-column-no="2">Merit</cell>
+        <cell table-column-no="3">Distinction</cell>
+      </row>
+      <row data-row-no="0" table-row-no="2">
+        <cell column-name="Pass" style="LAheadingtables" table-column-no="1">
+          <learningobjectiveref>A</learningobjectiveref>
+          <learningobjectivetext>Understand the technology and characteristics of secondary machining processes that are widely used in industry</learningobjectivetext>
+        </cell>
+        <cell table-column-no="2" />
+      </row>
+      <row data-row-no="1" table-row-no="3">
+        <cell column-name="Pass" style="Assessmenttabletext" table-column-no="1">
+          <AC_criteria_title>AP1</AC_criteria_title>
+          <criteria>Explain how different traditional and specialist secondary machining processes are used to manufacture different features on components.</criteria>
+        </cell>
+        <cell column-name="Merit" style="Assessmenttabletext" table-column-no="2">
+          <AC_criteria_title>AM1</AC_criteria_title>
+          <criteria>Analyse how different traditional and specialist secondary machining processes are used to sustainably manufacture different features on components to the intended accuracy</criteria>
+        </cell>
+        <cell column-name="Distinction" style="Assessmenttabletext" table-column-no="3">
+          <AC_criteria_title>AD1</AC_criteria_title>
+          <criteria>Evaluate, using vocational and high quality written language, the use of contrasting traditional and specialist secondary machining processes to sustainably manufacture components in different batch sizes</criteria>
+        </cell>
+      </row>
+      <row data-row-no="0" table-row-no="4">
+        <cell column-name="Pass" style="LAheadingtables" table-column-no="1">
+          <learningobjectiveref>B</learningobjectiveref>
+          <learningobjectivetext>Set-up traditional secondary processing machines safely to manufacture a component</learningobjectivetext>
+        </cell>
+        <cell table-column-no="2" />
+      </row>
+      <row data-row-no="1" table-row-no="5">
+        <cell column-name="Pass" style="Assessmenttabletext" table-column-no="1">
+          <AC_criteria_title>BP2</AC_criteria_title>
+          <criteria>Explain what health and safety requirements apply when machining a component using traditional secondary machining processes.</criteria>
+        </cell>
+        <cell column-name="Merit" style="Assessmenttabletext" table-column-no="2">
+          <AC_criteria_title>BM2</AC_criteria_title>
+          <criteria>Use the correct tooling, work holding devices and speeds and feeds to set up at least two traditional secondary processing machines and explain how any mitigation actions from the risk assessment could be applied</criteria>
+        </cell>
+        <cell column-name="Distinction" style="AssessmentDistcoltext" table-column-no="3">
+          <AC_criteria_title>BC.D2</AC_criteria_title>
+          <criteria>Refine the set up and parameters of the traditional secondary processing machines to safely, effectively and efficiently manufacture a component and justify any mitigation actions taken from the risk assessment.</criteria>
+        </cell>
+      </row>
+      <row data-row-no="2" table-row-no="6">
+        <cell column-name="Pass" style="Assessmenttabletext" table-column-no="1">
+          <AC_criteria_title>BP3</AC_criteria_title>
+          <criteria>Set up safely at least two traditional secondary processing machines and conduct a risk assessment of the work environment.</criteria>
+        </cell>
+        <cell table-column-no="2" />
+        <cell table-column-no="3" />
+      </row>
+      <row data-row-no="0" table-row-no="7">
+        <cell column-name="Pass" style="LAheadingtables" table-column-no="1">
+          <learningobjectiveref>C</learningobjectiveref>
+          <learningobjectivetext>Carry out traditional secondary machining processes to safely manufacture a component</learningobjectivetext>
+        </cell>
+        <cell table-column-no="2" />
+      </row>
+      <row data-row-no="1" table-row-no="8">
+        <cell column-name="Pass" style="Assessmenttabletext" table-column-no="1">
+          <AC_criteria_title>CP4</AC_criteria_title>
+          <criteria>Manufacture safely the component using at least two different traditional secondary machining processes.</criteria>
+        </cell>
+        <cell column-name="Merit" style="Assessmenttabletext" table-column-no="2">
+          <AC_criteria_title>CM3</AC_criteria_title>
+          <criteria>Accurately manufacture the component containing at least six features</criteria>
+        </cell>
+        <cell table-column-no="3" />
+      </row>
+      <row data-row-no="0" table-row-no="9">
+        <cell column-name="Pass" style="LAheadingtables" table-column-no="1">
+          <learningobjectiveref>D</learningobjectiveref>
+          <learningobjectivetext>Review the processes used to machine a component and reflect on own performance</learningobjectivetext>
+        </cell>
+        <cell table-column-no="2" />
+      </row>
+      <row data-row-no="1" table-row-no="10">
+        <cell column-name="Pass" style="Assessmenttabletext" table-column-no="1">
+          <AC_criteria_title>DP5</AC_criteria_title>
+          <criteria>Explain how health and safety, traditional secondary machining and general engineering skills were applied during the manufacture of the component.</criteria>
+        </cell>
+        <cell column-name="Merit" style="Assessmenttabletext" table-column-no="2">
+          <AC_criteria_title>DM4</AC_criteria_title>
+          <criteria>Recommend improvements to the set up and use of traditional secondary machining processes including health and safety conformance and the personal characteristics applied</criteria>
+        </cell>
+        <cell column-name="Distinction" style="Assessmenttabletext" table-column-no="3">
+          <AC_criteria_title>S.D3</AC_criteria_title>
+          <criteria>Present facts, opinions, analysis and recommendations effectively and consistently showing technical understanding of traditional secondary machining processes, including health and safety conformance and how personal characteristics have been applied.</criteria>
+        </cell>
+      </row>
+      <row data-row-no="2" table-row-no="11">
+        <cell column-name="Pass" style="Assessmenttabletext" table-column-no="1">
+          <AC_criteria_title>DP6</AC_criteria_title>
+          <criteria>Explain why personal characteristics were applied during the manufacture of the component</criteria>
+        </cell>
+        <cell table-column-no="2" />
+        <cell table-column-no="3" />
+      </row>
+    </table>
+  </section>
+  <section title="Teacher guidance" style="UnitAhead" />
+  <section title="Resources" style="UnitBhead">
+    <resources>&lt;p&gt;The special resources required for this unit are:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;access to pillar drills/radial drills, centre lathes/turret lathes, horizontal milling machines/vertical milling machines/universal milling machines and surface grinding machines/cylindrical grinding machines/centreless grinding machines/universal grinding machines, as required by the learning aims and unit content&lt;/li&gt;&lt;li&gt;auxiliary equipment (such as that listed under ‘tooling’ and ‘work piece holding devices’)&lt;/li&gt;&lt;li&gt;a range of equipment suitable for measuring the dimensional accuracy and surface texture of the work pieces to be machined.&lt;/li&gt;&lt;li&gt;access to a range of health and safety legislation (HASAWA) and regulations, as required by the learning aims and unit content.&lt;/li&gt;&lt;/ul&gt;</resources>
+  </section>
+  <section title="Assessment Guidance" style="UnitBhead">
+    <assessmentguidance>&lt;p&gt;Learning aim A: Understand the technology and characteristics of secondary machining processes that are widely used in industry.&lt;/p&gt;&lt;p&gt;&lt;b&gt;For AP1:&lt;/b&gt; Learners will write a report that will include information about both traditional and specialist secondary machining processes. Different learners should cover different processes and choose different components to research.  It must demonstrate an understanding of how three traditional secondary machining processes are used to produce a range of features in components. It should include case studies of three different specialist processes that have been researched and will explain how these are used to produce features on three different components (one component per specialist process).  The report may have some inaccuracies relating to engineering terminology and the explanations may be difficult to understand in parts, however there will be a clear indication that three traditional and three specialist processes have been covered.&lt;/p&gt;&lt;p&gt;&lt;b&gt;For AM1&lt;/b&gt;:  Additionally the learner will analyse how these different secondary machining processes are used. For example the report should highlight the required actions of the process to produce the features and accuracy required and should highlight the relationship between tool and workpiece movements for the different processes. The analysis will be consistent across all the processes covered and include details about energy consumption and disposal of fluids and waste material and the tolerances achievable. There will be few inaccuracies relating to engineering terminology and the explanations will be easy to understand.&lt;/p&gt;&lt;p&gt;&lt;b&gt;For AD1&lt;/b&gt;: The report will include a balanced evaluation of the secondary machining processes including energy consumption, disposal of fluids and waste material for different batch sizes. The report will use the correct technical engineering terms and be written using high quality language e.g. grammatically accurate.  The report will provide a balanced view of how each process will accommodate different tolerances and batch sizes and how this relates to sustainable manufacture of components.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Learning aim B: Set-up traditional secondary processing machines safely to manufacture a component.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Learning aim C: Carry out traditional secondary machining processes to safely manufacture a component.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;For BP2 and BP3&lt;/b&gt;: Learners will produce a risk assessment of two traditional machining processes and notes to show why health and safety requirements are needed.  The evidence produced from the practical activity will include a range of observation records and / or witness statements, complete with annotated photographs and drawings, and set up planning notes to show how the machining processes were set-up. For pass the majority of the speeds and feeds, tooling and work piece holding devices will be set up correctly and safely.&lt;/p&gt;&lt;p&gt;&lt;b&gt;For BM2&lt;/b&gt;: The learner evidence will show how the correct tooling, work piece holding devices and use of speeds and feeds were used and selected as part of the practical activity involving at least two traditional machining processes. The evidence will take the form of observation records and / or witness statements, complete with annotated photographs and drawings. A risk assessment and written response will show how any mitigation actions from the risk assessment would be applied when setting up and machining the component.&lt;/p&gt;&lt;p&gt;&lt;b&gt;For CP4&lt;/b&gt;: The evidence will include a range of observation records and / or witness statements, complete with annotated photographs and drawings to show how the machining processes were used safely to manufacture a component, cutting fluid applied correctly (where relevant), swarf removed correctly, and the work piece removed from the machine safely.  The records will outline the actual machining processes undertaken to create the six features on the component and that it was free from burrs, sharp edges and false cuts. However, limited reference will be made to accuracy and the finished components may not be to the desired tolerance or surface texture.&lt;/p&gt;&lt;p&gt;&lt;b&gt;For CM3&lt;/b&gt;: Additionally the evidence, such as observation records, will also show how accuracy was achieved on at least six features. The evidence will also include either an annotated drawing or a table of results to show what measurements were taken for each of the features and what adjustments were made to ensure dimensional and surface texture accuracy.&lt;/p&gt;&lt;p&gt;&lt;b&gt;For BC.D2&lt;/b&gt;: The evidence, such as witness statements, will show how the set up and parameters, e.g. application of cutting fluid and tool feed rate, were refined during the machining to ensure the process continues to operate safely and produces a component that is accurate. The evidence will make reference to: the way the manufacture was carried out safely e.g. correct tooling overhang, appropriate secure fixing of the work piece, reference made to the risk assessment, and how the parameters can be used to control the:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;effectiveness e.g. optimising the order of tools and distance travelled by the tools and machining the component in a realistic time,  and&lt;/li&gt;&lt;li&gt;efficiency, e.g. replacing worn tools, correct fluid use and of the machining processes.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The evidence will also contain notes or similar that justifies how the risks identified, in the risk assessment, have been made less severe by changing/controlling actions/practices during the machining.  These notes will be understood by a third party who may or may not be an engineer.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Learning aim D: Review the processes used to machine a component and reflect on own performance.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;For DP5 and DP6&lt;/b&gt;&lt;b&gt;: &lt;/b&gt;A lessons learnt report, of no more than 1,000 words, will be presented covering the management of health and safety, the application of machining and general engineering skills and a reflection of personal performance. The report will explain what:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;actions were taken to manage health and safety in the workplace e.g. what personal protective equipment was used and whether any unforeseen issues occurred.&lt;/li&gt;&lt;li&gt;traditional secondary machining skills were used, such as how the intended surface texture was achieved, how dimensional accuracy was achieved and holes were centred accurately.&lt;/li&gt;&lt;li&gt;general engineering skills were used, such as understanding Cartesian coordinates and interpreting drawings, and recognising technical parts of machines.&lt;/li&gt;&lt;li&gt;personal characteristics were used, such as time management to ensure the activity was completed within the allotted time, listening to instructions from others to ensure some self reliance and integrity to own up to any mistakes or difficulties, respect other beliefs e.g. not using tallow (animal fat) as a cutting compound (fluid)..&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;For DM4&lt;/b&gt;: Additionally the evidence, such as the report, will explain what improvements can be made to the set up and use traditional secondary machining processes.  It will also explain the actions taken, the traditional secondary machining and general engineering skills, and personal characteristics that were considered as part of the reflection exercise and how health and safety was managed throughout.  Some parts of the evidence (report) may have more emphasis than others, creating an unbalanced viewpoint, and making it more difficult for a third party to understand and implement any improvements.&lt;/p&gt;&lt;p&gt;&lt;b&gt;For U.D3&lt;/b&gt;: The evidence, such as the report, will present a professional understanding of traditional secondary machining processes when giving facts, opinions and recommendations.  It will use concise written language that includes correct technical engineering terms and accurate grammar and will clearly differentiate facts from opinion.  The report will be easy to read and will be understood by a third party who may or may not be an engineer.&lt;/p&gt;&lt;p&gt;The report will include a balanced view about the actions taken, traditional secondary machining and general engineering skills, and personal characteristics considered to make improvements to traditional secondary machining processes and the management of health and safety.  There will be clear links to improvements in effectiveness and consistency&lt;/p&gt;</assessmentguidance>
+  </section>
+</unit>
