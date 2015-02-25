@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="dashboardApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Pearson Qualification Tool</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://www.fuelcdn.com/fuelux/3.0.1/css/fuelux.min.css">
+
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="bower_components/angular/angular.min.js"></script>
+
+    <script src="js/dashboard-app.js"></script>
+
+
+</head>
+<body id="dashboardApp">
+
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="img/logo.png"/>
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs">
+                                <strong class="font-bold">
+                                    <div class="header-element username">
+                                        <div class="username-placeholder" ng-hide="vm.username"></div>
+                                        <span ng-cloak>{{vm.username}}</span>
+                                    </div>
+                                </strong>
+                             </span> <span class="text-muted text-xs block">Administrator <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="public/login.html">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        WXML+
+                    </div>
+                </li>
+                <li class="active">
+                    <a href="dashboard"><i class="fa fa-th-large fa-2x"></i><br/> <span class="nav-label">Dashboards</span></a>
+                </li>
+                <li>
+                    <a href="downloads"><i class="fa fa-download fa-2x"></i> <br/><span class="nav-label">Downloads</span>
+                        <span class="label label-warning">{{(transformations|filter: { generalStatus: 0 } ).length}}</span></a>
+                </li>
+                <li>
+                    <a href="wizards"><i class="fa fa-magic fa-2x"></i><br/> <span class="nav-label">Wizards </span></a>
+                </li>
+                <li>
+                    <a href="batchconversion"><i class="fa fa-gears fa-2x"></i><br/> <span class="nav-label">Batch conversion</span> </a>
+                </li>
+                <li>
+                    <a href="transformdetails"><i class="fa fa-desktop fa-2x"></i><br/> <span class="nav-label">Transform details</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-2x"></i> <br/><span class="nav-label">Configuration</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users fa-2x"></i><br/><span class="nav-label">User Management</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom" ng-controller="DashboardCtrl">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">Welcome to Btec Transformations.</span>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-envelope"></i>  <span class="label label-warning">{{(transformations|filter: { generalStatus: 'GENERAL_STATUS_UNREAD' } ).length}}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <div>
+                                        <small class="pull-right">Recent</small>
+                                        {{(transformations|filter: { generalStatus: 0 } ).length}} new transformations have completed.<br>
+                                        <small class="text-muted">now.</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="mailbox.html">
+                                        <i class="fa fa-envelope"></i> <strong>See Recent Transformations</strong>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-exclamation-circle"></i>  <span class="label label-danger">{{transformations.length - recentAlerts.length}}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="mailbox.html">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i> You have {{transformations.length - recentAlerts.length}} new alerts
+                                        <span class="pull-right text-muted small">recent</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="notifications.html">
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a href="public/login.html">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+
+
+        <div class="wrapper wrapper-content">
+
+
+            <div class="row" ng-controller="DashboardCtrl">
+
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Recent transformations</h5>
+                            <div class="ibox-tools">
+                                <span class="label label-primary">Updated {{lastUpdateDate}}</span>
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-9 m-b-xs">
+                                    Filter
+                                    <div class="btn-group" data-toggle="buttons-radio">
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('all')">All</a>
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('today')">Today</a>
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastWeek')">Week</a>
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastMonth')">Month</a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="input-group"><input ng-model="searchText" type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Date</th>
+                                        <th>QAN No</th>
+                                        <th>Unit No</th>
+                                        <th>Unit Title </th>
+                                        <th>Author </th>
+                                        <th>Word file </th>
+                                        <th>OpenXML </th>
+                                        <th>IqsXML</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr ng-repeat="transformation in transformations | filter: { generalStatus: 'GENERAL_STATUS_UNREAD' } | filter: searchText" ng-if="transformation.date > dateRange">
+                                        <input type="hidden" ng-value="transformation.id"/>
+                                        <input type="hidden" ng-value="transformation.username"/>
+                                        <input type="hidden" ng-value="transformation.templatename"/>
+                                        <input type="hidden" ng-value="transformation.generalStatus"/>
+                                        <td>
+                                        </td>
+                                        <td ng-cloak>{{transformation.date}}</td>
+                                        <td ng-cloak>{{transformation.qanNo}}</td>
+                                        <td ng-cloak>{{transformation.unitNo}}</td>
+                                        <td ng-cloak>{{transformation.unitTitle}}</td>
+                                        <td ng-cloak>{{transformation.author}}</td>
+                                        <td ng-cloak>{{transformation.wordfilename}}</td>
+                                        <td ng-cloak><a href="{{transformation.openxmlfilename}}"><i class="fa fa-download text-navy"></i></a></td>
+                                        <td ng-cloak><a href="{{transformation.iqsxmlfilename}}"><i class="fa fa-download text-navy"></i></a></td>
+                                        <td ng-cloak>
+                                            <ul class="nav navbar-top-links">
+                                                <li class="dropdown">
+
+                                                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                                        <i class="fa fa-exclamation-circle text-danger"></i>
+                                                        <span class="label label-danger">{{transformation.transformStatus}}</span>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-alerts">
+                                                        <li>
+                                                            <a href="#">
+                                                                <div>
+                                                                    <i class="fa fa-envelope fa-fw"></i>{{transformation.message}}
+                                                                    <span class="pull-right text-muted small">{{transformation.lastmodified}}</span>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                    </ul>
+
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row" ng-controller="DashboardCtrl">
+
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Transformations History </h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-9 m-b-xs">
+                                    Filter
+                                    <div class="btn-group" data-toggle="buttons-radio">
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('all')">All</a>
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('today')">Today</a>
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastWeek')">Week</a>
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastMonth')">Month</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="input-group"><input ng-model="searchText" type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>QAN No</th>
+                                        <th>Unit No</th>
+                                        <th>Unit Title </th>
+                                        <th>Author </th>
+                                        <th>Word file </th>
+                                        <th>OpenXML </th>
+                                        <th>IqsXML</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="transformation in transformations | filter: searchText" ng-if="transformation.generalStatus != 'GENERAL_STATUS_UNREAD' && transformation.date > dateRange">
+                                        <input name="id" type="hidden" ng-value="transformation.id"/>
+                                        <input type="hidden" ng-value="transformation.id"/>
+                                        <input type="hidden" ng-value="transformation.username"/>
+                                        <input type="hidden" ng-value="transformation.templatename"/>
+                                        <input type="hidden" ng-value="transformation.generalStatus"/>
+                                        <td ng-cloak>{{transformation.date}}</td>
+                                        <td ng-cloak>{{transformation.qanNo}}</td>
+                                        <td ng-cloak>{{transformation.unitNo}}</td>
+                                        <td ng-cloak>{{transformation.unitTitle}}</td>
+                                        <td ng-cloak>{{transformation.author}}</td>
+                                        <td ng-cloak>{{transformation.wordfilename}}</td>
+                                        <td ng-cloak><a href="{{transformation.openxmlfilename}}"><i class="fa fa-download text-navy"></i></a></td>
+                                        <td ng-cloak><a href="{{transformation.iqsxmlfilename}}"><i class="fa fa-download text-navy"></i></a></td>
+                                        <td ng-cloak>
+                                            <ul class="nav navbar-top-links">
+                                                <li class="dropdown">
+
+                                                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                                        <i class="fa fa-exclamation-circle text-danger"></i>
+                                                        <span class="label label-danger">{{transformation.transformStatus}}</span>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-alerts">
+                                                        <li>
+                                                            <a href="#">
+                                                                <div>
+                                                                    <i class="fa fa-envelope fa-fw"></i>{{transformation.message}}
+                                                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                    </ul>
+
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer">
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
+            <div>
+                &copy; Pearson Education Limited 2015
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--
+<script type="text/javascript" data-main="/static/js/run-dashboard-app"
+        src="/static/bower_components/requirejs/require.js"></script>
+-->
+
+
+
+<!-- Mainly scripts -->
+<!--
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-messages/angular-messages.js"></script>
+<script type="text/javascript" src="bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
+<script type="text/javascript" src="bower_components/lodash/dist/lodash.js"></script>
+<script type="text/javascript" src="/static//datetimepicker/jquery.js"></script>
+-->
+
+<script src="js/jquery-2.1.1.js"></script>
+
+<!--
+<script type="text/javascript" src="js/datetimepicker/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="public/js/editable-table-widgets.js"></script>
+<script type="text/javascript" src="js/frontend-services.js"></script>
+<script type="text/javascript" src="js/run-app.js"></script>
+-->
+<script src="js/bootstrap.min.js"></script>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+<!-- Latest compiled and minified JavaScript -->
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Moment -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.js"></script>
+
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<!--<script src="js/plugins/pace/pace.min.js"></script>-->
+
+<!-- jQuery UI -->
+<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,378 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Welcome {{vm.username}}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li class="active">
+                <strong>Dashboard</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content">
+
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-success pull-right">Available</span>
+                            <h5>Documents</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">{{totalDocumentsCount}}</h1>
+
+                            <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+                            <small>Total documents</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-danger pull-right">Failures</span>
+                            <h5>Alerts</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">{{recentAlertsCount}}</h1>
+
+                            <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
+                            <small>Failed transforms</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-info pull-right">Total</span>
+                            <h5>Downloads</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">64</h1>
+
+                            <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                            <small>Total downloads</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-primary pull-right">Total</span>
+                            <h5>Transforms</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">79</h1>
+
+                            <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+                            <small>Transformed workflows</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Updates - displaying page: {{currentPage}} / {{numOfPages}} of {{totalResults}} transformed documents</h5>
+
+                    <span class="label label-primary">Updated {{lastUpdateDate}}</span>
+
+
+                    <div ibox-tools="" class="ng-scope"><div class="ibox-tools dropdown" dropdown="">
+                        <a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a>
+                        <a class="dropdown-toggle" href="" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="">Config option 1</a>
+                            </li>
+                            <li><a href="">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a ng-click="closebox()"><i class="fa fa-times"></i></a>
+                    </div></div>
+                </div>
+                <div class="ibox-content ibox-heading">
+                    <h3><i class="fa fa-envelope"></i> {{recentNewDocumentsCount}} New documents</h3>
+
+                    <div class="row">
+                        <div class="col-sm-3 m-b-xs">
+                            Filter
+                            <div class="btn-group" data-toggle="buttons-radio">
+                                <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('all')">All</a>
+                                <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('today')">Today</a>
+                                <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastWeek')">Week</a>
+                                <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastMonth')">Month</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="input-group"><input ng-model="search" type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                        </div>
+                        <div class="col-sm-4">
+                            <pagination style="margin: 0px;"
+                                    total-items="totalResults"
+                                    ng-model="currentPage"
+                                    boundary-links="true"
+                                    num-pages="noOfPages"
+                                    max-size="maxSize"
+                                    item-per-page="numPerPage"
+                                    class="btn-group">
+                            </pagination>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="feed-activity-list">
+
+                        <div class="feed-element" ng-repeat="transformation in filteredTransformations | filter: { generalStatus: 'GENERAL_STATUS_UNREAD' }" ng-if="transformation.date > dateRange">
+                            <div>
+                                <small class="pull-right">5m ago</small>
+
+                                <a href="#/userprofile/{{transformation.user.id}}"><i class="fa fa-user"></i><strong> {{transformation.user.username}} </strong> - {{transformation.user.firstname}} {{transformation.user.lastname}} </a>
+
+                                <div ng-show="transformation.transformStatus == 'TRANSFORM_STATUS_SUCCESS' ||
+                                    transformation.transformStatus == 'TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS' ||
+                                    transformation.transformStatus == 'TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS' ||
+                                    transformation.transformStatus == 'TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS' ||
+                                    transformation.transformStatus == 'TRANSFORM_STATUS_SUCCESS2'">
+
+                                    <i alt="{{transformation.transformStatus}}"
+                                       class="fa" ng-class="{
+                                           'TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS' : 'fa-cloud-upload text-info',
+                                           'TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS' : 'fa-refresh text-info',
+                                           'TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS' : 'fa-cogs text-info',
+                                           'TRANSFORM_STATUS_SUCCESS' : 'fa-check text-navy',
+                                           'TRANSFORM_STATUS_SUCCESS2' : 'fa-star text-navy'
+                                           }[transformation.transformStatus]">
+                                    </i>
+                                    {{transformation.transformStatus | transformStatus}}
+                                    <br/>
+                                        Qan: {{transformation.qanNo}}</strong> |
+                                        Unit number: {{transformation.unitNo}} |
+                                        Unit Title: {{transformation.unitTitle}} |
+                                        Author(s): {{transformation.author}} -
+                                    <a href="#/document/{{transformation.id}}" alt="Click to view">
+                                        Click to view details</a>
+                                </div>
+                                <div ng-hide="transformation.transformStatus == 'TRANSFORM_STATUS_SUCCESS' ||
+                                    transformation.transformStatus == 'TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS' ||
+                                    transformation.transformStatus == 'TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS' ||
+                                    transformation.transformStatus == 'TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS' ||
+                                    transformation.transformStatus == 'TRANSFORM_STATUS_SUCCESS2'">
+                                    Qan: {{transformation.qanNo}}</strong> |
+                                    Unit number: {{transformation.unitNo}} |
+                                    Unit Title: {{transformation.unitTitle}} |
+                                    Word File(s): {{transformation.wordfilename}} - <br/>
+
+                                    <a href="#/document/{{transformation.id}}" class="text-danger" href="" alt=" Click to view alert">
+                                        <i alt="{{transformation.transformStatus}}"
+                                            class="fa" ng-class="{
+                                           'TRANSFORM_STATUS_FAIL' : 'fa-times text-danger',
+                                           'TRANSFORM_STATUS_FAIL_VALIDATE_WORD' : 'fa-word-file-o text-warn',
+                                           'TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML' : 'fa-word-file-o text-danger',
+                                           'TRANSFORM_STATUS_FAIL_TRANSFORM' : 'fa-cogs text-danger',
+                                           'TRANSFORM_STATUS_FAIL_TRANSFORM_XML_TO_IQSXML_XSLT' : 'fa-file-text-o text-danger',
+                                           'TRANSFORM_STATUS_XML_TO_IQSXML_XQUERY' : 'fa-file-text text-danger',
+                                           'TRANSFORM_STATUS_FAIL_IQS_VALIDATION' : 'fa-bell text-danger',
+                                           'TRANSFORM_STATUS_FAIL_FILE_WRITE' : 'fa-pencil-square-o text-danger',
+                                           }[transformation.transformStatus]">
+                                        </i>
+                                        {{transformation.transformStatus | transformStatus}} - <span class="alert-link">Click to view error messages</span></a>.
+                                </div>
+                                <small class="text-muted">Yesterday 8:48 pm - {{transformation.lastmodified}}</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+
+                        <div class="ibox-title">
+                            <h5>Recent transformations</h5>
+                            <span class="label label-primary">Updated {{lastUpdateDate}}</span>
+
+                            <div ibox-tools="" class="ng-scope"><div class="ibox-tools dropdown" dropdown="">
+                                <a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a>
+                                <a ng-click="closebox()"><i class="fa fa-times"></i></a>
+                            </div></div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-9 m-b-xs">
+                                    Filter
+                                    <div class="btn-group" data-toggle="buttons-radio">
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('all')">All</a>
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('today')">Today</a>
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastWeek')">Week</a>
+                                        <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastMonth')">Month</a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="input-group"><input ng-model="searchText" type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Date</th>
+                                        <th>QAN No</th>
+                                        <th>Unit No</th>
+                                        <th>Unit Title </th>
+                                        <th>Author </th>
+                                        <th>Word file </th>
+                                        <th>OpenXML </th>
+                                        <th>IqsXML</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr ng-repeat="transformation in transformations | filter: { generalStatus: 'GENERAL_STATUS_UNREAD' } | filter: searchText" ng-if="transformation.date > dateRange">
+                                        <input type="hidden" ng-value="transformation.id"/>
+                                        <input type="hidden" ng-value="transformation.username"/>
+                                        <input type="hidden" ng-value="transformation.templatename"/>
+                                        <input type="hidden" ng-value="transformation.generalStatus"/>
+                                        <td>
+                                        </td>
+                                        <td ng-cloak>{{transformation.date}}</td>
+                                        <td ng-cloak>{{transformation.qanNo}}</td>
+                                        <td ng-cloak>{{transformation.unitNo}}</td>
+                                        <td ng-cloak>{{transformation.unitTitle}}</td>
+                                        <td ng-cloak>{{transformation.author}}</td>
+                                        <td ng-cloak>{{transformation.wordfilename}}</td>
+                                        <td ng-cloak><a href="{{transformation.openxmlfilename}}"><i class="fa fa-download text-navy"></i></a></td>
+                                        <td ng-cloak><a href="{{transformation.iqsxmlfilename}}"><i class="fa fa-download text-navy"></i></a></td>
+                                        <td ng-cloak>
+                                            <ul class="nav navbar-top-links">
+                                                <li class="dropdown" ng-switch on="transformation.transformStatus">
+
+                                                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" ng-switch-when="TRANSFORM_STATUS_SUCCESS">
+                                                        <i class="fa fa-check text-navy"></i>
+                                                    </a>
+                                                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" ng-switch-default>
+                                                        <i class="fa fa-exclamation-circle text-danger"></i>
+                                                        <span class="label label-danger">1</span>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-alerts">
+                                                        <li>
+                                                            <a href="#">
+                                                                <div>
+                                                                    <i class="fa fa-envelope fa-fw"></i> <b>{{transformation.transformStatus}}</b> - {{transformation.message}}
+                                                                    <span class="pull-right text-muted small">{{transformation.lastmodified}}</span>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                    </ul>
+
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12" >
+                    <div class="file-box" ng-repeat="transformation in transformations | filter: { generalStatus: 'GENERAL_STATUS_UNREAD' } | filter: searchText" ng-if="transformation.date > dateRange">
+                        <div class="file">
+                            <a href="/static/index.html#/document/{{transformation.id}}">
+                                <span class="corner"></span>
+
+                                <div class="icon">
+                                    <i class="fa fa-file"></i>
+                                </div>
+                                <div class="file-name">
+                                    <b>{{transformation.unitTitle}}</b>
+                                    <br/>
+                                    {{transformation.wordfilename}}
+                                    <br/>
+                                    <small>Added: {{transformation.date}}</small>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- End of wrapper-content -->
+    </div>
+</div>
+
+
+
+
+<!--<script src="../static/js/dashboard-app.js"></script>-->
+
+<!--
+<script type="text/javascript" data-main="/static/js/run-dashboard-app"
+        src="/static/bower_components/requirejs/require.js"></script>
+-->
+
+
+
+<!-- Mainly scripts -->
+<!--
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-messages/angular-messages.js"></script>
+<script type="text/javascript" src="bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
+<script type="text/javascript" src="bower_components/lodash/dist/lodash.js"></script>
+<script type="text/javascript" src="/static//datetimepicker/jquery.js"></script>
+-->
+
+<!--<script src="../static/js/jquery-2.1.1.js"></script>-->
+
+<!--
+<script type="text/javascript" src="js/datetimepicker/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="public/js/editable-table-widgets.js"></script>
+<script type="text/javascript" src="js/frontend-services.js"></script>
+<script type="text/javascript" src="js/run-app.js"></script>
+-->
+<!--<script src="../static/js/bootstrap.min.js"></script>-->
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+<!-- Latest compiled and minified JavaScript -->
+<!--<script src="../static/js/plugins/metisMenu/jquery.metisMenu.js"></script>-->
+<!--<script src="../static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>-->
+
+<!-- Moment -->
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.js"></script>-->
+
+
+<!-- Custom and plugin javascript -->
+<!--<script src="../static/js/inspinia.js"></script>-->
+<!--<script src="js/plugins/pace/pace.min.js"></script>-->
+
+<!-- jQuery UI -->
+<!--<script src="../static/js/plugins/jquery-ui/jquery-ui.min.js"></script>-->

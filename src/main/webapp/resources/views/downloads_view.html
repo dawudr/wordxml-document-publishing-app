@@ -1,0 +1,161 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Downloads </h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                Document
+            </li>
+            <li class="active">
+                <strong>Download </strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="wrapper wrapper-content animated fadeInUp">
+
+<div class="ibox">
+<div class="ibox-title">
+    <h5>Displaying page: {{currentPage}} / {{numOfPages}} of {{totalResults}} documents</h5>
+    <div class="input-group pull-right">
+        <h5>
+        <label for="entryLimit">Items per page: </label>
+        <input id="entryLimit" type="text" size="2" ng-model="numPerPage" value="5"/>
+        </h5>
+    </div>
+</div>
+<div class="ibox-content">
+<div class="row">
+    <div class="col-md-1">
+        <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
+    </div>
+    <div class="col-md-11">
+        <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control" ng-model="search" ng-change="filter()"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-right">
+        <pagination
+                total-items="totalResults"
+                ng-model="currentPage"
+                boundary-links="true"
+                num-pages="noOfPages"
+                max-size="maxSize"
+                item-per-page="numPerPage"
+                class="btn-group">
+        </pagination>
+    </div>
+</div>
+
+
+<div class="project-list">
+
+<table class="table table-hover">
+
+    <thead>
+        <th>#</th>
+        <th>Status</th>
+        <th>Document</th>
+        <th>Transform result</td>
+        <th>Download</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+<!--<tr ng-repeat="transformation in filteredTransformations = (transformations | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" ng-if="transformation.generalStatus != 'GENERAL_STATUS_UNREAD' && transformation.date > dateRange">-->
+<!--<tr ng-repeat="transformation in filteredTransformations = (transformations | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">-->
+<tr ng-repeat="transformation in filteredPagnTransformations">
+    <td class="project-list">
+        {{$index + ((currentPage-1)*numPerPage) +1 }}.
+    </td>
+    <td class="project-list">
+                <i alt="{{transformation.generalStatus}}"
+                   class="fa fa-2x" ng-class="{
+                   'GENERAL_STATUS_UNREAD' : 'fa-envelope',
+                   'GENERAL_STATUS_READ' : 'fa-envelope-o',
+                   'GENERAL_STATUS_MODIFIED' : 'fa-pencil-square-o',
+                   'GENERAL_STATUS_DELETED' : 'fa-trash-o'
+                   }[transformation.generalStatus]">
+                </i>
+                <br/>
+        <!--http://stackoverflow.com/questions/24200729/ng-if-not-equal-to-->
+                <small ng-cloak> {{transformation.generalStatus | generalStatus}} </small>
+    </td>
+    <td class="project-title">
+        Qan: <a ui-sref="project_detail">{{transformation.qanNo}}</a>
+        <br/>
+        Unit No: <a ui-sref="project_detail">{{transformation.unitNo}}</a>
+        <br/>
+        Title: <a ui-sref="project_detail">{{transformation.unitTitle}}</a>
+        <br/>
+        File: <a ui-sref="project_detail">{{transformation.wordfilename}}</a>
+        <br/>
+        <small>Created {{transformation.date}}</small>
+    </td>
+    <td class="project-completion">
+                <i alt="{{transformation.transformStatus}}"
+                   class="fa fa-2x" ng-class="{
+                   'TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS' : 'fa-cloud-upload text-info',
+                   'TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS' : 'fa-refresh text-info',
+                   'TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS' : 'fa-cogs text-info',
+                   'TRANSFORM_STATUS_SUCCESS' : 'fa-check text-navy',
+                   'TRANSFORM_STATUS_FAIL' : 'fa-times text-danger',
+                   'TRANSFORM_STATUS_FAIL_VALIDATE_WORD' : 'fa-word-file-o text-warn',
+                   'TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML' : 'fa-word-file-o text-danger',
+                   'TRANSFORM_STATUS_FAIL_TRANSFORM' : 'fa-cogs text-danger',
+                   'TRANSFORM_STATUS_FAIL_TRANSFORM_XML_TO_IQSXML_XSLT' : 'fa-file-text-o text-danger',
+                   'TRANSFORM_STATUS_FAIL_XML_TO_IQSXML_XQUERY' : 'fa-file-text text-danger',
+                   'TRANSFORM_STATUS_FAIL_IQS_VALIDATION' : 'fa-bell text-danger',
+                   'TRANSFORM_STATUS_FAIL_FILE_WRITE' : 'fa-pencil-square-o text-danger',
+                   'TRANSFORM_STATUS_SUCCESS2' : 'fa-star text-navy'
+                   }[transformation.transformStatus]">
+                </i>
+
+        <small>{{transformation.transformStatus | transformStatus}}</small>
+        <div class="progress progress-mini">
+            <div style="width: 100%;" class="progress-bar"></div>
+        </div>
+    </td>
+    <td class="project-list">
+        <div class="form-group-sm">
+            <a href="#/downloadwordhandler/{{transformation.id}}" class="btn btn-white btn-sm" alt="Word file"><i class="fa fa fa-file-word-o"></i> Word</a>
+            <a href="#/downloadxmlhandler/{{transformation.id}}" class="btn btn-white btn-sm" alt="Open XML file"><i class="fa fa-file-code-o"></i> XML</a>
+            <a href="#/downloadpqshandler/{{transformation.id}}" class="btn btn-white btn-sm" alt="IQS XML file"><i class="fa fa fa-file-text-o"></i> PQS</a><br/>
+        </div>
+    </td>
+    <td class="project-list">
+        <div class="form-group-sm">
+        <a href="#/deletehandler/{{transformation.id}}" class="btn btn-danger btn-sm" alt="Word file"><i class="fa fa fa-remove"></i> Delete</a>
+        <a href="#/document/{{transformation.id}}" class="btn btn-primary btn-sm"><i class="fa fa-desktop"></i> View </a>
+        </div>
+    </td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <pagination
+                total-items="totalResults"
+                ng-model="currentPage"
+                data-boundary-links="true"
+                data-num-pages="noOfPages"
+                data-current-page="currentPage"
+                max-size="maxSize"
+                item-per-page="numPerPage"
+                class="btn-group">
+        </pagination>
+    </div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pearson Qualification Tool | Login</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../fonts/font-awesome.css" rel="stylesheet">
+
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg" id="loginApp">
+
+<main ng-controller="BaseFormCtrl">
+
+
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <header>
+            <img alt="image" class="img-circle" src="../img/logo.png"/>
+        </header>
+
+        <h3>Welcome to WordXML+</h3>
+        <h3>Extraction and Transformation Tool</h3>
+        <p>This tool is designed to extract and transform content from Pearson qualification products into
+        XML which can be made available to Pearson web services, such as myBTEC</p>
+        <p>Authorised users are only permitted to use this tool.</p>
+
+        <p>Login in. To see it in action.</p>
+        <p><tt-error-messages extra-styles="access-screen"></tt-error-messages></p>
+        <form ng-submit="onLogin()" name="form" class="m-t" novalidate ng-controller="LoginCtrl">
+            <fieldset>
+                <div class="form-group">
+                    <input type="text" ng-focus="focus('username')"  ng-blur="blur('username')" ng-model="vm.username"
+                           name="username" class="form-control" placeholder="Username" required ng-minlength="6">
+                    <div class="error-messages" ng-show="isMessagesVisible('username')" ng-messages="form.username.$error" ng-cloak>
+                        <div ng-message="required">The username is mandatory</div>
+                        <div ng-message="minlength">must have minimum 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" ng-focus="focus('password')"  ng-blur="blur('password')" ng-model="vm.password"
+                           name="password" class="form-control" placeholder="Password" required ng-minlength="6"
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+                    <div class="error-messages" ng-show="isMessagesVisible('password')" ng-messages="form.password.$error" ng-cloak>
+                        <div ng-message="required">The password is mandatory</div>
+                        <div ng-message="minlength">must have minimum 6 characters</div>
+                        <div ng-message="pattern">At least one number and uppercase</div>
+                    </div>
+                </div>
+
+            </fieldset>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+            <a class="text-muted text-center" href="new-user.html">Do not have an account?</a>
+        </form>
+        <p class="m-t"> <small>&copy; Pearson Education Limited 2015</small> </p>
+    </div>
+</div>
+
+ </main>
+
+<!-- Mainly scripts -->
+<!--
+<script type="text/javascript" data-main="/static/public/js/run-loggin-app"
+        src="/static/bower_components/requirejs/require.js"></script>
+-->
+
+
+<script type="text/javascript" src="/static/bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="/static/bower_components/angular-messages/angular-messages.js"></script>
+<script type="text/javascript" src="/static/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
+<script type="text/javascript" src="/static/bower_components/lodash/dist/lodash.js"></script>
+<script type="text/javascript" src="/static/public/js/editable-table-widgets.js"></script>
+<script type="text/javascript" src="/static/public/js/common.js"></script>
+<script type="text/javascript" src="/static/public/js/login.js"></script>
+<script src="/static/js/jquery-2.1.1.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>

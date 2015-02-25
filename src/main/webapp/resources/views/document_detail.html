@@ -1,0 +1,252 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Document detail</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                Document
+            </li>
+            <li class="active">
+                <strong>Detail</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+<div class="col-lg-9">
+<div class="wrapper wrapper-content animated fadeInUp">
+<div class="ibox">
+<div class="ibox-content">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="m-b-md">
+            <a href="" class="btn btn-white btn-xs pull-right">Edit project</a>
+
+            <h2>Transformation Workflow</h2>
+        </div>
+        <dl class="dl-horizontal">
+            <dt>Status:</dt>
+            <dd><span class="label label-primary">Complete</span></dd>
+        </dl>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-5">
+        <dl class="dl-horizontal">
+
+            <dt>Created by:</dt>
+            <dd> {{transformation.user.firstname}} {{transformation.user.lastname}}</dd>
+            <dt>Created:</dt>
+            <dd> {{transformation.date}}</dd>
+            <dt>Last Updated:</dt>
+            <dd> {{transformation.lastModified}}</dd>
+            <dt>Messages:</dt>
+            <dd> {{transformation.message}}</dd>
+            <dt>Template name:</dt>
+            <dd><a href="" class="text-navy"> {{transformation.templatename}}</a></dd>
+            <dt>Qan No:</dt>
+            <dd> {{transformation.qanNo}}</dd>
+            <dt>Unit number:</dt>
+            <dd> {{transformation.unitNo}}</dd>
+            <dt>Unit Title:</dt>
+            <dd> {{transformation.unitTitle}}</dd>
+            <dt>Author:</dt>
+            <dd> {{transformation.author}} </dd>
+        </dl>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <dl class="dl-horizontal">
+            <dt>Completed:</dt>
+            <dd>
+                <div class="progress progress-striped active m-b-sm">
+                    <div style="width: 100%;" class="progress-bar"></div>
+                </div>
+                <small>Transformation completed in <strong>100%</strong>. Remaining close the project, sign a contract and invoice.</small>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <dl class="dl-horizontal">
+            <dt>Project files:</dt>
+            <dd>
+                <ul class="list-unstyled project-files">
+                    <li><a href="{{transformation.wordfilename}}" class="text-navy"><i class="fa fa-file-word-o"></i> {{transformation.wordfilename}}</a></li>
+                    <li><a href="{{transformation.openxmlfilename}}" class="text-navy"><i class="fa fa-file-code-o"></i> {{transformation.openxmlfilename}}</a></li>
+                    <li><a href="{{transformation.iqsxmlfilename}}" class="text-navy"><i class="fa fa-file-text-o"></i> {{transformation.iqsxmlfilename}}</a></li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="row m-t-sm">
+<div class="col-lg-12">
+<div class="panel blank-panel ui-tab">
+
+<h4>Project History</h4>
+<tabset>
+    <tab heading="Last activity">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Status</th>
+                <th>Title</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Comments</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span class="label label-primary"><i class="fa fa-check"></i> Created</span>
+                </td>
+                <td>
+                    Create project in webapp
+                </td>
+                <td>
+                    12.07.2014 10:10:1
+                </td>
+                <td>
+                    14.07.2014 10:16:36
+                </td>
+                <td>
+                    <p class="small">
+                        Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
+                    </p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <span class="label label-primary"><i class="fa fa-check"></i> Modified</span>
+                </td>
+                <td>
+                    Various versions
+                </td>
+                <td>
+                    12.07.2014 10:10:1
+                </td>
+                <td>
+                    14.07.2014 10:16:36
+                </td>
+                <td>
+                    <p class="small">
+                        Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </p>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <span class="label label-primary"><i class="fa fa-check"></i> Downloaded</span>
+                </td>
+                <td>
+                    Latin words
+                </td>
+                <td>
+                    12.07.2014 10:10:1
+                </td>
+                <td>
+                    14.07.2014 10:16:36
+                </td>
+                <td>
+                    <p class="small">
+                        Latin words, combined with a handful of model sentence structures
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </tab>
+
+</tabset>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Edit by click and save as a html</h5>
+                    <button id="edit" class="btn btn-primary btn-xs m-l-sm" onclick="edit()" type="button">Edit</button>
+                    <button id="save" class="btn btn-primary  btn-xs" onclick="save()" type="button">Save</button>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content no-padding">
+
+                    <div class="click2edit wrapper p-md">
+                        <h3>Manufacturing Secondary Machining Processes</h3>
+                        Many of the products and components we use daily would not be available without secondary machining processes. The use of these processes to manufacture a product or component is sometimes easy to spot, like a machine bearing or the nut holding in place a brake shoe on a bicycle. For other products or components, like curtains, it is less easy to spot. This is because you need to first think about how the curtains have been manufactured. Hence, the curtains are manufactured using machines containing components that have been subjected to secondary machining processes.</p><p>As a future engineer you will need to understand and acquire practical skills in a range of machining processes. The knowledge and practical skills are required to enable engineers to design feasible solutions to engineering problems. For example, a feasible solution is one that can be manufactured using secondary machining processes. This unit will prepare learners well for a mechanical or manufacturing engineering apprenticeship or degree course and for technician level role as a machine setter and setter-operators.</p><p>In this unit you will cover the technology and characteristics of a range of traditional, such as turning, and specialist, such as broaching, machining processes. You will develop health and safety skills required to work on secondary machining processes and gain practical skills and understanding to set-up and operate traditional secondary machining processes to manufacture a component. Finally learners will reflect on their skills and understanding applied to and behaviours whilst manufacturing a prototype component.                       <br/>
+                        <br/>
+                        <ul>
+                            <li>Remaining essentially unchanged</li>
+                            <li>Make a type specimen book</li>
+                            <li>Unknown printer</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+
+<!-- SUMMERNOTE -->
+<script src="js/plugins/summernote/summernote.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+
+        $('.summernote').summernote();
+
+    });
+    var edit = function() {
+        $('.click2edit').summernote({focus: true});
+    };
+    var save = function() {
+        var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+        $('.click2edit').destroy();
+    };
+</script>

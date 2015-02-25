@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+    <persistence-unit name="entityManager" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- the JNDI data source -->
+        <non-jta-data-source>java:com/mysql/jdbc/Driver/pearsonbtecquals</non-jta-data-source>
+        <properties>
+            <property name="javax.persistence.validation.mode" value="NONE" />
+            <!-- if this is true, hibernate will print (to stdout) the SQL it executes,
+             so you can check it to ensure it"s not doing anything crazy -->
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <!-- since most database servers have slightly different versions of the
+             SQL, Hibernate needs you to choose a dialect so it knows the subtleties of
+             talking to that server -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <!-- this tell Hibernate to update the DDL when it starts, very useful
+             for development, dangerous in production -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+        </properties>
+    </persistence-unit>
+</persistence>

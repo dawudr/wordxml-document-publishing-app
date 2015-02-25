@@ -1,0 +1,118 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Profile</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>Manage</a>
+            </li>
+            <li class="active">
+                <strong>Profile</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-md-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Profile Detail</h5>
+                </div>
+                <div>
+                    <div class="ibox-content border-left-right">
+                        <i class="img-circle m-t-xs fa fa-user fa-4x"></i>
+                    </div>
+                    <div class="ibox-content profile-content">
+                        <h4><strong>{{user.firstname}} {{user.lastname}}</strong></h4>
+
+                        <p><i class="fa fa-envelope"></i> {{user.email}}</p>
+                        <h5>
+                            About me
+                        </h5>
+                        <p>
+                            User Name: {{user.username}} <br/>
+                            User Type: {{user.role}}
+                        </p>
+
+                        <div class="row m-t-lg">
+                            <div class="col-md-4">
+                                <h5><strong>169</strong> Transforms</h5>
+                            </div>
+                            <div class="col-md-4">
+                                <h5><strong>28</strong> Success</h5>
+                            </div>
+                            <div class="col-md-4">
+                                <h5><strong>240</strong> Errors</h5>
+                            </div>
+                        </div>
+                        <div class="user-button">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-wrench"></i> Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Activites</h5>
+
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+
+                    <div>
+                        <div class="feed-activity-list">
+
+                            <div class="feed-element">
+                                <a href="" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a1.jpg">
+                                </a>
+
+                                <div class="media-body ">
+                                    <small class="pull-right text-navy">1m ago</small>
+                                    <strong>You</strong> started transformation of <strong>Unit 45 - Big Data</strong>. <br>
+                                    <small class="text-muted">Today 4:21 pm - 19.02.2015</small>
+                                </div>
+                            </div>
+
+
+                            <div class="feed-element">
+                                <a href="" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a2.jpg">
+                                </a>
+
+                                <div class="media-body ">
+                                    <small class="pull-right">2h ago</small>
+                                    <strong>Your</strong> transformation failed for <strong>Unit 46 - Principles of Telecommunications</strong>. <br>
+                                    <small class="text-muted">Today 2:10 pm - 19.02.2015</small>
+                                    <div class="well">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                        Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                    </div>
+                                </div>
+                            </div>
+
+                        <button class="btn btn-primary btn-block m"><i class="fa fa-arrow-down"></i> Show More</button>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
