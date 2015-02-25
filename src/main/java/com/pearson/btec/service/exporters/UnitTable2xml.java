@@ -3,13 +3,11 @@ package com.pearson.btec.service.exporters;
 import org.jdom2.CDATA;
 import org.jdom2.Element;
 import com.pearson.btec.service.importers.DocumentUtilHelper;
-import com.pearson.btec.model.btec.Unit;
-import com.pearson.btec.model.btec.UnitSection;
-import com.pearson.btec.model.btec.UnitTable;
+import com.pearson.btec.model.Unit;
+import com.pearson.btec.model.UnitTable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -35,7 +33,7 @@ public class UnitTable2xml {
 
         //for (Object rowObject : rows) {
         for (int j = 0; j < rows.size(); j++) {
-
+            System.out.println("Rows=" + j + "/" + rows.size());
             List cells = (List) rows.get(j);
 
             Element rowElement = new Element("row");
@@ -78,11 +76,12 @@ public class UnitTable2xml {
                                     }
                                 }
                                 cellElement.addContent(paraElement);
-                                //System.out.println("Unit2XML Table=" + paraMap);
+                                System.out.println("Unit2XML Table=" + paraMap);
                             }
                         }
                     }
                 } // End of For loop
+
 
                 // Add column header as cell attribute / cell datatype
                 if (!headersCellText.isEmpty() && i < headersCellText.size() && headersCellText.get(i) != null) {

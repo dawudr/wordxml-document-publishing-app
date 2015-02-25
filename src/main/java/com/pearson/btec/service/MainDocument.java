@@ -8,10 +8,9 @@ import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.docx4j.wml.Body;
 import com.pearson.btec.service.exporters.Unit2xml;
 import com.pearson.btec.service.importers.DocumentUtils;
-import com.pearson.btec.model.btec.Unit;
+import com.pearson.btec.model.Unit;
 import org.jdom2.Element;
 
-import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;

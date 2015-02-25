@@ -13,6 +13,11 @@ import java.util.List;
  */
 public class SectionHeader {
 
+    public static final String TEMPLATE_HEAD_STYLE_HB3 = "hb3";
+    public static final String TEMPLATE_HEAD_STYLE_UNITAHEAD = "UnitAhead";
+    public static final String TEMPLATE_HEAD_STYLE_UNITBHEAD = "UnitBhead";
+
+
     /**
      * Traverse content from Paragraphs
      * @param paragraphObject
@@ -25,9 +30,9 @@ public class SectionHeader {
         HashMap map = new HashMap();
 
         if(paragraphObject.getPPr() != null && paragraphObject.getPPr().getPStyle() !=null &&
-                (paragraphObject.getPPr().getPStyle().getVal().equalsIgnoreCase("UnitAhead") ||
-                        paragraphObject.getPPr().getPStyle().getVal().equalsIgnoreCase("UnitBhead") ||
-                        paragraphObject.getPPr().getPStyle().getVal().equalsIgnoreCase("hb3"))) {
+                (paragraphObject.getPPr().getPStyle().getVal().equalsIgnoreCase(TEMPLATE_HEAD_STYLE_UNITAHEAD) ||
+                        paragraphObject.getPPr().getPStyle().getVal().equalsIgnoreCase(TEMPLATE_HEAD_STYLE_UNITBHEAD) ||
+                        paragraphObject.getPPr().getPStyle().getVal().equalsIgnoreCase(TEMPLATE_HEAD_STYLE_HB3))) {
 
             map.put(DocumentUtilHelper.XML_SECTION_TITLE_STYLE, paragraphObject.getPPr().getPStyle().getVal());
 

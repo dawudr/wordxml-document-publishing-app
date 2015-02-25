@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">--%>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -18,13 +18,10 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//www.fuelcdn.com/fuelux/3.0.1/css/fuelux.min.css">
 
-    <link href="<c:url value="css/style.css" />" rel="stylesheet" type="text/css"/>
+    <link href="static/css/style-poc.css" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
 
@@ -43,7 +40,7 @@
 <body>
 <nav class="navbar-override navbar-default linearBg" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <img src="<c:url value="css/logo.png" />" height="50" alt="Pearson"/>
+    <img src="static/img/logo.png" height="50" alt="Pearson"/>
 
     <div class="navbar-header">
     </div>

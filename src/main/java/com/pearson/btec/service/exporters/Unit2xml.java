@@ -5,9 +5,9 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import com.pearson.btec.model.btec.Unit;
-import com.pearson.btec.model.btec.UnitBody;
-import com.pearson.btec.model.btec.UnitHeader;
+import com.pearson.btec.model.Unit;
+import com.pearson.btec.model.UnitBody;
+import com.pearson.btec.model.UnitHeader;
 
 import java.util.HashMap;
 import java.util.Iterator;

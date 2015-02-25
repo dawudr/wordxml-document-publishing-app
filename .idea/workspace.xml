@@ -1,11 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/ConvertController.java" line="60" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ConvertController.java" line="56" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e011ff25-fca9-4b2e-8c19-703dc1bf07b9" name="Default" comment="IQS Transformation added&#10;CloudFoundary build tasks added to Maven">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/BrowseFolderController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ConvertController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileDownloadController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileUploadController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformerController.java" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\controller\BrowseFolderController.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\controller\ConvertController.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\controller\FileDownloadController.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\controller\FileUploadController.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\controller\TransformerController.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\service\ReportXsltTransformer.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\service\SemanticTagger.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\resources\Config.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\browsefolder.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\convertsuccess.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\fileupload.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\fileuploadsuccess.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\systeminfo.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\transformsuccess.jsp" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\test\resources\3DModelling.docx" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\test\resources\Unit 44_FBC.docx" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\test\resources\Unit 44_FBC.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\test\resources\Unit_18.docx" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\Config.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\config\Properties.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\controller\BrowseFolderController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\controller\ConvertController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\controller\FileDownloadController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\controller\FileUploadController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\controller\TransformerController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\form\BrowseFolderForm.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\form\FileUploadForm.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\service\ReportXsltTransformer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\service\SemanticTagger.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\com\pearson\btec\validator\FileUploadValidator.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\css\logo.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\css\style.css" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\commons-lang-2.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\commons-logging-1.1.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\spring-aop-4.1.0.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\spring-beans-4.1.0.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\spring-context-4.1.0.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\spring-core-4.1.0.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\spring-expression-4.1.0.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\spring-web-4.1.0.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\spring-webmvc-4.1.0.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\xsl\html\Qual.xsl" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\xsl\html\Spec.xsl" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\xsl\html\Unit.xsl" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\xsl\iqs\wordxml_unit.xsl" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\xsl\iqs\wordxml_unit_ac_import.xsl" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\xsl\iqs\wordxml_unit_cg_import.xsl" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\xsl\iqs\wordxml_unit_la_import.xsl" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\xsl\iqs\wordxml_unit_sao_import.xsl" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\xsl\iqs\wordxml_unit_tg_import.xsl" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\Config.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\config\Properties.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\controller\BrowseFolderController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\controller\ConvertController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\controller\FileDownloadController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\controller\FileUploadController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\controller\TransformerController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\form\BrowseFolderForm.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\form\FileUploadForm.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\service\ReportXsltTransformer.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\service\SemanticTagger.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\com\pearson\btec\validator\FileUploadValidator.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\test-classes\Unit_18.docx" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/org/springframework/mvc/extensions/ajax/AjaxUtils.class" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/org/springframework/mvc/extensions/ajax/AjaxUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/springframework/mvc/extensions/ajax/AjaxUtils.class" afterPath="$PROJECT_DIR$/target/classes/org/springframework/mvc/extensions/ajax/AjaxUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp.war" afterPath="$PROJECT_DIR$/target/btecopenxmlapp.war" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtecWordOpenXMLApp.iml" afterPath="$PROJECT_DIR$/BtecWordOpenXMLApp.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/BtecWordOpenXMLApp_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/BtecWordOpenXMLApp_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/SectionHeader.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/SectionHeader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/Unit2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/Unit2xml.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitBody2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitBody2xml.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitHeader2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitHeader2xml.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/browsefolder.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/browsefolder.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/convertsuccess.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/convertsuccess.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileupload.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileupload.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileuploadsuccess.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileuploadsuccess.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/log4j.xml" afterPath="$PROJECT_DIR$/src/main/resources/log4j.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/log4j.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/log4j.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/log4j.xml" afterPath="$PROJECT_DIR$/target/classes/log4j.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/logback.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/logback.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/logback.xml" afterPath="$PROJECT_DIR$/target/classes/logback.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/spring-context-servlet.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/target/classes/spring-context-servlet.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/transformsuccess.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/transformsuccess.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\config\Properties.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/config/Properties.java" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\form\BrowseFolderForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/form/BrowseFolderForm.java" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\form\FileUploadForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/form/FileUploadForm.java" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\model\btec\Unit.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/Unit.java" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\model\btec\UnitBody.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitBody.java" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\model\btec\UnitHeader.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitHeader.java" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\model\btec\UnitSection.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitSection.java" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\model\btec\UnitTable.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitTable.java" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec\validator\FileUploadValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/validator/FileUploadValidator.java" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\css\logo.png" afterPath="$PROJECT_DIR$/src/main/webapp/resources/img/logo.png" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\css\style.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style-poc.css" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xsl\html\Qual.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/html/Qual.xsl" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xsl\html\Spec.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/html/Spec.xsl" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xsl\html\Unit.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/html/Unit.xsl" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xsl\iqs\wordxml_unit.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit.xsl" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xsl\iqs\wordxml_unit_ac_import.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_ac_import.xsl" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xsl\iqs\wordxml_unit_cg_import.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_cg_import.xsl" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xsl\iqs\wordxml_unit_la_import.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_la_import.xsl" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xsl\iqs\wordxml_unit_sao_import.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_sao_import.xsl" />
+      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xsl\iqs\wordxml_unit_tg_import.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_tg_import.xsl" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -73,68 +194,100 @@
     <favorites_list name="BtecWordOpenXMLApp" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="TableContent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="3196">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParagraphUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="2176">
-              <caret line="138" column="56" selection-start-line="138" selection-start-column="56" selection-end-line="138" selection-end-column="56" />
-              <folding>
-                <element signature="method#traverseParagraphBlocks#0;class#ParagraphUtils#0" expanded="false" />
-                <element signature="method#traverseRunBlocks#0;class#ParagraphUtils#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DocumentUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1604" max-vertical-offset="5440">
-              <caret line="114" column="48" selection-start-line="114" selection-start-column="48" selection-end-line="114" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UnitTable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/UnitTable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding>
-                <element signature="e#213#214#0" expanded="true" />
-                <element signature="e#245#246#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainDocument.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75042444" vertical-offset="102" max-vertical-offset="3128">
-              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.53831893">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="dashboard-app.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/dashboard-app.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-12.266666" vertical-offset="159" max-vertical-offset="4012">
+                  <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DocumentUploadController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/DocumentUploadController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+                  <caret line="24" column="78" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="78" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/controllers.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-11.133333" vertical-offset="7503" max-vertical-offset="13702">
+                  <caret line="488" column="33" selection-start-line="488" selection-start-column="33" selection-end-line="488" selection-end-column="33" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="downloads_view.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/downloads_view.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="1588" max-vertical-offset="2839">
+                  <caret line="106" column="55" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="55" />
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                    <marker date="1424834639214" expanded="true" signature="2793:3063" placeholder="{&quot;GENERAL_STATUS_UNREAD&quot;: 'fa-envelope'...}" />
+                    <marker date="1424834639214" expanded="true" signature="3911:5035" placeholder="{&quot;TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS&quot;: 'fa-cloud-upload text-info'...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="directives.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/directives.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="5095" max-vertical-offset="6783">
+                  <caret line="340" column="29" selection-start-line="340" selection-start-column="29" selection-end-line="340" selection-end-column="29" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="form_file_upload.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/form_file_upload.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.6975381" vertical-offset="0" max-vertical-offset="853">
+                  <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="FileUploadController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileUploadController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+                  <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="fileupload.jsp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/fileupload.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.37866354" vertical-offset="459" max-vertical-offset="1326">
+                  <caret line="46" column="109" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="109" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -148,46 +301,64 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/qualification/exporters/UnitHeader2xml.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/BtecUnit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/Paragraph.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/BtecUnitXPathXQuery.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit.xsl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit_la_import.xsl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitBody2xml.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitHeader2xml.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/Unit2xml.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit_ac_import.xsl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/style.css" />
-        <option value="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/convertsuccess.jsp" />
-        <option value="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileupload.jsp" />
-        <option value="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/transformsuccess.jsp" />
-        <option value="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/browsefolder.jsp" />
-        <option value="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileuploadsuccess.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/fileupload.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/convertsuccess.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/fileuploadsuccess.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/transformsuccess.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/browsefolder.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/BrowseFolderController.java" />
-        <option value="$PROJECT_DIR$/target/btecopenxmlapp/uploads/Unit_44_FBC2-iqs.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/TransformerController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/ConvertController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/FileUploadController.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/SectionHeader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtilHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/users.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserDAOInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationDAOInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TemplateRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TemplateDAOInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Template.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TemplatesDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/UserInfoDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TransformationDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TemplateDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationDAOInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TemplateInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/AppRESTUriConstants.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/pearson/app/UserServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserServiceInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationServiceInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TemplateServiceInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TemplateService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/AppURIConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/com/pearson/app/UserRestWebServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/init/TestDataInitializer.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/document_detail.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/user_profile.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/user_management.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/css/plugins/dropzone/basic.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/css/plugins/dropzone/dropzone.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/config.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/common/navigation.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/test_page.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/dirPagination/dirPagination.tpl.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Transformation.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/form_wizard_single.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/DocumentUploadController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/index.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/downloads_view.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/dashboard-app.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/dashboard_view.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/common/topnavbar.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/controllers.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/directives.js" />
       </list>
     </option>
   </component>
@@ -197,8 +368,8 @@
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenProjectNavigator">
@@ -223,38 +394,6 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Btec Word OpenXML App" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="cf" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Btec Word OpenXML App" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
           <option name="myItemId" value="Lifecycle" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
         </PATH_ELEMENT>
@@ -267,6 +406,37 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Code style issues</id>
+          </State>
+          <State>
+            <id>Java language level migration aids</id>
+          </State>
+          <State>
+            <id>Memory issues</id>
+          </State>
+          <State>
+            <id>Performance issues</id>
+          </State>
+          <State>
+            <id>Probable bugs</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -274,7 +444,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -293,8 +463,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -303,18 +471,77 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="BtecWordOpenXMLApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="BtecWordOpenXMLApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BtecWordOpenXMLApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BtecWordOpenXMLApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.pearson" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BtecWordOpenXMLApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BtecWordOpenXMLApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.pearson" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BtecWordOpenXMLApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BtecWordOpenXMLApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.pearson" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dto.serialization" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -324,11 +551,11 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.lastSelected" value="File.Encoding" />
+    <property name="options.lastSelected" value="configurable.group.language" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources/Unit 44_FBC.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -340,50 +567,52 @@
     <property name="LayoutCode.rearrangeEntriesXML" value="false" />
     <property name="FullScreen" value="false" />
     <property name="LayoutCode.rearrangeEntriesJSP" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="181" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="211" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="210" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1004" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="198" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="205" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="205" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="998" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views" />
+      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins" />
+      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\app\dto" />
       <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\test\resources" />
-      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\btec" />
-      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF" />
-      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\xslt\iqs" />
       <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF" />
-      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java" />
-      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\org\springframework\mvc\extensions" />
-      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp" />
+      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins" />
       <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\resources" />
+      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views" />
+      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\fonts" />
+      <recent name="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.pearson.app" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ajax" />
-      <recent name="com.pearson.btec.controller" />
+      <recent name="com.pearson.app.services" />
+      <recent name="com.pearson.app.dto" />
+      <recent name="com.pearson.app.dao" />
+      <recent name="com.pearson.config.root" />
+      <recent name="com.pearson.app.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainDocument">
-    <configuration default="false" name="BtecUnitXPathXQuery" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.pearson.btec.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.pearson.btec.service.BtecUnitXPathXQuery" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="BtecWordOpenXMLApp" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Tomcat Server.btecopenxmlapp">
     <configuration default="false" name="MainDocument" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -402,114 +631,120 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="BtecWordOpenXMLApp" />
       <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="browsefolder.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.0.14" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/btecopenxmlapp/browsefolder" />
-      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
-      <option name="COMMON_VM_ARGUMENTS" value="-Xms128m -Xmx512m -XX:PermSize=256m -XX:MaxPermSize=256m" />
-      <deployment>
-        <artifact name="BtecWordOpenXMLApp:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/btecopenxmlapp" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="index_jsp_BtecWordOpenXMLApp" />
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <RunnerSettings RunnerId="Cover" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="52506" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
+    <configuration default="false" name="UserRestWebServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.pearson.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BtecWordOpenXMLApp" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="com.pearson.app" />
+      <option name="MAIN_CLASS_NAME" value="com.pearson.app.UserRestWebServiceTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
       <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method>
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="BtecWordOpenXMLApp:war exploded" />
-        </option>
-      </method>
-    </configuration>
-    <configuration default="false" name="wordxml_unit.xsl" type="XSLT" factoryName="XSLT" editBeforeRun="true" temporary="true">
-      <option name="myOutputFile" value="" />
-      <option name="myOpenOutputFile" value="false" />
-      <option name="myOpenInBrowser" value="false" />
-      <option name="mySmartErrorHandling" value="true" />
-      <option name="myRunnerPort" value="34873" />
-      <option name="myVmArguments" value="" />
-      <option name="myWorkingDirectory" value="" />
-      <option name="myModule" />
-      <option name="myJdk" />
-      <XsltFile url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit.xsl" />
-      <XmlFile url="file://$PROJECT_DIR$/src/test/resources/Unit 44_FBC.xml" />
-      <parameters />
-      <OutputType value="CONSOLE" save-to-file="false" />
-      <FileType name="XML" />
-      <JdkChoice value="FROM_MODULE" />
-      <RunnerSettings RunnerId="Run" />
-      <RunnerSettings RunnerId="XsltDebuggerRunner" />
       <ConfigurationWrapper RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="XsltDebuggerRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.pearson.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BtecWordOpenXMLApp" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="com.pearson.app" />
+      <option name="MAIN_CLASS_NAME" value="com.pearson.app.UserServiceTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserServiceTest.testFindUserByUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.pearson.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BtecWordOpenXMLApp" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.pearson.app" />
+      <option name="MAIN_CLASS_NAME" value="com.pearson.app.UserServiceTest" />
+      <option name="METHOD_NAME" value="testFindUserByUsername" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserServiceTest.testCreateValidUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.pearson.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BtecWordOpenXMLApp" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.pearson.app" />
+      <option name="MAIN_CLASS_NAME" value="com.pearson.app.UserServiceTest" />
+      <option name="METHOD_NAME" value="testCreateValidUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -719,6 +954,9 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -730,6 +968,30 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="XQueryRunConfiguration" factoryName="XQuery Main Module">
+      <xQueryConfiguration workingDirectory="file://$PROJECT_DIR$" alternativeJrePathEnabled="false" contextItemEnabled="false" contextItemFromEditorEnabled="true" />
+      <module name="" />
+      <envs />
+      <variables>
+        <list />
+      </variables>
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.jetbrains.aws.rundebug.Ec2LocatedAppServerRunConfigurationType" factoryName="EC2 Located App server" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="HOST" value="" />
+      <option name="LOCAL" value="false" />
+      <option name="OPEN_IN_BROWSER_URL" value="/" />
+      <deployment />
+      <server-settings>
+        <option name="SCRIPT" value="" />
+        <option name="DATA_SOURCE_NAME" value="" />
+        <option name="RUN_SCRIPTS" value="false" />
+        <option name="USE_DATA_SOURCE" value="false" />
+        <option name="SNAPSHOT_NAME" value="" />
+        <option name="RESTORE_FROM_SNAPSHOT" value="false" />
+      </server-settings>
       <method />
     </configuration>
     <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
@@ -784,19 +1046,100 @@
         </option>
       </method>
     </configuration>
-    <list size="5">
+    <configuration default="false" name="btecopenxmlapp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.141" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/static/index.html" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="BtecWordOpenXMLApp:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_BtecWordOpenXMLApp" />
+      </server-settings>
+      <log_file path="%IDEA_RUN:CATALINA_BASE%/logs/btecwordopenxmlapp.log" checked="true" skipped="true" show_all="false" alias="Btecwordopenxmlapp Log" />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="55197" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="BtecWordOpenXMLApp:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="CloudFoundry Deployment.btecdashboard" />
-      <item index="1" class="java.lang.String" itemvalue="Application.BtecUnitXPathXQuery" />
+      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.btecopenxmlapp" />
       <item index="2" class="java.lang.String" itemvalue="Application.MainDocument" />
-      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.browsefolder.jsp" />
-      <item index="4" class="java.lang.String" itemvalue="XSLT.wordxml_unit.xsl" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.UserRestWebServiceTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.UserServiceTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.UserServiceTest.testFindUserByUsername" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.UserServiceTest.testCreateValidUser" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.MainDocument" />
-        <item index="1" class="java.lang.String" itemvalue="Tomcat Server.browsefolder.jsp" />
-        <item index="2" class="java.lang.String" itemvalue="XSLT.wordxml_unit.xsl" />
-        <item index="3" class="java.lang.String" itemvalue="Application.BtecUnitXPathXQuery" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.UserRestWebServiceTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.UserServiceTest.testCreateValidUser" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.UserServiceTest.testFindUserByUsername" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.UserServiceTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.MainDocument" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
@@ -808,6 +1151,11 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration" myUseAcceleration="nothing">
     <configuration />
   </component>
@@ -859,7 +1207,36 @@
       <workItem from="1420618631743" duration="30664000" />
       <workItem from="1420705973807" duration="48379000" />
       <workItem from="1420941880266" duration="154000" />
-      <workItem from="1420985705102" duration="3283000" />
+      <workItem from="1420985705102" duration="11672000" />
+      <workItem from="1421049396598" duration="16789000" />
+      <workItem from="1421268570068" duration="20000" />
+      <workItem from="1421268612504" duration="17000" />
+      <workItem from="1421684972014" duration="16142000" />
+      <workItem from="1421758384544" duration="42201000" />
+      <workItem from="1423477909553" duration="9913000" />
+      <workItem from="1423554486100" duration="1263000" />
+      <workItem from="1423603324520" duration="12280000" />
+      <workItem from="1423648800876" duration="783000" />
+      <workItem from="1423650349561" duration="722000" />
+      <workItem from="1423651088548" duration="829000" />
+      <workItem from="1423651934048" duration="162000" />
+      <workItem from="1423652116803" duration="23538000" />
+      <workItem from="1423741910453" duration="3300000" />
+      <workItem from="1423750945295" duration="2523000" />
+      <workItem from="1423754356081" duration="15893000" />
+      <workItem from="1423775148803" duration="3323000" />
+      <workItem from="1423778515824" duration="1032000" />
+      <workItem from="1423818758670" duration="96589000" />
+      <workItem from="1424050421461" duration="2633000" />
+      <workItem from="1424079795436" duration="104666000" />
+      <workItem from="1424269792219" duration="39179000" />
+      <workItem from="1424338476183" duration="2324000" />
+      <workItem from="1424388585777" duration="16444000" />
+      <workItem from="1424423848831" duration="17118000" />
+      <workItem from="1424469773341" duration="22568000" />
+      <workItem from="1424569516159" duration="11780000" />
+      <workItem from="1424609399008" duration="159013000" />
+      <workItem from="1424856374816" duration="4170000" />
     </task>
     <task id="LOCAL-00001" summary="Commit of build">
       <created>1412090945578</created>
@@ -885,47 +1262,76 @@
       <option name="project" value="LOCAL" />
       <updated>1420997830848</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="IQS Transformation added&#10;CloudFoundary build tasks added to Maven">
+      <created>1420998481154</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1420998481154</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277898000" />
+    <option name="totallyTimeSpent" value="913501000" />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286334" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3383948" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286334" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26824033" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.116204694" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329718" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28914404" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286334" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38116592" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26345292" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1641791" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1705757" sideWeight="0.49946523" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25396827" sideWeight="0.5005348" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16400427" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52360517" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329718" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44618833" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286334" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33408073" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31614348" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31995663" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847533" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13752665" sideWeight="0.49887893" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21821515" sideWeight="0.5011211" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22677262" sideWeight="0.5014006" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329718" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Amazon EC2" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="AWS Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33774835" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -952,7 +1358,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/BrowseFolderController.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/BrowseFolderController.java</url>
           <line>129</line>
           <properties />
           <option name="timeStamp" value="11" />
@@ -970,410 +1376,482 @@
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java</url>
+          <line>78</line>
+          <properties />
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java</url>
+          <line>76</line>
+          <properties />
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContentPreProcessor.java</url>
+          <line>1315</line>
+          <properties />
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitSection.java</url>
+          <line>18</line>
+          <properties />
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/pearson/app/UserRestWebServiceTest.java</url>
+          <line>3</line>
+          <properties />
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TransformationsDTO.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserService.java</url>
+          <line>2</line>
+          <properties />
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationRepository.java</url>
           <line>36</line>
           <properties />
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java</url>
-          <line>152</line>
-          <properties />
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java</url>
-          <line>137</line>
-          <properties />
-          <option name="timeStamp" value="75" />
+          <option name="timeStamp" value="125" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="76" />
+      <option name="time" value="127" />
     </breakpoint-manager>
     <watches-manager />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="BtecWordOpenXMLApp" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="BtecWordOpenXMLApp" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/form/FileUploadForm.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/services/TemplateService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="306">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1010#1011#0" expanded="false" />
+            <element signature="e#1067#1068#0" expanded="false" />
+            <element signature="e#1151#1152#0" expanded="false" />
+            <element signature="e#1212#1213#0" expanded="false" />
+            <element signature="e#1488#1489#0" expanded="false" />
+            <element signature="e#1547#1548#0" expanded="false" />
+            <element signature="e#1626#1627#0" expanded="false" />
+            <element signature="e#1679#1680#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/form/BrowseFolderForm.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/pearson/app/TestUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38636363" vertical-offset="0" max-vertical-offset="880">
-          <caret line="22" column="38" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.1774942" vertical-offset="0" max-vertical-offset="862">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BtecWordOpenXMLApp.iml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1666">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2941">
+          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/UnitBody.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="991" max-vertical-offset="1853">
+          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/UnitHeader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/AppURIConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.041353382" vertical-offset="131" max-vertical-offset="663">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/UnitSection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16962306" vertical-offset="0" max-vertical-offset="902">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/Unit 44_FBC.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5406">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitHeader2xml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/xsl/iqs/wordxml_unit.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="2771">
-          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2771">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit_ac_import.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1632">
-          <caret line="1" column="79" selection-start-line="1" selection-start-column="79" selection-end-line="1" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit_cg_import.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3145">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit_la_import.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1717">
-          <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit_sao_import.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2346">
-          <caret line="68" column="75" selection-start-line="68" selection-start-column="52" selection-end-line="68" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/xsl/iqs/wordxml_unit_tg_import.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.31554523" vertical-offset="0" max-vertical-offset="862">
+          <caret line="16" column="93" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="93" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3209877" vertical-offset="16" max-vertical-offset="1020">
-          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="1394">
+          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/style.css">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/dto/NewUserDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1046" max-vertical-offset="2006">
-          <caret line="112" column="1" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.22107439" vertical-offset="80" max-vertical-offset="833">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/transformsuccess.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.038462" vertical-offset="153" max-vertical-offset="2278">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="349" max-vertical-offset="1479">
+          <caret line="39" column="27" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/convertsuccess.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.769231" vertical-offset="230" max-vertical-offset="1717">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="2550">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/browsefolder.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-114.42308" vertical-offset="306" max-vertical-offset="3706">
-          <caret line="193" column="83" selection-start-line="193" selection-start-column="83" selection-end-line="193" selection-end-column="83" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1802">
+          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileuploadsuccess.jsp">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/pearson/app/UserRestWebServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.038462" vertical-offset="816" max-vertical-offset="2108">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="73" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="748">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileupload.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/init/TestDataInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0384617" vertical-offset="149" max-vertical-offset="1326">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="628" max-vertical-offset="3434">
+          <caret line="57" column="57" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.36624774" vertical-offset="204" max-vertical-offset="799">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7242">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/pearson/app/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
+          <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/form_editor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1460674" vertical-offset="510" max-vertical-offset="1258">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2513465" vertical-offset="153" max-vertical-offset="1020">
-          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="39372">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/convertsuccess.jsp">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/resources/html5-schema/html5/phrase.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1921">
-          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.33295965" vertical-offset="638" max-vertical-offset="6817">
+          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/user_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.961538" vertical-offset="357" max-vertical-offset="2108">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="2567">
+          <caret line="82" column="37" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="502">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/user_management.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8055893" vertical-offset="663" max-vertical-offset="1717">
+          <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/staps/jquery.steps.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="849">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/wizard/step_one.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="849">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/plugins/dropzone/dropzone.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8598351" vertical-offset="6223" max-vertical-offset="7072">
+          <caret line="409" column="1" selection-start-line="409" selection-start-column="1" selection-end-line="409" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/dropzone/dropzone.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="29478">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/plugins/dropzone/basic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/form_wizard_multiple.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="23.538462" vertical-offset="612" max-vertical-offset="4182">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/form_settings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5644">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/common/navigation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.346153" vertical-offset="439" max-vertical-offset="1462">
+          <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/code_editor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9615384" vertical-offset="51" max-vertical-offset="1734">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4605418" vertical-offset="0" max-vertical-offset="849">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26030624" vertical-offset="255" max-vertical-offset="1513">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/test_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92952615" vertical-offset="102" max-vertical-offset="969">
+          <caret line="51" column="38" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/model/Transformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26030624" vertical-offset="561" max-vertical-offset="3264">
+          <caret line="50" column="102" selection-start-line="50" selection-start-column="102" selection-end-line="50" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="862">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="862">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.76" vertical-offset="0" max-vertical-offset="255">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/document_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="517" max-vertical-offset="4369">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904">
+          <caret line="21" column="38" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/downloads_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1588" max-vertical-offset="2839">
+          <caret line="106" column="55" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <marker date="1424834639214" expanded="true" signature="2793:3063" placeholder="{&quot;GENERAL_STATUS_UNREAD&quot;: 'fa-envelope'...}" />
+            <marker date="1424834639214" expanded="true" signature="3911:5035" placeholder="{&quot;TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS&quot;: 'fa-cloud-upload text-info'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/common/topnavbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="510">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/dashboard_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1992966" vertical-offset="0" max-vertical-offset="6528">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#pagination#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <marker date="1424836697651" expanded="true" signature="-1:-1" placeholder="{&quot;TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS&quot;: 'fa-cloud-upload text-info'...}" />
+            <marker date="1424836697651" expanded="true" signature="-1:-1" placeholder="{&quot;TRANSFORM_STATUS_FAIL&quot;: 'fa-times text-danger'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1374134" vertical-offset="1224" max-vertical-offset="4097">
+          <caret line="79" column="52" selection-start-line="79" selection-start-column="52" selection-end-line="79" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/DocumentUploadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+          <caret line="24" column="78" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/dashboard-app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.266666" vertical-offset="159" max-vertical-offset="4012">
+          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.133333" vertical-offset="7503" max-vertical-offset="13702">
+          <caret line="488" column="33" selection-start-line="488" selection-start-column="33" selection-end-line="488" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/form_wizard_single.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6975381" vertical-offset="459" max-vertical-offset="2924">
+          <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/directives.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5095" max-vertical-offset="6783">
+          <caret line="340" column="29" selection-start-line="340" selection-start-column="29" selection-end-line="340" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileUploadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/fileupload.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1326">
-          <caret line="62" column="80" selection-start-line="62" selection-start-column="69" selection-end-line="62" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/fileuploadsuccess.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769" vertical-offset="867" max-vertical-offset="2193">
-          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/browsefolder.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2601" max-vertical-offset="3706">
-          <caret line="178" column="69" selection-start-line="178" selection-start-column="69" selection-end-line="178" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33211678" vertical-offset="2980" max-vertical-offset="37230">
-          <caret line="221" column="31" selection-start-line="221" selection-start-column="31" selection-end-line="221" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/SemanticTagger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.70071685" vertical-offset="459" max-vertical-offset="1037">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/net/sf/saxon/Saxon-HE/9.6.0-3/Saxon-HE-9.6.0-3.jar!/net/sf/saxon/jaxp/TransformerImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34799236" vertical-offset="1110" max-vertical-offset="3774">
-          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/FileUploadController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1309">
-          <caret line="76" column="76" selection-start-line="76" selection-start-column="76" selection-end-line="76" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/BrowseFolderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="2278">
-          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.37866354" vertical-offset="459" max-vertical-offset="1326">
+          <caret line="46" column="109" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="109" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/form_file_upload.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3808" max-vertical-offset="4488">
-          <caret line="211" column="21" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.6975381" vertical-offset="0" max-vertical-offset="853">
+          <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/ConvertController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
-          <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/FileDownloadController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="1445">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/ReportXsltTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.725" vertical-offset="238" max-vertical-offset="918">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/controller/TransformerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="1819">
-          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/transformsuccess.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="999" max-vertical-offset="2108">
-          <caret line="68" column="55" selection-start-line="68" selection-start-column="55" selection-end-line="68" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5555556" vertical-offset="687" max-vertical-offset="1224">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/SectionHeader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0367347" vertical-offset="954" max-vertical-offset="2652">
-          <caret line="91" column="18" selection-start-line="91" selection-start-column="18" selection-end-line="91" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/Unit2xml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16530612" vertical-offset="565" max-vertical-offset="1224">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitBody2xml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6020408" vertical-offset="62" max-vertical-offset="612">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/Unit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47959185" vertical-offset="156" max-vertical-offset="901">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46331236" vertical-offset="0" max-vertical-offset="1768">
-          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtilHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5167653" vertical-offset="1234" max-vertical-offset="2006">
-          <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="2176">
-          <caret line="138" column="56" selection-start-line="138" selection-start-column="56" selection-end-line="138" selection-end-column="56" />
-          <folding>
-            <element signature="method#traverseParagraphBlocks#0;class#ParagraphUtils#0" expanded="false" />
-            <element signature="method#traverseRunBlocks#0;class#ParagraphUtils#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="3196">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1604" max-vertical-offset="5440">
-          <caret line="114" column="48" selection-start-line="114" selection-start-column="48" selection-end-line="114" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/btec/UnitTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="e#213#214#0" expanded="true" />
-            <element signature="e#245#246#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75042444" vertical-offset="102" max-vertical-offset="3128">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1432,7 +1910,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>BtecWordOpenXMLApp</last-edited>
+          <last-edited>Spring|BtecWordOpenXMLApp</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

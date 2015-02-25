@@ -1,8 +1,8 @@
 package com.pearson.btec.service.exporters;
 
 import org.jdom2.Element;
-import com.pearson.btec.model.btec.UnitBody;
-import com.pearson.btec.model.btec.UnitSection;
+import com.pearson.btec.model.UnitBody;
+import com.pearson.btec.model.UnitSection;
 
 import java.util.ArrayList;
 import java.util.List;

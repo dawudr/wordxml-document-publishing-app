@@ -10,24 +10,93 @@
         </encoder>
     </appender>
 
+<!--
+    <appender name="file" class="org.apache.log4j.RollingFileAppender">
+        <param name="append" value="false" />
+        <param name="maxFileSize" value="10KB" />
+        <param name="maxBackupIndex" value="5" />
+        &lt;!&ndash; For Tomcat &ndash;&gt;
+        <param name="file" value="${catalina.home}/logs/myStruts1App.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+        </layout>
+    </appender>
+-->
+
+
+    <!--
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{yyyy-MMM-dd HH:mm:ss.SSS} %level %logger{0} %msg%n</pattern>
+            </encoder>
+        </appender>
+    -->
+
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <!--<pattern>%fullRequest%n%n%fullResponse</pattern>-->
+        </layout>
+    </appender>
+
+    <appender name="LOGFILE" class="ch.qos.logback.core.FileAppender">
+        <file>${catalina.base}/logs/btecwordopenxmlapp.log</file>
         <encoder>
-            <pattern>%d{yyyy-MMM-dd HH:mm:ss.SSS} %level %logger{0} %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
 
+    <logger name="org.springframework.core">
+        <level value="info" />
+    </logger>
+
+    <logger name="org.springframework.beans">
+        <level value="debug" />
+    </logger>
+
+    <logger name="org.springframework.context">
+        <level value="debug" />
+    </logger>
+
+    <logger name="org.springframework.http">
+        <level value="debug" />
+    </logger>
+
+    <logger name="org.springframework.web">
+        <level value="debug" />
+    </logger>
+
+    <logger name="org.springframework.security">
+        <level value="debug"/>
+    </logger>
+
+    <logger name="com.mysql">
+        <level value="debug"/>
+    </logger>
+
+    <logger name="org.hibernate">
+        <level value="debug"/>
+    </logger>
+
+    <logger name="org.hibernate.type">
+        <level value="debug"/>
+    </logger>
+
 	<!-- Configure your top level package below -->
 	<!--<logger name="com.pearson" level="INFO" />-->
-     <logger name="com.pearson" level="DEBUG" />
+    <logger name="com.pearson" level="debug" />
     <!--<logger name="org.springframework.aop" level="trace" />-->
-	<!--<logger name="org.springframework.test" level="debug" />-->
+	<logger name="org.springframework.test" level="debug" />
 	<!--<logger name="org.junit" level="DEBUG" />-->
 
  	<!--<logger name="org.aspectj" level="trace" />-->
 
-    <root level="info">
 
+    <root level="debug">
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="LOGFILE" />
     </root>
 </configuration>

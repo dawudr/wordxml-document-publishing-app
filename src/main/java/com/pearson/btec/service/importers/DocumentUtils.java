@@ -1,9 +1,11 @@
 package com.pearson.btec.service.importers;
 
+import com.pearson.btec.model.*;
+import net.sf.saxon.s9api.SaxonApiException;
 import org.docx4j.wml.*;
-import com.pearson.btec.model.btec.*;
 
 import javax.xml.bind.JAXBElement;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -106,14 +108,63 @@ public class DocumentUtils {
                 }
             } else if (bodyObject instanceof JAXBElement) {
                 System.out.println("--------------> JAXBELEMENT");
+
                 //TODO: Check for Tables only
+                //TODO: Old code with uses Docx4J library to get tables data.
                 // Search for tables
                 List dataList = DocumentUtils.traverseDocumentJAXBElementTable(bodyObject);
-                //for(HashMap dataMap : dataList) {
-                //    paragraphDataList.add(dataMap);
-                //}
                 UnitTable unitTable = new UnitTable(dataList);
                 contentDataList.add(unitTable);
+
+                //TODO: Fix by switching over to the XQuery when testing and parsing output to DOM Element in toXML() is done.
+/*
+                It has issue with track changes since the text tags are not w:t but instead w:del and w:ins for e.g
+                The track changes issue - I've made a few work arounds to fix.
+                The problem is when you have track changes on DocX4J doesn't recognise the data text tags get put into new tags I presume which stands for insert and delete....
+                <w:sdtContent>
+                <w:del w:author="Winser, Paul" w:date="2014-12-02T13:26:00Z"
+                w:id="143">
+                <w:r w:rsidDel="00757C43" w:rsidR="00757C43">
+                <w:rPr>
+                <w:rFonts w:eastAsia="Batang"/>
+                </w:rPr>
+                <w:delText>application of 3D modelling in industries.</w:delText>
+                </w:r>
+                </w:del>
+                <w:ins w:author="Winser, Paul" w:date="2014-12-02T13:26:00Z"
+                w:id="144">
+                <w:r w:rsidR="00757C43">
+                <w:rPr>
+                <w:rFonts w:eastAsia="Batang"/>
+                </w:rPr>
+                <w:t>Applications of 3D modelling in industries</w:t>
+                </w:r>
+                </w:ins>
+                </w:sdtContent>
+*/
+
+
+                //TODO: NEW XQUERY CODE Plan is to switch to this new code which uses Xquery to get Tables data as a String directly and parse this back as a DOM Element
+                // Search for tables using Xquery and output as table structure capturing rows, columns.
+/*
+                String dataString = DocumentUtils.traverseDocumentJAXBElementTableXquery(bodyObject);
+                if(dataString != null && !dataString.isEmpty()) {
+
+                    String xqueriedTableData = null;
+                    try {
+                        xqueriedTableData = TableContentPreProcessor.getTableData(dataString);
+                    } catch (SaxonApiException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    UnitTable unitTable = new UnitTable(xqueriedTableData);
+                    contentDataList.add(unitTable);
+                } else {
+                    System.out.println("JaxbElement is empty");
+                }
+*/
 
             } else if (bodyObject instanceof SdtBlock) {
 
@@ -172,10 +223,31 @@ public class DocumentUtils {
         if(((JAXBElement) jaxbElementSdtContent).getValue() instanceof Tbl) {
             Tbl tbl = (Tbl) ((JAXBElement) jaxbElementSdtContent).getValue();
             tableDataList = TableContent.getTableData(tbl);
+            //String xml = org.docx4j.XmlUtils.marshaltoString(tbl, true);
+            //System.out.println("TABLE tbl=" + xml);
         }
         return tableDataList;
     }
 
+
+    /**
+     * Traverse the document for
+     * w:sdtRun - this is within Paragraphs
+     * or w:tbl
+     * @param jaxbElementSdtContent
+     */
+    public static String traverseDocumentJAXBElementTableXquery(Object jaxbElementSdtContent) {
+
+        String tableDataList = null;
+
+        if(((JAXBElement) jaxbElementSdtContent).getValue() instanceof Tbl) {
+            Tbl tbl = (Tbl) ((JAXBElement) jaxbElementSdtContent).getValue();
+            String xml = org.docx4j.XmlUtils.marshaltoString(tbl, true);
+            //System.out.println("TABLE tbl=" + xml);
+            tableDataList = xml;
+        }
+        return tableDataList;
+    }
 
 
     public static HashMap traverseDocumentJAXBElementSdtBlock(JAXBElement jaxbElementSdtContent) {

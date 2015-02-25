@@ -17,17 +17,19 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!--
-        <filter>
-            <filter-name>csrfFilter</filter-name>
-            <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-            <async-supported>true</async-supported>
-        </filter>
-        <filter-mapping>
-            <filter-name>csrfFilter</filter-name>
-            <url-pattern>/*</url-pattern>
-        </filter-mapping>
-    -->
+
+<!--
+    <filter>
+        <filter-name>csrfFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>csrfFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+-->
+
 
     <!-- Processes application requests -->
     <servlet>
@@ -46,9 +48,29 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+<!--
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>BCAResearchReportsArchive</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>bcarole</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>BCAResearchReportsArchive - Authorised Users Only</realm-name>
+    </login-config>
+-->
+
+
     <!-- Disables Servlet Container welcome file handling. Needed for compatibility with Servlet 3.0 and Tomcat 7.0 -->
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>/static/index.html</welcome-file>
     </welcome-file-list>
+
+
 
 </web-app>

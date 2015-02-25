@@ -3,9 +3,9 @@ package com.pearson.btec.service.exporters;
 import org.jdom2.CDATA;
 import org.jdom2.Element;
 import com.pearson.btec.service.importers.DocumentUtilHelper;
-import com.pearson.btec.model.btec.Unit;
-import com.pearson.btec.model.btec.UnitSection;
-import com.pearson.btec.model.btec.UnitTable;
+import com.pearson.btec.model.Unit;
+import com.pearson.btec.model.UnitSection;
+import com.pearson.btec.model.UnitTable;
 
 import java.util.*;
 
@@ -61,9 +61,25 @@ public class UnitSection2xml {
             // Deal with Tables
             else if (paraObject instanceof UnitTable) {
                 UnitTable unitTable = (UnitTable) paraObject;
-                UnitTable2xml unitTable2xml = new UnitTable2xml(unitTable);
 
+                //TODO: This doesn't work well with track changes future plan to switch to XquerytoUnitTable2xml
+                UnitTable2xml unitTable2xml = new UnitTable2xml(unitTable);
                 sectionElement.addContent(unitTable2xml.toXml());
+
+
+                //TODO: New XQuery code to switch to eventually which fixes track changes
+                //TODO: The li tags need surrounding with <ul> tag for each level
+/*
+                XquerytoUnitTable2xml xquerytoUnitTable2xml = new XquerytoUnitTable2xml(unitTable);
+                Element e = xquerytoUnitTable2xml.toXml();
+
+                if(e!=null) {
+                    sectionElement.addContent(e);
+                } else {
+                    System.out.println("unitTable is null");
+                }
+
+                */
 
             }
         }
