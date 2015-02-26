@@ -29,5 +29,10 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/message.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/systeminfo.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/canvas-to-blob.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/jquery.blueimp-gallery.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/load-image.all.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/main.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/tmpl.min.js" charset="UTF-8" />
   </component>
 </project>
