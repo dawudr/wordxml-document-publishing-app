@@ -1,9 +1,5 @@
 var dashboardApp = angular.module('dashboardApp', []);
 
-var isOnGitHub = window.location.hostname === 'blueimp.github.io',
-    url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : '/upload';
-
-
 dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
 
     /**
@@ -11,9 +7,8 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
      */
 
     $scope.transformations = [];
-    $http.get('/transformation/list').success(function (data, filterFilter, $timeout) {
+    $http.get('/transformation/list').success(function (data, filterFilter) {
         $scope.transformations = data;
-
 
 
      var sortedArray = $filter('orderBy')($scope.transformations, '-date');
@@ -37,17 +32,6 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
         $scope.currentPage = 1; //current page
         $scope.maxSize = 5; //pagination max size
         $scope.entryLimit = 5; //max rows for data table
-
-        /* init pagination with $scope.list */
-
-/*        $scope.filter = function() {
-            $timeout(function() {
-                //wait for 'filtered' to be changed
-                *//* change pagination with $scope.filtered *//*
-                $scope.noOfPages = Math.ceil($scope.filteredTransformations.length/$scope.entryLimit);
-                $scope.$totalResults = $scope.filteredTransformations.length;
-            }, 10);
-        };*/
 
         $scope.$watch('search', function(term) {
             // Create filtered
@@ -197,24 +181,6 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
      * SINGLE TRANSFORM STUFF
      */
 
-    $scope.options = {
-        url: url
-    };
-    if (!isOnGitHub) {
-        $scope.loadingFiles = true;
-        $http.get(url)
-            .then(
-            function (response) {
-                $scope.loadingFiles = false;
-                $scope.queue = response.data.files || [];
-            },
-            function () {
-                $scope.loadingFiles = false;
-            }
-        );
-    }
-
-
 
 /*
 
@@ -289,6 +255,4 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
 
             $scope.filteredTransformations = $scope.transformationsTestData.slice(begin, end);
         });
-
-
 })

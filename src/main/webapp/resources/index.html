@@ -41,8 +41,8 @@
   <!--<link href="css/plugins/chosen/chosen.css" rel="stylesheet">-->
 
   <!-- Dropzone style -->
-  <link href="css/plugins/dropzone/basic.css" rel="stylesheet">
-  <link href="css/plugins/dropzone/dropzone.css" rel="stylesheet">
+  <!--<link href="css/plugins/dropzone/basic.css" rel="stylesheet">-->
+  <!--<link href="css/plugins/dropzone/dropzone.css" rel="stylesheet">-->
 
   <!-- Switchery iOS style -->
   <link href="css/plugins/switchery/switchery.css" rel="stylesheet">
@@ -193,7 +193,7 @@
 <!--<script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>-->
 
 <!-- Dropzone -->
-<script src="js/plugins/dropzone/dropzone.js"></script>
+<!--<script src="js/plugins/dropzone/dropzone.js"></script>-->
 
 <!-- Cahrt JS -->
 <!--<script src="js/plugins/chartJs/Chart.min.js"></script>-->
@@ -229,7 +229,7 @@
 <!--<script src="js/plugins/jsKnob/angular-knob.js"></script>-->
 <script src="js/plugins/switchery/ng-switchery.js"></script>
 <!--<script src="js/plugins/nouslider/angular-nouislider.js"></script>-->
-<script src="js/plugins/datapicker/datePicker.js"></script>
+<!--<script src="js/plugins/datapicker/datePicker.js"></script>-->
 <script src="js/plugins/chosen/chosen.js"></script>
 <!--<script src="js/plugins/dataTables/angular-datatables.min.js"></script>-->
 <!--<script src="js/plugins/fullcalendar/gcal.js"></script>-->
@@ -245,15 +245,17 @@
 
 <!-- Jquery file upload Dependencies -->
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-<!--<script src="js/vendor/jquery.ui.widget.js"></script>-->
+<script src="js/plugins/jquery-file-upload/vendor/jquery.ui.widget.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="js/plugins/jquery-file-upload/tmpl.min.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<script src="js/plugins/jquery-file-upload/load-image.all.min.js"></script>
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-<script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+<script src="js/plugins/jquery-file-upload/canvas-to-blob.min.js"></script>
 <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
 <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
 <!-- blueimp Gallery script -->
-<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script src="js/plugins/jquery-file-upload/jquery.blueimp-gallery.min.js"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 <script src="js/plugins/jquery-file-upload/jquery.iframe-transport.js"></script>
 <!-- The basic File Upload plugin -->
@@ -270,8 +272,14 @@
 <script src="js/plugins/jquery-file-upload/jquery.fileupload-validate.js"></script>
 <!-- The File Upload Angular JS module -->
 <script src="js/plugins/jquery-file-upload/jquery.fileupload-angular.js"></script>
-
-
+<!-- The File Upload user interface plugin -->
+<script src="js/plugins/jquery-file-upload/jquery.fileupload-ui.js"></script>
+<!-- The main application script -->
+<script src="js/plugins/jquery-file-upload/main.js"></script>
+<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+<!--[if (gte IE 8)&(lt IE 10)]>
+<script src="js/cors/jquery.xdr-transport.js"></script>
+<![endif]-->
 
 
 <!-- Anglar App Script -->

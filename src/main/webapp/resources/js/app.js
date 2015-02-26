@@ -12,7 +12,7 @@
         //'angular-rickshaw',             // Rickshaw carts
         'summernote',                   // Text editor
         //'nouislider',                   // Slider
-        'datePicker',                   // Datapicker
+        //'datePicker',                   // Datapicker
         //'datatables',                   // Dynamic tables
         'localytics.directives',        // Chosen select
         //'angles',                       // Charts js
