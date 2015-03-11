@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users>
+    <role rolename="wordxml-application"/>
+    <user username="pwinser" password="showCase2015" roles="wordxml-application"/>
+    <user username="admin" password="one90Hh" roles="wordxml-application"/>
+    <user username="test001" password="showCase2015" roles="wordxml-application"/>
+</tomcat-users>

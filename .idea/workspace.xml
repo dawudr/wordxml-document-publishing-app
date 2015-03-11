@@ -8,128 +8,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e011ff25-fca9-4b2e-8c19-703dc1bf07b9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/canvas-to-blob.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/jquery.blueimp-gallery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/load-image.all.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/tmpl.min.js" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\btec_transform_status_report.rtf" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\app\config\Properties.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\app\controllers\DashboardController.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\app\controllers\DocumentUploadController.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\resources\META-INF\persistence.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\WEB-INF\dashboard.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\css\plugins\jquery-file-upload\demo-ie8.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\css\plugins\jquery-file-upload\demo.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\calories-counter-app.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\jquery\jquery-2.1.1.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\jquery\jquery-ui-1.10.4.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\jquery\jquery-ui.custom.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\jquery\moment.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\run-app.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\run-calories-tracker.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\public\js\run-create-user-app.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\public\js\run-loggin-app.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\commons-io-2.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\slf4j-log4j12-1.7.5.jar" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/Unit 44_FBC.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/img/error-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/img/info-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/404.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/405.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Image.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ImageController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageDAOInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/ImageService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/ImageServiceInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ProcessTransformController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/ProcessWordDocument.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/config/PropertyPlaceholderConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/config/SecurityWebApplicationInitializer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/SpecUnitController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/SpecUnitDAOInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/SpecUnitRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/SpecUnitService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Specunit.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/pearson/app/SpecunitServiceTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TemplateController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/pearson/app/TransformationRestWebServiceTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/pearson/app/TransformationServiceTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/plugins/dropzone/basic.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/crossdomain.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/plugins/dropzone/dropzone.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/dropzone/dropzone.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/ehcache.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/partials/error-messages.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/humans.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/image.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery/jquery-2.1.3.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery/jquery-2.1.3.min.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/ngtimeago/ngtimeago.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/processtransform.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/robots.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/users.xml" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\serializer-2.7.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\xalan-2.7.1.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp.war" afterPath="$PROJECT_DIR$/target/btecopenxmlapp.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/AbstractEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/AbstractEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/AppSecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/AppSecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BtecWordOpenXMLApp.iml" afterPath="$PROJECT_DIR$/BtecWordOpenXMLApp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/BtecWordOpenXMLApp_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/BtecWordOpenXMLApp_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/DevelopmentConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/DevelopmentConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtilHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtilHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileDownloadController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileDownloadController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileUploadController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileUploadController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/SectionHeader.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/SectionHeader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/config/servlet/ServletContextConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/config/servlet/ServletContextConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContent.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContentPreProcessor.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContentPreProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TemplateDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TemplateDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TemplateService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TemplateService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/init/TestDataInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/init/TestDataInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Transformation.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Transformation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationDAOInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationDAOInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TransformationDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TransformationDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationServiceInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationServiceInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformerController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/Unit.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/Unit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/Unit2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/Unit2xml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitBody.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitBody.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitBody2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitBody2xml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitHeader2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitHeader2xml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitSection.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitSection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitTable.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserDAOInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserDAOInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/UserInfosDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/UserInfosDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/pearson/app/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/pearson/app/UserServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/app.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/browsefolder.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/browsefolder.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/browsefolder.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/browsefolder.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/js/common.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/config.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/controllers.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/convertsuccess.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/convertsuccess.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/convertsuccess.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/convertsuccess.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/dashboard-app.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/dashboard-app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/dashboard.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/dashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/dashboard_view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/dashboard_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/directives.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/document_detail.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/document_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/downloads_view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/downloads_view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/js/editable-table-widgets.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/js/editable-table-widgets.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fileupload.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fileupload.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileupload.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileupload.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fileuploadsuccess.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fileuploadsuccess.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileuploadsuccess.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/fileuploadsuccess.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/form_wizard_multiple.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/form_wizard_multiple.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/form_wizard_single.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/form_wizard_single.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/local.properties" afterPath="$PROJECT_DIR$/src/main/resources/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/log4j.xml" afterPath="$PROJECT_DIR$/src/main/resources/log4j.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/log4j.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/log4j.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/log4j.xml" afterPath="$PROJECT_DIR$/target/classes/log4j.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/logback-test.xml" afterPath="$PROJECT_DIR$/src/test/resources/logback-test.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/logback.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/logback.xml" afterPath="$PROJECT_DIR$/target/classes/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/login.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/js/login.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/common/navigation.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/common/navigation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/new-user.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/new-user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/js/new-user.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/js/new-user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/production.properties" afterPath="$PROJECT_DIR$/src/main/resources/production.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/register.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/run-dashboard-app.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/run-dashboard-app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/skin-config.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/skin-config.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/spring-context-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/target/classes/spring-context-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/common/topnavbar.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/common/topnavbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/transformsuccess.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/transformsuccess.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/transformsuccess.jsp" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/transformsuccess.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_ac_import.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_ac_import.xsl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_cg_import.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_cg_import.xsl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_sao_import.xsl" afterPath="$PROJECT_DIR$/src/main/webapp/resources/xsl/iqs/wordxml_unit_sao_import.xsl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/workspace.xml" />
@@ -199,10 +120,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TransformationController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TransformationController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6325088" vertical-offset="3110" max-vertical-offset="4471">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3110" max-vertical-offset="4471">
               <caret line="204" column="83" selection-start-line="204" selection-start-column="60" selection-end-line="204" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -211,10 +132,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.101553164" vertical-offset="0" max-vertical-offset="837">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="document_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/document_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.6923075" vertical-offset="2605" max-vertical-offset="3910">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2605" max-vertical-offset="3910">
               <caret line="165" column="41" selection-start-line="165" selection-start-column="41" selection-end-line="165" selection-end-column="41" />
               <folding>
                 <marker date="1426046019678" expanded="true" signature="895:1965" placeholder="{&quot;TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS&quot;: 'label label-primary'...}" />
@@ -227,7 +158,7 @@
       <file leaf-file-name="downloads_view.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/downloads_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.807693" vertical-offset="1842" max-vertical-offset="2839">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1842" max-vertical-offset="2839">
               <caret line="131" column="17" selection-start-line="131" selection-start-column="17" selection-end-line="131" selection-end-column="17" />
               <folding>
                 <marker date="1426046236044" expanded="true" signature="2793:3063" placeholder="{&quot;GENERAL_STATUS_UNREAD&quot;: 'fa-envelope'...}" />
@@ -262,7 +193,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.033333" vertical-offset="3123" max-vertical-offset="7276">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3123" max-vertical-offset="7276">
               <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
               <folding />
             </state>
@@ -272,22 +203,12 @@
       <file leaf-file-name="dashboard_view.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/dashboard_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.346154" vertical-offset="5291" max-vertical-offset="7208">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5291" max-vertical-offset="7208">
               <caret line="324" column="0" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
               <folding>
                 <marker date="1426042504557" expanded="true" signature="8454:9022" placeholder="{&quot;TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS&quot;: 'fa-cloud-upload text-info'...}" />
                 <marker date="1426042504557" expanded="true" signature="10921:11854" placeholder="{&quot;TRANSFORM_STATUS_FAIL&quot;: 'fa-times text-danger'...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/public/js/common.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1326">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="9" selection-end-column="10" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -322,8 +243,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="Dawud Rahman &lt;dawud.rahman@aqovia.com&gt;" />
         <option value="Dawud" />
+        <option value="Dawud Rahman &lt;dawud.rahman@aqovia.com&gt;" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -334,7 +255,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/pearson/config/servlet/ServletContextConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pearson/config/SecurityWebApplicationInitializer.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/pearson/config/WebAppInitializer.java" />
@@ -385,6 +305,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/dashboard-app.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/views/document_detail.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/views/downloads_view.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -408,6 +329,24 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Btec Word OpenXML App" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Btec Word OpenXML App" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="war" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -503,16 +442,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BtecWordOpenXMLApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -581,7 +511,26 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BtecWordOpenXMLApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BtecWordOpenXMLApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BtecWordOpenXMLApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1325,7 +1274,8 @@
       <workItem from="1425811852612" duration="46402000" />
       <workItem from="1425865726760" duration="5761000" />
       <workItem from="1425934997223" duration="22309000" />
-      <workItem from="1426019079402" duration="26826000" />
+      <workItem from="1426019079402" duration="29126000" />
+      <workItem from="1426060356198" duration="97000" />
     </task>
     <task id="LOCAL-00001" summary="Commit of build">
       <created>1412090945578</created>
@@ -1381,11 +1331,17 @@
       <option name="project" value="LOCAL" />
       <updated>1424911431665</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add uploading of files and new table">
+      <created>1426058556678</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1426058556678</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1305629000" />
+    <option name="totallyTimeSpent" value="1308026000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1411,9 +1367,8 @@
     <frame x="1912" y="22" width="1696" height="1026" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275488" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33856502" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33295965" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1422,7 +1377,6 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2624729" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19804402" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31561822" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3172646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329718" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32623318" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13997555" sideWeight="0.52130044" order="3" side_tool="true" content_ui="tabs" />
@@ -1434,7 +1388,6 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16400427" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22677262" sideWeight="0.5014006" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2746637" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329718" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1443,7 +1396,10 @@
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="AWS Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2746637" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33295965" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30605382" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32735425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1469,7 +1425,8 @@
     <MESSAGE value="IQS Transformation added&#10;CloudFoundary build tasks added to Maven" />
     <MESSAGE value="New UI added with Spring MVC, AngularJS and MySql integration" />
     <MESSAGE value="Commit of new code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit of new code" />
+    <MESSAGE value="Add uploading of files and new table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add uploading of files and new table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1610,11 +1567,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/dashboard-app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3162" max-vertical-offset="3978">
+          <caret line="202" column="37" selection-start-line="202" selection-start-column="37" selection-end-line="202" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/context.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="849">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1632,10 +1596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="441" max-vertical-offset="816">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1151#1152#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1653,9 +1613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.1592128" vertical-offset="153" max-vertical-offset="1870">
           <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1663,7 +1620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2788">
           <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1671,6 +1627,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20804195" vertical-offset="0" max-vertical-offset="833">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1686,7 +1643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="697">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1702,7 +1658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1720,7 +1675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="204">
           <caret line="1" column="7" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1736,7 +1690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.461538" vertical-offset="153" max-vertical-offset="2176">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1744,7 +1697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="69434" max-vertical-offset="70023">
           <caret line="4100" column="16" selection-start-line="4100" selection-start-column="16" selection-end-line="4100" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1760,7 +1712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="646">
           <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1792,9 +1743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1338" max-vertical-offset="2006">
           <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1904,13 +1852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1989">
           <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2037#2038#0" expanded="true" />
-            <element signature="e#2067#2068#0" expanded="true" />
-            <element signature="e#2113#2114#0" expanded="true" />
-            <element signature="e#2151#2152#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1971,13 +1912,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2642487" vertical-offset="0" max-vertical-offset="579">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.033333" vertical-offset="3123" max-vertical-offset="7276">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3123" max-vertical-offset="7276">
           <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
           <folding />
         </state>
@@ -1985,7 +1925,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/dashboard_view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.346154" vertical-offset="5291" max-vertical-offset="7208">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5291" max-vertical-offset="7208">
           <caret line="324" column="0" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
           <folding>
             <marker date="1426042504557" expanded="true" signature="8454:9022" placeholder="{&quot;TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS&quot;: 'fa-cloud-upload text-info'...}" />
@@ -2022,7 +1962,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/document_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6923075" vertical-offset="2605" max-vertical-offset="3910">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2605" max-vertical-offset="3910">
           <caret line="165" column="41" selection-start-line="165" selection-start-column="41" selection-end-line="165" selection-end-column="41" />
           <folding>
             <marker date="1426046019678" expanded="true" signature="895:1965" placeholder="{&quot;TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS&quot;: 'label label-primary'...}" />
@@ -2033,7 +1973,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/downloads_view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.807693" vertical-offset="1842" max-vertical-offset="2839">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1842" max-vertical-offset="2839">
           <caret line="131" column="17" selection-start-line="131" selection-start-column="17" selection-end-line="131" selection-end-column="17" />
           <folding>
             <marker date="1426046236044" expanded="true" signature="2793:3063" placeholder="{&quot;GENERAL_STATUS_UNREAD&quot;: 'fa-envelope'...}" />
@@ -2044,11 +1984,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6325088" vertical-offset="3110" max-vertical-offset="4471">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3110" max-vertical-offset="4471">
           <caret line="204" column="83" selection-start-line="204" selection-start-column="60" selection-end-line="204" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.101553164" vertical-offset="0" max-vertical-offset="837">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
