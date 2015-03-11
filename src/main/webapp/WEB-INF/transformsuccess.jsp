@@ -24,7 +24,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="//www.fuelcdn.com/fuelux/3.0.1/js/fuelux.min.js"></script>
 
-    <link href="static/css/style-poc.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style-poc.css" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
 
@@ -44,7 +44,7 @@
 <body>
 <nav class="navbar-override navbar-default linearBg" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <img src="static/css/logo.png" height="50" alt="Pearson"/>
+    <img src="img/logo.png" height="50" alt="Pearson"/>
 
     <div class="navbar-header">
 

@@ -22,6 +22,6 @@ public class ServletContextConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/**").addResourceLocations("/resources/");
     }
 }

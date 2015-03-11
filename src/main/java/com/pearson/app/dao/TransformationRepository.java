@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.Metamodel;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,6 +37,7 @@ public class TransformationRepository implements TransformationDAOInterface {
      */
     public void addTransformation(Transformation transformation) {
         em.persist(transformation);
+        LOGGER.debug("Successfully created transformation[{}]", transformation);
     }
 
     /**
@@ -49,7 +52,7 @@ public class TransformationRepository implements TransformationDAOInterface {
         Root<Transformation> searchRoot = searchQuery.from(Transformation.class);
 
         List<Order> orderList = new ArrayList();
-//        orderList.add(cb.desc(searchRoot.get("date")));
+        orderList.add(cb.desc(searchRoot.get("date")));
 //        orderList.add(cb.asc(searchRoot.get("time")));
         orderList.add(cb.asc(searchRoot.get("id")));
         searchQuery.orderBy(orderList);
@@ -60,10 +63,50 @@ public class TransformationRepository implements TransformationDAOInterface {
 
 
     /**
+     * list of transformation
+     * @return -  a list of recent unread transformations
+     */
+    public List<Transformation> listUnreadTransformations() {
+        List<Transformation> transformations = em.createNamedQuery(Transformation.LIST_WHERE_GENERAL_STATUS_UNREAD, Transformation.class)
+                .getResultList();
+        LOGGER.debug("List all Transformation where GENERAL_STATUS_UNREAD matching -> Transformation number of records[{}]", (transformations != null && transformations.size() > 0) ? transformations.size() : "None");
+        return transformations;
+    }
+
+
+    /**
      * finds a transformation given its id
      */
     public Transformation getTransformationById(Long id) {
         return em.find(Transformation.class, id);
+    }
+
+
+    /**
+     * finds a transformation given its QanNo
+     */
+    public Transformation getTransformationByQan(String qanNo) {
+        List<Transformation> transformations = em.createNamedQuery(Transformation.FIND_BY_QAN, Transformation.class)
+                .setParameter("qanNo", qanNo)
+                .getResultList();
+        LOGGER.debug("Found matching qanNo[{}] -> Transformation[{}]", qanNo, (transformations != null && transformations.size() == 1) ? transformations.get(0).toString() : "None");
+        return transformations.size() == 1 ? transformations.get(0) : null;
+    }
+
+
+    /**
+     * finds a transformation given its SpecUnit
+     */
+    public Long getTransformationSpecunitById(Long id) {
+        Long specUnitId = 0L;
+        List<Long> results = em.createNamedQuery(Transformation.FIND_SPECUNIT_BY_ID)
+                .setParameter("id", id)
+                .getResultList();
+        if(!results.isEmpty()) {
+            specUnitId = results.get(0);
+        }
+        LOGGER.debug("Found matching id[{}] -> SpecUnitId[{}]", id, specUnitId);
+        return specUnitId;
     }
 
 
@@ -148,7 +191,6 @@ public class TransformationRepository implements TransformationDAOInterface {
 
         return filterQuery.getResultList();
     }
-
 
 
 }

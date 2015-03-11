@@ -79,6 +79,7 @@
 								
 								<xsl:element name="assessmentcriteria">
 									<xsl:attribute name="acid" select="concat(concat($var_uan,'.'), AC_criteria_title )"/>
+									<xsl:attribute name="acid" select="concat(concat($var_uan,'.'), criteriatitle )"/>
 								</xsl:element>
 							</criteriacell>		
 						</xsl:for-each>								

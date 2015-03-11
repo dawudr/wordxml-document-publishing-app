@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManagerFactory;
-import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,9 +33,10 @@ public class TestDataInitializer {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-
-        User user = new User("test123", "Password123", "test@email.com", "test", "123", User.ROLE_ADMIN);
-        session.persist(user);
+/*        User user = new User("btectest", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN);
+        session.persist(user);*/
+/*        User user0 = new User("test123", "Password123", "test@email.com", "test", "123", User.ROLE_ADMIN);
+        session.persist(user0);
         User user1 = new User("pwinser", "Password123", "paul.winser@pearson.com", "Paul", "Winser", User.ROLE_ADMIN);
         session.persist(user1);
         User user2 = new User("drahman", "Password123", "dawud.rahman@aqovia.com", "Dawud", "Rahman", User.ROLE_ADMIN);
@@ -56,7 +56,7 @@ public class TestDataInitializer {
         User user9 = new User("testauthor", "Password123", "dawud.rahman@aqovia.com", "test", "Author", User.ROLE_AUTHOR);
         session.persist(user9);
         User user10 = new User("testviewer", "Password123", "dawud.rahman@aqovia.com", "test", "Viewer", User.ROLE_VIEWER);
-        session.persist(user10);
+        session.persist(user10);*/
 
 
         Template template = new Template("bteclevel2", "Btec Level 2", "1.0", "header", "hb3", "wordxml_unit.xsl", "wordxml_unit2_table.xquery", "Unit.xsd");
@@ -77,6 +77,7 @@ public class TestDataInitializer {
 
 
 
+/*
 
         session.persist(new Transformation(user, new Date(), "U/111/0001",
                 "Unit 44_FBC.docx", "Unit 44_FBC.xml", "Unit 44_FBC-iqs.xml",
@@ -203,6 +204,7 @@ public class TestDataInitializer {
                 "29", "Object Oriented Programming", "Andres Vergara", "bteclevel2",
                 new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_MODIFIED));
 
+*/
         transaction.commit();
     }
 }

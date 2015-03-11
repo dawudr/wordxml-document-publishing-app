@@ -21,7 +21,7 @@ public class UnitBody {
     @Override
     public String toString() {
         return "UnitBody{" +
-                "unitSections=" + unitSections +
+                "unitSections=" + unitSections.toString() +
                 '}';
     }
 }

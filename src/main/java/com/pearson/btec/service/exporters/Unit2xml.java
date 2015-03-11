@@ -1,13 +1,13 @@
 package com.pearson.btec.service.exporters;
 
+import com.pearson.btec.model.Unit;
+import com.pearson.btec.model.UnitBody;
+import com.pearson.btec.model.UnitHeader;
 import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import com.pearson.btec.model.Unit;
-import com.pearson.btec.model.UnitBody;
-import com.pearson.btec.model.UnitHeader;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,32 +31,32 @@ public class Unit2xml {
     public Element toXml() {
         Element btecElement = new Element("unit");
 
-        HashMap docPropMap = unit.getUnitMetaData();
-        Iterator iterator = docPropMap.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry pairs = (Map.Entry)iterator.next();
-            Element docPropElement = new Element((String) pairs.getKey());
-            docPropElement.setText((String) pairs.getValue());
-            btecElement.addContent(docPropElement);
+        if(unit != null && unit.getUnitMetaData() != null) {
+            HashMap docPropMap = unit.getUnitMetaData();
+
+            Iterator iterator = docPropMap.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry pairs = (Map.Entry) iterator.next();
+                Element docPropElement = new Element((String) pairs.getKey());
+                docPropElement.setText((String) pairs.getValue());
+                btecElement.addContent(docPropElement);
+            }
+
+            UnitHeader unitHeader = unit.getUnitHeader();
+            UnitHeader2xml unitHeader2xml = new UnitHeader2xml(unitHeader);
+
+            List<Element> unitHeaders = unitHeader2xml.toXml();
+            for (Content data : unitHeaders) {
+                btecElement.addContent(data);
+            }
+
+            UnitBody unitBody = unit.getUnitBody();
+            UnitBody2xml unitBody2xml = new UnitBody2xml(unitBody);
+            List<Element> unitBodies = unitBody2xml.toXml();
+            for (Content data : unitBodies) {
+                btecElement.addContent(data);
+            }
         }
-
-        UnitHeader unitHeader = unit.getUnitHeader();
-        UnitHeader2xml unitHeader2xml = new UnitHeader2xml(unitHeader);
-
-        List<Element> unitHeaders = unitHeader2xml.toXml();
-        for(Content data : unitHeaders) {
-            btecElement.addContent(data);
-        }
-
-        UnitBody unitBody = unit.getUnitBody();
-        UnitBody2xml unitBody2xml = new UnitBody2xml(unitBody);
-        List<Element> unitBodies = unitBody2xml.toXml();
-        for(Content data : unitBodies) {
-            btecElement.addContent(data);
-        }
-
-
-
         return btecElement;
     }
 

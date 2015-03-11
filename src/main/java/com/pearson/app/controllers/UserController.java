@@ -30,6 +30,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(method = RequestMethod.GET, value = "/user")
+    public UserInfoDTO getUserInfo(Principal principal) {
+
+        User user = userService.getUserByUsername(principal.getName());
+        LOGGER.debug("Current user[{}]", user.toString());
+        return user != null ? new UserInfoDTO(user) : null;
+    }
+
+
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.POST, value = "/user")
     public void addUser(@RequestBody NewUserDTO newUserDTO) {

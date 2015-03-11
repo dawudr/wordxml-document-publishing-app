@@ -27,13 +27,13 @@
     });//]]>
 
     </script>
-    <link href="static/css/style-poc.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style-poc.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
 <nav class="navbar-override navbar-default linearBg" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <img src="static/css/logo.png" height="50" alt="Pearson"/>
+    <img src="img/logo.png" height="50" alt="Pearson"/>
 
     <div class="navbar-header">
 

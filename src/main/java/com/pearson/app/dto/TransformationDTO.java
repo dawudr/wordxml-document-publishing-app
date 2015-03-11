@@ -1,14 +1,9 @@
 package com.pearson.app.dto;
 
 
-import com.pearson.app.dto.serialization.CustomTimeDeserializer;
-import com.pearson.app.dto.serialization.CustomTimeSerializer;
-import com.pearson.app.model.Transformation;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.pearson.app.model.Transformation;
 
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,6 +37,9 @@ public class TransformationDTO {
     private String message; // Error messages
     private String generalStatus;
 
+    private Long user_id;
+    private Long specunit_id;
+
     public TransformationDTO() {
     }
 
@@ -52,7 +50,7 @@ public class TransformationDTO {
         this.qanNo = transformation.getQanNo();
 
         this.wordfilename = transformation.getWordfilename();
-        this.openxmlfilename = transformation.getOpenxmlfilename();
+        this.openxmlfilename = "";//transformation.getSpecunit().getId();
         this.iqsxmlfilename = transformation.getIqsxmlfilename();
 
         this.unitNo = transformation.getUnitNo();
@@ -69,7 +67,7 @@ public class TransformationDTO {
     public TransformationDTO(Long id, UserInfoDTO user, Date date, String qanNo,
                              String wordfilename, String openxmlfilename, String iqsxmlfilename,
                              String unitNo, String unitTitle, String author, String templatename,
-                             Date lastmodified, String transformStatus, String message, String generalStatus) {
+                             Date lastmodified, String transformStatus, String message, String generalStatus, Long specunit_id) {
         this.id = id;
         this.user = user;
         this.date = date;
@@ -88,6 +86,7 @@ public class TransformationDTO {
         this.transformStatus = transformStatus;
         this.message = message;
         this.generalStatus = generalStatus;
+        this.specunit_id = specunit_id;
     }
 
 
@@ -99,7 +98,7 @@ public class TransformationDTO {
                 transformation.getQanNo(),
 
                 transformation.getWordfilename(),
-                transformation.getOpenxmlfilename(),
+                "",//transformation.getSpecunit().getId(),
                 transformation.getIqsxmlfilename(),
 
                 transformation.getUnitNo(),
@@ -110,7 +109,8 @@ public class TransformationDTO {
                 transformation.getLastmodified(),
                 transformation.getTransformStatus(),
                 transformation.getMessage(),
-                transformation.getGeneralStatus());
+                transformation.getGeneralStatus(),
+                transformation.getSpecunit().getId());
     }
 
 
@@ -159,13 +159,7 @@ public class TransformationDTO {
         this.wordfilename = wordfilename;
     }
 
-    public String getOpenxmlfilename() {
-        return openxmlfilename;
-    }
 
-    public void setOpenxmlfilename(String openxmlfilename) {
-        this.openxmlfilename = openxmlfilename;
-    }
 
     public String getIqsxmlfilename() {
         return iqsxmlfilename;

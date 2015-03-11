@@ -41,7 +41,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+        //auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
@@ -51,28 +52,30 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterAfter(csrfTokenFilter, CsrfFilter.class);
 
         http
+            .csrf().disable()
             .authorizeRequests()
-            .antMatchers("/static/**").permitAll()
-            .antMatchers("/static/public/**").permitAll()
-            .antMatchers("/static/img/**").permitAll()
-            .antMatchers("/static/bower_components/**").permitAll()
-            .antMatchers(HttpMethod.POST, "/user").permitAll()
-            .anyRequest().authenticated()
-            .and()
-            .formLogin()
-            .defaultSuccessUrl("/static/dashboard.html")
+                .antMatchers("/public/**").permitAll()
+                .antMatchers("/img/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/bower_components/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/user").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+            .defaultSuccessUrl("/index.html")
             .loginProcessingUrl("/authenticate")
             .usernameParameter("username")
             .passwordParameter("password")
-            .successHandler(new AjaxAuthenticationSuccessHandler(new SavedRequestAwareAuthenticationSuccessHandler()))
-            .loginPage("/static/public/login.html")
+                .successHandler(new AjaxAuthenticationSuccessHandler(new SavedRequestAwareAuthenticationSuccessHandler()))
+                .loginPage("/public/login.html")
             .and()
-            .httpBasic()
-            .and()
-            .logout()
-            .logoutUrl("/logout")
-            .logoutSuccessUrl("/static/public/login.html")
-            .permitAll();
+                .httpBasic()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/public/login.html")
+                .permitAll();
 
         if ("true".equals(System.getProperty("httpsOnly"))) {
             LOGGER.info("launching the application in HTTPS-only mode");

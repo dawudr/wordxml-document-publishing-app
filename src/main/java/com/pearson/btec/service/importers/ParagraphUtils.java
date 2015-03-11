@@ -1,6 +1,8 @@
 package com.pearson.btec.service.importers;
 
 import org.docx4j.wml.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBElement;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.List;
  * Created by dawud on 02/11/2014.
  */
 public class ParagraphUtils {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ParagraphUtils.class);
 
 
     public static String traverseParagraphBlocks(List<Object> contentTextList) {
@@ -119,7 +122,8 @@ public class ParagraphUtils {
                 }
             }
         }
-        System.out.println("RBLOCK:xmlTagValue[" + runSb.toString() + "]");
+        LOGGER.debug("RBLOCK:xmlTagValue [{}]", runSb.toString() );
+        //System.out.println("RBLOCK:xmlTagValue[" + runSb.toString() + "]");
         return runSb.toString();
     }
 
@@ -130,13 +134,26 @@ public class ParagraphUtils {
      * @param paragraphObject
      * @return
      */
-    public static HashMap getDataMapFromPBlock(P paragraphObject) {
+    public static List<HashMap> getDataMapFromPBlock(P paragraphObject) {
+
+        // Fixed -DR 26/02/15 - Cells can contain several tagged data items. We need to keep hashmap in order hence list is used.
+        List<HashMap> hashMapListCellData = new ArrayList<HashMap>();
 
         // Paragraphs with Run data i.e Table headers
         HashMap map = new HashMap();
         map.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN, ParagraphUtils.processDocumentPBlock(paragraphObject));
-        map.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN_STYLE, (paragraphObject.getPPr().getPStyle().getVal()));
-        System.out.println("getDataMapFromPBlock Cell P =" + map);
+        // Fixed- DR: 26/02/15 Handle where there is no style
+        if(paragraphObject.getPPr() != null
+                && paragraphObject.getPPr().getPStyle() != null
+                && paragraphObject.getPPr().getPStyle().getVal() != null) {
+            map.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN_STYLE, (paragraphObject.getPPr().getPStyle().getVal()));
+        }
+        //TODO: check if we have several duplicated keys, if so just add to list instead of Hashmap since its gets over written
+        LOGGER.debug("getDataMapFromPBlock Cell P SdtRun map[{}]", map);
+        hashMapListCellData.add(map);
+
+        LOGGER.debug("getDataMapFromPBlock Cell P [{}]", map);
+        //System.out.println("getDataMapFromPBlock Cell P =" + map);
 
         // Paragraphs with SdtRun data i.e Table cell data
         List<Object> paragraphContents = paragraphObject.getContent();
@@ -144,13 +161,24 @@ public class ParagraphUtils {
             if (paragraphContent instanceof JAXBElement && ((JAXBElement) paragraphContent).getValue() instanceof SdtRun) {
 
                 SdtRun sdtRun = (SdtRun) ((JAXBElement) paragraphContent).getValue();
-                map.putAll(DocumentUtils.traverseSectionBlocks(sdtRun));
-                map.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN_STYLE, paragraphObject.getPPr().getPStyle().getVal());
-                System.out.println("getDataMapFromPBlock Cell P SdtRun=" + map);
+                HashMap hasMapOfCellItem = DocumentUtils.traverseSectionBlocks(sdtRun);
+                LOGGER.debug("traverseSectionBlocks Paragraph[Cell P SdtRun] Found content - hasMapOfCellItem[{}]", hasMapOfCellItem);
+
+                // Fixed- DR: 26/02/15 Handle where there is no style
+                if(paragraphObject.getPPr() != null
+                        && paragraphObject.getPPr().getPStyle() != null
+                        && paragraphObject.getPPr().getPStyle().getVal() != null) {
+                    hasMapOfCellItem.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN_STYLE, paragraphObject.getPPr().getPStyle().getVal());
+                    LOGGER.debug("Getting Style from Paragraph[Cell P SdtRun] - Added style [{}]", hasMapOfCellItem);
+                }
+                // Fixed- DR: 26/02/15 Several cellItems were being over written in Hashmap so a list is used instead
+                hashMapListCellData.add(hasMapOfCellItem);
+                LOGGER.debug("Adding content to List<HashMap> Paragraph[Cell P SdtRun] Found content - hasMapOfCellItem[{}]", hasMapOfCellItem);
+
             }
         }
-
-        return map;
+        LOGGER.debug("Return List<HashMap> of all [Cell P SdtRun] - hashMapListCellData[{}]", hashMapListCellData);
+        return hashMapListCellData;
     }
 
 

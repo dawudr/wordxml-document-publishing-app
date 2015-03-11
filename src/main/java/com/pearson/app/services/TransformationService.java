@@ -2,10 +2,10 @@ package com.pearson.app.services;
 
 
 import com.pearson.app.dao.TemplateRepository;
-import com.pearson.app.model.Transformation;
-import com.pearson.app.model.SearchResult;
 import com.pearson.app.dao.TransformationRepository;
 import com.pearson.app.dao.UserRepository;
+import com.pearson.app.model.SearchResult;
+import com.pearson.app.model.Transformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,9 @@ public class TransformationService {
         assertNotBlank(transformation.getAuthor(), "Author cannot be empty.");
         assertNotBlank(transformation.getWordfilename(), "Word Filename cannot be empty.");
 
+        LOGGER.debug("Adding Transformation[{}]", transformation);
         transformationRepository.addTransformation(transformation);
+        LOGGER.debug("Successfully added Transformation[{}]", transformation);
 
 
 /*        User user = transformation.getUser();
@@ -69,14 +71,44 @@ public class TransformationService {
         return transformations;
     }
 
+    @Transactional(readOnly = true)
+    public List<Transformation> listUnreadTransformations() {
+        List<Transformation> transformations = transformationRepository.listUnreadTransformations();
+        return transformations;
+    }
+
     /**
-     * list all transformations with paginated results
+     * get transformation by id
      * @param id - the id of transform
      * @return - the found results
      */
     @Transactional(readOnly = true)
     public Transformation getTransformationById(Long id) {
         Transformation transformation = transformationRepository.getTransformationById(id);
+        return transformation;
+    }
+
+
+    /**
+     * get transformation by id
+     * @param id - the id of transform
+     * @return - the found results
+     */
+    @Transactional(readOnly = true)
+    public Long getTransformationSpecunitById(Long id) {
+        Long specunitById = transformationRepository.getTransformationSpecunitById(id);
+        return specunitById;
+    }
+
+
+    /**
+     * get transformation by qanNo
+     * @param qanNo - the qanNo of transform
+     * @return - the found results
+     */
+    @Transactional(readOnly = true)
+    public Transformation getTransformationByQan(String qanNo) {
+        Transformation transformation = transformationRepository.getTransformationByQan(qanNo);
         return transformation;
     }
 
@@ -89,7 +121,7 @@ public class TransformationService {
         assertNotBlank(transformation.getAuthor(), "Author cannot be empty.");
         assertNotBlank(transformation.getWordfilename(), "Word Filename cannot be empty.");
 
-        transformationRepository.addTransformation(transformation);
+        transformationRepository.updateTransformation(transformation);
 
 
 /*        User user = transformation.getUser();

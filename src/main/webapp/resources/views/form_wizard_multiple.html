@@ -1,42 +1,43 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-9">
-        <h2>Batch Converter</h2>
+        <h2>Transform</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="index.html">Home</a>
             </li>
             <li>
-                Transform
+                Document
             </li>
             <li class="active">
-                <strong>Multiple</strong>
+                <strong>Transform</strong>
             </li>
         </ol>
     </div>
 </div>
+
+
+
+
 <div class="wrapper wrapper-content">
 
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="jumbotron">
-            <h3>Multiple Transformation</h3>
 
-            <p><b>Instructions:</b> <br/>
-                Follow steps to perform a multiple document transformation.
-                It is recommended to test a single document and check for errors before attempting to run batch conversions.
-            <ol>
-                <li>Upload your BTEC Specification Word documents by drop the file into the dropzone.</li>
-                <li>Follow steps outlined in the Transformation wizard</li>
-            </ol>
-            </p>
-
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="jumbotron">
+                <div class="container">
+                    <h2><strong>Perform a document transformation</strong></h2>
+                    <p>This wizard will guide you through the steps to upload, extract and transform content from Microsoft Word BTEC Specification documents into XML.</p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="row">
 
+
+
+
+<!--
     <div class="col-lg-3">
         <div class="ibox float-e-margins">
             <div class="ibox-content">
@@ -70,8 +71,15 @@
             </div>
         </div>
     </div>
+   -->
 
-    <div class="col-lg-9">
+
+
+
+<div class="row">
+
+
+    <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Dropzone Area</h5>
@@ -79,21 +87,98 @@
                 <div ibox-tools></div>
             </div>
             <div class="ibox-content">
-                <form action="" class="dropzone" drop-zone="" id="file-dropzone">
-                    <button type="submit" class="btn btn-primary pull-right">Upload</button>
+
+
+
+
+                <!-- The file upload form used as target for the file upload widget -->
+                <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data" data-ng-controller="DocumentTransformsCtrl" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
+                    <!-- Redirect browsers with JavaScript disabled to the origin page -->
+                    <noscript><input type="hidden" name="redirect" value="/upload"></noscript>
+                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                    <div class="row fileupload-buttonbar">
+                        <div class="col-lg-7">
+                            <!-- The fileinput-button span is used to style the file input field as button -->
+                                <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    <span>Add files...</span>
+                                    <input type="file" name="files[]" multiple ng-disabled="disabled">
+                                </span>
+                            <button type="button" class="btn btn-primary start" data-ng-click="submit()">
+                                <i class="glyphicon glyphicon-upload"></i>
+                                <span>Start upload</span>
+                            </button>
+                            <button type="button" class="btn btn-warning cancel" data-ng-click="cancel()">
+                                <i class="glyphicon glyphicon-ban-circle"></i>
+                                <span>Cancel upload</span>
+                            </button>
+                            <!-- The global file processing state -->
+                            <span class="fileupload-process"></span>
+                        </div>
+                        <!-- The global progress state -->
+                        <div class="col-lg-5 fade" data-ng-class="{in: active()}">
+                            <!-- The global progress bar -->
+                            <div class="progress progress-striped active" data-file-upload-progress="progress()"><div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div></div>
+                            <!-- The extended global progress state -->
+                            <div class="progress-extended">&nbsp;</div>
+                        </div>
+                    </div>
+                    <!-- The table listing the files available for upload/download -->
+                    <table class="table table-striped files ng-cloak">
+                        <tr data-ng-repeat="file in queue" data-ng-class="{'processing': file.$processing()}">
+                            <td data-ng-switch data-on="!!file.thumbnailUrl">
+                                <div class="preview" data-ng-switch-when="true">
+                                    <a data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery><img data-ng-src="{{file.thumbnailUrl}}" alt=""></a>
+                                </div>
+                                <div class="preview" data-ng-switch-default data-file-upload-preview="file"></div>
+                            </td>
+                            <td>
+                                <p class="name" data-ng-switch data-on="!!file.url">
+                        <span data-ng-switch-when="true" data-ng-switch data-on="!!file.thumbnailUrl">
+                            <a data-ng-switch-when="true" data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery>{{file.name}}</a>
+                            <a data-ng-switch-default data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}">{{file.name}}</a>
+                        </span>
+                                    <span data-ng-switch-default>{{file.name}}</span>
+                                </p>
+                                <strong data-ng-show="file.error" class="error text-danger">{{file.error}}</strong>
+                            </td>
+                            <td>
+                                <p class="size">{{file.size | formatFileSize}}</p>
+                                <div class="progress progress-striped active fade" data-ng-class="{pending: 'in'}[file.$state()]" data-file-upload-progress="file.$progress()"><div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div></div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary start" data-ng-click="file.$submit()" data-ng-hide="!file.$submit || options.autoUpload" data-ng-disabled="file.$state() == 'pending' || file.$state() == 'rejected'">
+                                    <i class="glyphicon glyphicon-upload"></i>
+                                    <span>Start</span>
+                                </button>
+                                <button type="button" class="btn btn-warning cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
+                                    <i class="glyphicon glyphicon-ban-circle"></i>
+                                    <span>Cancel</span>
+                                </button>
+                                <button data-ng-controller="FileDestroyController" type="button" class="btn btn-danger destroy" data-ng-click="file.$destroy()" data-ng-hide="!file.$destroy">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                    <span>Delete</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
                 </form>
-                <div>
-                </div>
+
+
+
+
+
             </div>
         </div>
     </div>
+</div>
 
-<div class="col-lg-9 animated fadeInRight">
+
+
 <div class="row">
 
 
 <div class="col-lg-12">
-    <div class="wrapper wrapper-content animated fadeInUp">
 
         <div class="ibox">
             <div class="ibox-title">
@@ -191,7 +276,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 
 
@@ -199,42 +283,41 @@
 
 
 </div>
+
+
 </div>
-</div>
-</div>
-
-<!-- DROPZONE -->
-<script src="js/plugins/dropzone/dropzone.js"></script>
-
-
-<script>
-    $(document).ready(function(){
-
-        Dropzone.options.myAwesomeDropzone = {
-
-            autoProcessQueue: false,
-            uploadMultiple: true,
-            parallelUploads: 100,
-            maxFiles: 100,
-
-            // Dropzone settings
-            init: function() {
-                var myDropzone = this;
-
-                this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    myDropzone.processQueue();
-                });
-                this.on("sendingmultiple", function() {
-                });
-                this.on("successmultiple", function(files, response) {
-                });
-                this.on("errormultiple", function(files, response) {
-                });
-            }
-
-        }
-
-    });
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="js/plugins/jquery-file-upload/vendor/jquery.ui.widget.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="js/plugins/jquery-file-upload/tmpl.min.js"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script src="js/plugins/jquery-file-upload/load-image.all.min.js"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script src="js/plugins/jquery-file-upload/canvas-to-blob.min.js"></script>
+<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- blueimp Gallery script -->
+<script src="/js/plugins/jquery-file-upload/jquery.blueimp-gallery.min.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="/js/plugins/jquery-file-upload/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/js/plugins/jquery-file-upload/jquery.fileupload.js"></script>
+<!-- The File Upload processing plugin -->
+<script src="/js/plugins/jquery-file-upload/jquery.fileupload-process.js"></script>
+<!-- The File Upload image preview & resize plugin -->
+<script src="/js/plugins/jquery-file-upload/jquery.fileupload-image.js"></script>
+<!-- The File Upload audio preview plugin -->
+<script src="/js/plugins/jquery-file-upload/jquery.fileupload-audio.js"></script>
+<!-- The File Upload video preview plugin -->
+<script src="/js/plugins/jquery-file-upload/jquery.fileupload-video.js"></script>
+<!-- The File Upload validation plugin -->
+<script src="/js/plugins/jquery-file-upload/jquery.fileupload-validate.js"></script>
+<!-- The File Upload user interface plugin -->
+<script src="/js/plugins/jquery-file-upload/jquery.fileupload-ui.js"></script>
+<!-- The main application script -->
+<script src="/js/plugins/jquery-file-upload/main.js"></script>
+<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+<!--[if (gte IE 8)&(lt IE 10)]>
+<script src="/js/plugins/jquery-file-upload/cors/jquery.xdr-transport.js"></script>
+<![endif]-->

@@ -1,6 +1,8 @@
 package com.pearson.btec.service.importers;
 
 import org.docx4j.wml.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBElement;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.List;
  * Created by dawud on 23/11/2014.
  */
 public class TableContent {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TableContent.class);
 
     public static List getTableData(Tbl tbl) {
         List tableData = new ArrayList();
@@ -26,7 +29,8 @@ public class TableContent {
 
             if(tblObject instanceof Tr) {
                 tableRow = new ArrayList();
-                System.out.println("TableData Tr = " + ((Tr) tblObject).getParaId());
+                LOGGER.debug("TableData Tr [{}]", ((Tr) tblObject).getParaId() );
+                //System.out.println("TableData Tr = " + ((Tr) tblObject).getParaId());
 
                 // First item of row is header text i.e learning aim
 //                tableRow.add((String)tblHeaders.get(0));
@@ -38,24 +42,29 @@ public class TableContent {
 
                     Object tblRowContent = tblRowContents.get(i);
 
-                    if(((JAXBElement) tblRowContent).getValue() instanceof Tc) {
-                        Tc cell = (Tc) ((JAXBElement) tblRowContent).getValue();
+                    if(tblRowContent != null
+                            && tblRowContent instanceof JAXBElement
+                            && ((JAXBElement) tblRowContent).getValue() != null) {
 
-                        //System.out.println("TableData Tc Col Number=" + i);
+                        if (((JAXBElement) tblRowContent).getValue() instanceof Tc) {
+                            Tc cell = (Tc) ((JAXBElement) tblRowContent).getValue();
+
+                            //System.out.println("TableData Tc Col Number=" + i);
 
 
-                        //Call getTcData
-                        List<Object> cellItems = cell.getContent();
-                        List tableColumn = new ArrayList();
+                            //Call getTcData
+                            List<Object> cellItems = cell.getContent();
+                            // tableColumn can hold either another List of HashMap
+                            List tableColumn = new ArrayList();
 
-                        for(Object cellItem : cellItems) {
-                            //System.out.println("TableData Tc = " +  cellItem.getClass());
+                            for (Object cellItem : cellItems) {
+                                //System.out.println("TableData Tc = " +  cellItem.getClass());
 
-                            if(cellItem instanceof P) {
+                                if (cellItem instanceof P) {
 
-                                // Get Table Headings to use as row parent container
+                                    // Get Table Headings to use as row parent container
 
-                                //TODO: Bug - this should be a cell data
+                                    //TODO: Bug - this should be a cell data
 //                                    if(((P)cellItem).getPPr().getPStyle().getVal().equals("Tablehead")) {
 //                                        System.out.println("TableData Th P=" + ParagraphUtils.processDocumentPBlock((P) cellItem));
 //                                        HashMap map = new HashMap();
@@ -66,11 +75,11 @@ public class TableContent {
 //                                    }
 
 //                                    } else {
-                                // Get Table Contents
-                                HashMap map = new HashMap();
-                                map =  ParagraphUtils.getDataMapFromPBlock((P) cellItem);
-                                System.out.println("TableData Cell P=" + map);
-                                tableColumn.add(map);
+                                    // Get Table Contents
+                                    // Fixed- DR 26/02/15 Now returns a list of cell items since there are several sdtruns with items of content.
+                                    List cellsData = ParagraphUtils.getDataMapFromPBlock((P) cellItem);
+                                    LOGGER.debug("Adding to tableColum - TableData Cell P List<cellsData>[{}]", cellsData);
+                                    tableColumn.add(cellsData);
 
 
 
@@ -98,44 +107,50 @@ public class TableContent {
  */
 
 //                                    }
-                            } else if(cellItem instanceof SdtBlock) {
+                                } else if (cellItem instanceof SdtBlock) {
 
-                                SdtBlock sdtBlock = (SdtBlock) cellItem;
-                                HashMap map = DocumentUtils.traverseSectionBlocks(sdtBlock);
-                                map.put(DocumentUtilHelper.XML_TAG_VALUE_ENCODING, "html");
-                                tableColumn.add(map);
-                                System.out.println("TableData Tc SdtBlock = " + map);
-                            } else {
-                                System.out.println("TableData Tc other = " +  cellItem.getClass());
+                                    SdtBlock sdtBlock = (SdtBlock) cellItem;
+                                    HashMap map = DocumentUtils.traverseSectionBlocks(sdtBlock);
+                                    map.put(DocumentUtilHelper.XML_TAG_VALUE_ENCODING, "html");
+                                    tableColumn.add(map);
+                                    LOGGER.debug("TableData Tc SdtBlock [{}]", map);
+                                    //System.out.println("TableData Tc SdtBlock = " + map);
+                                } else {
+                                    LOGGER.debug("TableData Tc other [{}]", cellItem.getClass());
+                                    //System.out.println("TableData Tc other = " +  cellItem.getClass());
+                                }
                             }
+                            tableRow.add(tableColumn);
+
+                        } else if (((JAXBElement) tblRowContent).getValue() instanceof CTSdtCell) {
+                            List tableColumn = new ArrayList();
+
+                            CTSdtCell cell = (CTSdtCell) ((JAXBElement) tblRowContent).getValue();
+
+                            // Call SdtContent
+                            HashMap map = new HashMap();
+                            map.put(DocumentUtilHelper.XML_TAG, DocumentUtilHelper.findTagFromSdtBoth(cell));
+                            // Find Text
+                            map.put(DocumentUtilHelper.XML_TAG_VALUE, DocumentUtilHelper.findTextFromSdtBoth(cell));
+
+                            map.put(DocumentUtilHelper.XML_TAG_VALUE_ENCODING, "html");
+                            LOGGER.debug("TableData Tc2 [{}]", map);
+                            //System.out.println("TableData Tc2 = " +  map);
+                            tableColumn.add(map);
+                            tableRow.add(tableColumn);
+                        } else {
+                            LOGGER.debug("TableData Tc3 [{}]", ((JAXBElement) tblRowContent).getValue().getClass());
+                            //System.out.println("TableData Tc3 = " +  ((JAXBElement) tblRowContent).getValue().getClass());
                         }
-                        tableRow.add(tableColumn);
-
-                    } else if (((JAXBElement) tblRowContent).getValue() instanceof CTSdtCell) {
-                        List tableColumn = new ArrayList();
-
-                        CTSdtCell cell = (CTSdtCell)  ((JAXBElement) tblRowContent).getValue();
-
-                        // Call SdtContent
-                        HashMap map = new HashMap();
-                        map.put(DocumentUtilHelper.XML_TAG, DocumentUtilHelper.findTagFromSdtBoth(cell));
-                        // Find Text
-                        map.put(DocumentUtilHelper.XML_TAG_VALUE, DocumentUtilHelper.findTextFromSdtBoth(cell));
-
-                        map.put(DocumentUtilHelper.XML_TAG_VALUE_ENCODING, "html");
-                        System.out.println("TableData Tc2 = " +  map);
-                        tableColumn.add(map);
-                        tableRow.add(tableColumn);
-                    } else {
-                        System.out.println("TableData Tc3 = " +  ((JAXBElement) tblRowContent).getValue().getClass());
-                    }
+                    } //End of if tblRowContent is JAXBElement
 
                 } // End for loop
             }
 
+            LOGGER.debug("Adding tablerow[List<tableColumn>] to List<TableData> where tableRow[{}]", tableRow);
             tableData.add(tableRow);
         }
-
+        LOGGER.debug("Return ArrayList() tableData[{}]", tableData);
         return tableData;
 
     }
@@ -149,8 +164,8 @@ public class TableContent {
 
         for(Object tblObject : tblObjects) {
             if (tblObject instanceof Tr) {
-
-                System.out.println("TableData Tr = " + ((Tr) tblObject).getParaId());
+                LOGGER.debug("TableData Tr [{}]", ((Tr) tblObject).getParaId());
+                //System.out.println("TableData Tr = " + ((Tr) tblObject).getParaId());
                 List tableRow = new ArrayList();
 
                 Tr tblRow = (Tr) tblObject;
@@ -169,7 +184,8 @@ public class TableContent {
                                 // Get Table Headings to use as row parent container
                                 if (((P) cellItem).getPPr().getPStyle().getVal().equals("Tablehead")) {
                                     tblHeaders.add(ParagraphUtils.processDocumentPBlock((P) cellItem));
-                                    System.out.println("TableData Th P=" + ParagraphUtils.processDocumentPBlock((P) cellItem));
+                                    LOGGER.debug("TableData Th P [{}]", ParagraphUtils.processDocumentPBlock((P) cellItem));
+                                    //System.out.println("TableData Th P=" + ParagraphUtils.processDocumentPBlock((P) cellItem));
                                 }
                             }
                         }

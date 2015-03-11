@@ -55,8 +55,12 @@
 									<xsl:value-of select="$var_uan"/>
 									<xsl:text>.</xsl:text>
 									<xsl:value-of select="./AC_criteria_title"/>
+									<xsl:value-of select="./criteriatitle"/>
 								</xsl:attribute>
-								<title><xsl:value-of select="./AC_criteria_title"/></title>
+								<title>
+									<xsl:value-of select="./AC_criteria_title"/>
+									<xsl:value-of select="./criteriatitle"/>
+								</title>
 								<criteria>		
 									<xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
 									<xsl:value-of select="./criteria"/>								

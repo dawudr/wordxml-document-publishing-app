@@ -1,11 +1,12 @@
-angular.module('common', ['ngMessages'])
+angular.module('common',[])
     .controller('BaseFormCtrl', ['$scope', '$http', function ($scope, $http) {
 
         var fieldWithFocus;
 
         $scope.vm = {
             submitted: false,
-            errorMessages: []
+            errorMessages: [],
+            appReady: true
         };
 
         $scope.focus = function (fieldName) {
@@ -29,6 +30,8 @@ angular.module('common', ['ngMessages'])
         }
 
         $scope.login = function (username, password) {
+            console.log("In BaseFormCtrl - login function: username=" + username + " password=" + password);
+
             var postData = $scope.preparePostData();
 
             $http({
@@ -42,12 +45,14 @@ angular.module('common', ['ngMessages'])
             })
             .then(function(response) {
                 if (response.data == 'ok') {
-                    window.location.replace('/static/dashboard.html');
+                    window.location.replace('/index.html');
                 }
                 else {
                     $scope.vm.errorMessages = [];
                     $scope.vm.errorMessages.push({description: 'Access denied'});
                 }
+                    $scope.vm.appReady = true;
+
             });
         }
 

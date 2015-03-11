@@ -11,7 +11,7 @@
 	</appender>
 
 	<appender name="LOGFILE" class="org.apache.log4j.FileAppender">
-		<param name="file" value="${catalina.base}/logs/btecwordopenxmlapp.log"/>
+		<param name="file" value="/logs/btecwordopenxmlapp.log"/>
 		<param name="immediateFlush" value="true"/>
 		<param name="threshold" value="debug"/>
 		<param name="append" value="false"/>
@@ -24,7 +24,11 @@
 		<level value="debug" />
 	</logger>
 
-	<logger name="org.springframework.core">
+	<logger name="com.pearson.btec">
+		<level value="info" />
+	</logger>
+
+<!--	<logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
 	
@@ -66,8 +70,11 @@
 
 	<logger name="mvc.method.annotation.RequestMappingHandlerMapping">
 		<level value="info"/>
-	</logger>
+	</logger>-->
 
+	<logger name="org.docx4j">
+		<level value="error"/>
+	</logger>
 
 	<logger name="log4j.rootLogger" additivity="false">
 		<level value="DEBUG"/>

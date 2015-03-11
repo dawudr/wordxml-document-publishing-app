@@ -1,18 +1,5 @@
 package com.pearson.app.controllers;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +10,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/fileupload")
@@ -47,49 +46,36 @@ public class FileUploadController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ModelAndView upload(HttpServletRequest request, HttpServletResponse response)  throws Exception {
+    ModelAndView upload(MultipartHttpServletRequest request, HttpServletResponse response)  throws Exception {
         logger.debug("In FileUploadController POST Request");
 
-        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-        List fileNames = new ArrayList();
-        if (isMultipart) {
-            // Create a factory for disk-based file items
-            FileItemFactory factory = new DiskFileItemFactory();
+        Iterator<String> itr = request.getFileNames();
+        MultipartFile mpf;
+        List<String> list = new LinkedList<>();
 
-            // Create a new file upload handler
-            ServletFileUpload upload = new ServletFileUpload(factory);
+        while (itr.hasNext()) {
+            mpf = request.getFile(itr.next());
+            logger.debug("Uploading {}", mpf.getOriginalFilename());
 
+            String newFilename = mpf.getOriginalFilename().replaceAll("[^a-zA-Z0-9.-]", "_"); //UUID.randomUUID().toString();
+            String root = context.getRealPath("/");
+            File path = new File(root + File.separator + "uploads");
+            if (!path.exists()) {
+                boolean status = path.mkdirs();
+            }
+            File newFile = new File(path + "/" + newFilename);
             try {
-                // Parse the request
-                List items = upload.parseRequest(request);
-                Iterator iterator = items.iterator();
-                while (iterator.hasNext()) {
-                    FileItem item = (FileItem) iterator.next();
-                    if (!item.isFormField() && !item.getName().equals("")) {
-                        String fileName = item.getName().replaceAll("[^a-zA-Z0-9.-]", "_");;
-                        String root = context.getRealPath("/");
-                        File path = new File(root + File.separator + "uploads");
-                        if (!path.exists()) {
-                            boolean status = path.mkdirs();
-                        }
+                mpf.transferTo(newFile);
+                logger.debug("File Path:-" + newFile.getAbsolutePath());
+                list.add(newFilename);
 
-                        File uploadedFile = new File(path + File.separator + fileName);
-                        fileNames.add(fileName);
-                        logger.debug("File Path:-"
-                                + uploadedFile.getAbsolutePath());
-
-                        item.write(uploadedFile);
-                    }
-                }
-            } catch (FileUploadException e) {
-                logger.error("FileUploadException:- " + e.getMessage());
-            } catch (Exception e) {
-                logger.error("Exception:- " + e.getMessage());
+            } catch (IOException e) {
+                logger.error("Exception:- Could not upload file " + mpf.getOriginalFilename(), e);
             }
         }
 
         ModelAndView modelAndView = new ModelAndView("/fileuploadsuccess");
-        modelAndView.addObject("files", fileNames);
+        modelAndView.addObject("files", list);
         return modelAndView;
 
     }

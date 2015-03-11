@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import static com.pearson.app.services.ValidationUtils.*;
+
+import static com.pearson.app.services.ValidationUtils.assertNotBlank;
 
 /**
  * Created by dawud on 22/02/2015.
@@ -41,12 +42,12 @@ public class TemplateService {
         return templateRepository.getTemplateByTemplateName(templateName);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public void updateTemplate(Template template) {
         templateRepository.updateTemplate(template);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public void removeTemplate(Long id) {
         templateRepository.removeTemplate(id);
     }

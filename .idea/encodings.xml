@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/config/Properties.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/config/PropertyPlaceholderConfig.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/BrowseFolderController.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/DashboardController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileDownloadController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/FileUploadController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ImageController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ProcessTransformController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageDAOInterface.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageRepository.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/form/FileUploadForm.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/model/Image.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/validator/FileUploadValidator.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/Unit.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitBody.java" charset="UTF-8" />
@@ -25,14 +29,22 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/SectionHeader.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContent.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/ehcache.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/logback.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/message.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/image.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/processtransform.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/systeminfo.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/404.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/405.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/crossdomain.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/humans.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/canvas-to-blob.min.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/jquery.blueimp-gallery.min.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/load-image.all.min.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/main.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/tmpl.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/robots.txt" charset="UTF-8" />
   </component>
 </project>

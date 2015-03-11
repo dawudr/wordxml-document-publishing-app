@@ -122,14 +122,14 @@
     </td>
     <td class="project-list">
         <div class="form-group-sm">
-            <a href="#/downloadwordhandler/{{transformation.id}}" class="btn btn-white btn-sm" alt="Word file"><i class="fa fa fa-file-word-o"></i> Word</a>
-            <a href="#/downloadxmlhandler/{{transformation.id}}" class="btn btn-white btn-sm" alt="Open XML file"><i class="fa fa-file-code-o"></i> XML</a>
-            <a href="#/downloadpqshandler/{{transformation.id}}" class="btn btn-white btn-sm" alt="IQS XML file"><i class="fa fa fa-file-text-o"></i> PQS</a><br/>
+            <a href="/transformation/xml/{{transformation.id}}/download/" class="btn btn-white btn-sm" alt="Word file"><i class="fa fa fa-file-word-o"></i> Word</a>
+            <a href="/transformation/xml/{{transformation.id}}/download/" class="btn btn-white btn-sm" alt="Open XML file"><i class="fa fa-file-code-o"></i> XML</a>
+            <a href="/transformation/xml/{{transformation.id}}/download/" class="btn btn-white btn-sm" alt="IQS XML file"><i class="fa fa fa-file-text-o"></i> PQS</a><br/>
         </div>
     </td>
     <td class="project-list">
         <div class="form-group-sm">
-        <a href="#/deletehandler/{{transformation.id}}" class="btn btn-danger btn-sm" alt="Word file"><i class="fa fa fa-remove"></i> Delete</a>
+        <a href="/transformation/remove/{{transformation.id}}" class="btn btn-danger btn-sm" alt="Word file"><i class="fa fa fa-remove"></i> Delete</a>
         <a href="#/document/{{transformation.id}}" class="btn btn-primary btn-sm"><i class="fa fa-desktop"></i> View </a>
         </div>
     </td>

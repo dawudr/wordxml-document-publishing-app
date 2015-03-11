@@ -19,16 +19,18 @@
 
 
 <!--
-    <filter>
-        <filter-name>csrfFilter</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <async-supported>true</async-supported>
-    </filter>
-    <filter-mapping>
-        <filter-name>csrfFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+
+        <filter>
+            <filter-name>csrfFilter</filter-name>
+            <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+            <async-supported>true</async-supported>
+        </filter>
+        <filter-mapping>
+            <filter-name>csrfFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
 -->
+
 
 
     <!-- Processes application requests -->
@@ -48,29 +50,44 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-<!--
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>BCAResearchReportsArchive</web-resource-name>
-            <url-pattern>/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>bcarole</role-name>
-        </auth-constraint>
-    </security-constraint>
-
-    <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>BCAResearchReportsArchive - Authorised Users Only</realm-name>
-    </login-config>
--->
-
 
     <!-- Disables Servlet Container welcome file handling. Needed for compatibility with Servlet 3.0 and Tomcat 7.0 -->
     <welcome-file-list>
-        <welcome-file>/static/index.html</welcome-file>
+        <welcome-file>/index.html</welcome-file>
     </welcome-file-list>
 
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.html</location>
+    </error-page>
+    <error-page>
+        <error-code>405</error-code>
+        <location>/405.html</location>
+    </error-page>
 
+
+<!--    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <security-constraint>
+        <display-name>Pearson Education Ltd - WordXML+</display-name>
+        <web-resource-collection>
+            <web-resource-name>BtecWordOpenXMLApp</web-resource-name>
+            <description/>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>wordxml-application</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>WordXML+ Authorised Users Only</realm-name>
+    </login-config>
+    <security-role>
+        <description>Application User</description>
+        <role-name>wordxml-application</role-name>
+    </security-role>-->
 </web-app>

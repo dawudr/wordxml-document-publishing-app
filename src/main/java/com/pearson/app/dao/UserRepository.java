@@ -1,18 +1,16 @@
 package com.pearson.app.dao;
 
+import com.pearson.app.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
 import java.util.List;
-import com.pearson.app.model.User;
 
 
 /**
@@ -107,9 +105,9 @@ public class UserRepository implements UserDAOInterface {
         List<User> users = em.createNamedQuery(User.FIND_BY_USERNAME, User.class)
                 .setParameter("username", username)
                 .getResultList();
-        LOGGER.debug("[{}] users found matching Username[{}]", (users != null) ? users.size() : 0, username);
+        LOGGER.debug("[{}] users found matching Username[{}]", (users != null & users.size() > 0) ? users.size() : 0, username);
 
-        return users.isEmpty();
+        return users.size() == 0;
     }
 
 }

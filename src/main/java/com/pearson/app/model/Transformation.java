@@ -1,9 +1,7 @@
 package com.pearson.app.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 
@@ -13,16 +11,46 @@ import java.util.Date;
  *
  */
 @Entity
-@Table(name = "transformation")
+@Table(name = "transformation", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "id")
+})
+@NamedQueries({
+        @NamedQuery(
+                name = Transformation.FIND_BY_QAN,
+                query = "select t from Transformation t where qanNo = :qanNo"
+        ),
+        @NamedQuery(
+                name = Transformation.LIST_WHERE_GENERAL_STATUS_UNREAD,
+                query = "select t from Transformation t where generalStatus = 'GENERAL_STATUS_UNREAD'"
+        ),
+        @NamedQuery(
+                name = Transformation.FIND_SPECUNIT_BY_ID,
+                query = "select specunit from Transformation t where id = :id"
+        )
+})
 public class Transformation extends AbstractEntity {
 
-    @ManyToOne
+    public static final String FIND_BY_QAN = "transformation.findByQan";
+    public static final String LIST_WHERE_GENERAL_STATUS_UNREAD = "transformation.listWhereGeneralStatusUnread";
+    public static final String FIND_SPECUNIT_BY_ID = "transformation.findSpecunitIdById";
+
+    @OneToOne
+    @JoinColumn(name="user_id")
     private User user;
 
+    @OneToOne
+    @JoinColumn(name="specunit_id")
+/*    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn*/
+    private Specunit specunit;
+
     private Date date;
+    @Column(name = "qanNo", unique = true)
     private String qanNo;
     private String wordfilename;
-    private String openxmlfilename;
+
+
+
     private String iqsxmlfilename;
     private String unitNo;
     private String unitTitle;
@@ -69,7 +97,7 @@ public class Transformation extends AbstractEntity {
 
     // Full
     public Transformation(User user, Date date, String qanNo,
-                          String wordfilename, String openxmlfilename, String iqsxmlfilename,
+                          String wordfilename, Specunit specunit, String iqsxmlfilename,
                           String unitNo, String unitTitle, String author, String templatename,
                           Date lastmodified, String transformStatus, String message, String generalStatus) {
         this.user = user;
@@ -77,7 +105,7 @@ public class Transformation extends AbstractEntity {
         this.qanNo = qanNo;
 
         this.wordfilename = wordfilename;
-        this.openxmlfilename = openxmlfilename;
+        this.specunit = specunit;
         this.iqsxmlfilename = iqsxmlfilename;
 
         this.unitNo = unitNo;
@@ -100,7 +128,7 @@ public class Transformation extends AbstractEntity {
         this.date = date;
         this.qanNo = qanNo;
         this.wordfilename = wordfilename;
-        this.openxmlfilename = null;
+        this.specunit = null;
         this.iqsxmlfilename = null;
         this.unitNo = null;
         this.unitTitle = null;
@@ -152,12 +180,12 @@ public class Transformation extends AbstractEntity {
         this.wordfilename = wordfilename;
     }
 
-    public String getOpenxmlfilename() {
-        return openxmlfilename;
+    public Specunit getSpecunit() {
+        return specunit;
     }
 
-    public void setOpenxmlfilename(String openxmlfilename) {
-        this.openxmlfilename = openxmlfilename;
+    public void setSpecunit(Specunit openxmlfilename) {
+        this.specunit = openxmlfilename;
     }
 
     public String getIqsxmlfilename() {
@@ -231,7 +259,7 @@ public class Transformation extends AbstractEntity {
                 ", date=" + date +
                 ", qanNo='" + qanNo + '\'' +
                 ", wordfilename='" + wordfilename + '\'' +
-                ", openxmlfilename='" + openxmlfilename + '\'' +
+                ", openxmlfilename='" + specunit + '\'' +
                 ", iqsxmlfilename='" + iqsxmlfilename + '\'' +
                 ", unitNo='" + unitNo + '\'' +
                 ", unitTitle='" + unitTitle + '\'' +
@@ -243,4 +271,5 @@ public class Transformation extends AbstractEntity {
                 ", generalStatus=" + generalStatus +
                 '}';
     }
+
 }

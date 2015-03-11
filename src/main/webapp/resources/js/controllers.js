@@ -169,106 +169,58 @@ function MainCtrl() {
         '<p>dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the dustrys</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more',
         'recently with</p>'].join('');
 
-    /**
-     * General variables for Peity Charts
-     * used in many view so this is in Main controller
-     */
-    this.BarChart = {
-        data: [5, 3, 9, 6, 5, 9, 7, 3, 5, 2, 4, 7, 3, 2, 7, 9, 6, 4, 5, 7, 3, 2, 1, 0, 9, 5, 6, 8, 3, 2, 1],
-        options: {
-            fill: ["#1ab394", "#d7d7d7"],
-            width: 100
-        }
-    };
-
-    this.BarChart2 = {
-        data: [5, 3, 9, 6, 5, 9, 7, 3, 5, 2],
-        options: {
-            fill: ["#1ab394", "#d7d7d7"],
-        }
-    };
-
-    this.BarChart3 = {
-        data: [5, 3, 2, -1, -3, -2, 2, 3, 5, 2],
-        options: {
-            fill: ["#1ab394", "#d7d7d7"],
-        }
-    };
-
-    this.LineChart = {
-        data: [5, 9, 7, 3, 5, 2, 5, 3, 9, 6, 5, 9, 4, 7, 3, 2, 9, 8, 7, 4, 5, 1, 2, 9, 5, 4, 7],
-        options: {
-            fill: '#1ab394',
-            stroke: '#169c81',
-            width: 64
-        }
-    };
-
-    this.LineChart2 = {
-        data: [3, 2, 9, 8, 47, 4, 5, 1, 2, 9, 5, 4, 7],
-        options: {
-            fill: '#1ab394',
-            stroke: '#169c81',
-            width: 64
-        }
-    };
-
-    this.LineChart3 = {
-        data: [5, 3, 2, -1, -3, -2, 2, 3, 5, 2],
-        options: {
-            fill: '#1ab394',
-            stroke: '#169c81',
-            width: 64
-        }
-    };
-
-    this.LineChart4 = {
-        data: [5, 3, 9, 6, 5, 9, 7, 3, 5, 2],
-        options: {
-            fill: '#1ab394',
-            stroke: '#169c81',
-            width: 64
-        }
-    };
-
-    this.PieChart = {
-        data: [1, 5],
-        options: {
-            fill: ["#1ab394", "#d7d7d7"]
-        }
-    };
-
-    this.PieChart2 = {
-        data: [226, 360],
-        options: {
-            fill: ["#1ab394", "#d7d7d7"]
-        }
-    };
-    this.PieChart3 = {
-        data: [0.52, 1.561],
-        options: {
-            fill: ["#1ab394", "#d7d7d7"]
-        }
-    };
-    this.PieChart4 = {
-        data: [1, 4],
-        options: {
-            fill: ["#1ab394", "#d7d7d7"]
-        }
-    };
-    this.PieChart5 = {
-        data: [226, 134],
-        options: {
-            fill: ["#1ab394", "#d7d7d7"]
-        }
-    };
-    this.PieChart6 = {
-        data: [0.52, 1.041],
-        options: {
-            fill: ["#1ab394", "#d7d7d7"]
-        }
-    };
 };
+
+
+function HeaderCtrl($scope, $http) {
+    var headerVars = this;
+
+    $http.get('/user').success(function (data) {
+        headerVars.user = data;
+    }).then(function (response) {
+            $scope.vm = {
+                appReady: true
+            }
+        }
+    );
+
+
+
+    /*        function($http) {
+
+            $http.get('/user').success(function (data) {
+                console.log("in");
+                return data;
+            });*/
+
+
+/*        return {
+            promise: promise,
+            setLoggedInUser: function (data) {
+                loggedInUser = data;
+            },
+            getLoggedInUser: function () {
+                return loggedInUser;//.getSomeData();
+            }
+        }*/
+
+
+    $scope.logout = function () {
+        $http({
+            method: 'POST',
+            url: '/logout'
+        })
+        .then(function (response) {
+            if (response.status == 200) {
+                window.location.reload();
+            }
+            else {
+                console.log("Logout failed!");
+            }
+        });
+    }
+};
+
 
 /**
  * modalDemoCtrl - Controller used to run modal view
@@ -393,6 +345,289 @@ function wizardCtrl($scope) {
     };
 }
 
+
+/**
+ * CalendarCtrl - Controller for Calendar
+ * Store data events for calendar
+ */
+function CalendarCtrl($scope) {
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
+    // Events
+    $scope.events = [
+        {title: 'All Day Event',start: new Date(y, m, 1)},
+        {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
+        {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
+        {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
+        {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
+        {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
+    ];
+
+
+    /* message on eventClick */
+    $scope.alertOnEventClick = function( event, allDay, jsEvent, view ){
+        $scope.alertMessage = (event.title + ': Clicked ');
+    };
+    /* message on Drop */
+    $scope.alertOnDrop = function(event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view){
+        $scope.alertMessage = (event.title +': Droped to make dayDelta ' + dayDelta);
+    };
+    /* message on Resize */
+    $scope.alertOnResize = function(event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ){
+        $scope.alertMessage = (event.title +': Resized to make dayDelta ' + minuteDelta);
+    };
+
+    /* config object */
+    $scope.uiConfig = {
+        calendar:{
+            height: 450,
+            editable: true,
+            header: {
+                left: 'prev,next',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            eventClick: $scope.alertOnEventClick,
+            eventDrop: $scope.alertOnDrop,
+            eventResize: $scope.alertOnResize
+        }
+    };
+
+    /* Event sources array */
+    $scope.eventSources = [$scope.events];
+}
+
+/**
+ * chartJsCtrl - Controller for data for ChartJs plugin
+ * used in Chart.js view
+ */
+function chartJsCtrl() {
+
+    /**
+     * Data for Polar chart
+     */
+    this.polarData = [
+        {
+            value: 300,
+            color:"#a3e1d4",
+            highlight: "#1ab394",
+            label: "App"
+        },
+        {
+            value: 140,
+            color: "#dedede",
+            highlight: "#1ab394",
+            label: "Software"
+        },
+        {
+            value: 200,
+            color: "#b5b8cf",
+            highlight: "#1ab394",
+            label: "Laptop"
+        }
+    ];
+
+    /**
+     * Options for Polar chart
+     */
+    this.polarOptions = {
+        scaleShowLabelBackdrop : true,
+        scaleBackdropColor : "rgba(255,255,255,0.75)",
+        scaleBeginAtZero : true,
+        scaleBackdropPaddingY : 1,
+        scaleBackdropPaddingX : 1,
+        scaleShowLine : true,
+        segmentShowStroke : true,
+        segmentStrokeColor : "#fff",
+        segmentStrokeWidth : 2,
+        animationSteps : 100,
+        animationEasing : "easeOutBounce",
+        animateRotate : true,
+        animateScale : false,
+    };
+
+    /**
+     * Data for Doughnut chart
+     */
+    this.doughnutData = [
+        {
+            value: 300,
+            color:"#a3e1d4",
+            highlight: "#1ab394",
+            label: "App"
+        },
+        {
+            value: 50,
+            color: "#dedede",
+            highlight: "#1ab394",
+            label: "Software"
+        },
+        {
+            value: 100,
+            color: "#b5b8cf",
+            highlight: "#1ab394",
+            label: "Laptop"
+        }
+    ];
+
+    /**
+     * Options for Doughnut chart
+     */
+    this.doughnutOptions = {
+        segmentShowStroke : true,
+        segmentStrokeColor : "#fff",
+        segmentStrokeWidth : 2,
+        percentageInnerCutout : 45, // This is 0 for Pie charts
+        animationSteps : 100,
+        animationEasing : "easeOutBounce",
+        animateRotate : true,
+        animateScale : false,
+    };
+
+    /**
+     * Data for Line chart
+     */
+    this.lineData = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "Example dataset",
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [65, 59, 80, 81, 56, 55, 40]
+            },
+            {
+                label: "Example dataset",
+                fillColor: "rgba(26,179,148,0.5)",
+                strokeColor: "rgba(26,179,148,0.7)",
+                pointColor: "rgba(26,179,148,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(26,179,148,1)",
+                data: [28, 48, 40, 19, 86, 27, 90]
+            }
+        ]
+    };
+
+    /**
+     * Options for Line chart
+     */
+    this.lineOptions = {
+        scaleShowGridLines : true,
+        scaleGridLineColor : "rgba(0,0,0,.05)",
+        scaleGridLineWidth : 1,
+        bezierCurve : true,
+        bezierCurveTension : 0.4,
+        pointDot : true,
+        pointDotRadius : 4,
+        pointDotStrokeWidth : 1,
+        pointHitDetectionRadius : 20,
+        datasetStroke : true,
+        datasetStrokeWidth : 2,
+        datasetFill : true,
+    };
+
+    /**
+     * Options for Bar chart
+     */
+    this.barOptions = {
+        scaleBeginAtZero : true,
+        scaleShowGridLines : true,
+        scaleGridLineColor : "rgba(0,0,0,.05)",
+        scaleGridLineWidth : 1,
+        barShowStroke : true,
+        barStrokeWidth : 2,
+        barValueSpacing : 5,
+        barDatasetSpacing : 1,
+    };
+
+    /**
+     * Data for Bar chart
+     */
+    this.barData = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.5)",
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data: [65, 59, 80, 81, 56, 55, 40]
+            },
+            {
+                label: "My Second dataset",
+                fillColor: "rgba(26,179,148,0.5)",
+                strokeColor: "rgba(26,179,148,0.8)",
+                highlightFill: "rgba(26,179,148,0.75)",
+                highlightStroke: "rgba(26,179,148,1)",
+                data: [28, 48, 40, 19, 86, 27, 90]
+            }
+        ]
+    };
+
+    /**
+     * Data for Radar chart
+     */
+    this.radarData = {
+        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [65, 59, 90, 81, 56, 55, 40]
+            },
+            {
+                label: "My Second dataset",
+                fillColor: "rgba(26,179,148,0.2)",
+                strokeColor: "rgba(26,179,148,1)",
+                pointColor: "rgba(26,179,148,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [28, 48, 40, 19, 96, 27, 100]
+            }
+        ]
+    };
+
+    /**
+     * Options for Radar chart
+     */
+    this.radarOptions = {
+        scaleShowLine : true,
+        angleShowLineOut : true,
+        scaleShowLabels : false,
+        scaleBeginAtZero : true,
+        angleLineColor : "rgba(0,0,0,.1)",
+        angleLineWidth : 1,
+        pointLabelFontFamily : "'Arial'",
+        pointLabelFontStyle : "normal",
+        pointLabelFontSize : 10,
+        pointLabelFontColor : "#666",
+        pointDot : true,
+        pointDotRadius : 3,
+        pointDotStrokeWidth : 1,
+        pointHitDetectionRadius : 20,
+        datasetStroke : true,
+        datasetStrokeWidth : 2,
+        datasetFill : true,
+    };
+
+
+};
 
 
 /**
@@ -526,6 +761,7 @@ function ngGridCtrl($scope) {
 angular
     .module('inspinia')
     .controller('MainCtrl', MainCtrl)
+    .controller('HeaderCtrl', HeaderCtrl)
     //.controller('dashboardFlotOne', dashboardFlotOne)
     //.controller('dashboardFlotTwo', dashboardFlotTwo)
     //.controller('dashboardMap', dashboardMap)

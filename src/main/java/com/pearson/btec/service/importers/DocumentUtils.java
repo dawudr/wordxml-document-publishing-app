@@ -1,11 +1,11 @@
 package com.pearson.btec.service.importers;
 
 import com.pearson.btec.model.*;
-import net.sf.saxon.s9api.SaxonApiException;
 import org.docx4j.wml.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBElement;
-import java.io.IOException;
 import java.util.*;
 
 
@@ -14,12 +14,14 @@ import java.util.*;
  *
  */
 public class DocumentUtils {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DocumentUtilHelper.class);
 
     /**
      * Traverse Body. This is the starting point switch at level one before calling recursive methods to dig deeper
      * @param body
      */
     public Unit traverseDocumentBody(Body body) {
+
 
         Unit unitModel = new Unit();
 
@@ -38,6 +40,7 @@ public class DocumentUtils {
                 P pBlock = (P) bodyObject;
                 Map headingMap = SectionHeader.getDocumentPBlockHeadingTags(pBlock);
                 //System.out.println("\r\nFirst HEADINGMAP: " + headingMap);
+                LOGGER.debug("First HEADINGMAP[{}] ", headingMap);
 
                 if(headingMap == null) {
                     if (headingText == null) {
@@ -47,7 +50,8 @@ public class DocumentUtils {
                 } else {
                     if(!headingMap.isEmpty() && headingMap.containsKey(DocumentUtilHelper.XML_SECTION_TITLE)) {
                         headingText = (String) headingMap.get(DocumentUtilHelper.XML_SECTION_TITLE);
-                        System.out.println("\r\nFirst HEADING: " + headingText);
+                        LOGGER.debug("First HEADING[{}] ", headingText);
+                        //System.out.println("\r\nFirst HEADING: " + headingText);
                     }
                 }
             }
@@ -80,7 +84,8 @@ public class DocumentUtils {
 
                 if (newHeadingText != null && !newHeadingText.equals(headingText)) { //do we need 2nd check?
                     headingText = newHeadingText;
-                    System.out.println("\r\nHEADING: " + headingText);
+                    LOGGER.debug("AFTER FIRST HEADING: [{}]", headingText);
+                    //System.out.println("\r\nHEADING: " + headingText);
                     // Initialise a new Section with header after closing up and adding prev section
                     if(unitSection !=null) {
                         unitSection.setContentData(contentDataList);
@@ -99,7 +104,8 @@ public class DocumentUtils {
 
                             if (((JAXBElement) pObject).getValue() instanceof SdtRun) {
 
-                                System.out.println("--------------> SDTRUN");
+                                LOGGER.debug("SDTRUN...........................................");
+                                //System.out.println("--------------> SDTRUN");
                                 HashMap dataMap = DocumentUtils.traverseDocumentJAXBElementSdtBlock((JAXBElement) pObject);
                                 contentDataList.add(dataMap);
                             }
@@ -107,13 +113,16 @@ public class DocumentUtils {
                     }
                 }
             } else if (bodyObject instanceof JAXBElement) {
-                System.out.println("--------------> JAXBELEMENT");
+                LOGGER.debug("JAXBELEMENT...........................................");
+                //System.out.println("--------------> JAXBELEMENT");
 
                 //TODO: Check for Tables only
                 //TODO: Old code with uses Docx4J library to get tables data.
                 // Search for tables
                 List dataList = DocumentUtils.traverseDocumentJAXBElementTable(bodyObject);
+                LOGGER.debug("UnitTable Start - Creating new UnitTable object......");
                 UnitTable unitTable = new UnitTable(dataList);
+                LOGGER.debug("UnitTable Finish - Adding UnitTable to contentDataList unitTable[{}]", unitTable);
                 contentDataList.add(unitTable);
 
                 //TODO: Fix by switching over to the XQuery when testing and parsing output to DOM Element in toXML() is done.
@@ -167,11 +176,13 @@ public class DocumentUtils {
 */
 
             } else if (bodyObject instanceof SdtBlock) {
+                LOGGER.debug("SDTBLOCK...........................................");
 
-                System.out.println("--------------> SDTBLOCK");
+                //System.out.println("--------------> SDTBLOCK");
                 HashMap dataMap = DocumentUtils.traverseSectionBlocks((SdtBlock) bodyObject);
                 dataMap.put(DocumentUtilHelper.XML_TAG_VALUE_ENCODING, "html");
-                System.out.println("Paragraph SdtBlock = " + dataMap);
+                LOGGER.debug("Paragraph SdtBlock [{}]", dataMap);
+                //System.out.println("Paragraph SdtBlock = " + dataMap);
                 contentDataList.add(dataMap);
 
             }
@@ -222,10 +233,12 @@ public class DocumentUtils {
 
         if(((JAXBElement) jaxbElementSdtContent).getValue() instanceof Tbl) {
             Tbl tbl = (Tbl) ((JAXBElement) jaxbElementSdtContent).getValue();
+
             tableDataList = TableContent.getTableData(tbl);
             //String xml = org.docx4j.XmlUtils.marshaltoString(tbl, true);
             //System.out.println("TABLE tbl=" + xml);
         }
+        LOGGER.debug("Returning List of rows as tableDataList[{}]", tableDataList);
         return tableDataList;
     }
 
@@ -253,7 +266,8 @@ public class DocumentUtils {
     public static HashMap traverseDocumentJAXBElementSdtBlock(JAXBElement jaxbElementSdtContent) {
         SdtRun sdtRun = (SdtRun) ((JAXBElement) jaxbElementSdtContent).getValue();
         HashMap map = traverseSectionBlocks(sdtRun);
-        System.out.println("Paragraph SdtRun = " + map );
+        LOGGER.debug("Paragraph SdtRun [{}]", map);
+        //System.out.println("Paragraph SdtRun = " + map );
         return map;
     }
 
@@ -276,6 +290,8 @@ public class DocumentUtils {
             String xmlTagKey = xmlTag.getVal();
 
             //System.out.println("\r\nSDTRUN:xmlTagKey[" + xmlTagKey + "]");
+            LOGGER.debug("SDTRUN:xmlTagKey [{}]", xmlTagKey);
+
             map.put(DocumentUtilHelper.XML_TAG, xmlTagKey);
 
             // Get content
@@ -321,6 +337,8 @@ public class DocumentUtils {
             }
             // Finally concatenate all text
             //System.out.println("SDTRUN:xmlTagValue[" + sbTagValue.toString() + "]");
+            LOGGER.debug("SDTRUN:xmlTagValue [{}]", sbTagValue.toString());
+
             //section.setAliasValue(sbTagValue.toString());
             map.put(DocumentUtilHelper.XML_TAG_VALUE, sbTagValue.toString());
         }
@@ -374,11 +392,14 @@ public class DocumentUtils {
 
         String xmlTagKey = DocumentUtilHelper.findTagFromSdtBoth(sdtBlock);
         //System.out.println("** SDTBLOCK ** [" + xmlTagKey + "]");
+        LOGGER.debug("SDTBLOCK:xmlTagKey [{}]", xmlTagKey);
+
         map.put(DocumentUtilHelper.XML_TAG, xmlTagKey);
 
 
         // Print out text
         String xmlTagValue = DocumentUtilHelper.findTextFromSdtBoth(sdtBlock);
+        LOGGER.debug("SDTBLOCK:xmlTagValue [{}]", xmlTagValue);
         //System.out.println("** SDTBLOCK ** [" + xmlTagValue + "]");
         map.put(DocumentUtilHelper.XML_TAG_VALUE, xmlTagValue);
 

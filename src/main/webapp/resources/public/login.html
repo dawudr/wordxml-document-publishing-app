@@ -8,23 +8,26 @@
 
     <title>Pearson Qualification Tool | Login</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../fonts/font-awesome.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/fonts/font-awesome.css" rel="stylesheet">
 
-    <link href="../css/animate.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
 </head>
 
-<body class="gray-bg" id="loginApp">
+<body class="gray-bg" ng-app="loginApp">
 
 <main ng-controller="BaseFormCtrl">
+<div class="please-wait-dialog" ng-hide="vm.appReady">
+    <img class="please-wait-spinner" src="/img/loading.gif">
+</div>
 
 
 <div class="middle-box text-center loginscreen  animated fadeInDown">
     <div>
         <header>
-            <img alt="image" class="img-circle" src="../img/logo.png"/>
+            <img alt="image" class="img-rounded" src="../img/logo.png"/>
         </header>
 
         <h3>Welcome to WordXML+</h3>
@@ -57,9 +60,9 @@
                 </div>
 
             </fieldset>
-            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+            <button type="submit" ng-click="vm.appReady=false" class="btn btn-primary block full-width m-b">Login</button>
 
-            <a class="text-muted text-center" href="new-user.html">Do not have an account?</a>
+            <a class="text-center" href="new-user.html"><strong>Do not have an account?</strong></a>
         </form>
         <p class="m-t"> <small>&copy; Pearson Education Limited 2015</small> </p>
     </div>
@@ -73,15 +76,15 @@
         src="/static/bower_components/requirejs/require.js"></script>
 -->
 
+<script src="/js/jquery/jquery-2.1.3.min.js"></script>
+<script src="/js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="/bower_components/angular-messages/angular-messages.js"></script>
+<script type="text/javascript" src="/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
+<script type="text/javascript" src="/bower_components/lodash/dist/lodash.js"></script>
+<script type="text/javascript" src="/public/js/editable-table-widgets.js"></script>
+<script type="text/javascript" src="/public/js/common.js"></script>
+<script type="text/javascript" src="/public/js/login.js"></script>
 
-<script type="text/javascript" src="/static/bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="/static/bower_components/angular-messages/angular-messages.js"></script>
-<script type="text/javascript" src="/static/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
-<script type="text/javascript" src="/static/bower_components/lodash/dist/lodash.js"></script>
-<script type="text/javascript" src="/static/public/js/editable-table-widgets.js"></script>
-<script type="text/javascript" src="/static/public/js/common.js"></script>
-<script type="text/javascript" src="/static/public/js/login.js"></script>
-<script src="/static/js/jquery-2.1.1.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -39,7 +39,8 @@ public class UnitTable {
     @Override
     public String toString() {
         return "UnitTable{" +
-                "rows=" + rows +
+                "rows=" + rows.toString() +
+                ", tableStr='" + tableStr + '\'' +
                 '}';
     }
 }

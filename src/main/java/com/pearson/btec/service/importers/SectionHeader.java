@@ -1,6 +1,8 @@
 package com.pearson.btec.service.importers;
 
 import org.docx4j.wml.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBElement;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class SectionHeader {
     public static final String TEMPLATE_HEAD_STYLE_UNITAHEAD = "UnitAhead";
     public static final String TEMPLATE_HEAD_STYLE_UNITBHEAD = "UnitBhead";
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(SectionHeader.class);
 
     /**
      * Traverse content from Paragraphs
@@ -127,7 +130,8 @@ public class SectionHeader {
 
                         if(sbTagValue.length() > 0) {
                             map.put(DocumentUtilHelper.XML_TAG_VALUE, sbTagValue.toString());
-                            System.out.println("HeaderProperties:" + map);
+                            LOGGER.debug("HeaderProperties [{}]", map );
+                            //System.out.println("HeaderProperties:" + map);
                         }
 
                     }

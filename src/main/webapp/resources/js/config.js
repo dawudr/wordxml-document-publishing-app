@@ -24,8 +24,8 @@ function config($stateProvider, $urlRouterProvider) {
         })
         .state('wizards', {
             url: "/wizards",
-            templateUrl: "views/form_wizard_single.html",
-            controller: 'DocumentTransformSingleCtrl',
+            templateUrl: "/processtransform/start",
+            controller: 'DocumentTransformsCtrl',
             //controller: wizardCtrl,
             data: { pageTitle: 'Wizards' }
         })
@@ -44,12 +44,12 @@ function config($stateProvider, $urlRouterProvider) {
                 }
             }
         })*/
-/*        .state('wizard', {
+        .state('wizard', {
             url: "/wizard",
             templateUrl: "views/form_wizard_single.html",
             controller: wizardCtrl,
             data: { pageTitle: 'Wizard form' }
-        })*/
+        })
         .state('wizard.step_one', {
             url: '/step_one',
             templateUrl: 'views/wizard/step_one.html',
@@ -92,13 +92,7 @@ function config($stateProvider, $urlRouterProvider) {
             controller: 'UserManageCtrl',
             templateUrl: "views/user_management.html",
             data: { pageTitle: 'User Management' }
-        })
-        .state('testpage', {
-        url: "/test",
-        controller: 'TestCtrl',
-        templateUrl: "views/test_page.html",
-        data: { pageTitle: 'Test Page' }
-    });
+        });
 }
 angular
     .module('inspinia')

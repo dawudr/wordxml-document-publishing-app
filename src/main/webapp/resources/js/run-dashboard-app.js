@@ -14,7 +14,6 @@ require.config({
         datetimepicker: './datetimepicker/jquery.datetimepicker',
         editableTableWidgets: '../public/js/editable-table-widgets',
         frontendServices: 'frontend-services',
-        dashboardApp: "run-app"
     },
     shim: {
         jQuery: {

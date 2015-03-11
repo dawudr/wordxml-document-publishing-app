@@ -67,8 +67,9 @@
 								</assessmentmethod>
 								
 								<xsl:variable name="var_criteriacoveredlist" select="tokenize(./row[1]/cell/learningobjective,', | and')"/>
-								
-								
+								<xsl:variable name="var_criteriacoveredlist" select="tokenize(./row[1]/cell/learningobjectiveref,', | and')"/>
+
+
 								<xsl:for-each select="$var_criteriacoveredlist">
 											
 									<xsl:choose>

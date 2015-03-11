@@ -1,13 +1,15 @@
 package com.pearson.btec.service.exporters;
 
-import org.jdom2.CDATA;
-import org.jdom2.Element;
-import com.pearson.btec.service.importers.DocumentUtilHelper;
 import com.pearson.btec.model.Unit;
 import com.pearson.btec.model.UnitSection;
 import com.pearson.btec.model.UnitTable;
+import com.pearson.btec.service.importers.DocumentUtilHelper;
+import org.jdom2.CDATA;
+import org.jdom2.Element;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by dawud on 09/11/2014.

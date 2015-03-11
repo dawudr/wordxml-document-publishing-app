@@ -39,7 +39,7 @@ public class UnitSection {
     public String toString() {
         return "UnitSection{" +
                 "heading='" + heading + '\'' +
-                ", contentData=" + contentData +
+                ", contentData=" + contentData.toString() +
                 '}';
     }
 }

@@ -26,11 +26,14 @@
 
     <dependencies>
         <!-- Spring -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -115,15 +118,13 @@
         </dependency>
 
   -->
-<!--
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>${org.slf4j-version}</version>
             <scope>runtime</scope>
         </dependency>
--->
-
 
         <dependency>
             <groupId>log4j</groupId>
@@ -133,11 +134,14 @@
         </dependency>
 
 
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.1.2</version>
         </dependency>
+
+
 
         <!-- Hibernate -->
         <dependency>
@@ -152,6 +156,7 @@
             <version>${hibernate.version}</version>
         </dependency>
 
+
         <!-- MySql -->
         <dependency>
             <groupId>mysql</groupId>
@@ -162,27 +167,77 @@
 
 
         <!-- Jackson JSON Processor -->
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-version}</version>
         </dependency>
 
+
+<!--
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+-->
+<!--
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+-->
+
+
+        <!-- Json-lib -->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.ezmorph</groupId>
+            <artifactId>ezmorph</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>xom</groupId>
+            <artifactId>xom</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+
+
         <!-- Junit -->
 
         <!-- test dependencies -->
+<!--
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <version>0.8.1</version>
             <scope>test</scope>
         </dependency>
+-->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
         </dependency>
+
+<!--
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.5</version>
+        </dependency>
+-->
+
 
         <dependency>
             <groupId>junit</groupId>
@@ -210,22 +265,26 @@
         </dependency>
    -->
 
-<!--
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
         </dependency>
--->
 
-<!--
+
+
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.1.1</version>
         </dependency>
--->
 
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
 
 
         <dependency>
@@ -235,13 +294,22 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+
         <!-- Servlet -->
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
+
 
 <!--
         <dependency>
@@ -257,11 +325,13 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
         </dependency>
+
 
 
         <dependency>
@@ -299,20 +369,12 @@
             <version>9.6.0-3</version>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
             <version>9.6.0-3</version>
             <classifier>xqj</classifier>
-        </dependency>
-
-<!--
-        <dependency>
-            <groupId>org.cloudfoundry</groupId>
-            <artifactId>cloudfoundry-client-lib</artifactId>
-            <version>1.0.2</version>
-        </dependency>
--->
+        </dependency>-->
 
     </dependencies>
 

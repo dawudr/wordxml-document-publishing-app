@@ -1,9 +1,11 @@
 package com.pearson.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+import org.hibernate.annotations.Parameter;
 
 /**
  *
@@ -13,7 +15,9 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "user")
+@Table(name = "user", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "id")
+})
 @NamedQueries({
         @NamedQuery(
                 name = User.FIND_BY_USERNAME,
@@ -29,12 +33,21 @@ public class User extends AbstractEntity {
     public static final String ROLE_AUTHOR = "ROLE_AUTHOR";
     public static final String ROLE_VIEWER = "ROLE_VIEWER";
 
+
+/*    @Id
+    @Column(name="id", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;*/
     private String username;
     private String passwordDigest;
     private String email;
     private String firstname;
     private String lastname;
     private String role;
+
+    @OneToOne(mappedBy="user")
+    private Transformation transformation;
+
 
     public User() {
 
@@ -48,6 +61,14 @@ public class User extends AbstractEntity {
         this.lastname = lastname;
         this.role = role;
     }
+
+/*    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }*/
 
     public String getUsername() {
         return username;
@@ -97,9 +118,18 @@ public class User extends AbstractEntity {
         this.role = role;
     }
 
+    public Transformation getTransformation() {
+        return transformation;
+    }
+
+    public void setTransformation(Transformation transformation) {
+        this.transformation = transformation;
+    }
+
     @Override
     public String toString() {
-        return "User{username='" + username + '\'' +
+        return "User{id=" + getId() + '\'' +
+                "username='" + username + '\'' +
                 ", passwordDigest='" + passwordDigest + '\'' +
                 ", email='" + email + '\'' +
                 ", firstname='" + firstname + '\'' +

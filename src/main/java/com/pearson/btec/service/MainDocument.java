@@ -1,15 +1,16 @@
 package com.pearson.btec.service;
 
+import com.pearson.btec.model.Unit;
+import com.pearson.btec.service.exporters.Unit2xml;
+import com.pearson.btec.service.importers.DocumentUtils;
 import org.docx4j.XmlUtils;
 import org.docx4j.jaxb.Context;
 import org.docx4j.openpackaging.exceptions.Docx4JException;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.docx4j.wml.Body;
-import com.pearson.btec.service.exporters.Unit2xml;
-import com.pearson.btec.service.importers.DocumentUtils;
-import com.pearson.btec.model.Unit;
 import org.jdom2.Element;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.List;
  * MainDocument
  */
 public class MainDocument {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(MainDocument.class);
 
     public static void main(String[] args) {
         //String inputfilepath = System.getProperty("user.dir") + "/btecdocs/Unit_18short.docx";
@@ -93,7 +95,7 @@ public class MainDocument {
             // Finally, the custom properties
             org.docx4j.openpackaging.parts.DocPropsCustomPart docPropsCustomPart = wordMLPackage.getDocPropsCustomPart();
             if(docPropsCustomPart==null){
-                System.out.println("No DocPropsCustomPart");
+                //System.out.println("No DocPropsCustomPart");
             } else {
                 org.docx4j.docProps.custom.Properties customProps = (org.docx4j.docProps.custom.Properties)docPropsCustomPart.getJaxbElement();
 
@@ -146,6 +148,8 @@ public class MainDocument {
             unit = documentUtils.traverseDocumentBody(body);
             unit.setUnitMetaData(docPropMap);
 
+            //LOGGER.debug("Unit Object [{}]", unit.toString());
+
 
 //        } catch (JAXBException e) {
 //            e.printStackTrace();
@@ -171,6 +175,7 @@ public class MainDocument {
             Unit2xml unit2xml = new Unit2xml(this.unit);
             return unit2xml.toString();
         } else {
+            LOGGER.error("In exportUnitAsXMLString() - Word Document is empty");
             return "Word Document is empty";
         }
     }

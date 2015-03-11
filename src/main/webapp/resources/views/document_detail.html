@@ -24,26 +24,44 @@
         <div class="m-b-md">
             <a href="" class="btn btn-white btn-xs pull-right">Edit project</a>
 
-            <h2>Transformation Workflow</h2>
+            <h2>Transformation Results</h2>
         </div>
         <dl class="dl-horizontal">
-            <dt>Status:</dt>
-            <dd><span class="label label-primary">Complete</span></dd>
+            <dt>Transform Status:</dt>
+            <dd>
+             <span ng-class="{
+                    'TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS' : 'label label-primary',
+                   'TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS' : 'label label-primary',
+                   'TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS' : 'label label-primary',
+                   'TRANSFORM_STATUS_SUCCESS' : 'label label-primary',
+                   'TRANSFORM_STATUS_SUCCESS2' : 'label label-primary',
+                   'TRANSFORM_STATUS_FAIL' : 'label label-danger',
+                   'TRANSFORM_STATUS_FAIL_VALIDATE_WORD' : 'label label-danger',
+                   'TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML' : 'label label-danger',
+                   'TRANSFORM_STATUS_FAIL_TRANSFORM' : 'label label-danger',
+                   'TRANSFORM_STATUS_FAIL_TRANSFORM_XML_TO_IQSXML_XSLT' : 'label label-danger',
+                   'TRANSFORM_STATUS_XML_TO_IQSXML_XQUERY' : 'label label-danger',
+                   'TRANSFORM_STATUS_FAIL_IQS_VALIDATION' : 'label label-danger',
+                   'TRANSFORM_STATUS_FAIL_FILE_WRITE' : 'label label-danger'
+               }[transformation.transformStatus]">{{transformation.transformStatus | transformStatus}}
+            </span>
+            </dd>
+            <dt>Messages:</dt>
+            <dd> {{transformation.message}}</dd>
         </dl>
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-12">
         <dl class="dl-horizontal">
-
+            <dt>Document Status:</dt>
+            <dd><span class="label label-default">{{transformation.generalStatus | generalStatus}}</span></dd>
             <dt>Created by:</dt>
-            <dd> {{transformation.user.firstname}} {{transformation.user.lastname}}</dd>
+            <dd><strong> {{transformation.user.username}} </strong> - {{transformation.user.firstname}} {{transformation.user.lastname}}</dd>
             <dt>Created:</dt>
             <dd> {{transformation.date}}</dd>
             <dt>Last Updated:</dt>
-            <dd> {{transformation.lastModified}}</dd>
-            <dt>Messages:</dt>
-            <dd> {{transformation.message}}</dd>
+            <dd> {{transformation.lastmodified}}</dd>
             <dt>Template name:</dt>
             <dd><a href="" class="text-navy"> {{transformation.templatename}}</a></dd>
             <dt>Qan No:</dt>
@@ -57,19 +75,7 @@
         </dl>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12">
-        <dl class="dl-horizontal">
-            <dt>Completed:</dt>
-            <dd>
-                <div class="progress progress-striped active m-b-sm">
-                    <div style="width: 100%;" class="progress-bar"></div>
-                </div>
-                <small>Transformation completed in <strong>100%</strong>. Remaining close the project, sign a contract and invoice.</small>
-            </dd>
-        </dl>
-    </div>
-</div>
+
 
 <div class="row">
     <div class="col-lg-12">
@@ -78,8 +84,7 @@
             <dd>
                 <ul class="list-unstyled project-files">
                     <li><a href="{{transformation.wordfilename}}" class="text-navy"><i class="fa fa-file-word-o"></i> {{transformation.wordfilename}}</a></li>
-                    <li><a href="{{transformation.openxmlfilename}}" class="text-navy"><i class="fa fa-file-code-o"></i> {{transformation.openxmlfilename}}</a></li>
-                    <li><a href="{{transformation.iqsxmlfilename}}" class="text-navy"><i class="fa fa-file-text-o"></i> {{transformation.iqsxmlfilename}}</a></li>
+                    <li><a target="_self" href="/tranformation/xml/{{transformation.id}}/download" class="text-navy"><i class="fa fa fa-file-text-o"></i>{{transformation.iqsfilename}}</a></li>
                 </ul>
             </dd>
         </dl>
@@ -97,73 +102,40 @@
             <thead>
             <tr>
                 <th>Status</th>
-                <th>Title</th>
-                <th>Start Time</th>
-                <th>End Time</th>
+                <th>Date</th>
+                <th>Transform result</th>
                 <th>Comments</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span class="label label-primary"><i class="fa fa-check"></i> Created</span>
+                    <i alt="{{transformation.generalStatus}}"
+                       class="fa fa-2x" ng-class="{
+                   'GENERAL_STATUS_UNREAD' : 'fa-envelope',
+                   'GENERAL_STATUS_READ' : 'fa-envelope-o',
+                   'GENERAL_STATUS_MODIFIED' : 'fa-pencil-square-o',
+                   'GENERAL_STATUS_DELETED' : 'fa-trash-o'
+                   }[transformation.generalStatus]">
+                    </i>
+                    <br/>
+                    <!--http://stackoverflow.com/questions/24200729/ng-if-not-equal-to-->
+                     <small ng-cloak> {{transformation.generalStatus | generalStatus}} </small>
                 </td>
                 <td>
-                    Create project in webapp
+                    {{transformation.date}}
                 </td>
                 <td>
-                    12.07.2014 10:10:1
-                </td>
-                <td>
-                    14.07.2014 10:16:36
-                </td>
-                <td>
-                    <p class="small">
-                        Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
-                    </p>
-                </td>
-
-            </tr>
-            <tr>
-                <td>
-                    <span class="label label-primary"><i class="fa fa-check"></i> Modified</span>
-                </td>
-                <td>
-                    Various versions
-                </td>
-                <td>
-                    12.07.2014 10:10:1
-                </td>
-                <td>
-                    14.07.2014 10:16:36
+                    {{transformation.transformStatus | transformStatus}}
                 </td>
                 <td>
                     <p class="small">
-                        Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                        {{transformation.message}}
                     </p>
                 </td>
 
             </tr>
 
-            <tr>
-                <td>
-                    <span class="label label-primary"><i class="fa fa-check"></i> Downloaded</span>
-                </td>
-                <td>
-                    Latin words
-                </td>
-                <td>
-                    12.07.2014 10:10:1
-                </td>
-                <td>
-                    14.07.2014 10:16:36
-                </td>
-                <td>
-                    <p class="small">
-                        Latin words, combined with a handful of model sentence structures
-                    </p>
-                </td>
-            </tr>
             </tbody>
         </table>
     </tab>
@@ -181,12 +153,6 @@
 
 
 
-
-
-
-
-
-
 </div>
 </div>
 
@@ -194,7 +160,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Edit by click and save as a html</h5>
+                    <h5>Word XML View - Edit and Save</h5>
                     <button id="edit" class="btn btn-primary btn-xs m-l-sm" onclick="edit()" type="button">Edit</button>
                     <button id="save" class="btn btn-primary  btn-xs" onclick="save()" type="button">Save</button>
                     <div class="ibox-tools">
@@ -212,16 +178,23 @@
                 </div>
                 <div class="ibox-content no-padding">
 
-                    <div class="click2edit wrapper p-md">
-                        <h3>Manufacturing Secondary Machining Processes</h3>
-                        Many of the products and components we use daily would not be available without secondary machining processes. The use of these processes to manufacture a product or component is sometimes easy to spot, like a machine bearing or the nut holding in place a brake shoe on a bicycle. For other products or components, like curtains, it is less easy to spot. This is because you need to first think about how the curtains have been manufactured. Hence, the curtains are manufactured using machines containing components that have been subjected to secondary machining processes.</p><p>As a future engineer you will need to understand and acquire practical skills in a range of machining processes. The knowledge and practical skills are required to enable engineers to design feasible solutions to engineering problems. For example, a feasible solution is one that can be manufactured using secondary machining processes. This unit will prepare learners well for a mechanical or manufacturing engineering apprenticeship or degree course and for technician level role as a machine setter and setter-operators.</p><p>In this unit you will cover the technology and characteristics of a range of traditional, such as turning, and specialist, such as broaching, machining processes. You will develop health and safety skills required to work on secondary machining processes and gain practical skills and understanding to set-up and operate traditional secondary machining processes to manufacture a component. Finally learners will reflect on their skills and understanding applied to and behaviours whilst manufacturing a prototype component.                       <br/>
-                        <br/>
-                        <ul>
-                            <li>Remaining essentially unchanged</li>
-                            <li>Make a type specimen book</li>
-                            <li>Unknown printer</li>
-                        </ul>
+                <div class="row" ng-repeat="section in specunit.section">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                {{section.data('title')}}
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="click2edit wrapper p-md">
+                                    {{section.table}}
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+                </div>
+
 
                 </div>
             </div>

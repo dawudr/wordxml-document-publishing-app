@@ -6,7 +6,7 @@ angular.module('editableTableWidgets', [])
             link: function(scope, element, attrs) {
                 scope.extraStyles = attrs.extraStyles;
             },
-            templateUrl: '/static/public/partials/error-messages.html'
+            templateUrl: '/public/partials/error-messages.html'
         }
     })
     .directive('ttDatePicker', ['$timeout', function($timeout) {

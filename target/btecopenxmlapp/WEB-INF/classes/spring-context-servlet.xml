@@ -1,10 +1,10 @@
 <?xml  version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
 	   xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="
+	   xsi:schemaLocation="
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/mvc
@@ -18,22 +18,25 @@
 	so that Spring container can detect and register your beans or components.
 	Actually, Spring is able to auto scan, detect and instantiate your beans from
 	pre-defined project package, no more tedious beans declaration in in XML file. -->
-    <context:component-scan base-package="com.pearson.app.controllers" />
+	<context:component-scan base-package="com.pearson.app.controllers" />
+	<context:component-scan base-package="com.pearson.config.root" />
 
-	<!-- /static/** any file will be served as static content from /WEB-INF folder-->
-	<mvc:resources mapping="/static/**" location="/resources/"/>
+	<!-- /** any file will be served as static content from /resources folder-->
+	<mvc:resources mapping="/**" location="/resources/"/>
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 
 	<!-- Configure the multipart resolver -->
-<!--	<bean id="multipartResolver"
+
+	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="15000000" />
 	</bean>
-	-->
-	 <!-- Register the Customer.properties -->
+
+
+	<!-- Register the Customer.properties -->
 	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
+		  class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="message" />
 	</bean>
 
@@ -46,7 +49,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath*:/local.properties</value>
-				<value>classpath*:/${ENV_NAME}.properties</value>
+				<!--<value>classpath*:/${ENV_NAME}.properties</value>-->
 			</list>
 		</property>
 	</bean>
@@ -57,12 +60,12 @@
 		<property name="url" value="${jdbc.url}"/>
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-<!--
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/pearsonbtecquals" />
-		<property name="username" value="root" />
-		<property name="password" value="password" />
--->
+		<!--
+                <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/pearsonbtecquals" />
+                <property name="username" value="root" />
+                <property name="password" value="password" />
+        -->
 	</bean>
 
 
@@ -71,16 +74,18 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
+				<value>com.pearson.app.model.Specunit</value>
 				<value>com.pearson.app.model.User</value>
 				<value>com.pearson.app.model.Transformation</value>
 				<value>com.pearson.app.model.Template</value>
+				<value>com.pearson.app.model.Image</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.use_sql_comments">true</prop>
 				<prop key="hibernate.cache.use_second_level_cache">true</prop>
@@ -89,20 +94,25 @@
 		</property>
 	</bean>
 
+
 	<!-- Register the User Management services or register using @Component annotation -->
 	<bean id="userRepository" class="com.pearson.app.dao.UserRepository"/>
 	<bean id="userService" class="com.pearson.app.services.UserService"/>
 
 	<bean id="transformationRepository" class="com.pearson.app.dao.TransformationRepository"/>
 	<bean id="transformationService" class="com.pearson.app.services.TransformationService"/>
-<!--
-		<constructor-arg name="user" ref="user"/>
 
-	</bean>-->
+	<bean id="templateRepository" class="com.pearson.app.dao.TemplateRepository"/>
+	<bean id="templateService" class="com.pearson.app.services.TemplateService"/>
 
-<!--
-	<bean id="user" class="com.pearson.app.model.User"/>
--->
+	<bean id="imageRepository" class="com.pearson.app.dao.ImageRepository"/>
+	<bean id="imageService" class="com.pearson.app.services.ImageService"/>
+
+	<bean id="specUnitRepository" class="com.pearson.app.dao.SpecUnitRepository"/>
+	<bean id="specUnitService" class="com.pearson.app.services.SpecUnitService"/>
+
+	<bean id="userDetailsService" class="com.pearson.app.security.SecurityUserDetailsService"/>
+
 
 	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
 		<property name="dataSource" ref="dataSource" />
@@ -116,32 +126,17 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</bean>
 
-<!--
-	<bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
-		<property name="persistenceXmlLocations">
-			<list>
-				<value>classpath*:META-INF/persistence.xml</value>
-			</list>
-		</property>
-		<property name="defaultDataSource" ref="dataSource"/>
-	</bean>
-
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitManager" ref="persistenceUnitManager"/>
-		<property name="persistenceUnitName" value="entityManager"/>
-	</bean>
-
-	-->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 
 	<!-- Resolves view names to protected .jsp resources within the /WEB-INF/views
 		directory -->
 	<bean id="jspViewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView" />
+				  value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+
 </beans>

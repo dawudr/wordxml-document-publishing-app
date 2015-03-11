@@ -44,43 +44,57 @@ public class UserService {
         assertNotBlank(user.getLastname(), "lastname cannot be empty.");
 
         if (!userRepository.isUsernameAvailable(user.getUsername())) {
+            LOGGER.debug("The username is not available - user.getUsername[{}]", user.getUsername());
             throw new IllegalArgumentException("The username is not available.");
         }
 
+
         // default to Role to Viewer permission if not selected
-        if(user.getRole().isEmpty()) {
+        if(user.getRole() != null && user.getRole().isEmpty()) {
             user.setRole(User.ROLE_UNASSIGNED);
         }
 
         //User user = new User(username, new BCryptPasswordEncoder().encode(password), email, firstname, lastname, role);
         // Without BCrypt password encrytion
-        user.setPasswordDigest(new BCryptPasswordEncoder().encode(user.getPasswordDigest()));
+        //user.setPasswordDigest(new BCryptPasswordEncoder().encode(user.getPasswordDigest()));
+
         userRepository.addUser(user);
+        LOGGER.debug("Added user[{}]", user);
+        assertNotBlank(user.getUsername(), "Request successfully submitted.");
     }
 
     @Transactional(readOnly = true)
     public List<User> listUsers() {
-        return userRepository.listUsers();
+
+        List<User> users = userRepository.listUsers();
+        LOGGER.debug("Found [{}] users", users.size());
+        return users;
     }
 
     @Transactional(readOnly = true)
     public User getUserById(Long id) {
-        return userRepository.getUserById(id);
+        User user = userRepository.getUserById(id);
+        LOGGER.debug("Found User By Id[{}] - User[{}]", id, user);
+        return user;
     }
 
     @Transactional(readOnly = true)
     public User getUserByUsername(String username) {
-        return userRepository.getUserByUsername(username);
+        User user = userRepository.getUserByUsername(username);
+        LOGGER.debug("Found User By Username[{}] - User[{}]", username, user);
+        return user;
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public void updateUser(User user) {
         userRepository.updateUser(user);
+        LOGGER.debug("Updated - user[{}]", user);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public void removeUser(Long id) {
         userRepository.removeUser(id);
+        LOGGER.debug("Removed User id[{}]", id);
     }
 
 

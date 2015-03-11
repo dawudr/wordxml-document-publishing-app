@@ -1,7 +1,5 @@
 package com.pearson.app.dto;
 
-import com.pearson.app.model.User;
-
 import java.util.List;
 /**
  *

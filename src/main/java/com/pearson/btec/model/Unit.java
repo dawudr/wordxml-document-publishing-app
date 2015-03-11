@@ -48,7 +48,7 @@ public class Unit {
                unitHeader.toString() +
                "\t\t}\r\n" +
                "\t},\r\n" +
-               "\t{ \"unitBody=\" : \r\n" + unitBody + "\r\n" +
+               "\t{ \"unitBody=\" : \r\n" + unitBody.toString() + "\r\n" +
                "\t}\r\n" +
                "}";
     }

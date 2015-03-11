@@ -4084,3 +4084,30 @@ body.skin-3 {
     display: none;
   }
 }
+
+
+/* Styles for the loading spinner */
+.please-wait-dialog {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  margin: 0 auto;
+  z-index: 2000;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transition: 0.1s ease-in-out -webkit-opacity;
+  -moz-transition: 0.1s ease-in-out -moz-opacity;
+  -ms-transition: 0.1s ease-in-out opacity;
+  -o-transition: 0.1s ease-in-out opacity;
+  transition: 0.1s ease-in-out opacity;
+  transition-delay: 0s;
+
+  background: #e1eefa;
+  text-align: center;
+  width: 350px;
+  height: 140px;
+  margin-left: -175px;
+  margin-top: -70px;
+}
+

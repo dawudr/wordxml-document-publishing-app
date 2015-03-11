@@ -4,9 +4,10 @@ import org.docx4j.TraversalUtil;
 import org.docx4j.XmlUtils;
 import org.docx4j.finders.ClassFinder;
 import org.docx4j.wml.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.xml.bind.JAXBElement;
-import java.util.*;
+import java.util.List;
 
 
 /**
@@ -23,6 +24,8 @@ public class DocumentUtilHelper {
     public static final String XML_SECTION_TITLE = "title";
     public static final String XML_TABLE_HEADER_COLUMN_STYLE = "style";
     public static final String XML_TABLE_HEADER_COLUMN = "column-name";
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(DocumentUtilHelper.class);
 
 
     public static String findTagFromSdtBoth(Object sdtObject) {
@@ -47,7 +50,9 @@ public class DocumentUtilHelper {
             if (tagFoundObject instanceof Tag) {
                 Tag tag = (Tag)tagFoundObject;
                 tagStr = tag.getVal();
-                System.out.println("\r\nTC:xmlTagKey[" + tag.getVal() + "]");
+                //System.out.println("\r\nTC:xmlTagKey[" + tag.getVal() + "]");
+                LOGGER.debug("TC:xmlTagKey[{}]", tag.getVal());
+
             }
         }
         return tagStr;

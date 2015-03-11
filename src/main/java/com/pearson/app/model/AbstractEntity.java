@@ -13,7 +13,7 @@ import java.util.UUID;
 public class AbstractEntity {
 
     @Id
-    @Column(name="id")
+    @Column(name="id", unique = true, nullable = false)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
@@ -88,6 +88,16 @@ public class AbstractEntity {
 
     public String getUuidStr() {
         return uuidStr;
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractEntity{" +
+                "id=" + id +
+                ", version=" + version +
+                ", uuid=" + uuid +
+                ", uuidStr='" + uuidStr + '\'' +
+                '}';
     }
 }
 

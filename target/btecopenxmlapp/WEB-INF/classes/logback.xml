@@ -10,46 +10,41 @@
         </encoder>
     </appender>
 
-<!--
-    <appender name="file" class="org.apache.log4j.RollingFileAppender">
-        <param name="append" value="false" />
-        <param name="maxFileSize" value="10KB" />
-        <param name="maxBackupIndex" value="5" />
-        &lt;!&ndash; For Tomcat &ndash;&gt;
-        <param name="file" value="${catalina.home}/logs/myStruts1App.log" />
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern"
-                   value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
-        </layout>
+
+    <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.base}/logs/btecwordopenxmlapp.log</file>
+        <encoder>
+            <pattern>%d{yy/MM/dd HH:mm:ss.SSS}[%thread] %-5level %logger.%M [%F:%L] %msg %n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <maxIndex>10</maxIndex>
+            <FileNamePattern>btecwordopenxmlapp.log.%i</FileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>1MB</MaxFileSize>
+        </triggeringPolicy>
     </appender>
--->
-
-
-    <!--
-        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-            <encoder>
-                <pattern>%d{yyyy-MMM-dd HH:mm:ss.SSS} %level %logger{0} %msg%n</pattern>
-            </encoder>
-        </appender>
-    -->
 
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yy/MM/dd HH:mm:ss.SSS}[%thread] %-5level %logger.%M [%F:%L] %msg %n</pattern>
             <!--<pattern>%fullRequest%n%n%fullResponse</pattern>-->
         </layout>
     </appender>
 
+    <!--
     <appender name="LOGFILE" class="ch.qos.logback.core.FileAppender">
         <file>${catalina.base}/logs/btecwordopenxmlapp.log</file>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+    -->
 
 
-    <logger name="org.springframework.core">
+
+<!--    <logger name="org.springframework.core">
         <level value="info" />
     </logger>
 
@@ -83,11 +78,19 @@
 
     <logger name="org.hibernate.type">
         <level value="debug"/>
+    </logger>-->
+
+    <logger name="org.docx4j">
+        <level value="error"/>
     </logger>
 
 	<!-- Configure your top level package below -->
 	<!--<logger name="com.pearson" level="INFO" />-->
-    <logger name="com.pearson" level="debug" />
+    <logger name="com.pearson.app" level="debug" appender-ref="LOGFILE"/>
+
+    <logger name="com.pearson.btec" level="info"/>
+
+
     <!--<logger name="org.springframework.aop" level="trace" />-->
 	<logger name="org.springframework.test" level="debug" />
 	<!--<logger name="org.junit" level="DEBUG" />-->

@@ -22,6 +22,7 @@
         'ui.tree',                       // Nestable list
         'dashboardApp',                 // custom dashboard controller
         //'angularFileUpload'             // Angular File Upload
-        'blueimp.fileupload'           // jquery file upload
+        //'blueimp.fileupload',         // jquery file upload
+        //'fileuploadApp'             // Angular File Upload
     ])
 })();
