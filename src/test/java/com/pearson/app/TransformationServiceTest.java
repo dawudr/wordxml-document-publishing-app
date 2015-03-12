@@ -51,17 +51,33 @@ public class TransformationServiceTest extends TestCase {
         User user = userService.getUserByUsername("btectest1");
 
 
-        transformationService.addTransformation((new Transformation(user, new Date(), "T/999/0001",
-                "btectest1.docx", specunit, "Unit 44_FBC-iqs.xml",
-                "44", "Manufacturing Secondary Machining Processes", "Paul Winser", "btecnationals",
-                new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_UNREAD)));
+        Transformation newTransformation = new Transformation();
+        newTransformation.setUser(user);
+        newTransformation.setDate(new Date());
+        newTransformation.setQanNo("S/123/1234");
+        newTransformation.setUnitNo("44");
+        newTransformation.setUnitTitle("Manufacturing Secondary Machining Processes");
+        newTransformation.setAuthor("Paul Winser");
+        newTransformation.setTemplatename("BTECNATIONALS");
+        newTransformation.setWordfilename("Unit 44_FBC.doc");
+        newTransformation.setSpecunit(specunit);
+        newTransformation.setOpenxmlfilename("Unit 44_FBC-open.xml");
+        newTransformation.setIqsxmlfilename("S_123_1234.xml");
+        newTransformation.setLastmodified(new Date());
+        newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+        newTransformation.setMessage("No errors were found");
+        newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
 
-        Transformation test = transformationService.getTransformationByQan("T/999/0001");
+
+
+        transformationService.addTransformation(newTransformation);
+
+        Transformation test = transformationService.getTransformationByQan("S_123_1234.xml");
         Long testId = test.getId();
 
 
         Transformation result = transformationService.getTransformationById(testId);
-        assertTrue("Result with same Qan expected, but got Qan - " + result.getQanNo(), result.getQanNo().equals("T/999/0001"));
+        assertTrue("Result with same Qan expected, but got Qan - " + result.getQanNo(), result.getQanNo().equals("S_123_1234.xml"));
 
     }
 
@@ -77,16 +93,41 @@ public class TransformationServiceTest extends TestCase {
         userService.addUser(new User("btectest2", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
         User user = userService.getUserByUsername("btectest2");
 
-        transformationService.addTransformation((new Transformation(user, new Date(), "T/999/0002",
-                "btectest2.docx", specunit, "btectest2-iqs.xml",
-                "2", "Manufacturing Secondary Machining Processes", "Paul Winser", "btecnationals",
-                new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_UNREAD)));
+        Transformation newTransformation = new Transformation();
+        newTransformation.setUser(user);
+        newTransformation.setDate(new Date());
+        newTransformation.setQanNo("T/999/0001");
+        newTransformation.setUnitNo("44");
+        newTransformation.setUnitTitle("Manufacturing Secondary Machining Processes");
+        newTransformation.setAuthor("Paul Winser");
+        newTransformation.setTemplatename("BTECNATIONALS");
+        newTransformation.setWordfilename("Unit 44_FBC.doc");
+        newTransformation.setSpecunit(specunit);
+        newTransformation.setOpenxmlfilename("Unit 44_FBC-open.xml");
+        newTransformation.setIqsxmlfilename("S_123_1234.xml");
+        newTransformation.setLastmodified(new Date());
+        newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+        newTransformation.setMessage("No errors were found");
+        newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
 
-
-        transformationService.addTransformation((new Transformation(user, new Date(), "T/999/0003",
-                "btectest2-2.docx", specunit, "btectest2-2-iqs.xml",
-                "3", "Manufacturing Secondary Machining Processes", "Paul Winser", "btecnationals",
-                new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_UNREAD)));
+        Transformation newTransformation1 = new Transformation();
+        newTransformation1.setUser(user);
+        newTransformation1.setDate(new Date());
+        newTransformation1.setQanNo("T/999/0002");
+        newTransformation1.setUnitNo("45");
+        newTransformation1.setUnitTitle("Manufacturing Secondary Machining Processes");
+        newTransformation1.setAuthor("Paul Winser");
+        newTransformation1.setTemplatename("BTECNATIONALS");
+        newTransformation1.setWordfilename("Unit 45_FBC.doc");
+        newTransformation1.setSpecunit(specunit);
+        newTransformation1.setOpenxmlfilename("Unit 45_FBC-open.xml");
+        newTransformation1.setIqsxmlfilename("S_123_1239.xml");
+        newTransformation1.setLastmodified(new Date());
+        newTransformation1.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+        newTransformation1.setMessage("No errors were found");
+        newTransformation1.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+        transformationService.addTransformation(newTransformation);
+        transformationService.addTransformation(newTransformation1);
 
         List<Transformation> result = transformationService.listTransformations();
         assertTrue("Several result expected, total " + result.size(), result.size() > 1);
@@ -104,15 +145,30 @@ public class TransformationServiceTest extends TestCase {
         userService.addUser(new User("btectest3", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
         User user = userService.getUserByUsername("btectest3");
 
-        transformationService.addTransformation((new Transformation(user, new Date(), "T/999/0004",
-                "btectest3.docx", specunit, "btectest3-iqs.xml",
-                "4", "Manufacturing Secondary Machining Processes", "Paul Winser", "btecnationals",
-                new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_UNREAD)));
+        Transformation newTransformation = new Transformation();
+        newTransformation.setUser(user);
+        newTransformation.setDate(new Date());
+        newTransformation.setQanNo("T/999/0004");
+        newTransformation.setUnitNo("44");
+        newTransformation.setUnitTitle("Manufacturing Secondary Machining Processes");
+        newTransformation.setAuthor("Paul Winser");
+        newTransformation.setTemplatename("BTECNATIONALS");
+        newTransformation.setWordfilename("Unit 44_FBC.doc");
+        newTransformation.setSpecunit(specunit);
+        newTransformation.setOpenxmlfilename("Unit 44_FBC-open.xml");
+        newTransformation.setIqsxmlfilename("S_123_1234.xml");
+        newTransformation.setLastmodified(new Date());
+        newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+        newTransformation.setMessage("No errors were found");
+        newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+
+
+        transformationService.addTransformation(newTransformation);
 
         Transformation transformation = transformationService.getTransformationByQan("T/999/0004");
 
         assertTrue("UAN not expected " + transformation.getQanNo(), "T/999/0004".equals(transformation.getQanNo()));
-        assertTrue("UnitNo not expected " + transformation.getUnitNo(), "4".equals(transformation.getUnitNo()));
+        assertTrue("UnitNo not expected " + transformation.getUnitNo(), "44".equals(transformation.getUnitNo()));
         assertTrue("UnitNo not expected " + transformation.getUnitTitle(), "Manufacturing Secondary Machining Processes".equals(transformation.getUnitTitle()));
         assertTrue("UnitNo not expected " + transformation.getAuthor(), "Paul Winser".equals(transformation.getAuthor()));
 
@@ -129,10 +185,25 @@ public class TransformationServiceTest extends TestCase {
         userService.addUser(new User("btectest4", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
         User user = userService.getUserByUsername("btectest4");
 
-        transformationService.addTransformation((new Transformation(user, new Date(), "T/999/0007",
-                "btectest4.docx", specunit, "btectest4-iqs.xml",
-                "7", "Manufacturing Secondary Machining Processes", "Paul Winser", "btecnationals",
-                new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_UNREAD)));
+        Transformation newTransformation = new Transformation();
+        newTransformation.setUser(user);
+        newTransformation.setDate(new Date());
+        newTransformation.setQanNo("T/999/0007");
+        newTransformation.setUnitNo("7");
+        newTransformation.setUnitTitle("Manufacturing Secondary Machining Processes");
+        newTransformation.setAuthor("Paul Winser");
+        newTransformation.setTemplatename("BTECNATIONALS");
+        newTransformation.setWordfilename("Unit 44_FBC.doc");
+        newTransformation.setSpecunit(specunit);
+        newTransformation.setOpenxmlfilename("Unit 44_FBC-open.xml");
+        newTransformation.setIqsxmlfilename("S_123_1234.xml");
+        newTransformation.setLastmodified(new Date());
+        newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+        newTransformation.setMessage("No errors were found");
+        newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+
+
+        transformationService.addTransformation(newTransformation);
 
         Transformation transformation = transformationService.getTransformationByQan("T/999/0007");
 
@@ -158,15 +229,47 @@ public class TransformationServiceTest extends TestCase {
         userService.addUser(new User("btectest5", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
         User user = userService.getUserByUsername("btectest5");
 
-        transformationService.updateTransformation((new Transformation(user, new Date(), "T/999/0008",
-                "btectest5.docx", specunit, "btectest5-iqs.xml",
-                "5", "Manufacturing Secondary Machining Processes", "Paul Winser", "btecnationals",
-                new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_UNREAD)));
 
-        transformationService.updateTransformation((new Transformation(user, new Date(), "T/999/0009",
-                "btectest5.docx", specunit, "btectest5-iqs.xml",
-                "9", "Manufacturing Secondary Machining Processes", "Paul Winser", "btecnationals",
-                new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_UNREAD)));
+
+        Transformation newTransformation = new Transformation();
+        newTransformation.setUser(user);
+        newTransformation.setDate(new Date());
+        newTransformation.setQanNo("T/999/0008");
+        newTransformation.setUnitNo("44");
+        newTransformation.setUnitTitle("Manufacturing Secondary Machining Processes");
+        newTransformation.setAuthor("Paul Winser");
+        newTransformation.setTemplatename("BTECNATIONALS");
+        newTransformation.setWordfilename("Unit 44_FBC.doc");
+        newTransformation.setSpecunit(specunit);
+        newTransformation.setOpenxmlfilename("Unit 44_FBC-open.xml");
+        newTransformation.setIqsxmlfilename("S_123_1234.xml");
+        newTransformation.setLastmodified(new Date());
+        newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+        newTransformation.setMessage("No errors were found");
+        newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+
+        Transformation newTransformation1 = new Transformation();
+        newTransformation1.setUser(user);
+        newTransformation1.setDate(new Date());
+        newTransformation1.setQanNo("T/999/0009");
+        newTransformation1.setUnitNo("45");
+        newTransformation1.setUnitTitle("Manufacturing Secondary Machining Processes");
+        newTransformation1.setAuthor("Paul Winser");
+        newTransformation1.setTemplatename("BTECNATIONALS");
+        newTransformation1.setWordfilename("Unit 45_FBC.doc");
+        newTransformation1.setSpecunit(specunit);
+        newTransformation1.setOpenxmlfilename("Unit 45_FBC-open.xml");
+        newTransformation1.setIqsxmlfilename("S_123_1239.xml");
+        newTransformation1.setLastmodified(new Date());
+        newTransformation1.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+        newTransformation1.setMessage("No errors were found");
+        newTransformation1.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+        transformationService.addTransformation(newTransformation);
+        transformationService.addTransformation(newTransformation1);
+
+
+        transformationService.updateTransformation(newTransformation);
+        transformationService.updateTransformation(newTransformation1);
 
         Transformation transformation1 = transformationService.getTransformationByQan("T/999/0008");
         Transformation transformation2 = transformationService.getTransformationByQan("T/999/0009");
@@ -187,10 +290,27 @@ public class TransformationServiceTest extends TestCase {
         userService.addUser(new User("btectest6", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
         User user = userService.getUserByUsername("btectest6");
 
-        transformationService.updateTransformation((new Transformation(user, new Date(), "T/999/0010",
-                "Unit_44_FBC.docx", specunit, "Unit_44_FBC-iqs.xml",
-                "5", "Manufacturing Secondary Machining Processes", "Paul Winser", "btecnationals",
-                new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_UNREAD)));
+
+        Transformation newTransformation = new Transformation();
+        newTransformation.setUser(user);
+        newTransformation.setDate(new Date());
+        newTransformation.setQanNo("T/999/0010");
+        newTransformation.setUnitNo("44");
+        newTransformation.setUnitTitle("Manufacturing Secondary Machining Processes");
+        newTransformation.setAuthor("Paul Winser");
+        newTransformation.setTemplatename("BTECNATIONALS");
+        newTransformation.setWordfilename("Unit 44_FBC.doc");
+        newTransformation.setSpecunit(specunit);
+        newTransformation.setOpenxmlfilename("Unit 44_FBC-open.xml");
+        newTransformation.setIqsxmlfilename("S_123_1234.xml");
+        newTransformation.setLastmodified(new Date());
+        newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+        newTransformation.setMessage("No errors were found");
+        newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+
+
+
+        transformationService.updateTransformation(newTransformation);
 
         Transformation transformation1 = transformationService.getTransformationByQan("T/999/0010");
 
@@ -209,10 +329,26 @@ public class TransformationServiceTest extends TestCase {
         userService.addUser(new User("btectest7", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
         User user = userService.getUserByUsername("btectest7");
 
-        transformationService.updateTransformation((new Transformation(user, new Date(), "T/999/0011",
-                "Unit_44_FBC.docx", specunit, "Unit_44_FBC-iqs.xml",
-                "5", "Manufacturing Secondary Machining Processes", "Paul Winser", "btecnationals",
-                new Date(), Transformation.TRANSFORM_STATUS_SUCCESS, "No errors were found", Transformation.GENERAL_STATUS_UNREAD)));
+
+        Transformation newTransformation = new Transformation();
+        newTransformation.setUser(user);
+        newTransformation.setDate(new Date());
+        newTransformation.setQanNo("T/999/0011");
+        newTransformation.setUnitNo("44");
+        newTransformation.setUnitTitle("Manufacturing Secondary Machining Processes");
+        newTransformation.setAuthor("Paul Winser");
+        newTransformation.setTemplatename("BTECNATIONALS");
+        newTransformation.setWordfilename("Unit 44_FBC.doc");
+        newTransformation.setSpecunit(specunit);
+        newTransformation.setOpenxmlfilename("Unit 44_FBC-open.xml");
+        newTransformation.setIqsxmlfilename("S_123_1234.xml");
+        newTransformation.setLastmodified(new Date());
+        newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+        newTransformation.setMessage("No errors were found");
+        newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+
+
+        transformationService.updateTransformation(newTransformation);
 
         Transformation transformation1 = transformationService.getTransformationByQan("T/999/0011");
 

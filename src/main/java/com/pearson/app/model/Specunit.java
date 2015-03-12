@@ -28,19 +28,16 @@ import org.hibernate.annotations.Parameter;
                 query = "select s from Specunit s where qanNo = :qanNo"
         )
 })
-public class Specunit extends AbstractEntity {
+public class Specunit {
 
     public static final String FIND_BY_ID = "specunit.findById";
     public static final String FIND_BY_QAN = "specunit.findByQanNo";
 
-/*
     @Id
     @Column(name="id", unique = true, nullable = false)
     @GeneratedValue(generator="gen")
-    @GenericGenerator(name="gen", strategy="foreign", parameters=@org.hibernate.annotations.Parameter(name="property", value="transformation"))
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name="gen", strategy="foreign", parameters=@Parameter(name="property", value="transformation"))
     private Long id;
-*/
 
     private String qanNo;
 
@@ -49,12 +46,9 @@ public class Specunit extends AbstractEntity {
     @Column(name = "VAL_XML")
     private String unitXML;
 
-    @OneToOne(mappedBy="specunit")
-/*
-    @OneToOne(mappedBy="specunit", cascade=CascadeType.ALL)
-*/
+    @OneToOne
+    @PrimaryKeyJoinColumn
     private Transformation transformation;
-
 
 
     public Specunit(String qanNo, String unitXML) {
@@ -65,7 +59,6 @@ public class Specunit extends AbstractEntity {
     public Specunit() {
     }
 
-/*
     public Long getId() {
         return id;
     }
@@ -73,7 +66,7 @@ public class Specunit extends AbstractEntity {
     public void setId(Long id) {
         this.id = id;
     }
-*/
+
 
     public String getQanNo() {
         return qanNo;

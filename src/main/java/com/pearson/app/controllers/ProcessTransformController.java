@@ -161,13 +161,16 @@ public class ProcessTransformController {
             if(this.transformationStatus == null) {
                 this.transformationStatus = processWordDocument.getTransformationStatus();
             }
+            StringBuilder openXmlFileName = new StringBuilder();
+            openXmlFileName.append(processWordDocument.getTransformationUan().replaceAll("/", "_")).append("-open.xml");
+
             StringBuilder pqsFileName = new StringBuilder();
             pqsFileName.append(processWordDocument.getTransformationUan().replaceAll("/", "_")).append(".xml");
 
             Specunit specunit = new Specunit();
             specunit.setQanNo(processWordDocument.getTransformationUan());
             specunit.setUnitXML(processWordDocument.getXmlStringContent());
-            specUnitService.addSpecUnit(specunit);
+            //specUnitService.addSpecUnit(specunit);
 
             Transformation newTransformation = new Transformation();
             newTransformation.setUser(user);
@@ -179,11 +182,14 @@ public class ProcessTransformController {
             newTransformation.setTemplatename("BTECNATIONALS");
             newTransformation.setWordfilename(image.getName());
             newTransformation.setSpecunit(specunit);
+            newTransformation.setOpenxmlfilename(openXmlFileName.toString());
             newTransformation.setIqsxmlfilename(pqsFileName.toString());
             newTransformation.setLastmodified(new Date());
             newTransformation.setTransformStatus(this.transformationStatus);
             newTransformation.setMessage(processWordDocument.getTransformationMessage());
             newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+
+            specunit.setTransformation(newTransformation);
 
             LOGGER.debug("Read Word document transformationStatus[{}], transformationMessage[{}]", this.transformationStatus, processWordDocument.getTransformationMessage());
             transformationService.addTransformation(newTransformation);

@@ -40,8 +40,10 @@ angular.module('newUserApp', ['common', 'spring-security-csrf-token-interceptor'
                 else {
                     $scope.vm.errorMessages.push({description: response.data});
                     console.log("failed user creation: " + response.data);
-                    $scope.vm.appReady = true;
                 }
+
+                $scope.vm.appReady = true;
+
             });
         }
     }]);

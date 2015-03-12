@@ -83,8 +83,9 @@
             <dt>Project files:</dt>
             <dd>
                 <ul class="list-unstyled project-files">
-                    <li><a href="{{transformation.wordfilename}}" class="text-navy"><i class="fa fa-file-word-o"></i> {{transformation.wordfilename}}</a></li>
-                    <li><a target="_self" href="/tranformation/xml/{{transformation.id}}/download" class="text-navy"><i class="fa fa fa-file-text-o"></i>{{transformation.iqsfilename}}</a></li>
+                    <li><a target="_self" href="/processtransform/view/{{transformation.wordfilename}}" class="text-navy"><i class="fa fa-file-word-o"></i> {{transformation.wordfilename}}</a></li>
+                    <li><a target="_self" href="/tranformation/xml/{{transformation.id}}/download" class="text-navy"><i class="fa fa fa-file-code-o"></i>{{transformation.openxmlfilename}}</a></li>
+                    <li><a target="_self" href="/tranformation/pqs/{{transformation.id}}/download" class="text-navy"><i class="fa fa fa-file-text-o"></i>{{transformation.iqsxmlfilename}}</a></li>
                 </ul>
             </dd>
         </dl>

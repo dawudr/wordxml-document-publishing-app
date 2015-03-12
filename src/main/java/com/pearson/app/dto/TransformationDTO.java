@@ -50,7 +50,7 @@ public class TransformationDTO {
         this.qanNo = transformation.getQanNo();
 
         this.wordfilename = transformation.getWordfilename();
-        this.openxmlfilename = "";//transformation.getSpecunit().getId();
+        this.openxmlfilename = transformation.getOpenxmlfilename();
         this.iqsxmlfilename = transformation.getIqsxmlfilename();
 
         this.unitNo = transformation.getUnitNo();
@@ -98,7 +98,7 @@ public class TransformationDTO {
                 transformation.getQanNo(),
 
                 transformation.getWordfilename(),
-                "",//transformation.getSpecunit().getId(),
+                transformation.getOpenxmlfilename(),
                 transformation.getIqsxmlfilename(),
 
                 transformation.getUnitNo(),
@@ -159,7 +159,13 @@ public class TransformationDTO {
         this.wordfilename = wordfilename;
     }
 
+    public String getOpenxmlfilename() {
+        return openxmlfilename;
+    }
 
+    public void setOpenxmlfilename(String openxmlfilename) {
+        this.openxmlfilename = openxmlfilename;
+    }
 
     public String getIqsxmlfilename() {
         return iqsxmlfilename;

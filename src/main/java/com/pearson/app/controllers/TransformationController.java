@@ -8,6 +8,7 @@ import com.pearson.app.model.Transformation;
 import com.pearson.app.model.User;
 import com.pearson.app.services.TransformationService;
 import com.pearson.app.services.UserService;
+import com.pearson.btec.service.TransformXmlDocument;
 import net.sf.json.JSON;
 import net.sf.json.xml.XMLSerializer;
 import net.sf.json.JSONArray;
@@ -17,14 +18,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
@@ -42,6 +47,12 @@ public class TransformationController {
 
     @Autowired
     private TransformationService transformationService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    ServletContext context;
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.POST, value = "/transformation")
@@ -125,8 +136,55 @@ public class TransformationController {
 
 
         try {
+            LOGGER.debug("Beginning XML file download of TransformationId[{}] QanNo[{}] -> OpenXmlFileName[{}]",
+                    transformation.getId(), transformation.getQanNo(), transformation.getOpenxmlfilename());
+
+            response.setHeader("Content-Disposition", "inline;filename=\"" +transformation.getOpenxmlfilename() + "\"");
+            // get output stream of the response
+            OutputStream outStream = response.getOutputStream();
+            response.setContentType("application/octet-stream");
+
+
+            byte[] buffer = new byte[BUFFER_SIZE];
+            int bytesRead = -1;
+
+            // write bytes read from the input stream into the output stream
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outStream.write(buffer, 0, bytesRead);
+            }
+
+            inputStream.close();
+            outStream.close();
+            LOGGER.debug("Successfully completed XML file download of TransformationId[{}] QanNo[{}] -> OpenXmlFileName[{}]",
+                    transformation.getId(), transformation.getQanNo(), transformation.getOpenxmlfilename());
+        } catch (IOException e) {
+            LOGGER.error("Error with XML file download of TransformationId[{}] QanNo[{}] -> OpenXmlFileName[{}], Exception[{}]",
+                    transformation.getId(), transformation.getQanNo(), transformation.getOpenxmlfilename(), e.getStackTrace());
+        }
+    }
+
+
+
+
+
+
+    @RequestMapping(value = "/transformation/pqs/{id}/download", method = RequestMethod.GET)
+    public void downloadTransformationSpecUnitByIdAsPQSXMLFile (
+            @PathVariable Long id,
+            HttpServletResponse response) {
+
+        Transformation transformation = transformationService.getTransformationById(id);
+        Specunit specunit = transformation.getSpecunit();
+        LOGGER.debug("Streaming PQS xml content for Transformation id[{}] -> SpecunitById[{}]", id, specunit);
+
+        TransformXmlDocument transformXmlDocument = new TransformXmlDocument(specunit.getUnitXML());
+        try {
             LOGGER.debug("Beginning XML file download of TransformationId[{}] QanNo[{}] -> PqsFileName[{}]",
                     transformation.getId(), transformation.getQanNo(), transformation.getIqsxmlfilename());
+
+            String root = context.getRealPath("/");
+            String pqsXmlString = transformXmlDocument.doTranformOpenXmlToIqsXml(root);
+            InputStream inputStream = IOUtils.toInputStream(pqsXmlString);
 
             response.setHeader("Content-Disposition", "inline;filename=\"" +transformation.getIqsxmlfilename() + "\"");
             // get output stream of the response
@@ -149,9 +207,15 @@ public class TransformationController {
         } catch (IOException e) {
             LOGGER.error("Error with XML file download of TransformationId[{}] QanNo[{}] -> PqsFileName[{}], Exception[{}]",
                     transformation.getId(), transformation.getQanNo(), transformation.getIqsxmlfilename(), e.getStackTrace());
+        } catch (TransformerException e) {
+            LOGGER.error("Error with XSLT Transform of TransformationId[{}] QanNo[{}] -> PqsFileName[{}], Exception[{}]",
+                    transformation.getId(), transformation.getQanNo(), transformation.getIqsxmlfilename(), e.getStackTrace());
         }
 
     }
+
+
+
 
 
     @ResponseBody
@@ -159,28 +223,29 @@ public class TransformationController {
     @RequestMapping(method = RequestMethod.POST, value = "/transformation/update")
     public void updateTransformation(@RequestBody TransformationDTO transformationDTO) {
 
-        User tempuser = new UserService().getUserById(1L);
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
+        LOGGER.debug("Getting user from Session - Username[{}], Principle[{}]", principal.getName(), principal);
+
+        User user = userService.getUserByUsername(principal.getName());
+        LOGGER.debug("Retrieved user[{}]", user);
+
         Transformation transformation = transformationService.getTransformationById(transformationDTO.getId());
+        transformation.setDate(transformationDTO.getDate());
+        transformation.setQanNo(transformationDTO.getQanNo());
+        transformation.setWordfilename(transformationDTO.getWordfilename());
+        transformation.setOpenxmlfilename(transformationDTO.getOpenxmlfilename());
+        transformation.setIqsxmlfilename(transformationDTO.getIqsxmlfilename());
+        transformation.setUnitNo(transformationDTO.getUnitNo());
+        transformation.setUnitTitle(transformationDTO.getUnitTitle());
+        transformation.setAuthor(transformationDTO.getAuthor());
+        transformation.setTemplatename(transformationDTO.getTemplatename());
+        transformation.setLastmodified(new Date());
+        transformation.setTransformStatus(transformationDTO.getTransformStatus());
+        transformation.setMessage(transformationDTO.getMessage());
+        transformation.setGeneralStatus(Transformation.GENERAL_STATUS_MODIFIED);
 
-
-        Transformation newTransformation = new Transformation(
-                tempuser,
-                transformationDTO.getDate(),
-                transformationDTO.getQanNo(),
-                transformationDTO.getWordfilename(),
-                transformation.getSpecunit(),
-                transformationDTO.getIqsxmlfilename(),
-                transformationDTO.getUnitNo(),
-                transformationDTO.getUnitTitle(),
-                transformationDTO.getAuthor(),
-                transformationDTO.getTemplatename(),
-                transformationDTO.getLastmodified(),
-                transformationDTO.getTransformStatus(),
-                transformationDTO.getMessage(),
-                Transformation.GENERAL_STATUS_MODIFIED
-                );
-        transformationService.updateTransformation(newTransformation);
-        LOGGER.debug("Update Transformation[{}]", newTransformation.toString());
+        transformationService.updateTransformation(transformation);
+        LOGGER.debug("Updating Transformation[{}]", transformation.toString());
     }
 
 

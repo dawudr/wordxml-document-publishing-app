@@ -34,7 +34,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
         User user = userRepository.getUserByUsername(username);
 
         if (user == null) {
-            String message = "Username not found" + username;
+            String message = "Username not found: " + username;
             LOGGER.info(message);
             throw new UsernameNotFoundException(message);
         }

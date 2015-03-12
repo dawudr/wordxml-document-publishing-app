@@ -10,9 +10,7 @@ angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 
                 $scope.vm.appReady = true;
                 return;
             }
-
             $scope.login($scope.vm.username, $scope.vm.password);
-
         };
 
     }]);

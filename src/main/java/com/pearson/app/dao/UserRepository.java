@@ -70,7 +70,7 @@ public class UserRepository implements UserDAOInterface {
         List<User> users = em.createNamedQuery(User.FIND_BY_USERNAME, User.class)
                 .setParameter("username", username)
                 .getResultList();
-        LOGGER.debug("Found matching Username[{}] -> User[{}]", username, (users != null && users.size() == 1) ? users.get(0).toString() : "None");
+        LOGGER.debug("Found matching Username[{}] -> User[{}]", username, (users != null && users.size() == 1) ? users.get(0).getUsername() : "None");
         return users.size() == 1 ? users.get(0) : null;
     }
 

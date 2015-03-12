@@ -34,23 +34,18 @@ public class Transformation extends AbstractEntity {
     public static final String LIST_WHERE_GENERAL_STATUS_UNREAD = "transformation.listWhereGeneralStatusUnread";
     public static final String FIND_SPECUNIT_BY_ID = "transformation.findSpecunitIdById";
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne
-    @JoinColumn(name="specunit_id")
-/*    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn*/
+    @OneToOne(mappedBy="transformation", cascade=CascadeType.ALL)
     private Specunit specunit;
 
     private Date date;
     @Column(name = "qanNo", unique = true)
     private String qanNo;
     private String wordfilename;
-
-
-
+    private String openxmlfilename;
     private String iqsxmlfilename;
     private String unitNo;
     private String unitTitle;
@@ -95,7 +90,7 @@ public class Transformation extends AbstractEntity {
     }
 
 
-    // Full
+/*    // Full
     public Transformation(User user, Date date, String qanNo,
                           String wordfilename, Specunit specunit, String iqsxmlfilename,
                           String unitNo, String unitTitle, String author, String templatename,
@@ -138,7 +133,7 @@ public class Transformation extends AbstractEntity {
         this.transformStatus = TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS; // initial state
         this.message = null;
         this.generalStatus = GENERAL_STATUS_UNREAD; // initial state
-    }
+    }*/
 
     public User getUser() {
         return user;
@@ -194,6 +189,14 @@ public class Transformation extends AbstractEntity {
 
     public void setIqsxmlfilename(String iqsxmlfilename) {
         this.iqsxmlfilename = iqsxmlfilename;
+    }
+
+    public String getOpenxmlfilename() {
+        return openxmlfilename;
+    }
+
+    public void setOpenxmlfilename(String openxmlfilename) {
+        this.openxmlfilename = openxmlfilename;
     }
 
     public String getUnitNo() {
