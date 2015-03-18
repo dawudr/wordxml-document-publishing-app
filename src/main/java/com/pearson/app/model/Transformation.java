@@ -38,6 +38,10 @@ public class Transformation extends AbstractEntity {
     @JoinColumn(name="user_id")
     private User user;
 
+    @OneToOne
+    @JoinColumn(name="image_id")
+    private Image image;
+
 //    @OneToOne(mappedBy="transformation", cascade=CascadeType.ALL)
     @OneToOne
     @JoinColumn(name="specunit_id")
@@ -88,57 +92,9 @@ public class Transformation extends AbstractEntity {
     public static final String GENERAL_STATUS_DELETED = "GENERAL_STATUS_DELETED";
 
 
-
-
     public Transformation() {
 
     }
-
-
-/*    // Full
-    public Transformation(User user, Date date, String qanNo,
-                          String wordfilename, Specunit specunit, String iqsxmlfilename,
-                          String unitNo, String unitTitle, String author, String templatename,
-                          Date lastmodified, String transformStatus, String message, String generalStatus) {
-        this.user = user;
-        this.date = date;
-        this.qanNo = qanNo;
-
-        this.wordfilename = wordfilename;
-        this.specunit = specunit;
-        this.iqsxmlfilename = iqsxmlfilename;
-
-        this.unitNo = unitNo;
-        this.unitTitle = unitTitle;
-        this.author = author;
-        this.templatename = templatename;
-
-        this.lastmodified = lastmodified;
-        this.transformStatus = transformStatus;
-        this.message = message;
-        this.generalStatus = generalStatus;
-    }
-
-    // Short
-    public Transformation(User user, Date date, Time time, String qanNo,
-                          String wordfilename,
-                          String author, String templatename,
-                          Date lastmodified) {
-        this.user = user;
-        this.date = date;
-        this.qanNo = qanNo;
-        this.wordfilename = wordfilename;
-        this.specunit = null;
-        this.iqsxmlfilename = null;
-        this.unitNo = null;
-        this.unitTitle = null;
-        this.author = author;
-        this.templatename = templatename;
-        this.lastmodified = lastmodified;
-        this.transformStatus = TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS; // initial state
-        this.message = null;
-        this.generalStatus = GENERAL_STATUS_UNREAD; // initial state
-    }*/
 
     public User getUser() {
         return user;
@@ -258,6 +214,14 @@ public class Transformation extends AbstractEntity {
 
     public void setGeneralStatus(String generalStatus) {
         this.generalStatus = generalStatus;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 
     @Override

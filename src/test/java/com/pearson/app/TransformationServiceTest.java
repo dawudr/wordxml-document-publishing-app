@@ -1,10 +1,7 @@
 package com.pearson.app;
 
 import com.pearson.app.model.*;
-import com.pearson.app.services.SpecUnitService;
-import com.pearson.app.services.TemplateService;
-import com.pearson.app.services.TransformationService;
-import com.pearson.app.services.UserService;
+import com.pearson.app.services.*;
 import com.pearson.config.root.RootContextConfig;
 import com.pearson.config.root.TestConfiguration;
 import junit.framework.TestCase;
@@ -39,6 +36,8 @@ public class TransformationServiceTest extends TestCase {
     private SpecUnitService specUnitService;
     @Autowired
     private TemplateService templateService;
+    @Autowired
+    private ImageService imageService;
 
     private Template template;
 
@@ -76,6 +75,25 @@ public class TransformationServiceTest extends TestCase {
         }
     }
 
+    private Image createImageRecord(String qanNo) {
+
+            Image image = new Image();
+            image.setName(qanNo + ".docx");
+            //image.setThumbnailFilename(thumbnailFilename);
+            image.setNewFilename("NewDocument.docx");
+            image.setContentType("application/msword");
+            image.setSize(1L);
+            image.setUrl("/processtransform/view/");
+            image.setDeleteUrl("/processtransform/delete/");
+            image.setDeleteType("DELETE");
+            image.setDateCreated(new Date());
+            image.setLastUpdated(new Date());
+            image = imageService.addImage(image);
+
+        return image;
+
+    }
+
     @Test
     public void firstTransformationsExist() {
         User user = userService.getUserByUsername("btectest1");
@@ -108,6 +126,7 @@ public class TransformationServiceTest extends TestCase {
         newTransformation.setMessage("No errors were found");
         newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
         newTransformation.setSpecunit(specunit);
+        newTransformation.setImage(createImageRecord("S/123/1234"));
         transformationService.addTransformation(newTransformation);
 
 
@@ -156,6 +175,7 @@ public class TransformationServiceTest extends TestCase {
         newTransformation.setMessage("No errors were found");
         newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
         newTransformation.setSpecunit(specunit);
+        newTransformation.setImage(createImageRecord("T/999/0001"));
         transformationService.addTransformation(newTransformation);
 
 
@@ -175,6 +195,7 @@ public class TransformationServiceTest extends TestCase {
         newTransformation1.setMessage("No errors were found");
         newTransformation1.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
         newTransformation1.setSpecunit(specunit2);
+        newTransformation1.setImage(createImageRecord("T/999/0002"));
         transformationService.addTransformation(newTransformation1);
 
         //List<Transformation> result = transformationService.listTransformations();
@@ -212,6 +233,7 @@ public class TransformationServiceTest extends TestCase {
         newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
         newTransformation.setMessage("No errors were found");
         newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+        newTransformation.setImage(createImageRecord("T/999/0004"));
 
 
         transformationService.addTransformation(newTransformation);
@@ -255,6 +277,7 @@ public class TransformationServiceTest extends TestCase {
         newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
         newTransformation.setMessage("No errors were found");
         newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+        newTransformation.setImage(createImageRecord("T/999/0007"));
 
 
         transformationService.addTransformation(newTransformation);
@@ -308,6 +331,7 @@ public class TransformationServiceTest extends TestCase {
         newTransformation.setMessage("No errors were found");
         newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
         newTransformation.setSpecunit(specunit);
+        newTransformation.setImage(createImageRecord("T/999/0008"));
         transformationService.addTransformation(newTransformation);
 
         Transformation newTransformation1 = new Transformation();
@@ -317,7 +341,7 @@ public class TransformationServiceTest extends TestCase {
         newTransformation1.setUnitNo("45");
         newTransformation1.setUnitTitle("Manufacturing Secondary Machining Processes");
         newTransformation1.setAuthor("Paul Winser");
-        newTransformation.setTemplate(this.template);
+        newTransformation1.setTemplate(this.template);
         newTransformation1.setWordfilename("Unit 45_FBC.doc");
         newTransformation1.setSpecunit(specunit);
         newTransformation1.setOpenxmlfilename("Unit 45_FBC-open.xml");
@@ -326,7 +350,8 @@ public class TransformationServiceTest extends TestCase {
         newTransformation1.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
         newTransformation1.setMessage("No errors were found");
         newTransformation1.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
-        newTransformation.setSpecunit(specunit2);
+        newTransformation1.setSpecunit(specunit2);
+        newTransformation1.setImage(createImageRecord("T/999/0009"));
         transformationService.addTransformation(newTransformation1);
 
 
@@ -371,7 +396,7 @@ public class TransformationServiceTest extends TestCase {
         newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
         newTransformation.setMessage("No errors were found");
         newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
-
+        newTransformation.setImage(createImageRecord("T/999/0010"));
 
 
         transformationService.updateTransformation(newTransformation);
@@ -413,7 +438,7 @@ public class TransformationServiceTest extends TestCase {
         newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
         newTransformation.setMessage("No errors were found");
         newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
-
+        newTransformation.setImage(createImageRecord("T/999/0011"));
 
         transformationService.updateTransformation(newTransformation);
 

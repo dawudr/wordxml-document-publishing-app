@@ -8,14 +8,14 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "images")
+@Table(name = "image")
 @NamedQueries({
-        @NamedQuery(name = "images", query = "select i from Image i")
+        @NamedQuery(name = "image", query = "select i from Image i")
 })
 //@JsonIgnoreProperties({"id","newFilename","contentType","dateCreated","lastUpdated"})
 public class Image extends AbstractEntity {
 
-    public static final String LIST_IMAGES = "images.listImages";
+    public static final String LIST_IMAGES = "image.listImages";
 
     private String name;
     private String newFilename;
@@ -33,7 +33,10 @@ public class Image extends AbstractEntity {
     @Transient
     private String deleteType;
 
-    
+    @OneToOne(mappedBy="image")
+    private Transformation transformation;
+
+
     public Image() {}
 
     /**
@@ -160,6 +163,14 @@ public class Image extends AbstractEntity {
      */
     public void setDeleteType(String deleteType) {
         this.deleteType = deleteType;
+    }
+
+    public Transformation getTransformation() {
+        return transformation;
+    }
+
+    public void setTransformation(Transformation transformation) {
+        this.transformation = transformation;
     }
 
     @Override

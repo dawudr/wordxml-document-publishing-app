@@ -181,13 +181,14 @@ public class ProcessTransformController {
             newTransformation.setAuthor(processWordDocument.getTransformationAuthor());
             newTransformation.setTemplate(template);
             newTransformation.setWordfilename(image.getName());
-            newTransformation.setSpecunit(specunit);
             newTransformation.setOpenxmlfilename(openXmlFileName.toString());
             newTransformation.setIqsxmlfilename(pqsFileName.toString());
             newTransformation.setLastmodified(new Date());
             newTransformation.setTransformStatus(this.transformationStatus);
             newTransformation.setMessage(processWordDocument.getTransformationMessage());
             newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+            newTransformation.setSpecunit(specunit);
+
 
             specunit.setTransformation(newTransformation);
 
