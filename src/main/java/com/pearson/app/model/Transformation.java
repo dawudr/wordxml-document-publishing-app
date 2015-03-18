@@ -38,8 +38,14 @@ public class Transformation extends AbstractEntity {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne(mappedBy="transformation", cascade=CascadeType.ALL)
+//    @OneToOne(mappedBy="transformation", cascade=CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name="specunit_id")
     private Specunit specunit;
+    @ManyToOne
+    @JoinColumn(name="template_id")
+    private Template template;
+
 
     private Date date;
     @Column(name = "qanNo", unique = true)
@@ -51,7 +57,6 @@ public class Transformation extends AbstractEntity {
     private String unitTitle;
     private String author;
     private Date lastmodified;
-    private String templatename;
     private String transformStatus;
     private String message; // Error messages
     private String generalStatus; // Unread, Viewed, Deleted, Modified
@@ -143,12 +148,12 @@ public class Transformation extends AbstractEntity {
         this.user = user;
     }
 
-    public String getTemplatename() {
-        return templatename;
+    public Template getTemplate() {
+        return template;
     }
 
-    public void setTemplatename(String templatename) {
-        this.templatename = templatename;
+    public void setTemplate(Template template) {
+        this.template = template;
     }
 
     public Date getDate() {
@@ -268,7 +273,7 @@ public class Transformation extends AbstractEntity {
                 ", unitTitle='" + unitTitle + '\'' +
                 ", author='" + author + '\'' +
                 ", lastmodified=" + lastmodified +
-                ", templatename='" + templatename + '\'' +
+                ", template='" + template + '\'' +
                 ", transformStatus=" + transformStatus +
                 ", message='" + message + '\'' +
                 ", generalStatus=" + generalStatus +

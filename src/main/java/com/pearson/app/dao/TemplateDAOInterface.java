@@ -13,7 +13,7 @@ public interface TemplateDAOInterface {
         public void addTemplate(Template template);
         public List<Template> listTemplates();
         public Template getTemplateById(Long id);
-        public Template getTemplateByTemplateName(String templateName);
+        public Template getTemplateByName(String templateName);
         public void updateTemplate(Template template);
         public void removeTemplate(Long id);
 }

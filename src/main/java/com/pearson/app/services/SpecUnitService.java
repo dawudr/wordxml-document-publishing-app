@@ -19,7 +19,7 @@ public class SpecUnitService {
 
     @Transactional
     public void addSpecUnit(Specunit specunit) {
-        assertNotBlank(specunit.getQanNo(), "SpecUnit QanNo type cannot be empty.");
+        //assertNotBlank(specunit.getQanNo(), "SpecUnit QanNo type cannot be empty.");
         specUnitRepository.addSpecUnit(specunit);
     }
 

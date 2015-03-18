@@ -1,9 +1,8 @@
 package com.pearson.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -11,48 +10,53 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "template")
+@Table(name = "template", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "id")})
 @NamedQueries({
         @NamedQuery(
-                name = Template.FIND_BY_TEMPLATE_TYPE,
-                query = "select t from Template t where templateType = :templateType"
+                name = Template.FIND_BY_TEMPLATE_NAME,
+                query = "select t from Template t where templateName = :templateName"
         )
 })
 public class Template extends AbstractEntity {
 
-    public static final String FIND_BY_TEMPLATE_TYPE = "template.findByTemplate";
+    public static final String FIND_BY_TEMPLATE_NAME = "template.findByTemplateName";
 
-    private String templateType;
+    private String templateName;
     private String description;
     private String revision;
-    private String styleType;
-    private String styleTag;
     private String xsltScriptLocation;
     private String xsdScriptLocation;
     private String xQueryScriptLocation;
 
+/*    @OneToOne(mappedBy="template")
+    private Transformation transformation;*/
+    @OneToMany(mappedBy="template")
+    private Set<Transformation> transformation;
 
-    public Template() {
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="template_id")
+    private Set<TemplateSection> templateSections;
 
+
+    public Template () {
+
+    };
+
+    public Set<Transformation> getTransformation() {
+        return transformation;
     }
 
-    public Template(String templateType, String description, String revision, String styleType, String styleTag, String xsltScriptLocation, String xQueryScriptLocation, String xsdScriptLocation) {
-        this.templateType = templateType;
-        this.description = description;
-        this.revision = revision;
-        this.styleType = styleType;
-        this.styleTag = styleTag;
-        this.xsltScriptLocation = xsltScriptLocation;
-        this.xQueryScriptLocation = xQueryScriptLocation;
-        this.xsdScriptLocation = xsdScriptLocation;
+    public void setTransformation(Set<Transformation> transformation) {
+        this.transformation = transformation;
     }
 
-    public String getTemplateType() {
-        return templateType;
+    public String getTemplateName() {
+        return templateName;
     }
 
-    public void setTemplateType(String templateType) {
-        this.templateType = templateType;
+    public void setTemplateName(String templateName) {
+        this.templateName = templateName;
     }
 
     public String getDescription() {
@@ -61,22 +65,6 @@ public class Template extends AbstractEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getStyleType() {
-        return styleType;
-    }
-
-    public void setStyleType(String styleType) {
-        this.styleType = styleType;
-    }
-
-    public String getStyleTag() {
-        return styleTag;
-    }
-
-    public void setStyleTag(String styleTag) {
-        this.styleTag = styleTag;
     }
 
     public String getRevision() {
@@ -111,14 +99,20 @@ public class Template extends AbstractEntity {
         this.xQueryScriptLocation = xQueryScriptLocation;
     }
 
+    public Set<TemplateSection> getTemplateSections() {
+        return templateSections;
+    }
+
+    public void setTemplateSections(Set<TemplateSection> templateSections) {
+        this.templateSections = templateSections;
+    }
+
     @Override
     public String toString() {
         return "Template{" +
-                "templateType='" + templateType + '\'' +
+                "templateType='" + templateName + '\'' +
                 ", description='" + description + '\'' +
                 ", revision='" + revision + '\'' +
-                ", styleType='" + styleType + '\'' +
-                ", styleTag='" + styleTag + '\'' +
                 ", xsltScriptLocation='" + xsltScriptLocation + '\'' +
                 ", xsdScriptLocation='" + xsdScriptLocation + '\'' +
                 ", xQueryScriptLocation='" + xQueryScriptLocation + '\'' +

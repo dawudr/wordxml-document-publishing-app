@@ -223,7 +223,13 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
     $http.get('/transformation/listrecent').success(function (data) {
         $scope.recentTransformations = data;
     });
+})
+.controller('SettingsCtrl', function ($scope, $http) {
+    /**
+     * SETTING STUFF
+     */
 
-
-
+    $http.get('/template/list').success(function (data) {
+        $scope.templates = data;
+    });
 })

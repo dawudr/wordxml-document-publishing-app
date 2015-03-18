@@ -79,6 +79,7 @@ function config($stateProvider, $urlRouterProvider) {
         .state('settings', {
             url: "/settings",
             templateUrl: "views/form_settings.html",
+            controller: 'SettingsCtrl',
             data: { pageTitle: 'Settings' }
         })
         .state('userprofile', {

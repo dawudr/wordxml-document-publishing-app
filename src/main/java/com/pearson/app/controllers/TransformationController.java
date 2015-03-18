@@ -2,10 +2,8 @@ package com.pearson.app.controllers;
 
 import com.pearson.app.dto.TransformationDTO;
 import com.pearson.app.dto.TransformationsDTO;
-import com.pearson.app.model.SearchResult;
-import com.pearson.app.model.Specunit;
-import com.pearson.app.model.Transformation;
-import com.pearson.app.model.User;
+import com.pearson.app.model.*;
+import com.pearson.app.services.TemplateService;
 import com.pearson.app.services.TransformationService;
 import com.pearson.app.services.UserService;
 import com.pearson.btec.service.TransformXmlDocument;
@@ -50,6 +48,9 @@ public class TransformationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TemplateService templateService;
 
     @Autowired
     ServletContext context;
@@ -229,6 +230,8 @@ public class TransformationController {
         User user = userService.getUserByUsername(principal.getName());
         LOGGER.debug("Retrieved user[{}]", user);
 
+        Template template = templateService.getTemplateByName(transformationDTO.getTemplatename());
+
         Transformation transformation = transformationService.getTransformationById(transformationDTO.getId());
         transformation.setDate(transformationDTO.getDate());
         transformation.setQanNo(transformationDTO.getQanNo());
@@ -238,12 +241,11 @@ public class TransformationController {
         transformation.setUnitNo(transformationDTO.getUnitNo());
         transformation.setUnitTitle(transformationDTO.getUnitTitle());
         transformation.setAuthor(transformationDTO.getAuthor());
-        transformation.setTemplatename(transformationDTO.getTemplatename());
         transformation.setLastmodified(new Date());
         transformation.setTransformStatus(transformationDTO.getTransformStatus());
         transformation.setMessage(transformationDTO.getMessage());
         transformation.setGeneralStatus(Transformation.GENERAL_STATUS_MODIFIED);
-
+        transformation.setTemplate(template);
         transformationService.updateTransformation(transformation);
         LOGGER.debug("Updating Transformation[{}]", transformation.toString());
     }

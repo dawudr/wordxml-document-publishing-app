@@ -1,14 +1,8 @@
 package com.pearson.app.controllers;
 
 import com.pearson.app.config.PropertyPlaceholderConfig;
-import com.pearson.app.model.Image;
-import com.pearson.app.model.Specunit;
-import com.pearson.app.model.Transformation;
-import com.pearson.app.model.User;
-import com.pearson.app.services.ImageService;
-import com.pearson.app.services.SpecUnitService;
-import com.pearson.app.services.TransformationService;
-import com.pearson.app.services.UserService;
+import com.pearson.app.model.*;
+import com.pearson.app.services.*;
 import com.pearson.btec.service.ProcessWordDocument;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -54,6 +48,9 @@ public class ProcessTransformController {
 
     @Autowired
     private SpecUnitService specUnitService;
+
+    @Autowired
+    private TemplateService templateService;
 
     @Autowired
     ServletContext context;
@@ -172,6 +169,9 @@ public class ProcessTransformController {
             specunit.setUnitXML(processWordDocument.getXmlStringContent());
             //specUnitService.addSpecUnit(specunit);
 
+            Template template = templateService.getTemplateByName("BTECNATIONALS");
+
+
             Transformation newTransformation = new Transformation();
             newTransformation.setUser(user);
             newTransformation.setDate(new Date());
@@ -179,7 +179,7 @@ public class ProcessTransformController {
             newTransformation.setUnitNo(processWordDocument.getTransformationUnitNo());
             newTransformation.setUnitTitle(processWordDocument.getTransformationUnitTitle());
             newTransformation.setAuthor(processWordDocument.getTransformationAuthor());
-            newTransformation.setTemplatename("BTECNATIONALS");
+            newTransformation.setTemplate(template);
             newTransformation.setWordfilename(image.getName());
             newTransformation.setSpecunit(specunit);
             newTransformation.setOpenxmlfilename(openXmlFileName.toString());

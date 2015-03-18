@@ -60,13 +60,13 @@ public class UserServiceTest {
 
     @Test
     public void testCreateValidUser() {
-        User newUser = new User("btectest", "Password123", "test@gmail.com", "Btec", "Test", User.ROLE_ADMIN);
+        User newUser = new User("btectestnew", "Password123", "test@gmail.com", "Btec", "Test", User.ROLE_ADMIN);
 
         userService.addUser(newUser);
-        User user = userService.getUserByUsername("btectest");
+        User user = userService.getUserByUsername("btectestnew");
         //User user = findUserByUsername("btectest");
 
-        assertTrue("username not expected " + user.getUsername(), "btectest".equals(user.getUsername()) );
+        assertTrue("username not expected " + user.getUsername(), "btectestnew".equals(user.getUsername()) );
         assertTrue("email not expected " + user.getEmail(), "test@gmail.com".equals(user.getEmail()) );
 
         //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -85,7 +85,7 @@ public class UserServiceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testUsernameAvailable() {
-        userService.addUser(new User("test123", "Password3", "test@gmail.com", "Paul", "Winser", User.ROLE_ADMIN));
+        userService.addUser(new User("btectest", "Password3", "test@gmail.com", "Paul", "Winser", User.ROLE_ADMIN));
     }
 
     @Test(expected = IllegalArgumentException.class)

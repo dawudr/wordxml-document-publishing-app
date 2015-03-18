@@ -56,7 +56,7 @@ public class TransformationDTO {
         this.unitNo = transformation.getUnitNo();
         this.unitTitle = transformation.getUnitTitle();
         this.author = transformation.getAuthor();
-        this.templatename = transformation.getTemplatename();
+        this.templatename = transformation.getTemplate().getTemplateName();
 
         this.lastmodified = transformation.getLastmodified();
         this.transformStatus = transformation.getTransformStatus();
@@ -104,7 +104,7 @@ public class TransformationDTO {
                 transformation.getUnitNo(),
                 transformation.getUnitTitle(),
                 transformation.getAuthor(),
-                transformation.getTemplatename(),
+                transformation.getTemplate().getTemplateName(),
 
                 transformation.getLastmodified(),
                 transformation.getTransformStatus(),

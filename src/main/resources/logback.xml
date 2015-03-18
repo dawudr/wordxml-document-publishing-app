@@ -12,7 +12,7 @@
 
 
     <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/btecwordopenxmlapp.log</file>
+        <file>/logs/btecwordopenxmlapp.log</file>
         <encoder>
             <pattern>%d{yy/MM/dd HH:mm:ss.SSS}[%thread] %-5level %logger.%M [%F:%L] %msg %n</pattern>
         </encoder>
@@ -44,7 +44,7 @@
 
 
 
-<!--    <logger name="org.springframework.core">
+    <logger name="org.springframework.core">
         <level value="info" />
     </logger>
 
@@ -78,7 +78,7 @@
 
     <logger name="org.hibernate.type">
         <level value="debug"/>
-    </logger>-->
+    </logger>
 
     <logger name="org.docx4j">
         <level value="error"/>

@@ -1,7 +1,7 @@
 package com.pearson.app.init;
 
 import com.pearson.app.model.Template;
-import com.pearson.app.model.Transformation;
+import com.pearson.app.model.TemplateSection;
 import com.pearson.app.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManagerFactory;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- *
  * This is a initializing bean that inserts some test data in the database. It is only active in
  * the development profile, to see the data login with user123 / PAssword2 and do a search starting on
  * 1st of January 2015.
- *
  */
 @Component
 public class TestDataInitializer {
@@ -33,8 +33,8 @@ public class TestDataInitializer {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-/*        User user = new User("btectest", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN);
-        session.persist(user);*/
+        User user = new User("btectest", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN);
+        session.persist(user);
 /*        User user0 = new User("test123", "Password123", "test@email.com", "test", "123", User.ROLE_ADMIN);
         session.persist(user0);
         User user1 = new User("pwinser", "Password123", "paul.winser@pearson.com", "Paul", "Winser", User.ROLE_ADMIN);
@@ -58,13 +58,125 @@ public class TestDataInitializer {
         User user10 = new User("testviewer", "Password123", "dawud.rahman@aqovia.com", "test", "Viewer", User.ROLE_VIEWER);
         session.persist(user10);*/
 
+        TemplateSection templateSection = new TemplateSection();
+        templateSection.setSectionName("uan");
+        templateSection.setSectionType(TemplateSection.SECTION_TYPE_META);
+        templateSection.setRequiredInValidateWordDoc(false);
 
-        Template template = new Template("bteclevel2", "Btec Level 2", "1.0", "header", "hb3", "wordxml_unit.xsl", "wordxml_unit2_table.xquery", "Unit.xsd");
-        session.persist(template);
-        Template template1 = new Template("btecnationals", "Btec Nationals", "2.0", "header", "UnitAHead", "wordxml_unit.xsl", "wordxml_unit2_table.xquery", "Unit.xsd");
-        session.persist(template1);
-        Template template2 = new Template("btecnationals", "Btec Nationals", "2.0", "subheader", "UnitBHead", "wordxml_unit.xsl", "wordxml_unit2_table.xquery", "Unit.xsd");
-        session.persist(template2);
+        TemplateSection templateSection1 = new TemplateSection();
+        templateSection1.setSectionName("unitnumber");
+        templateSection1.setSectionType(TemplateSection.SECTION_TYPE_META);
+        templateSection1.setRequiredInValidateWordDoc(false);
+
+        TemplateSection templateSection2 = new TemplateSection();
+        templateSection2.setSectionName("unittitle");
+        templateSection2.setSectionType(TemplateSection.SECTION_TYPE_META);
+        templateSection2.setRequiredInValidateWordDoc(true);
+
+        TemplateSection templateSection3 = new TemplateSection();
+        templateSection3.setSectionName("author");
+        templateSection3.setSectionType(TemplateSection.SECTION_TYPE_META);
+        templateSection3.setRequiredInValidateWordDoc(false);
+
+        TemplateSection templateSection4 = new TemplateSection();
+        templateSection4.setSectionName("All with UnitAhead");
+        templateSection4.setSectionStyle("UnitAhead");
+        templateSection4.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection4.setRequiredInValidateWordDoc(true);
+        templateSection4.setIsFilteredByValue(true); // if true then dont use section name
+
+        TemplateSection templateSection5 = new TemplateSection();
+        templateSection5.setSectionName("All with UnitBhead");
+        templateSection5.setSectionStyle("UnitBhead");
+        templateSection5.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+
+        TemplateSection templateSection6 = new TemplateSection();
+        templateSection6.setSectionName("Unit introduction");
+        templateSection6.setSectionStyle("UnitAhead");
+        templateSection6.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection6.setRequiredInValidateWordDoc(true);
+
+        TemplateSection templateSection7 = new TemplateSection();
+        templateSection7.setSectionName("Learning aims and unit content");
+        templateSection7.setSectionStyle("UnitAhead");
+        templateSection7.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection7.setRequiredInValidateWordDoc(true);
+
+        TemplateSection templateSection8 = new TemplateSection();
+        templateSection8.setSectionName("Outline Programme of Suggested Assignments");
+        templateSection8.setSectionStyle("UnitAhead");
+        templateSection8.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection8.setRequiredInValidateWordDoc(false);
+
+        TemplateSection templateSection9 = new TemplateSection();
+        templateSection9.setSectionName("Assessment criteria");
+        templateSection9.setSectionStyle("UnitAhead");
+        templateSection9.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection9.setRequiredInValidateWordDoc(false);
+
+        TemplateSection templateSection10 = new TemplateSection();
+        templateSection10.setSectionName("Teacher guidance");
+        templateSection10.setSectionStyle("UnitAhead");
+        templateSection10.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection10.setRequiredInValidateWordDoc(false);
+
+        TemplateSection templateSection11 = new TemplateSection();
+        templateSection11.setSectionName("Resources");
+        templateSection11.setSectionStyle("UnitBhead");
+        templateSection11.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection11.setRequiredInValidateWordDoc(false);
+
+        TemplateSection templateSection12 = new TemplateSection();
+        templateSection12.setSectionName("Assessment Guidance");
+        templateSection12.setSectionStyle("UnitAhead");
+        templateSection12.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection12.setRequiredInValidateWordDoc(false);
+
+        TemplateSection templateSectionbtecl3 = new TemplateSection();
+        templateSectionbtecl3.setSectionName("All with hb3");
+        templateSectionbtecl3.setSectionStyle("hb3");
+        templateSectionbtecl3.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSectionbtecl3.setRequiredInValidateWordDoc(true);
+        templateSectionbtecl3.setIsFilteredByValue(true); // if true then dont use section name
+
+        Set<TemplateSection> templateSectionsBtecNational = new HashSet<TemplateSection>();
+        templateSectionsBtecNational.add(templateSection);
+        templateSectionsBtecNational.add(templateSection1);
+        templateSectionsBtecNational.add(templateSection2);
+        templateSectionsBtecNational.add(templateSection3);
+        templateSectionsBtecNational.add(templateSection4);
+        templateSectionsBtecNational.add(templateSection5);
+        templateSectionsBtecNational.add(templateSection6);
+        templateSectionsBtecNational.add(templateSection7);
+        templateSectionsBtecNational.add(templateSection8);
+        templateSectionsBtecNational.add(templateSection9);
+        templateSectionsBtecNational.add(templateSection10);
+        templateSectionsBtecNational.add(templateSection11);
+        templateSectionsBtecNational.add(templateSection12);
+
+        Set<TemplateSection> templateSectionsBtecL2 = new HashSet<TemplateSection>();
+        templateSectionsBtecL2.add(templateSectionbtecl3);
+
+            Template template = new Template();
+        template.setTemplateName("BTEC L2");
+        template.setDescription("Btec Level 2");
+        template.setRevision("1.0");
+        template.setXsltScriptLocation("wordxml_unit.xsl");
+        template.setxQueryScriptLocation("wordxml_unit2_table.xquery");
+        template.setXsdScriptLocation("Unit.xsd");
+        template.setTemplateSections(templateSectionsBtecL2);
+            session.persist(template);
+
+        Template template2 = new Template();
+        template2.setTemplateName("BTEC NATIONALS");
+        template2.setDescription("Btec Nationals");
+        template2.setRevision("1.0");
+        template2.setXsltScriptLocation("wordxml_unit.xsl");
+        template2.setxQueryScriptLocation("wordxml_unit2_table.xquery");
+        template2.setXsdScriptLocation("Unit.xsd");
+            template2.setTemplateSections(templateSectionsBtecNational);
+
+            session.persist(template2);
 
 
         Calendar calendarLastWeek = Calendar.getInstance();

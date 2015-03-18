@@ -1,6 +1,7 @@
 package com.pearson.app.dao;
 
 import com.pearson.app.model.Template;
+import com.pearson.app.model.TemplateSection;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -15,10 +16,10 @@ import java.util.List;
 
 
 /**
- * Repository class for the Template entity
+ * Repository class for the TemplateSection entity
  */
 @Repository
-public class TemplateRepository implements TemplateDAOInterface{
+public class TemplateSectionRepository implements TemplateSectionDAOInterface{
 
     @PersistenceContext
     private EntityManager em;
@@ -26,8 +27,8 @@ public class TemplateRepository implements TemplateDAOInterface{
     /**
      * create new template
      */
-    public void addTemplate(Template template) {
-        em.persist(template);
+    public void addTemplateSection(TemplateSection templateSection) {
+        em.persist(templateSection);
     }
 
 
@@ -35,18 +36,18 @@ public class TemplateRepository implements TemplateDAOInterface{
      * list all templates
      * @return  list templates, or an empty collection if no match found
      */
-    public List<Template> listTemplates() {
+    public List<TemplateSection> listTemplateSections() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
         // the actual search query that returns one page of results
-        CriteriaQuery<Template> searchQuery = cb.createQuery(Template.class);
-        Root<Template> searchRoot = searchQuery.from(Template.class);
+        CriteriaQuery<TemplateSection> searchQuery = cb.createQuery(TemplateSection.class);
+        Root<TemplateSection> searchRoot = searchQuery.from(TemplateSection.class);
 
         List<Order> orderList = new ArrayList();
-        orderList.add(cb.desc(searchRoot.get("templateName")));
+        orderList.add(cb.desc(searchRoot.get("sectionType")));
         searchQuery.orderBy(orderList);
 
-        TypedQuery<Template> filterQuery = em.createQuery(searchQuery);
+        TypedQuery<TemplateSection> filterQuery = em.createQuery(searchQuery);
 
         return filterQuery.getResultList();
     }
@@ -55,19 +56,20 @@ public class TemplateRepository implements TemplateDAOInterface{
     /**
      * finds a templates given its id
      */
-    public Template getTemplateById(Long id) {
-        return em.find(Template.class, id);
+    public TemplateSection getTemplateSectionById(Long id) {
+        return em.find(TemplateSection.class, id);
     }
 
 
     /**
+     * finds a user given its username
      *
-     * @param templateName - the templateName of the searched template
+     * @param sectionType - the templateName of the searched template
      * @return  a matching template, or null if no template found.
      */
-    public Template getTemplateByName(String templateName) {
-        List<Template> templates = em.createNamedQuery(Template.FIND_BY_TEMPLATE_NAME, Template.class)
-                .setParameter("templateName", templateName)
+    public TemplateSection getTemplateSectionByType(String sectionType) {
+        List<TemplateSection> templates = em.createNamedQuery(Template.FIND_BY_TEMPLATE_NAME, TemplateSection.class)
+                .setParameter("sectionType", sectionType)
                 .getResultList();
         return templates.size() == 1 ? templates.get(0) : null;
     }
@@ -78,7 +80,7 @@ public class TemplateRepository implements TemplateDAOInterface{
      * save changes made to a template, or insert it if its new
      * @param template
      */
-    public void updateTemplate(Template template) {
+    public void updateTemplateSection(TemplateSection template) {
         em.merge(template);
     }
 
@@ -87,8 +89,8 @@ public class TemplateRepository implements TemplateDAOInterface{
      * Delete a Template, given its identifier
      * @param id - the id of the Template to be deleted
      */
-    public void removeTemplate(Long id) {
-        Template delete = em.find(Template.class, id);
+    public void removeTemplateSection(Long id) {
+        TemplateSection delete = em.find(TemplateSection.class, id);
         em.remove(delete);
     }
 
@@ -96,16 +98,16 @@ public class TemplateRepository implements TemplateDAOInterface{
     /**
      * checks if a template is still available in the database
      *
-     * @param templateName - the template to be checked for availability
+     * @param sectionName - the template to be checked for availability
      * @return true if the template is still available
      */
-    public boolean isTemplateNameAvailable(String templateName) {
+    public boolean isTemplateSectionNameAvailable(String sectionName) {
 
-        List<Template> users = em.createNamedQuery(Template.FIND_BY_TEMPLATE_NAME, Template.class)
-                .setParameter("templatetype", templateName)
+        List<TemplateSection> sectionTypes = em.createNamedQuery(TemplateSection.FIND_BY_TEMPLATE_SECTION_NAME, TemplateSection.class)
+                .setParameter("sectionName", sectionName)
                 .getResultList();
 
-        return users.isEmpty();
+        return sectionTypes.isEmpty();
     }
 
 

@@ -1,9 +1,12 @@
 package com.pearson.app.model;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.*;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 import org.hibernate.annotations.Parameter;
@@ -28,16 +31,10 @@ import org.hibernate.annotations.Parameter;
                 query = "select s from Specunit s where qanNo = :qanNo"
         )
 })
-public class Specunit {
+public class Specunit extends AbstractEntity {
 
     public static final String FIND_BY_ID = "specunit.findById";
     public static final String FIND_BY_QAN = "specunit.findByQanNo";
-
-    @Id
-    @Column(name="id", unique = true, nullable = false)
-    @GeneratedValue(generator="gen")
-    @GenericGenerator(name="gen", strategy="foreign", parameters=@Parameter(name="property", value="transformation"))
-    private Long id;
 
     private String qanNo;
 
@@ -46,8 +43,7 @@ public class Specunit {
     @Column(name = "VAL_XML")
     private String unitXML;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy="specunit")
     private Transformation transformation;
 
 
@@ -58,15 +54,6 @@ public class Specunit {
 
     public Specunit() {
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
 
     public String getQanNo() {
         return qanNo;
