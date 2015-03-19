@@ -1,5 +1,7 @@
 package com.pearson.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -30,6 +32,7 @@ public class TemplateSection extends AbstractEntity {
     private boolean isFilteredByValue;
     private boolean isRequiredInValidateWordDoc;
 
+    @JsonIgnore
     @ManyToOne
     private Template template;
 

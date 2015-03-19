@@ -230,7 +230,7 @@ public class TransformationController {
         User user = userService.getUserByUsername(principal.getName());
         LOGGER.debug("Retrieved user[{}]", user);
 
-        Template template = templateService.getTemplateByName(transformationDTO.getTemplatename());
+        Template template = templateService.getTemplateById(transformationDTO.getTemplateId());
 
         Transformation transformation = transformationService.getTransformationById(transformationDTO.getId());
         transformation.setDate(transformationDTO.getDate());

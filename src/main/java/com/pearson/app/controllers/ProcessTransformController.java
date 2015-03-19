@@ -188,7 +188,7 @@ public class ProcessTransformController {
             newTransformation.setMessage(processWordDocument.getTransformationMessage());
             newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
             newTransformation.setSpecunit(specunit);
-
+            newTransformation.setImage(image);
 
             specunit.setTransformation(newTransformation);
 

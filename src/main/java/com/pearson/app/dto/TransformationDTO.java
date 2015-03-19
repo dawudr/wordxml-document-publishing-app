@@ -2,6 +2,8 @@ package com.pearson.app.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.pearson.app.model.Specunit;
+import com.pearson.app.model.Template;
 import com.pearson.app.model.Transformation;
 
 import java.util.Date;
@@ -32,18 +34,26 @@ public class TransformationDTO {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "CET")
     private Date lastmodified; // for Viewed transformStatus
 
-    private String templatename;
+    private String template;
+    private Long templateId;
     private String transformStatus;
     private String message; // Error messages
     private String generalStatus;
 
     private Long user_id;
-    private Long specunit_id;
+    private Long specunit;
 
     public TransformationDTO() {
     }
 
     public TransformationDTO(Transformation transformation) {
+        String templateName = "";
+        Template t = transformation.getTemplate();
+        if(t!=null) {
+            templateName = t.getTemplateName();
+            templateId = t.getId();
+        }
+
         this.id = transformation.getId();
         this.user = UserInfoDTO.mapFromUserEntity(transformation.getUser());
         this.date = transformation.getDate();
@@ -56,7 +66,8 @@ public class TransformationDTO {
         this.unitNo = transformation.getUnitNo();
         this.unitTitle = transformation.getUnitTitle();
         this.author = transformation.getAuthor();
-        this.templatename = transformation.getTemplate().getTemplateName();
+        this.template = templateName;
+        this.templateId = templateId;
 
         this.lastmodified = transformation.getLastmodified();
         this.transformStatus = transformation.getTransformStatus();
@@ -66,8 +77,8 @@ public class TransformationDTO {
 
     public TransformationDTO(Long id, UserInfoDTO user, Date date, String qanNo,
                              String wordfilename, String openxmlfilename, String iqsxmlfilename,
-                             String unitNo, String unitTitle, String author, String templatename,
-                             Date lastmodified, String transformStatus, String message, String generalStatus, Long specunit_id) {
+                             String unitNo, String unitTitle, String author, String template, Long templateId,
+                             Date lastmodified, String transformStatus, String message, String generalStatus, Long specunit) {
         this.id = id;
         this.user = user;
         this.date = date;
@@ -80,17 +91,35 @@ public class TransformationDTO {
         this.unitNo = unitNo;
         this.unitTitle = unitTitle;
         this.author = author;
-        this.templatename = templatename;
+        this.template = template;
+        this.templateId = templateId;
 
         this.lastmodified = lastmodified;
         this.transformStatus = transformStatus;
         this.message = message;
         this.generalStatus = generalStatus;
-        this.specunit_id = specunit_id;
+        this.specunit = specunit;
     }
 
 
     public static TransformationDTO mapFromTransformationEntity(Transformation transformation) {
+
+        String templateName = "";
+        Long templateId = 0L;
+        Template t = transformation.getTemplate();
+        if(t!=null) {
+            templateName = t.getTemplateName();
+            templateId = t.getId();
+        }
+
+        Long specunit= 0L;
+        Specunit s = transformation.getSpecunit();
+        if(s!=null) {
+            specunit = s.getId();
+        }
+
+
+
         return new TransformationDTO(
                 transformation.getId(),
                 UserInfoDTO.mapFromUserEntity(transformation.getUser()),
@@ -104,13 +133,14 @@ public class TransformationDTO {
                 transformation.getUnitNo(),
                 transformation.getUnitTitle(),
                 transformation.getAuthor(),
-                transformation.getTemplate().getTemplateName(),
+                templateName,
+                templateId,
 
                 transformation.getLastmodified(),
                 transformation.getTransformStatus(),
                 transformation.getMessage(),
                 transformation.getGeneralStatus(),
-                transformation.getSpecunit().getId());
+                specunit);
     }
 
 
@@ -207,14 +237,29 @@ public class TransformationDTO {
         this.lastmodified = lastmodified;
     }
 
-    public String getTemplatename() {
-        return templatename;
+    public String getTemplate() {
+        return template;
     }
 
-    public void setTemplatename(String templatename) {
-        this.templatename = templatename;
+    public void setTemplate(String template) {
+        this.template = template;
     }
 
+    public Long getTemplateId() {
+        return templateId;
+    }
+
+    public void setTemplateId(Long templateId) {
+        this.templateId = templateId;
+    }
+
+    public Long getSpecunit() {
+        return specunit;
+    }
+
+    public void setSpecunit(Long specunit) {
+        this.specunit = specunit;
+    }
 
     public String getMessage() {
         return message;

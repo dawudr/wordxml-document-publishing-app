@@ -36,7 +36,7 @@ public class TemplateController {
     @RequestMapping(method = RequestMethod.POST, value = "/template")
     public void addTemplate(@RequestBody Template template) {
         templateService.addTemplate(template);
-        LOGGER.debug("Add new Transformation[{}]", template.toString());
+        LOGGER.debug("Add new Template[{}]", template.toString());
     }
 
 
@@ -55,17 +55,25 @@ public class TemplateController {
     @RequestMapping(method = RequestMethod.GET, value = "/template/{id}")
     public Template getTemplateById(@PathVariable Long id) {
         Template template = templateService.getTemplateById(id);
-        LOGGER.debug("Found User id[{}] -> Template[{}]", id, template.toString());
+        LOGGER.debug("Found Template id[{}] -> Template[{}]", id, template.toString());
         return template;
     }
 
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(method = RequestMethod.GET, value = "/template/name/{name}")
+    public Template getTemplateByName(@PathVariable String name) {
+        Template template = templateService.getTemplateByName(name);
+        LOGGER.debug("Found Template Name[{}] -> Template[{}]", name, template.toString());
+        return template;
+    }
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.POST, value = "/template/update")
     public void updateTemplate(@RequestBody Template template) {
         templateService.updateTemplate(template);
-        LOGGER.debug("Update Transformation[{}]", template.toString());
+        LOGGER.debug("Update Template[{}]", template.toString());
     }
 
 

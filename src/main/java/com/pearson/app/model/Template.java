@@ -1,14 +1,19 @@
 package com.pearson.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  *
  * The Template JPA entity.
  *
  */
+@JsonRootName(value = "template")
 @Entity
 @Table(name = "template", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id")})
@@ -31,23 +36,25 @@ public class Template extends AbstractEntity {
 
 /*    @OneToOne(mappedBy="template")
     private Transformation transformation;*/
+    @JsonIgnore
     @OneToMany(mappedBy="template")
-    private Set<Transformation> transformation;
+    private List<Transformation> transformation;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @JsonProperty(value = "templatesection")
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="template_id")
-    private Set<TemplateSection> templateSections;
+    private List<TemplateSection> templateSections;
 
 
     public Template () {
 
     };
 
-    public Set<Transformation> getTransformation() {
+    public List<Transformation> getTransformation() {
         return transformation;
     }
 
-    public void setTransformation(Set<Transformation> transformation) {
+    public void setTransformation(List<Transformation> transformation) {
         this.transformation = transformation;
     }
 
@@ -99,11 +106,11 @@ public class Template extends AbstractEntity {
         this.xQueryScriptLocation = xQueryScriptLocation;
     }
 
-    public Set<TemplateSection> getTemplateSections() {
+    public List<TemplateSection> getTemplateSections() {
         return templateSections;
     }
 
-    public void setTemplateSections(Set<TemplateSection> templateSections) {
+    public void setTemplateSections(List<TemplateSection> templateSections) {
         this.templateSections = templateSections;
     }
 

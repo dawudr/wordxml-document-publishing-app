@@ -228,8 +228,12 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
     /**
      * SETTING STUFF
      */
+    $scope.templates = [];
+        $scope.defaultSelected = "BTEC NATIONALS";
 
-    $http.get('/template/list').success(function (data) {
+        $http.get('/template/list').success(function (data) {
         $scope.templates = data;
+            $scope.defaultSelected = $scope.templates[1];
     });
+
 })

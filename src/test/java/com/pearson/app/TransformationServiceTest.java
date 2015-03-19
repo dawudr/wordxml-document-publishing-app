@@ -15,10 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -59,7 +56,7 @@ public class TransformationServiceTest extends TestCase {
             templateSection1.setSectionType(TemplateSection.SECTION_TYPE_META);
             templateSection1.setRequiredInValidateWordDoc(false);
 
-            Set<TemplateSection> templateSectionsBtecNational = new HashSet<TemplateSection>();
+            List<TemplateSection> templateSectionsBtecNational = new ArrayList<TemplateSection>();
             templateSectionsBtecNational.add(templateSection);
             templateSectionsBtecNational.add(templateSection1);
 

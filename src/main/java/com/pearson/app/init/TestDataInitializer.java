@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManagerFactory;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * This is a initializing bean that inserts some test data in the database. It is only active in
@@ -139,7 +136,7 @@ public class TestDataInitializer {
         templateSectionbtecl3.setRequiredInValidateWordDoc(true);
         templateSectionbtecl3.setIsFilteredByValue(true); // if true then dont use section name
 
-        Set<TemplateSection> templateSectionsBtecNational = new HashSet<TemplateSection>();
+        List<TemplateSection> templateSectionsBtecNational = new ArrayList<TemplateSection>();
         templateSectionsBtecNational.add(templateSection);
         templateSectionsBtecNational.add(templateSection1);
         templateSectionsBtecNational.add(templateSection2);
@@ -154,7 +151,7 @@ public class TestDataInitializer {
         templateSectionsBtecNational.add(templateSection11);
         templateSectionsBtecNational.add(templateSection12);
 
-        Set<TemplateSection> templateSectionsBtecL2 = new HashSet<TemplateSection>();
+        List<TemplateSection> templateSectionsBtecL2 = new ArrayList<TemplateSection>();
         templateSectionsBtecL2.add(templateSectionbtecl3);
 
             Template template = new Template();
