@@ -49,12 +49,13 @@ public class TransformationServiceTest extends TestCase {
             TemplateSection templateSection = new TemplateSection();
             templateSection.setSectionName("uan");
             templateSection.setSectionType(TemplateSection.SECTION_TYPE_META);
-            templateSection.setRequiredInValidateWordDoc(false);
-
+            templateSection.setValidateInWordDoc(true);
+            templateSection.setShowSection(false);
             TemplateSection templateSection1 = new TemplateSection();
             templateSection1.setSectionName("unitnumber");
             templateSection1.setSectionType(TemplateSection.SECTION_TYPE_META);
-            templateSection1.setRequiredInValidateWordDoc(false);
+            templateSection1.setValidateInWordDoc(true);
+            templateSection1.setShowSection(false);
 
             List<TemplateSection> templateSectionsBtecNational = new ArrayList<TemplateSection>();
             templateSectionsBtecNational.add(templateSection);

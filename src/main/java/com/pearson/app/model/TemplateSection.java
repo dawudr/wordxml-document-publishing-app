@@ -3,7 +3,6 @@ package com.pearson.app.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  *
@@ -29,8 +28,8 @@ public class TemplateSection extends AbstractEntity {
     private String sectionStyle;
     private String sectionName;
     private String sectionValue;
-    private boolean isFilteredByValue;
-    private boolean isRequiredInValidateWordDoc;
+    private boolean showSection;
+    private boolean validateInWordDoc;
 
     @JsonIgnore
     @ManyToOne
@@ -71,29 +70,22 @@ public class TemplateSection extends AbstractEntity {
         this.sectionValue = sectionValue;
     }
 
-    public boolean isIsFilteredByValue() {
-        return isFilteredByValue;
+    public boolean isShowSection() {
+        return showSection;
     }
 
-    public void setIsFilteredByValue(boolean isfiltederByValue) {
-        this.isFilteredByValue = isFilteredByValue;
+    public void setShowSection(boolean showSection) {
+        this.showSection = showSection;
     }
 
-    public boolean isRequiredInValidateWordDoc() {
-        return isRequiredInValidateWordDoc;
+    public boolean isValidateInWordDoc() {
+        return validateInWordDoc;
     }
 
-    public void setRequiredInValidateWordDoc(boolean isRequiredInValidateWordDoc) {
-        this.isRequiredInValidateWordDoc = isRequiredInValidateWordDoc;
+    public void setValidateInWordDoc(boolean validateInWordDoc) {
+        this.validateInWordDoc = validateInWordDoc;
     }
 
-    public boolean isFilteredByValue() {
-        return isFilteredByValue;
-    }
-
-    public void setFilteredByValue(boolean isFilteredByValue) {
-        this.isFilteredByValue = isFilteredByValue;
-    }
 
     public Template getTemplate() {
         return template;

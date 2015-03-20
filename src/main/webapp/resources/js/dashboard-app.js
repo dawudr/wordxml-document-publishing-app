@@ -233,7 +233,15 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
 
         $http.get('/template/list').success(function (data) {
         $scope.templates = data;
-            $scope.defaultSelected = $scope.templates[1];
-    });
+            $scope.myTemplate = $scope.templates[0];
+            $scope.sectionTypes = [
+                {id: 0, name: 'METADATA'},
+                {id: 1, name: 'SECTION AHEAD'},
+                {id: 2, name: 'SECTION BHEAD'},
+                {id: 3, name: 'PARAGRAPH'},
+                {id: 4, name: 'TABLE'},
+                {id: 5, name: 'ROW'},
+                {id: 6, name: 'CELL'} ];
+        });
 
 })

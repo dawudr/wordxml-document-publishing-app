@@ -58,83 +58,95 @@ public class TestDataInitializer {
         TemplateSection templateSection = new TemplateSection();
         templateSection.setSectionName("uan");
         templateSection.setSectionType(TemplateSection.SECTION_TYPE_META);
-        templateSection.setRequiredInValidateWordDoc(false);
+        templateSection.setValidateInWordDoc(true);
+        templateSection.setShowSection(true);
 
         TemplateSection templateSection1 = new TemplateSection();
         templateSection1.setSectionName("unitnumber");
         templateSection1.setSectionType(TemplateSection.SECTION_TYPE_META);
-        templateSection1.setRequiredInValidateWordDoc(false);
+        templateSection1.setValidateInWordDoc(true);
+        templateSection1.setShowSection(true);
 
         TemplateSection templateSection2 = new TemplateSection();
         templateSection2.setSectionName("unittitle");
         templateSection2.setSectionType(TemplateSection.SECTION_TYPE_META);
-        templateSection2.setRequiredInValidateWordDoc(true);
+        templateSection2.setValidateInWordDoc(true);
+        templateSection2.setShowSection(true);
 
         TemplateSection templateSection3 = new TemplateSection();
         templateSection3.setSectionName("author");
-        templateSection3.setSectionType(TemplateSection.SECTION_TYPE_META);
-        templateSection3.setRequiredInValidateWordDoc(false);
+            templateSection3.setSectionType(TemplateSection.SECTION_TYPE_META);
+            templateSection3.setValidateInWordDoc(false);
+        templateSection3.setShowSection(false);
 
         TemplateSection templateSection4 = new TemplateSection();
         templateSection4.setSectionName("All with UnitAhead");
         templateSection4.setSectionStyle("UnitAhead");
         templateSection4.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
-        templateSection4.setRequiredInValidateWordDoc(true);
-        templateSection4.setIsFilteredByValue(true); // if true then dont use section name
+        templateSection4.setValidateInWordDoc(true);
+        templateSection4.setShowSection(true); // if true then dont use section name
 
         TemplateSection templateSection5 = new TemplateSection();
         templateSection5.setSectionName("All with UnitBhead");
         templateSection5.setSectionStyle("UnitBhead");
         templateSection5.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+            templateSection5.setShowSection(true);
 
         TemplateSection templateSection6 = new TemplateSection();
         templateSection6.setSectionName("Unit introduction");
         templateSection6.setSectionStyle("UnitAhead");
         templateSection6.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
-        templateSection6.setRequiredInValidateWordDoc(true);
+        templateSection6.setValidateInWordDoc(true);
+            templateSection6.setShowSection(true);
 
         TemplateSection templateSection7 = new TemplateSection();
         templateSection7.setSectionName("Learning aims and unit content");
         templateSection7.setSectionStyle("UnitAhead");
         templateSection7.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
-        templateSection7.setRequiredInValidateWordDoc(true);
+        templateSection7.setValidateInWordDoc(true);
+            templateSection7.setShowSection(true);
 
         TemplateSection templateSection8 = new TemplateSection();
         templateSection8.setSectionName("Outline Programme of Suggested Assignments");
         templateSection8.setSectionStyle("UnitAhead");
         templateSection8.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
-        templateSection8.setRequiredInValidateWordDoc(false);
+        templateSection8.setValidateInWordDoc(false);
+            templateSection8.setShowSection(true);
 
         TemplateSection templateSection9 = new TemplateSection();
         templateSection9.setSectionName("Assessment criteria");
         templateSection9.setSectionStyle("UnitAhead");
         templateSection9.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
-        templateSection9.setRequiredInValidateWordDoc(false);
+        templateSection9.setValidateInWordDoc(false);
+            templateSection9.setShowSection(true);
 
         TemplateSection templateSection10 = new TemplateSection();
         templateSection10.setSectionName("Teacher guidance");
         templateSection10.setSectionStyle("UnitAhead");
         templateSection10.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
-        templateSection10.setRequiredInValidateWordDoc(false);
+        templateSection10.setValidateInWordDoc(false);
+            templateSection10.setShowSection(true);
 
         TemplateSection templateSection11 = new TemplateSection();
         templateSection11.setSectionName("Resources");
         templateSection11.setSectionStyle("UnitBhead");
         templateSection11.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
-        templateSection11.setRequiredInValidateWordDoc(false);
+        templateSection11.setValidateInWordDoc(false);
+            templateSection11.setShowSection(true);
 
         TemplateSection templateSection12 = new TemplateSection();
         templateSection12.setSectionName("Assessment Guidance");
         templateSection12.setSectionStyle("UnitAhead");
         templateSection12.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
-        templateSection12.setRequiredInValidateWordDoc(false);
+        templateSection12.setValidateInWordDoc(false);
+            templateSection12.setShowSection(true);
 
         TemplateSection templateSectionbtecl3 = new TemplateSection();
         templateSectionbtecl3.setSectionName("All with hb3");
         templateSectionbtecl3.setSectionStyle("hb3");
         templateSectionbtecl3.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
-        templateSectionbtecl3.setRequiredInValidateWordDoc(true);
-        templateSectionbtecl3.setIsFilteredByValue(true); // if true then dont use section name
+        templateSectionbtecl3.setValidateInWordDoc(true);
+        templateSectionbtecl3.setShowSection(true); // if true then dont use section name
 
         List<TemplateSection> templateSectionsBtecNational = new ArrayList<TemplateSection>();
         templateSectionsBtecNational.add(templateSection);
