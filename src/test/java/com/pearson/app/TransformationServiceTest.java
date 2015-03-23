@@ -105,7 +105,7 @@ public class TransformationServiceTest extends TestCase {
         specunit.setQanNo("S/123/1234");
         specunit.setUnitXML(textXml);
 //        specunit.setTransformation(newTransformation);
-        specUnitService.addSpecUnit(specunit);
+        //specUnitService.addSpecUnit(specunit);
 
 
         Transformation newTransformation = new Transformation();

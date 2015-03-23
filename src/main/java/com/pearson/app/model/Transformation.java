@@ -43,7 +43,7 @@ public class Transformation extends AbstractEntity {
     private Image image;
 
 //    @OneToOne(mappedBy="transformation", cascade=CascadeType.ALL)
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="specunit_id")
     private Specunit specunit;
     @ManyToOne

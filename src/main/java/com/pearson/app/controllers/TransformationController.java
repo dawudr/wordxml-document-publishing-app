@@ -265,12 +265,12 @@ public class TransformationController {
      *
      * deletes a list of transformations
      *
-     * @param id - the ids of the transformations to be deleted
+     * @PathVariable id - the ids of the transformations to be deleted
      */
-    @ResponseBody
+    //@ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.DELETE, value = "/transformation/remove/{id}")
-    public void deleteTransformations(@RequestBody Long id) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/transformation/{id}")
+    public void removeTransformations(@PathVariable("id") Long id) {
         transformationService.removeTransformation(id);
         LOGGER.debug("Remove Transformation Id[{}]", id);
     }
@@ -301,7 +301,7 @@ public class TransformationController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.DELETE, value = "/transformation/delete/list")
-    public void deleteTransformations(@RequestBody List<Long> ids) {
+    public void removeTransformations(@RequestBody List<Long> ids) {
         transformationService.removeTransformation(ids);
     }
 

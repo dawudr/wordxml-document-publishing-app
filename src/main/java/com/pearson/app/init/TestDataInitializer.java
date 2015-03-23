@@ -63,13 +63,13 @@ public class TestDataInitializer {
 
         TemplateSection templateSection1 = new TemplateSection();
         templateSection1.setSectionName("unitnumber");
-        templateSection1.setSectionType(TemplateSection.SECTION_TYPE_META);
+        templateSection1.setSectionType(TemplateSection.SECTION_TYPE_PARAGRAPH);
         templateSection1.setValidateInWordDoc(true);
         templateSection1.setShowSection(true);
 
         TemplateSection templateSection2 = new TemplateSection();
         templateSection2.setSectionName("unittitle");
-        templateSection2.setSectionType(TemplateSection.SECTION_TYPE_META);
+        templateSection2.setSectionType(TemplateSection.SECTION_TYPE_PARAGRAPH);
         templateSection2.setValidateInWordDoc(true);
         templateSection2.setShowSection(true);
 
@@ -95,28 +95,28 @@ public class TestDataInitializer {
         TemplateSection templateSection6 = new TemplateSection();
         templateSection6.setSectionName("Unit introduction");
         templateSection6.setSectionStyle("UnitAhead");
-        templateSection6.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection6.setSectionType(TemplateSection.SECTION_TYPE_SECTION);
         templateSection6.setValidateInWordDoc(true);
             templateSection6.setShowSection(true);
 
         TemplateSection templateSection7 = new TemplateSection();
         templateSection7.setSectionName("Learning aims and unit content");
         templateSection7.setSectionStyle("UnitAhead");
-        templateSection7.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection7.setSectionType(TemplateSection.SECTION_TYPE_SECTION);
         templateSection7.setValidateInWordDoc(true);
             templateSection7.setShowSection(true);
 
         TemplateSection templateSection8 = new TemplateSection();
         templateSection8.setSectionName("Outline Programme of Suggested Assignments");
         templateSection8.setSectionStyle("UnitAhead");
-        templateSection8.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection8.setSectionType(TemplateSection.SECTION_TYPE_SECTION);
         templateSection8.setValidateInWordDoc(false);
             templateSection8.setShowSection(true);
 
         TemplateSection templateSection9 = new TemplateSection();
         templateSection9.setSectionName("Assessment criteria");
         templateSection9.setSectionStyle("UnitAhead");
-        templateSection9.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection9.setSectionType(TemplateSection.SECTION_TYPE_SECTION);
         templateSection9.setValidateInWordDoc(false);
             templateSection9.setShowSection(true);
 
@@ -130,14 +130,14 @@ public class TestDataInitializer {
         TemplateSection templateSection11 = new TemplateSection();
         templateSection11.setSectionName("Resources");
         templateSection11.setSectionStyle("UnitBhead");
-        templateSection11.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection11.setSectionType(TemplateSection.SECTION_TYPE_SECTION);
         templateSection11.setValidateInWordDoc(false);
             templateSection11.setShowSection(true);
 
         TemplateSection templateSection12 = new TemplateSection();
         templateSection12.setSectionName("Assessment Guidance");
         templateSection12.setSectionStyle("UnitAhead");
-        templateSection12.setSectionType(TemplateSection.SECTION_TYPE_HEADER);
+        templateSection12.setSectionType(TemplateSection.SECTION_TYPE_SECTION);
         templateSection12.setValidateInWordDoc(false);
             templateSection12.setShowSection(true);
 

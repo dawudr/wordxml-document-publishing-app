@@ -52,7 +52,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterAfter(csrfTokenFilter, CsrfFilter.class);
 
         http
-            .csrf().disable()
+            //.csrf().disable()
             .authorizeRequests()
                 .antMatchers("/public/**").permitAll()
                 .antMatchers("/img/**").permitAll()

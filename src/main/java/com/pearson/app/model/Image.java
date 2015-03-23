@@ -3,6 +3,8 @@ package com.pearson.app.model;
 //import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -33,6 +35,7 @@ public class Image extends AbstractEntity {
     @Transient
     private String deleteType;
 
+    @JsonIgnore
     @OneToOne(mappedBy="image")
     private Transformation transformation;
 

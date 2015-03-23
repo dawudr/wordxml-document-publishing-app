@@ -70,7 +70,7 @@ public class TemplateController {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.POST, value = "/template/update")
+    @RequestMapping(method = RequestMethod.PUT, value = "/template/{id}")
     public void updateTemplate(@RequestBody Template template) {
         templateService.updateTemplate(template);
         LOGGER.debug("Update Template[{}]", template.toString());
@@ -85,7 +85,7 @@ public class TemplateController {
      */
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.DELETE, value = "/template/remove/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/template/{id}")
     public void deleteTemplates(@RequestBody Long id) {
         templateService.removeTemplate(id);
         LOGGER.debug("Remove Template Id[{}]", id);

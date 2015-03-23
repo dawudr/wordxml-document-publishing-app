@@ -23,6 +23,11 @@ public class TemplateSection extends AbstractEntity {
     public static final String FIND_BY_TEMPLATE_SECTION_NAME = "templatesection.findByTemplateSectionName";
     public static final String SECTION_TYPE_HEADER = "HEADER";
     public static final String SECTION_TYPE_META = "META";
+    public static final String SECTION_TYPE_SECTION = "SECTION";
+    public static final String SECTION_TYPE_PARAGRAPH = "PARAGRAPH";
+    public static final String SECTION_TYPE_TABLE = "TABLE";
+    public static final String SECTION_TYPE_ROW = "ROW";
+    public static final String SECTION_TYPE_COLUMN = "COLUMN";
 
     private String sectionType; // SECTION, META, sub SECTION, PARAGRAPH
     private String sectionStyle;
@@ -32,7 +37,7 @@ public class TemplateSection extends AbstractEntity {
     private boolean validateInWordDoc;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private Template template;
 
     public TemplateSection() {

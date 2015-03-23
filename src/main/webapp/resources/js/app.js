@@ -24,5 +24,6 @@
         //'angularFileUpload'             // Angular File Upload
         //'blueimp.fileupload',         // jquery file upload
         //'fileuploadApp'             // Angular File Upload
+        'dashboardApp.services'
     ])
 })();

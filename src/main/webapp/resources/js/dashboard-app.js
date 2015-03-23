@@ -1,6 +1,6 @@
 var dashboardApp = angular.module('dashboardApp', []);
 
-dashboardApp.service('DashboardService', function($http) {
+dashboardApp.service('DashboardService', function ($http) {
     var dashboardData = [];
 
     var promise = $http.get('/transformation/list').success(function (data) {
@@ -8,7 +8,7 @@ dashboardApp.service('DashboardService', function($http) {
     });
 
     return {
-        promise:promise,
+        promise: promise,
         setTransformationsData: function (data) {
             dashboardData = data;
         },
@@ -18,20 +18,19 @@ dashboardApp.service('DashboardService', function($http) {
     };
 });
 
-
-dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
+dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, TransformationFactory, TransformationsFactory) {
 
     /**
      * TRANSFORMATIONS STUFF
      */
 
     $http.get('/transformation/list').success(function (data, filterFilter) {
-    $scope.transformations = data;
-        if($scope.transformations == null) {
+        $scope.transformations = data;
+        if ($scope.transformations == null) {
             $scope.transformations = [];
         }
 
-        if($scope.transformations.length > 0) {
+        if ($scope.transformations.length > 0) {
             var sortedArray = $filter('orderBy')($scope.transformations, '-date');
             var lastDate = sortedArray[sortedArray.length - 1].date;
             $scope.lastUpdateDate = lastDate;
@@ -61,20 +60,20 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
         $scope.maxSize = 5; //pagination max size
         $scope.entryLimit = 5; //max rows for data table
 
-        $scope.$watch('search', function(term) {
+        $scope.$watch('search', function (term) {
             // Create filtered
             $scope.filteredTransformations = $filter('filter')($scope.transformations, term);
-            $scope.filteredRecentTransformations = $filter("filter")($scope.filteredTransformations, {generalStatus : 'GENERAL_STATUS_UNREAD' });
+            $scope.filteredRecentTransformations = $filter("filter")($scope.filteredTransformations, {generalStatus: 'GENERAL_STATUS_UNREAD'});
             // Then calculate numPages
-            $scope.numOfPages = Math.ceil($scope.filteredTransformations.length/$scope.numPerPage);
-            $scope.numOfPagesRecent = Math.ceil($scope.filteredRecentTransformations.length/$scope.numPerPage);
+            $scope.numOfPages = Math.ceil($scope.filteredTransformations.length / $scope.numPerPage);
+            $scope.numOfPagesRecent = Math.ceil($scope.filteredRecentTransformations.length / $scope.numPerPage);
             // then update total items
             $scope.totalResults = $scope.filteredTransformations.length;
             $scope.totalResultsRecent = $scope.filteredRecentTransformations.length;
 
         })
 
-        $scope.$watch('currentPage + noOfPages', function() {
+        $scope.$watch('currentPage + noOfPages', function () {
             var begin = (($scope.currentPage - 1) * $scope.numOfPages)
                 , end = begin + $scope.numPerPage;
             //console.log("currentPage=" + $scope.currentPage + " begin=" + $scope.currentPage + " end=" + end);
@@ -86,17 +85,17 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
 
         });
     })
-    .error(function(data, status, headers, config) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
+        .error(function (data, status, headers, config) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
             console.log("No data from request" + status);
 
-    });
+        });
 
     // Today
     var d = new Date();
     var curr_date = d.getDate();
-    var curr_month = d.getMonth()+1;
+    var curr_month = d.getMonth() + 1;
     var curr_year = d.getFullYear();
 
     $scope.dateToday = moment().format('YYYY-MM-DD HH:mm:ss');  //Date.parse(curr_month + "/" + curr_date + "/" + curr_year);
@@ -105,8 +104,8 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
     $scope.dateLastMonth = moment().subtract(1, 'month').format('YYYY-MM-DD HH:mm:ss'); //Date.parse(moment().subtract(1, 'month'));
     $scope.dateRange = "";
 
-    $scope.eventDateFilter = function(column) {
-        if(column === 'today') {
+    $scope.eventDateFilter = function (column) {
+        if (column === 'today') {
             $scope.dateRange = $scope.dateToday;
             console.log($scope.dateToday)
         } else if (column === 'pastWeek') {
@@ -123,65 +122,72 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
         }
     };
 
-    $scope.statusIconClass ="";
-    $scope.generalStatusIcon = function(status) {
-        if(status === 'GENERAL_STATUS_UNREAD') {
+    $scope.statusIconClass = "";
+    $scope.generalStatusIcon = function (status) {
+        if (status === 'GENERAL_STATUS_UNREAD') {
             $scope.statusIconClass = 'fa-envelope';
-        } else if(status === 'GENERAL_STATUS_READ') {
+        } else if (status === 'GENERAL_STATUS_READ') {
             $scope.statusIconClass = 'fa-envelope-o';
-        } else if(status === 'GENERAL_STATUS_MODIFIED') {
+        } else if (status === 'GENERAL_STATUS_MODIFIED') {
             $scope.statusIconClass = 'fa-pencil-square-o';
-        } else if(status === 'GENERAL_STATUS_DELETED') {
+        } else if (status === 'GENERAL_STATUS_DELETED') {
             $scope.statusIconClass = 'fa-trash-o';
         } else {
             $scope.statusIconClass = 'fa-question-circle';
         }
     };
 
+    // callback for ng-click 'deleteUser':
+    $scope.deleteTransformation = function (id) {
+        TransformationFactory.delete({ id: id });
+        $scope.transformations = TransformationsFactory.query();
+        $location.path('#/downloads');
+    };
+
 })
-.filter('startFrom', function() {
-    return function(input, start) {
-        if(input) {
-            start = +start; //parse to int
-            return input.slice(start);
+    .filter('startFrom', function () {
+        return function (input, start) {
+            if (input) {
+                start = +start; //parse to int
+                return input.slice(start);
+            }
+            return [];
         }
-        return [];
-    }
-})
-.filter('generalStatus', function() {
+    })
+    .filter('generalStatus', function () {
 
-    var generalStatusDict = {
-        GENERAL_STATUS_UNREAD : "New",
-        GENERAL_STATUS_READ : "Viewed",
-        GENERAL_STATUS_MODIFIED : "Modified",
-        GENERAL_STATUS_DELETED : "Deleted"
-    };
-    return function(generalStatus) {
-        return generalStatusDict[generalStatus] || 'Unknown';
-    };
-})
-.filter('transformStatus', function() {
+        var generalStatusDict = {
+            GENERAL_STATUS_UNREAD: "New",
+            GENERAL_STATUS_READ: "Viewed",
+            GENERAL_STATUS_MODIFIED: "Modified",
+            GENERAL_STATUS_DELETED: "Deleted"
+        };
+        return function (generalStatus) {
+            return generalStatusDict[generalStatus] || 'Unknown';
+        };
+    })
+    .filter('transformStatus', function () {
 
-    var transformStatusDict = {
-        TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS : "Word document upload in progress",
-        TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS : "Openxml extraction in progress",
-        TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS : "PQS transform in progress",
-        TRANSFORM_STATUS_SUCCESS : "Completion with: 100%",
-        TRANSFORM_STATUS_FAIL : 'Transform failed with: 0%',
-        TRANSFORM_STATUS_FAIL_VALIDATE_WORD : 'Word validation failed',
-        TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML : 'Word -> OpenXml failed',
-        TRANSFORM_STATUS_FAIL_TRANSFORM : 'Transform failed',
-        TRANSFORM_STATUS_FAIL_TRANSFORM_XML_TO_IQSXML_XSLT : 'Transform to PQS failed',
-        TRANSFORM_STATUS_FAIL_XML_TO_IQSXML_XQUERY : 'Transform to PQS tables failed',
-        TRANSFORM_STATUS_FAIL_IQS_VALIDATION : 'PQS XML validation failed',
-        TRANSFORM_STATUS_FAIL_FILE_WRITE : 'Transformed file could not be saved',
-        TRANSFORM_STATUS_SUCCESS2 : "Completion with: 100%"
-    };
-    return function(transformStatus) {
-        return transformStatusDict[transformStatus] || 'Error';
-    };
-})
-.controller('UserManageCtrl', function ($scope, $http) {
+        var transformStatusDict = {
+            TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS: "Word document upload in progress",
+            TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS: "Openxml extraction in progress",
+            TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS: "PQS transform in progress",
+            TRANSFORM_STATUS_SUCCESS: "Completion with: 100%",
+            TRANSFORM_STATUS_FAIL: 'Transform failed with: 0%',
+            TRANSFORM_STATUS_FAIL_VALIDATE_WORD: 'Word validation failed',
+            TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML: 'Word -> OpenXml failed',
+            TRANSFORM_STATUS_FAIL_TRANSFORM: 'Transform failed',
+            TRANSFORM_STATUS_FAIL_TRANSFORM_XML_TO_IQSXML_XSLT: 'Transform to PQS failed',
+            TRANSFORM_STATUS_FAIL_XML_TO_IQSXML_XQUERY: 'Transform to PQS tables failed',
+            TRANSFORM_STATUS_FAIL_IQS_VALIDATION: 'PQS XML validation failed',
+            TRANSFORM_STATUS_FAIL_FILE_WRITE: 'Transformed file could not be saved',
+            TRANSFORM_STATUS_SUCCESS2: "Completion with: 100%"
+        };
+        return function (transformStatus) {
+            return transformStatusDict[transformStatus] || 'Error';
+        };
+    })
+    .controller('UserManageCtrl', function ($scope, $http) {
         /**
          * USER STUFF
          */
@@ -190,58 +196,82 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter) {
             $scope.users = data;
         });
 
-})
-.controller('DocumentDetailCtrl', function ($scope, $http, $stateParams) {
-    /**
-     * DOCUMENT DETAIL STUFF
-     */
+    })
+    .controller('DocumentDetailCtrl', function ($scope, $http, $stateParams) {
+        /**
+         * DOCUMENT DETAIL STUFF
+         */
 
-    $http.get('/transformation/'+$stateParams.transformationId).success(function (data) {
-        $scope.transformation = data;
-    });
-
-    $http.get('/transformation/json/'+$stateParams.transformationId).success(function (data) {
-        $scope.specunit = data;
-    });
-
-})
-.controller('UserProfileCtrl', function ($scope, $http, $stateParams) {
-    /**
-     * USER PROFILE STUFF
-     */
-
-    $http.get('/user/'+$stateParams.userId).success(function (data) {
-        $scope.user = data;
-    });
-
-})
-.controller('DocumentTransformsCtrl', function ($scope, $http) {
-    /**
-     * DOCUMENT TRANSFORM STUFF
-     */
-
-    $http.get('/transformation/listrecent').success(function (data) {
-        $scope.recentTransformations = data;
-    });
-})
-.controller('SettingsCtrl', function ($scope, $http) {
-    /**
-     * SETTING STUFF
-     */
-    $scope.templates = [];
-        $scope.defaultSelected = "BTEC NATIONALS";
-
-        $http.get('/template/list').success(function (data) {
-        $scope.templates = data;
-            $scope.myTemplate = $scope.templates[0];
-            $scope.sectionTypes = [
-                {id: 0, name: 'METADATA'},
-                {id: 1, name: 'SECTION AHEAD'},
-                {id: 2, name: 'SECTION BHEAD'},
-                {id: 3, name: 'PARAGRAPH'},
-                {id: 4, name: 'TABLE'},
-                {id: 5, name: 'ROW'},
-                {id: 6, name: 'CELL'} ];
+        $http.get('/transformation/' + $stateParams.transformationId).success(function (data) {
+            $scope.transformation = data;
         });
 
-})
+        $http.get('/transformation/json/' + $stateParams.transformationId).success(function (data) {
+            $scope.specunit = data;
+        });
+
+    })
+    .controller('UserProfileCtrl', function ($scope, $http, $stateParams) {
+        /**
+         * USER PROFILE STUFF
+         */
+
+        $http.get('/user/' + $stateParams.userId).success(function (data) {
+            $scope.user = data;
+        });
+
+    })
+    .controller('DocumentTransformsCtrl', function ($scope, $http) {
+        /**
+         * DOCUMENT TRANSFORM STUFF
+         */
+
+        $http.get('/transformation/listrecent').success(function (data) {
+            $scope.recentTransformations = data;
+        });
+    })
+    .controller('SettingsCtrl', function ($scope, TemplatesFactory, TemplateFactory, $location) {
+        /**
+         * SETTING STUFF
+         */
+        $scope.templates = [];
+        $scope.defaultSelected = "BTEC NATIONALS";
+
+        //$http.get('/template/list').success(function (data) {
+            $scope.templates = TemplatesFactory.query(); //data;
+            $scope.myTemplate = $scope.templates[0];
+            $scope.sectionTypes = [
+                {name: '-- Select --', type: null},
+                {name: 'Meta data', type: 'META'},
+                {name: 'Section title', type: 'HEADER'},
+                {name: 'Section content', type: 'SECTION'},
+                {name: 'Paragraph text', type: 'PARAGRAPH'},
+                {name: 'Table', type: 'TABLE'},
+                {name: 'Table row', type: 'ROW'},
+                {name: 'Table cell', type: 'CELL'}];
+        //});
+
+        // callback for ng-click 'cancel':
+        $scope.cancel = function () {
+            $location.path('/settings');
+        };
+
+        // callback for ng-click 'deleteTemplate':
+        $scope.deleteTemplate = function (templateId) {
+            TemplateFactory.delete({ id: templateId });
+            $scope.templates = TemplatesFactory.query();
+        };
+
+        // callback for ng-click 'updateTemplate':
+        $scope.updateTemplate = function () {
+            TemplateFactory.update($scope.myTemplate);
+            $location.path('/settings');
+        };
+
+        // callback for ng-click 'createNewTemplate':
+        $scope.createNewTemplate = function () {
+            TemplateFactory.create($scope.myTemplate);
+            $location.path('/settings');
+        }
+
+    });

@@ -129,7 +129,7 @@
     </td>
     <td class="project-list">
         <div class="form-group-sm">
-        <a href="/transformation/remove/{{transformation.id}}" class="btn btn-danger btn-sm" alt="Word file"><i class="fa fa fa-remove"></i> Delete</a>
+        <a ng-click="deleteTransformation(transformation.id)" class="btn btn-danger btn-sm" alt="Word file"><i class="fa fa fa-remove"></i> Delete</a>
         <a href="#/document/{{transformation.id}}" class="btn btn-primary btn-sm"><i class="fa fa-desktop"></i> View </a>
         </div>
     </td>
