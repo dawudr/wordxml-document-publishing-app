@@ -38,7 +38,7 @@ public class Transformation extends AbstractEntity {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="image_id")
     private Image image;
 

@@ -33,7 +33,7 @@ public class ProcessWordDocument {
     private Unit unit = null;
 
     // Statuses
-    private String transformationStatus = Transformation.TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS;
+    private String transformationStatus = null;
     private String transformationMessage = null;
     private String transformationUan = null;
     private String transformationUnitNo = null;
@@ -49,9 +49,9 @@ public class ProcessWordDocument {
     }
 
 
-    public void doTransformationWork() {
+    public void doTransformationWork() throws Docx4JException{
         LOGGER.debug("Begin Docx4j extraction with filename[{}]", this.wordFile.getAbsolutePath());
-        try {
+
             WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(this.wordFile);
 
             MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
@@ -145,13 +145,6 @@ public class ProcessWordDocument {
 
                 }
             }
-
-        } catch (Docx4JException e) {
-            transformationStatus = Transformation.TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML;
-            transformationMessage = e.getMessage();
-            LOGGER.error("Transform has failed with transformationStatus[{}] and Detailed Error Message - {}", transformationStatus, transformationMessage);
-        }
-
     }
 
 

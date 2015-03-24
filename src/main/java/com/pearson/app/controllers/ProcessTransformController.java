@@ -5,6 +5,7 @@ import com.pearson.app.model.*;
 import com.pearson.app.services.*;
 import com.pearson.btec.service.ProcessWordDocument;
 import org.apache.commons.io.IOUtils;
+import org.docx4j.openpackaging.exceptions.Docx4JException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,19 +90,40 @@ public class ProcessTransformController {
     public @ResponseBody
     Map upload(MultipartHttpServletRequest request, HttpServletResponse response) {
 
+        // Get USER
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
+        LOGGER.debug("Getting user from Session - Username[{}], Principle[{}]", principal.getName(), principal);
+
+        User user = userService.getUserByUsername(principal.getName());
+        LOGGER.debug("Retrieved user[{}]", user);
+
+
+        // Setup UPLOADS path
         String root = context.getRealPath("/");
         File path = new File(root + File.separator + "uploads");
         if (!path.exists()) {
             boolean status = path.mkdirs();
         }
-
-
         LOGGER.debug("uploadPost called");
         Iterator<String> itr = request.getFileNames();
         MultipartFile mpf;
         List<Image> list = new LinkedList<>();
-        
+
+
         while (itr.hasNext()) {
+
+            // Set TEMPLATE
+            Template template = templateService.getTemplateByName("BTECNATIONALS");
+
+
+            // Create TRANSFORMATION object
+            Transformation newTransformation = new Transformation();
+            newTransformation.setUser(user);
+            newTransformation.setDate(new Date());
+            newTransformation.setTemplate(template);
+            transformationService.addTransformation(newTransformation);
+
+            // upload and create IMAGE
             mpf = request.getFile(itr.next());
             LOGGER.debug("Uploading {}", mpf.getOriginalFilename());
 
@@ -113,26 +135,24 @@ public class ProcessTransformController {
 
             //File newFile = new File(storageDirectory + "/" + newFilename);
             File newFile = new File(path + "/" + newFilename);
-
             try {
                 LOGGER.debug("Moving file to newFile[{}]", storageDirectory + "/" + newFilename);
                 mpf.transferTo(newFile);
-
             } catch (IOException e) {
                 LOGGER.error("Could not upload file " + mpf.getOriginalFilename(), e);
                 transformationStatus = Transformation.TRANSFORM_STATUS_FAIL_FILE_WRITE;
+                // update TRANSFORMATION
+                newTransformation.setTransformStatus(transformationStatus);
+                newTransformation.setMessage(" Please contact technical support with detailed error: " + e.getMessage() + " \n\r");
+                transformationService.updateTransformation(newTransformation);
             }
 
             Image image = new Image();
             image.setName(mpf.getOriginalFilename());
-            //image.setThumbnailFilename(thumbnailFilename);
             image.setNewFilename(newFilename);
             image.setContentType(contentType);
             image.setSize(mpf.getSize());
-            //image.setThumbnailSize(thumbnailFile.length());
-
             image.setUrl("/processtransform/view/" + image.getId());
-            //image.setThumbnailUrl("/thumbnail/"+image.getId());
             image.setDeleteUrl("/processtransform/delete/" + image.getId());
             image.setDeleteType("DELETE");
             image.setDateCreated(new Date());
@@ -140,60 +160,58 @@ public class ProcessTransformController {
             image = imageService.addImage(image);
             LOGGER.debug("Adding location and properties of image file of Word Document to Database image[{}]", image);
             list.add(image);
+            // update TRANSFORMATION
+            newTransformation.setWordfilename(image.getName());
+            newTransformation.setImage(image);
+            newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS);
+            transformationService.updateTransformation(newTransformation);
 
 
-            // Start Transform files
-            // Create Transformation object
-            Principal principal = SecurityContextHolder.getContext().getAuthentication();
-            LOGGER.debug("Getting user from Session - Username[{}], Principle[{}]", principal.getName(), principal);
-
-            User user = userService.getUserByUsername(principal.getName());
-            LOGGER.debug("Retrieved user[{}]", user);
-
+            // Start TRANSFORM process
             LOGGER.debug("Reading properties and extracting content from Word newFile[{}]", newFile.getAbsolutePath());
             ProcessWordDocument processWordDocument = null;
             processWordDocument = new ProcessWordDocument(newFile);
-            processWordDocument.doTransformationWork();
+
+            try {
+                processWordDocument.doTransformationWork();
+            } catch (Docx4JException e) {
+                transformationStatus = Transformation.TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML;
+                newTransformation.setMessage(" Transform has failed with transformationStatus[" + transformationStatus
+                        + "] and Detailed Error Message - " + e.getMessage() + " \n\r");
+            }
+
             processWordDocument.setTransformationStatus();
             if(this.transformationStatus == null) {
                 this.transformationStatus = processWordDocument.getTransformationStatus();
+                // update TRANSFORMATION
+                newTransformation.setTransformStatus(this.transformationStatus);
+                transformationService.updateTransformation(newTransformation);
             }
             StringBuilder openXmlFileName = new StringBuilder();
             openXmlFileName.append(processWordDocument.getTransformationUan().replaceAll("/", "_")).append("-open.xml");
-
             StringBuilder pqsFileName = new StringBuilder();
             pqsFileName.append(processWordDocument.getTransformationUan().replaceAll("/", "_")).append(".xml");
+            // update TRANSFORMATION
+            newTransformation.setOpenxmlfilename(openXmlFileName.toString());
+            newTransformation.setIqsxmlfilename(pqsFileName.toString());
+            newTransformation.setLastmodified(new Date());
+            newTransformation.setQanNo(processWordDocument.getTransformationUan());
+            newTransformation.setUnitNo(processWordDocument.getTransformationUnitNo());
+            newTransformation.setUnitTitle(processWordDocument.getTransformationUnitTitle());
+            newTransformation.setAuthor(processWordDocument.getTransformationAuthor());
+            newTransformation.setMessage(processWordDocument.getTransformationMessage());
+            newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
 
             Specunit specunit = new Specunit();
             specunit.setQanNo(processWordDocument.getTransformationUan());
             specunit.setUnitXML(processWordDocument.getXmlStringContent());
             //specUnitService.addSpecUnit(specunit);
-
-            Template template = templateService.getTemplateByName("BTECNATIONALS");
-
-
-            Transformation newTransformation = new Transformation();
-            newTransformation.setUser(user);
-            newTransformation.setDate(new Date());
-            newTransformation.setQanNo(processWordDocument.getTransformationUan());
-            newTransformation.setUnitNo(processWordDocument.getTransformationUnitNo());
-            newTransformation.setUnitTitle(processWordDocument.getTransformationUnitTitle());
-            newTransformation.setAuthor(processWordDocument.getTransformationAuthor());
-            newTransformation.setTemplate(template);
-            newTransformation.setWordfilename(image.getName());
-            newTransformation.setOpenxmlfilename(openXmlFileName.toString());
-            newTransformation.setIqsxmlfilename(pqsFileName.toString());
-            newTransformation.setLastmodified(new Date());
-            newTransformation.setTransformStatus(this.transformationStatus);
-            newTransformation.setMessage(processWordDocument.getTransformationMessage());
-            newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+            // update TRANSFORMATION
             newTransformation.setSpecunit(specunit);
-            newTransformation.setImage(image);
-
-            specunit.setTransformation(newTransformation);
+            //specunit.setTransformation(newTransformation);
 
             LOGGER.debug("Read Word document transformationStatus[{}], transformationMessage[{}]", this.transformationStatus, processWordDocument.getTransformationMessage());
-            transformationService.addTransformation(newTransformation);
+            transformationService.updateTransformation(newTransformation);
         }
         
         Map<String, Object> files = new HashMap<>();

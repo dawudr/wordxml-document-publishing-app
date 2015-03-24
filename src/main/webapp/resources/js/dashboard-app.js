@@ -18,7 +18,7 @@ dashboardApp.service('DashboardService', function ($http) {
     };
 });
 
-dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, TransformationFactory, TransformationsFactory) {
+dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, TransformationFactory, TransformationsFactory, $location) {
 
     /**
      * TRANSFORMATIONS STUFF
@@ -221,7 +221,7 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, Trans
         });
 
     })
-    .controller('DocumentTransformsCtrl', function ($scope, $http) {
+    .controller('DocumentTransformsCtrl', function ($scope, $http, TemplatesFactory) {
         /**
          * DOCUMENT TRANSFORM STUFF
          */
@@ -229,6 +229,10 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, Trans
         $http.get('/transformation/listrecent').success(function (data) {
             $scope.recentTransformations = data;
         });
+
+        $scope.templates = TemplatesFactory.query();
+        $scope.myTemplate = $scope.templates[0];
+
     })
     .controller('SettingsCtrl', function ($scope, TemplatesFactory, TemplateFactory, $location) {
         /**

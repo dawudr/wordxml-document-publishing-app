@@ -50,9 +50,8 @@ public class TransformationService {
         assertNotBlank(transformation.getAuthor(), "Author cannot be empty.");
         assertNotBlank(transformation.getWordfilename(), "Word Filename cannot be empty.");
 
-        LOGGER.debug("Adding Transformation[{}]", transformation);
-        transformationRepository.addTransformation(transformation);
-        LOGGER.debug("Successfully added Transformation[{}]", transformation);
+        transformationRepository.updateTransformation(transformation);
+        LOGGER.debug("Added Transformation[{}]", transformation);
 
 
 /*        User user = transformation.getUser();
@@ -68,12 +67,14 @@ public class TransformationService {
     @Transactional(readOnly = true)
     public List<Transformation> listTransformations() {
         List<Transformation> transformations = transformationRepository.listTransformations();
+        LOGGER.debug("Found [{}] results", (transformations != null && transformations.size() > 0) ? transformations.size() : 0);
         return transformations;
     }
 
     @Transactional(readOnly = true)
     public List<Transformation> listUnreadTransformations() {
         List<Transformation> transformations = transformationRepository.listUnreadTransformations();
+        LOGGER.debug("Found [{}] results", (transformations != null && transformations.size() > 0) ? transformations.size() : 0);
         return transformations;
     }
 
@@ -85,6 +86,7 @@ public class TransformationService {
     @Transactional(readOnly = true)
     public Transformation getTransformationById(Long id) {
         Transformation transformation = transformationRepository.getTransformationById(id);
+        LOGGER.debug("Found id[{}] -> transformation[{}]", id, transformation);
         return transformation;
     }
 
@@ -97,6 +99,7 @@ public class TransformationService {
     @Transactional(readOnly = true)
     public Long getTransformationSpecunitById(Long id) {
         Long specunitById = transformationRepository.getTransformationSpecunitById(id);
+        LOGGER.debug("Found id[{}] -> specunitById[{}]", id, specunitById);
         return specunitById;
     }
 
@@ -109,6 +112,7 @@ public class TransformationService {
     @Transactional(readOnly = true)
     public Transformation getTransformationByQan(String qanNo) {
         Transformation transformation = transformationRepository.getTransformationByQan(qanNo);
+        LOGGER.debug("Found qanNo[{}] -> transformation[{}]", qanNo, transformation);
         return transformation;
     }
 
@@ -122,6 +126,7 @@ public class TransformationService {
         assertNotBlank(transformation.getWordfilename(), "Word Filename cannot be empty.");
 
         transformationRepository.updateTransformation(transformation);
+        LOGGER.debug("Updated transformation[{}]", transformation);
 
 
 /*        User user = transformation.getUser();
@@ -137,12 +142,15 @@ public class TransformationService {
     public void removeTransformation(Long id) {
         notNull(id, "id is mandatory");
         transformationRepository.removeTransformation(id);
+        LOGGER.debug("Deleted id[{}]", id);
     }
 
     @Transactional
     public void removeTransformation(List<Long> deletedTransformationIds) {
         notNull(deletedTransformationIds, "deletedTransformationsId is mandatory");
         deletedTransformationIds.stream().forEach((deletedTransformationId) -> transformationRepository.removeTransformation(deletedTransformationId));
+        LOGGER.debug("Deleted deletedTransformationIds[{}]", deletedTransformationIds);
+
     }
 
     /**
