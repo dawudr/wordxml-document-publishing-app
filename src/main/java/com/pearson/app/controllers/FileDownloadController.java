@@ -1,8 +1,11 @@
 package com.pearson.app.controllers;
 
+import com.pearson.app.config.PropertyPlaceholderConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,10 +22,14 @@ import java.net.URISyntaxException;
 
 @Controller
 @RequestMapping(value = "/filedownload")
+@Import(PropertyPlaceholderConfig.class)
 public class FileDownloadController {
 
     private final Logger logger = LoggerFactory.getLogger(FileDownloadController.class);
     private static final int BUFFER_SIZE = 4096;
+
+    @Value("${file.upload.directory}")
+    private String fileUploadDirectory;
 
     @Autowired
     ServletContext context;
@@ -73,8 +80,8 @@ public class FileDownloadController {
     private File getDownloadFile(String filename) {
         logger.debug("In getDownloadFile Params: filename[{}]", filename);
         // get absolute path of the application
-        String root = context.getRealPath("/");
-        File folder = new File(root + "/uploads");
+        String root = fileUploadDirectory; //context.getRealPath("/");
+        File folder = new File(root + File.separator + "uploads");
         if (folder.exists()) {
             File[] listFiles = folder.listFiles();
             for (File listFile : listFiles) {

@@ -36,7 +36,7 @@ public class Image extends AbstractEntity {
     private String deleteType;
 
     @JsonIgnore
-    @OneToOne(mappedBy="image")
+    @OneToOne (mappedBy="image")
     private Transformation transformation;
 
 

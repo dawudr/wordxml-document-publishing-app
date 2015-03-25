@@ -4,10 +4,13 @@ package com.pearson.app.controllers;
  * Created by Dawud on 15/09/14.
  */
 
+import com.pearson.app.config.PropertyPlaceholderConfig;
 import com.pearson.app.form.BrowseFolderForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,12 +30,16 @@ import java.io.*;
 
 @Controller
 @RequestMapping("/transform")
+@Import(PropertyPlaceholderConfig.class)
 public class TransformerController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(TransformerController.class);
 
     @Autowired
     ServletContext context;
+
+    @Value("${file.upload.directory}")
+    private String fileUploadDirectory;
 
     @RequestMapping(method = RequestMethod.POST)
     ModelAndView transform(@RequestParam("action") String action, @RequestParam("filename") String filename, HttpServletRequest request, HttpServletResponse response)  throws Exception {
@@ -84,8 +91,8 @@ public class TransformerController {
     private File getDocumentFile(String filename) {
         LOGGER.debug("In getDownloadFile Params: filename[{}]", filename);
         // get absolute path of the application
-        String root = context.getRealPath("/");
-        File folder = new File(root + "/uploads");
+        String root = fileUploadDirectory; //context.getRealPath("/");
+        File folder = new File(root + File.separator + "uploads");
         if (folder.exists()) {
             File[] listFiles = folder.listFiles();
             for (File listFile : listFiles) {

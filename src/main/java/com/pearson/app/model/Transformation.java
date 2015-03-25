@@ -38,12 +38,11 @@ public class Transformation extends AbstractEntity {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="image_id")
     private Image image;
 
-//    @OneToOne(mappedBy="transformation", cascade=CascadeType.ALL)
-    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="specunit_id")
     private Specunit specunit;
     @ManyToOne
@@ -52,7 +51,6 @@ public class Transformation extends AbstractEntity {
 
 
     private Date date;
-    @Column(name = "qanNo", unique = true)
     private String qanNo;
     private String wordfilename;
     private String openxmlfilename;

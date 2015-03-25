@@ -183,7 +183,7 @@ public class TransformationController {
             LOGGER.debug("Beginning XML file download of TransformationId[{}] QanNo[{}] -> PqsFileName[{}]",
                     transformation.getId(), transformation.getQanNo(), transformation.getIqsxmlfilename());
 
-            String root = context.getRealPath("/");
+            String root = "/var/tmp";//context.getRealPath("/");
             String pqsXmlString = transformXmlDocument.doTranformOpenXmlToIqsXml(root);
             InputStream inputStream = IOUtils.toInputStream(pqsXmlString);
 

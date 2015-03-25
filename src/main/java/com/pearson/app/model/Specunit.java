@@ -43,7 +43,7 @@ public class Specunit extends AbstractEntity {
     @Column(name = "VAL_XML")
     private String unitXML;
 
-    @OneToOne(mappedBy="specunit")
+    @OneToOne (mappedBy="specunit")
     private Transformation transformation;
 
 

@@ -50,7 +50,7 @@ public class TransformationService {
 //        assertNotBlank(transformation.getAuthor(), "Author cannot be empty.");
 //        assertNotBlank(transformation.getWordfilename(), "Word Filename cannot be empty.");
 
-        transformationRepository.updateTransformation(transformation);
+        transformationRepository.addTransformation(transformation);
         LOGGER.debug("Added Transformation[{}]", transformation);
 
 
@@ -119,11 +119,11 @@ public class TransformationService {
     @Transactional
     public void updateTransformation(Transformation transformation) {
         assertNotBlank(transformation.getUser().getUsername(), "Username cannot be empty.");
-        assertMinimumLength(transformation.getQanNo(), 6, "Qan No must have at least 6 characters.");
-        assertNotBlank(transformation.getUnitNo(), "Unit No cannot be empty.");
-        assertNotBlank(transformation.getUnitTitle(), "Unit Title cannot be empty.");
-        assertNotBlank(transformation.getAuthor(), "Author cannot be empty.");
-        assertNotBlank(transformation.getWordfilename(), "Word Filename cannot be empty.");
+//        assertMinimumLength(transformation.getQanNo(), 6, "Qan No must have at least 6 characters.");
+//        assertNotBlank(transformation.getUnitNo(), "Unit No cannot be empty.");
+//        assertNotBlank(transformation.getUnitTitle(), "Unit Title cannot be empty.");
+//        assertNotBlank(transformation.getAuthor(), "Author cannot be empty.");
+//        assertNotBlank(transformation.getWordfilename(), "Word Filename cannot be empty.");
 
         transformationRepository.updateTransformation(transformation);
         LOGGER.debug("Updated transformation[{}]", transformation);

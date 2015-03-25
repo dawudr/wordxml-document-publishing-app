@@ -18,7 +18,7 @@ dashboardApp.service('DashboardService', function ($http) {
     };
 });
 
-dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, TransformationFactory, TransformationsFactory, $location) {
+dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, $location, TransformationFactory, TransformationsFactory) {
 
     /**
      * TRANSFORMATIONS STUFF
@@ -274,8 +274,15 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, Trans
 
         // callback for ng-click 'createNewTemplate':
         $scope.createNewTemplate = function () {
+            console.log($scope.myTemplate);
             TemplateFactory.create($scope.myTemplate);
             $location.path('/settings');
         }
+
+        $scope.addNewTemplate = function () {
+            $scope.myTemplate = {"templateName": "Insert template name","description":null,"xsltScriptLocation":null,"xsdScriptLocation":null,"xQueryScriptLocation":null,"templatesection":[]};
+            $scope.templates.push($scope.myTemplate)
+        }
+
 
     });

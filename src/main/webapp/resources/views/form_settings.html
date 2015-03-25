@@ -35,9 +35,10 @@
                         <form role="form">
                             <div class="form-group"><label>Select Template:</label>
                                 <select ng-model="myTemplate"
-                                        ng-change=""
-                                        ng-options="template.templateName for template in templates"
+                                        ng-options="myTemplate.templateName for myTemplate in templates"
                                         class="form-control">
+                                    <option value="">-- Select template --</option>
+
                                 </select></div>
                             <div class="form-group">
                                 <label>Template Id</label>
@@ -63,22 +64,22 @@
 
                         <div class="form-group">
                             <label>XSD Schema file (Validates output)</label>
-                            <input type="text" ng-value="myTemplate.xsdScriptLocation" class="form-control">
+                            <input type="text" ng-model="myTemplate.xsdScriptLocation" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>XSLT Transform stylesheet (Transforms XML document)</label>
-                            <input type="text" ng-value="myTemplate.xsltScriptLocation" class="form-control">
+                            <input type="text" ng-model="myTemplate.xsltScriptLocation" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Xquery document query (Queries section XML data sets)</label>
-                            <input type="text" ng-value="myTemplate.xQueryScriptLocation" class="form-control">
+                            <input type="text" ng-model="myTemplate.xQueryScriptLocation" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="row">
                     <div class="col-sm-12 text-right">
-                        <a ng-click='templates.push({"templateName":null,"description":null,"xsltScriptLocation":null,"xsdScriptLocation":null,"xQueryScriptLocation":null,"templatesection":[]})' class="btn btn-small btn-success">Add new Template</a>
+                        <a ng-click='addNewTemplate()' class="btn btn-small btn-success">Add new Template</a>
                         <button ng-click="deleteTemplate(myTemplate.id)" class="btn btn-danger" type="submit">Delete</button>
                         <button ng-show="myTemplate.id == null" ng-click="createNewTemplate(myTemplate)" class="btn btn-primary" type="submit">Create</button>
                         <button ng-show="myTemplate.id > 0" ng-click="updateTemplate(myTemplate)" class="btn btn-primary" type="submit">Save changes</button>
@@ -119,32 +120,34 @@
         </div>
         <div class="hr-line-dashed"></div>
 
-        <div class="row" ng-repeat="section in myTemplate.templatesection" ng-model="section">
+        <div class="row" ng-repeat="section in myTemplate.templatesection" ng-model="myTemplate.templatesection">
             <div class="col-md-1">
                 <div class="input-group text-nowrap text-center">
-                    <label ng-bind="section.id" class="control-label"/>&nbsp;
+                    <label ng-bind="section.id" class="control-label"/>
+                    <input type="hidden" ng-model="myTemplate.templatesection[$index].id"/>
+                    &nbsp;
                 </div>
             </div>
             <div class="col-md-1 text-center">
                 <div class="input-group text-nowrap text-center">
-                    <input type="checkbox" ng-model="section.showSection">
+                    <input type="checkbox" ng-model="myTemplate.templatesection[$index].showSection">
                 </div>
             </div>
             <div class="col-md-2">
-                    <input type="text" ng-model="section.sectionName" class="form-control">
+                    <input type="text" ng-model="myTemplate.templatesection[$index].sectionName" class="form-control">
             </div>
             <div class="col-md-2">
-                <select ng-model="section.sectionType"
+                <select ng-model="myTemplate.templatesection[$index].sectionType"
                         ng-options="sectionType.type as sectionType.name for sectionType in sectionTypes"
                         class="form-control">
                 </select>
             </div>
-            <div class="col-md-2"><input type="text" ng-model="section.sectionValue" class="form-control"></div>
-            <div class="col-md-2"><input type="text" ng-model="section.sectionStyle" class="form-control"></div>
+            <div class="col-md-2"><input type="text" ng-model="myTemplate.templatesection[$index].sectionValue" class="form-control"></div>
+            <div class="col-md-2"><input type="text" ng-model="myTemplate.templatesection[$index].sectionStyle" class="form-control"></div>
             <div class="col-md-1 text-center"><input type="checkbox" ng-model="section.validateInWordDoc"/></div>
             <div class="col-md-1">
                 <!--<a ng-click="editUser(user.id)" class="btn btn-small btn-primary">edit</a>-->
-                <a ng-click="myTemplate.templatesection.splice($index, 1)" class="btn btn-small btn-danger">delete</a>
+                <a ng-click="deleteTemplate(section.id)" class="btn btn-small btn-danger">delete</a>
             </div>
         </div>
 

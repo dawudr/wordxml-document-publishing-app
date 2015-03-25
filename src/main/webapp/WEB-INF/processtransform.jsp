@@ -103,9 +103,11 @@
                 <div class="col-lg-12 form-inline">
                     <div class="form-group">
                         <label>Select Template:</label>
-                        <select ng-model="myTemplate"
+                        <select name="template"
+                                ng-model="myTemplate"
                                 ng-options="template.templateName for template in templates"
-                                class="form-control">
+                                id="input-template form-control">
+                            <option value="">-- Select template --</option>
                         </select>
                     </div>
 
@@ -120,7 +122,7 @@
                         <span>Add files...</span>
                         <input type="file" name="files[]" multiple>
                     </span>
-                    <button type="submit" class="btn btn-primary start">
+                    <button id="start" type="submit" class="btn btn-primary start">
                         <i class="glyphicon glyphicon-upload"></i>
                         <span>Start Transform</span>
                     </button>
@@ -149,6 +151,12 @@
         </div>
         <!-- The table listing the files available for upload/download -->
         <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+
+        <div class="row">
+            <div class="col-lg-12 form-inline text-right">
+
+            </div>
+        </div>
 
     </form>
 

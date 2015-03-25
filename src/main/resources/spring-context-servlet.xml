@@ -48,8 +48,8 @@
 		<property name="searchSystemEnvironment" value="true" />
 		<property name="locations">
 			<list>
-				<value>classpath*:/local.properties</value>
-				<!--<value>classpath*:/${ENV_NAME}.properties</value>-->
+				<!--<value>classpath*:/local.properties</value>-->
+				<value>classpath*:/${ENV_NAME}.properties</value>
 			</list>
 		</property>
 	</bean>

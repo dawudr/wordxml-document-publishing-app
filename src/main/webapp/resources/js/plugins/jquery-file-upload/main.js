@@ -18,7 +18,8 @@ $(function () {
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: '/processtransform'
+        url: '/processtransform',
+        acceptFileTypes: /(\.|\/)(doc|docx)$/i
     });
 
     // Enable iframe cross-domain access via redirect option:
@@ -30,6 +31,20 @@ $(function () {
             '/cors/result.html?%s'
         )
     );
+
+    //set the formData option on upload start.
+/*
+    $('#fileupload').bind('fileuploadsubmit', function (e, data) {
+        // The example input, doesn't have to be part of the upload form:
+        var input = $('#input-template');
+        data.formData = {template: input.val()};
+        if (!data.formData.template) {
+            data.context.find('button').prop('disabled', false);
+            input.focus();
+            return false;
+        }
+    });
+*/
 
     if (window.location.hostname === 'blueimp.github.io') {
         // Demo settings:

@@ -99,7 +99,7 @@ public class ProcessTransformController {
 
 
         // Setup UPLOADS path
-        String root = context.getRealPath("/");
+        String root = fileUploadDirectory; //context.getRealPath("/");
         File path = new File(root + File.separator + "uploads");
         if (!path.exists()) {
             boolean status = path.mkdirs();
@@ -121,7 +121,9 @@ public class ProcessTransformController {
             newTransformation.setUser(user);
             newTransformation.setDate(new Date());
             newTransformation.setTemplate(template);
-            transformationService.addTransformation(newTransformation);
+            //transformationService.addTransformation(newTransformation);
+
+
 
             // upload and create IMAGE
             mpf = request.getFile(itr.next());
@@ -130,19 +132,19 @@ public class ProcessTransformController {
             String newFilenameBase = UUID.randomUUID().toString();
             String originalFileExtension = mpf.getOriginalFilename().substring(mpf.getOriginalFilename().lastIndexOf("."));
             String newFilename = newFilenameBase + originalFileExtension;
-            String storageDirectory = fileUploadDirectory;
             String contentType = mpf.getContentType();
 
             //File newFile = new File(storageDirectory + "/" + newFilename);
             File newFile = new File(path + "/" + newFilename);
             try {
-                LOGGER.debug("Moving file to newFile[{}]", storageDirectory + "/" + newFilename);
+                LOGGER.debug("Moving file to newFile[{}]", path.getAbsolutePath() + "/" + newFilename);
                 mpf.transferTo(newFile);
             } catch (IOException e) {
                 LOGGER.error("Could not upload file " + mpf.getOriginalFilename(), e);
                 transformationStatus = Transformation.TRANSFORM_STATUS_FAIL_FILE_WRITE;
                 // update TRANSFORMATION
                 newTransformation.setTransformStatus(transformationStatus);
+                LOGGER.error("Error - transformationStatus[{}] Please contact technical support with detailed error:[{}] ", transformationStatus, e.getStackTrace());
                 newTransformation.setMessage(" Please contact technical support with detailed error: " + e.getMessage() + " \n\r");
                 transformationService.updateTransformation(newTransformation);
             }
@@ -157,14 +159,14 @@ public class ProcessTransformController {
             image.setDeleteType("DELETE");
             image.setDateCreated(new Date());
             image.setLastUpdated(new Date());
-            image = imageService.addImage(image);
+            //-imageService.addImage(image);
             LOGGER.debug("Adding location and properties of image file of Word Document to Database image[{}]", image);
             list.add(image);
             // update TRANSFORMATION
             newTransformation.setWordfilename(image.getName());
             newTransformation.setImage(image);
-            newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS);
-            transformationService.updateTransformation(newTransformation);
+            //newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS);
+            //transformationService.updateTransformation(newTransformation);
 
 
             // Start TRANSFORM process
@@ -176,17 +178,17 @@ public class ProcessTransformController {
                 processWordDocument.doTransformationWork();
             } catch (Docx4JException e) {
                 transformationStatus = Transformation.TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML;
+                LOGGER.error("Error - transformationStatus[{}]. Transform has failed. Detailed Error Message - [{}]", transformationStatus, e.getMessage());
                 newTransformation.setMessage(" Transform has failed with transformationStatus[" + transformationStatus
                         + "] and Detailed Error Message - " + e.getMessage() + " \n\r");
+                transformationService.updateTransformation(newTransformation);
             }
 
             processWordDocument.setTransformationStatus();
-            if(this.transformationStatus == null) {
-                this.transformationStatus = processWordDocument.getTransformationStatus();
-                // update TRANSFORMATION
-                newTransformation.setTransformStatus(this.transformationStatus);
-                transformationService.updateTransformation(newTransformation);
-            }
+            this.transformationStatus = processWordDocument.getTransformationStatus();
+            // update TRANSFORMATION
+            newTransformation.setTransformStatus(this.transformationStatus);
+//          transformationService.updateTransformation(newTransformation);
             StringBuilder openXmlFileName = new StringBuilder();
             openXmlFileName.append(processWordDocument.getTransformationUan().replaceAll("/", "_")).append("-open.xml");
             StringBuilder pqsFileName = new StringBuilder();
@@ -211,7 +213,7 @@ public class ProcessTransformController {
             //specunit.setTransformation(newTransformation);
 
             LOGGER.debug("Read Word document transformationStatus[{}], transformationMessage[{}]", this.transformationStatus, processWordDocument.getTransformationMessage());
-            transformationService.updateTransformation(newTransformation);
+            transformationService.addTransformation(newTransformation);
         }
         
         Map<String, Object> files = new HashMap<>();
@@ -222,7 +224,7 @@ public class ProcessTransformController {
     @RequestMapping(value = "/processtransform/view/{id}", method = RequestMethod.GET)
     public void picture(HttpServletResponse response, @PathVariable Long id) {
         Image image = imageService.getImage(id);
-        File imageFile = new File(fileUploadDirectory+"/"+image.getNewFilename());
+        File imageFile = new File(fileUploadDirectory + File.separator + "uploads" + File.separator + image.getNewFilename());
         response.setContentType(image.getContentType());
         response.setContentLength(image.getSize().intValue());
         try {
@@ -238,7 +240,7 @@ public class ProcessTransformController {
     public @ResponseBody
     List delete(@PathVariable Long id) {
         Image image = imageService.getImage(id);
-        File imageFile = new File(fileUploadDirectory+"/"+image.getNewFilename());
+        File imageFile = new File(fileUploadDirectory + File.separator + "uploads" + File.separator + image.getNewFilename());
         imageFile.delete();
         //File thumbnailFile = new File(fileUploadDirectory+"/"+image.getThumbnailFilename());
         //thumbnailFile.delete();
