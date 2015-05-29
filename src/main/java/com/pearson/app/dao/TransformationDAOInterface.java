@@ -10,10 +10,10 @@ import java.util.List;
  */
 public interface TransformationDAOInterface {
 
-        public void addTransformation(Transformation transformation);
+        public int addTransformation(Transformation transformation);
         public List<Transformation> listTransformations();
-        public Transformation getTransformationById(Long id);
+        public Transformation getTransformationById(Integer id);
         public Transformation getTransformationByQan(String id);
         public void updateTransformation(Transformation transformation);
-        public void removeTransformation(Long id);
+        public void removeTransformation(Integer id);
 }

@@ -1,4 +1,4 @@
-angular.module('newUserApp', ['common', 'spring-security-csrf-token-interceptor', 'editableTableWidgets'])
+angular.module('newUserApp', ['common', 'spring-security-csrf-token-interceptor'])
     .controller('NewUserCtrl', ['$scope', '$http', function ($scope, $http) {
 
         $scope.vm.success = false;

@@ -2,6 +2,7 @@ package com.pearson.app.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.pearson.app.model.Image;
 import com.pearson.app.model.Specunit;
 import com.pearson.app.model.Template;
 import com.pearson.app.model.Transformation;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
  */
 public class TransformationDTO {
 
-    private Long id;
+    private Integer id;
     private UserInfoDTO user;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "CET")
@@ -35,24 +36,27 @@ public class TransformationDTO {
     private Date lastmodified; // for Viewed transformStatus
 
     private String template;
-    private Long templateId;
+    private int templateId;
+    private int imageId;
     private String transformStatus;
     private String message; // Error messages
     private String generalStatus;
 
-    private Long user_id;
-    private Long specunit;
+    private int user_id;
+    private int specunit;
 
     public TransformationDTO() {
     }
 
     public TransformationDTO(Transformation transformation) {
         String templateName = "";
-        Template t = transformation.getTemplate();
+/*        Template t = transformation.getTemplate();
         if(t!=null) {
             templateName = t.getTemplateName();
             templateId = t.getId();
-        }
+        }*/
+
+
 
         this.id = transformation.getId();
         this.user = UserInfoDTO.mapFromUserEntity(transformation.getUser());
@@ -66,19 +70,24 @@ public class TransformationDTO {
         this.unitNo = transformation.getUnitNo();
         this.unitTitle = transformation.getUnitTitle();
         this.author = transformation.getAuthor();
-        this.template = templateName;
-        this.templateId = templateId;
+        //this.template = templateName;
+        //this.templateId = templateId;
+        this.templateId = transformation.getTemplateId();
 
         this.lastmodified = transformation.getLastmodified();
         this.transformStatus = transformation.getTransformStatus();
         this.message = transformation.getMessage();
         this.generalStatus = transformation.getGeneralStatus();
+/*        if(transformation.getImage() != null) {
+            this.imageId = transformation.getImage().getId();
+        }*/
+        this.imageId = transformation.getImage_id();
     }
 
-    public TransformationDTO(Long id, UserInfoDTO user, Date date, String qanNo,
+    public TransformationDTO(Integer id, UserInfoDTO user, Date date, String qanNo,
                              String wordfilename, String openxmlfilename, String iqsxmlfilename,
-                             String unitNo, String unitTitle, String author, String template, Long templateId,
-                             Date lastmodified, String transformStatus, String message, String generalStatus, Long specunit) {
+                             String unitNo, String unitTitle, String author, int templateId,
+                             Date lastmodified, String transformStatus, String message, String generalStatus, int specunit, int imageId) {
         this.id = id;
         this.user = user;
         this.date = date;
@@ -99,30 +108,40 @@ public class TransformationDTO {
         this.message = message;
         this.generalStatus = generalStatus;
         this.specunit = specunit;
+        this.imageId = imageId;
     }
 
 
     public static TransformationDTO mapFromTransformationEntity(Transformation transformation) {
 
         String templateName = "";
-        Long templateId = 0L;
-        Template t = transformation.getTemplate();
+        int templateId = 0;
+/*        Template t = transformation.getTemplate();
         if(t!=null) {
             templateName = t.getTemplateName();
             templateId = t.getId();
-        }
+        }*/
 
-        Long specunit= 0L;
+        int specunit= 0;
         Specunit s = transformation.getSpecunit();
         if(s!=null) {
             specunit = s.getId();
         }
 
+        UserInfoDTO userInfoDTO = new UserInfoDTO();
+        if(transformation.getUser() != null) {
+            userInfoDTO = UserInfoDTO.mapFromUserEntity(transformation.getUser());
+        }
 
+/*        int imageId = 0;
+        Image i = transformation.getImage();
+        if(i!=null) {
+            imageId = i.getId();
+        }*/
 
         return new TransformationDTO(
                 transformation.getId(),
-                UserInfoDTO.mapFromUserEntity(transformation.getUser()),
+                userInfoDTO,
                 transformation.getDate(),
                 transformation.getQanNo(),
 
@@ -133,14 +152,14 @@ public class TransformationDTO {
                 transformation.getUnitNo(),
                 transformation.getUnitTitle(),
                 transformation.getAuthor(),
-                templateName,
                 templateId,
 
                 transformation.getLastmodified(),
                 transformation.getTransformStatus(),
                 transformation.getMessage(),
                 transformation.getGeneralStatus(),
-                specunit);
+                specunit,
+                transformation.getImage_id());
     }
 
 
@@ -149,11 +168,11 @@ public class TransformationDTO {
     }
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -245,19 +264,19 @@ public class TransformationDTO {
         this.template = template;
     }
 
-    public Long getTemplateId() {
+    public int getTemplateId() {
         return templateId;
     }
 
-    public void setTemplateId(Long templateId) {
+    public void setTemplateId(int templateId) {
         this.templateId = templateId;
     }
 
-    public Long getSpecunit() {
+    public int getSpecunit() {
         return specunit;
     }
 
-    public void setSpecunit(Long specunit) {
+    public void setSpecunit(int specunit) {
         this.specunit = specunit;
     }
 
@@ -285,6 +304,38 @@ public class TransformationDTO {
         this.generalStatus = generalStatus;
     }
 
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
+    @Override
+    public String toString() {
+        return "TransformationDTO{" +
+                "id=" + id +
+                ", user=" + user +
+                ", date=" + date +
+                ", qanNo='" + qanNo + '\'' +
+                ", wordfilename='" + wordfilename + '\'' +
+                ", openxmlfilename='" + openxmlfilename + '\'' +
+                ", iqsxmlfilename='" + iqsxmlfilename + '\'' +
+                ", unitNo='" + unitNo + '\'' +
+                ", unitTitle='" + unitTitle + '\'' +
+                ", author='" + author + '\'' +
+                ", lastmodified=" + lastmodified +
+                ", template='" + template + '\'' +
+                ", templateId=" + templateId +
+                ", imageId=" + imageId +
+                ", transformStatus='" + transformStatus + '\'' +
+                ", message='" + message + '\'' +
+                ", generalStatus='" + generalStatus + '\'' +
+                ", user_id=" + user_id +
+                ", specunit=" + specunit +
+                '}';
+    }
 }
 
 

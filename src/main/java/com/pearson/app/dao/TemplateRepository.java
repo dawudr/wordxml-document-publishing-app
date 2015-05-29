@@ -55,7 +55,7 @@ public class TemplateRepository implements TemplateDAOInterface{
     /**
      * finds a templates given its id
      */
-    public Template getTemplateById(Long id) {
+    public Template getTemplateById(int id) {
         return em.find(Template.class, id);
     }
 

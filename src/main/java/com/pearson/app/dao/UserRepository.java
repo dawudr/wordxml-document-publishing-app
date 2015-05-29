@@ -55,7 +55,7 @@ public class UserRepository implements UserDAOInterface {
      * @param id - the id of the searched user
      * @return  a matching user, or null if no user found.
      */
-    public User getUserById(Long id) {
+    public User getUserById(Integer id) {
         User user = em.find(User.class, id);
         LOGGER.debug("Found matching Id[{}] ->  User[{}]", id, (user != null) ? user.toString() : "None");
         return user;

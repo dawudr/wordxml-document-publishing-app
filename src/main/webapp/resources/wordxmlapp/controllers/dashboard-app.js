@@ -1,6 +1,6 @@
 var dashboardApp = angular.module('dashboardApp', []);
 
-dashboardApp.service('DashboardService', function ($http) {
+dashboardApp.service('DashboardServicex', function ($http) {
     var dashboardData = [];
 
     var promise = $http.get('/transformation/list').success(function (data) {
@@ -18,7 +18,7 @@ dashboardApp.service('DashboardService', function ($http) {
     };
 });
 
-dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, $location, TransformationFactory, TransformationsFactory) {
+dashboardApp.controller('DashboardCtrlx', function ($scope, $http, $filter, $location, TransformationFactory, TransformationsFactory) {
 
     /**
      * TRANSFORMATIONS STUFF
@@ -267,22 +267,78 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, $loca
         };
 
         // callback for ng-click 'updateTemplate':
-        $scope.updateTemplate = function () {
+        $scope.updateTemplate = function (myTemplate) {
+            $scope.myTemplate = myTemplate;
             TemplateFactory.update($scope.myTemplate);
             $location.path('/settings');
         };
 
         // callback for ng-click 'createNewTemplate':
-        $scope.createNewTemplate = function () {
-            console.log($scope.myTemplate);
-            TemplateFactory.create($scope.myTemplate);
+        $scope.createNewTemplate = function (myTemplate) {
+            console.log(myTemplate);
+            TemplateFactory.create(myTemplate);
             $location.path('/settings');
         }
 
         $scope.addNewTemplate = function () {
             $scope.myTemplate = {"templateName": "Insert template name","description":null,"xsltScriptLocation":null,"xsdScriptLocation":null,"xQueryScriptLocation":null,"templatesection":[]};
-            $scope.templates.push($scope.myTemplate)
+            $scope.templates.push($scope.myTemplate);
         }
 
 
-    });
+    })
+    .controller('DocumentFileUploadCtrl', function($scope, $http, $filter, $window) {
+        /**
+         * DOCUMENT UPLOAD STUFF
+         */
+
+        var url = '/upload';
+
+        $scope.options = {
+            url: url,
+            maxFileSize: 5000000,
+            acceptFileTypes: /(\.|\/)(docx|doc|rtf)$/i
+        };
+        $scope.loadingFiles = true;
+        $http.get(url)
+            .then(
+            function (response) {
+                $scope.loadingFiles = false;
+                $scope.queue = response.data.files || [];
+            },
+            function () {
+                $scope.loadingFiles = false;
+            }
+        );
+    })
+    .controller('FileDestroyController', [
+        '$scope', '$http',
+        function ($scope, $http) {
+            var file = $scope.file,
+                state;
+            if (file.url) {
+                file.$state = function () {
+                    return state;
+                };
+                file.$destroy = function () {
+                    state = 'pending';
+                    return $http({
+                        url: file.deleteUrl,
+                        method: file.deleteType
+                    }).then(
+                        function () {
+                            state = 'resolved';
+                            $scope.clear(file);
+                        },
+                        function () {
+                            state = 'rejected';
+                        }
+                    );
+                };
+            } else if (!file.$cancel && !file._index) {
+                file.$cancel = function () {
+                    $scope.clear(file);
+                };
+            }
+        }
+    ]);

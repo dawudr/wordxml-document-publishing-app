@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s"   uri="http://www.springframework.org/tags" %>
-<!DOCTYPE HTML ng-app="inspinia">
+<!DOCTYPE HTML ng-app="wordxmlplus">
 
     <!-- Force latest IE rendering engine or ChromeFrame if installed -->
     <!--[if IE]>

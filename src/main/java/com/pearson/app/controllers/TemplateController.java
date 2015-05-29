@@ -1,14 +1,7 @@
 package com.pearson.app.controllers;
 
-import com.pearson.app.dto.TransformationDTO;
-import com.pearson.app.dto.TransformationsDTO;
-import com.pearson.app.model.SearchResult;
 import com.pearson.app.model.Template;
-import com.pearson.app.model.Transformation;
-import com.pearson.app.model.User;
 import com.pearson.app.services.TemplateService;
-import com.pearson.app.services.TransformationService;
-import com.pearson.app.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +35,7 @@ public class TemplateController {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET, value = "template/list")
+    @RequestMapping(method = RequestMethod.GET, value = "/template")
     public List<Template> listTransformations() {
         List<Template> templates = templateService.listTemplates();
         LOGGER.debug("Found [{}] All Templates", templates.size());
@@ -53,7 +46,7 @@ public class TemplateController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, value = "/template/{id}")
-    public Template getTemplateById(@PathVariable Long id) {
+    public Template getTemplateById(@PathVariable int id) {
         Template template = templateService.getTemplateById(id);
         LOGGER.debug("Found Template id[{}] -> Template[{}]", id, template.toString());
         return template;
@@ -86,7 +79,7 @@ public class TemplateController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.DELETE, value = "/template/{id}")
-    public void deleteTemplates(@RequestBody Long id) {
+    public void deleteTemplates(@PathVariable Long id) {
         templateService.removeTemplate(id);
         LOGGER.debug("Remove Template Id[{}]", id);
     }

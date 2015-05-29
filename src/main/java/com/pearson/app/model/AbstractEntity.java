@@ -15,7 +15,7 @@ public class AbstractEntity {
     @Id
     @Column(name="id", unique = true, nullable = false)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Version
     private Long version;
@@ -51,7 +51,7 @@ public class AbstractEntity {
         return uuid;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -61,7 +61,7 @@ public class AbstractEntity {
     *   Hibernate will do it automatically
     *
     **/
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

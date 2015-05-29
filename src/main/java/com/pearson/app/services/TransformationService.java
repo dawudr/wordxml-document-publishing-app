@@ -1,9 +1,11 @@
 package com.pearson.app.services;
 
 
+import com.pearson.app.dao.ImageRepository;
 import com.pearson.app.dao.TemplateRepository;
 import com.pearson.app.dao.TransformationRepository;
 import com.pearson.app.dao.UserRepository;
+import com.pearson.app.model.Image;
 import com.pearson.app.model.SearchResult;
 import com.pearson.app.model.Transformation;
 import org.slf4j.Logger;
@@ -33,6 +35,9 @@ public class TransformationService {
     UserRepository userRepository;
     @Autowired
     TemplateRepository templateRepository;
+    @Autowired
+    ImageRepository imageRepository;
+
 /*    @Autowired
     User user;*/
 
@@ -42,15 +47,15 @@ public class TransformationService {
 
 
     @Transactional
-    public void addTransformation(Transformation transformation) {
-        assertNotBlank(transformation.getUser().getUsername(), "Username cannot be empty.");
+    public int addTransformation(Transformation transformation) {
+//        assertNotBlank(transformation.getUser().getUsername(), "Username cannot be empty.");
 //        assertMinimumLength(transformation.getQanNo(), 6, "Qan No must have at least 6 characters.");
 //        assertNotBlank(transformation.getUnitNo(), "Unit No cannot be empty.");
 //        assertNotBlank(transformation.getUnitTitle(), "Unit Title cannot be empty.");
 //        assertNotBlank(transformation.getAuthor(), "Author cannot be empty.");
 //        assertNotBlank(transformation.getWordfilename(), "Word Filename cannot be empty.");
 
-        transformationRepository.addTransformation(transformation);
+        int newTranformationId = transformationRepository.addTransformation(transformation);
         LOGGER.debug("Added Transformation[{}]", transformation);
 
 
@@ -61,6 +66,8 @@ public class TransformationService {
         } else {
             throw new IllegalArgumentException("A transformation was attempted to be saved for a non-existing user");
         }*/
+
+        return newTranformationId;
 
     }
 
@@ -84,7 +91,7 @@ public class TransformationService {
      * @return - the found results
      */
     @Transactional(readOnly = true)
-    public Transformation getTransformationById(Long id) {
+    public Transformation getTransformationById(Integer id) {
         Transformation transformation = transformationRepository.getTransformationById(id);
         LOGGER.debug("Found id[{}] -> transformation[{}]", id, transformation);
         return transformation;
@@ -139,14 +146,27 @@ public class TransformationService {
     }
 
     @Transactional
-    public void removeTransformation(Long id) {
+    public void removeTransformation(int id) {
         notNull(id, "id is mandatory");
+
+        // Delete the Image file
+        Transformation deleteTransformation = transformationRepository.getTransformationById(id);
+        if(deleteTransformation != null && deleteTransformation.getImage_id() > 0) {
+            Image deleteImage = imageRepository.get(deleteTransformation.getImage_id());
+            LOGGER.debug("Found Image id[{}] -> Image[{}]", deleteTransformation.getImage_id(), deleteImage);
+            if(deleteImage != null && deleteImage.getId() > 0) {
+                imageRepository.delete(deleteImage);
+                LOGGER.debug("Deleted Image id[{}]", deleteTransformation.getImage_id());
+            }
+        }
+
+        // Then delete the Transformation record
         transformationRepository.removeTransformation(id);
-        LOGGER.debug("Deleted id[{}]", id);
+        LOGGER.debug("Deleted Transformation id[{}]", id);
     }
 
     @Transactional
-    public void removeTransformation(List<Long> deletedTransformationIds) {
+    public void removeTransformation(List<Integer> deletedTransformationIds) {
         notNull(deletedTransformationIds, "deletedTransformationsId is mandatory");
         deletedTransformationIds.stream().forEach((deletedTransformationId) -> transformationRepository.removeTransformation(deletedTransformationId));
         LOGGER.debug("Deleted deletedTransformationIds[{}]", deletedTransformationIds);

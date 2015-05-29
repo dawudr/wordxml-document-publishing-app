@@ -36,7 +36,7 @@ public class UserServiceTest {
 
     @Test
     public void testFindUserById() {
-        User user = userService.getUserById(1L);
+        User user = userService.getUserById(1);
         assertNotNull("User is mandatory",user);
         System.out.println("User -> " +  user);
     }

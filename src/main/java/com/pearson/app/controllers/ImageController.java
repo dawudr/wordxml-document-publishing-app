@@ -50,7 +50,7 @@ public class ImageController {
         log.debug("uploadGet called");
         List<Image> list = imageService.listImages();
         for(Image image : list) {
-            image.setUrl("/picture/"+image.getId());
+            image.setUrl("/download/"+image.getId());
             //image.setThumbnailUrl("/thumbnail/"+image.getId());
             image.setDeleteUrl("/delete/"+image.getId());
             image.setDeleteType("DELETE");
@@ -72,14 +72,13 @@ public class ImageController {
         while (itr.hasNext()) {
             mpf = request.getFile(itr.next());
             log.debug("Uploading {}", mpf.getOriginalFilename());
-            
+
             String newFilenameBase = UUID.randomUUID().toString();
             String originalFileExtension = mpf.getOriginalFilename().substring(mpf.getOriginalFilename().lastIndexOf("."));
             String newFilename = newFilenameBase + originalFileExtension;
-            String storageDirectory = fileUploadDirectory;
             String contentType = mpf.getContentType();
             
-            File newFile = new File(storageDirectory + "/" + newFilename);
+            File newFile = new File(fileUploadDirectory + File.separator + newFilename);
             try {
                 mpf.transferTo(newFile);
                 
@@ -95,13 +94,13 @@ public class ImageController {
                 image.setContentType(contentType);
                 image.setSize(mpf.getSize());
                 //image.setThumbnailSize(thumbnailFile.length());
-                image = imageService.addImage(image);
-                
-                image.setUrl("/picture/"+image.getId());
+                image.setUrl("/download/"+image.getId());
                 //image.setThumbnailUrl("/thumbnail/"+image.getId());
                 image.setDeleteUrl("/delete/"+image.getId());
                 image.setDeleteType("DELETE");
-                
+                image.setDateCreated(new Date());
+                image = imageService.addImage(image);
+
                 list.add(image);
                 
             } catch(IOException e) {
@@ -115,8 +114,9 @@ public class ImageController {
         return files;
     }
 
-    @RequestMapping(value = "/picture/{id}", method = RequestMethod.GET)
-    public void picture(HttpServletResponse response, @PathVariable Long id) {
+
+    @RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
+    public void download(HttpServletResponse response, @PathVariable int id) {
         Image image = imageService.getImage(id);
         File imageFile = new File(fileUploadDirectory+"/"+image.getNewFilename());
         response.setContentType(image.getContentType());
@@ -147,7 +147,7 @@ public class ImageController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public @ResponseBody
-    List delete(@PathVariable Long id) {
+    List delete(@PathVariable int id) {
         Image image = imageService.getImage(id);
         File imageFile = new File(fileUploadDirectory+"/"+image.getNewFilename());
         imageFile.delete();

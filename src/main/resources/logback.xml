@@ -27,7 +27,7 @@
     -->
 
     <appender name="LOGFILE" class="ch.qos.logback.core.FileAppender">
-        <file>/var/log/BTECWORDOPENXML-APP.log</file>
+        <file>/var/log/tomcat8/BTECWORDOPENXML-APP.log</file>
         <encoder>
             <pattern>%d{yy/MM/dd HH:mm:ss.SSS}[%thread] %-5level %logger.%M [%F:%L] %msg %n</pattern>
         </encoder>
@@ -60,12 +60,12 @@
     <logger name="com.mysql" level="debug" appender-ref="LOGFILE"/>
     <logger name="org.hibernate" level="debug" appender-ref="LOGFILE"/>
     <logger name="org.hibernate.type" level="debug" appender-ref="LOGFILE"/>
-    <logger name="org.docx4j" value="error"/>
+    <logger name="org.docx4j" level="error"/>
 
 	<!-- Configure your top level package below -->
 	<!--<logger name="com.pearson" level="INFO" />-->
     <logger name="com.pearson.app" level="debug" appender-ref="LOGFILE"/>
-    <logger name="com.pearson.btec" level="debug" appender-ref="LOGFILE"/>
+    <logger name="com.pearson.btec" level="info" appender-ref="LOGFILE"/>
 
     <!--<logger name="org.springframework.aop" level="trace" />-->
 	<logger name="org.springframework.test" level="debug" appender-ref="LOGFILE"/>

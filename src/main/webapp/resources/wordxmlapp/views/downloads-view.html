@@ -1,0 +1,250 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Downloads </h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                Document
+            </li>
+            <li class="active">
+                <strong>Download </strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jumbotron">
+            <div class="container">
+                <h2><strong>Download archive of transformed XML documents</strong></h2>
+                <p>All completed transformed documents will appear here where they are available for download
+                in several formats.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <!-- Specify a Angular controller script that binds Javascript variables to the feedback messages.-->
+        <div class="message" ng-controller="alertMessagesController">
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
+
+        <!--  Bind the pagination component to be displayed. -->
+        <div class="gridStyle" ng-grid="gridOptions"></div>
+
+    </div>
+</div>
+
+<br/>
+
+<div class="row" data-ng-hide="transformation.id==null">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Document Detail File: {{transformation.wordfilename}}</h5>
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+
+                <div class="row m-t-sm">
+                    <div class="col-lg-12">
+                        <div class="panel blank-panel ui-tab">
+                            <tabset>
+                                <tab heading="Details">
+                                    <form name="templateForm" novalidate>
+                                        <div class="well">
+                                            <div class="row">
+                                                <div class="col-sm-6 b-r">
+                                                    <div class="form-group">
+                                                        <label>UAN No:</label>
+                                                        <input type="text" ng-model="transformation.qanNo" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Unit number:</label>
+                                                        <input type="text" ng-model="transformation.unitNo" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Unit Title:</label>
+                                                        <input type="text" ng-model="transformation.unitTitle" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Author:</label>
+                                                        <input type="text" ng-model="transformation.author" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Unit Template Type:</label>
+                                                        <input type="text" disabled ng-model="transformation.templateId" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+
+                                                    <div class="form-group">
+                                                        <label>Created:</label>
+                                                        <span class="label label-default"> {{transformation.lastmodified}} </span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Created by:</label>
+                                                         <span class="label label-default"> {{transformation.user.username}}</span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Transformation Status:</label>
+                                     <span ng-class="{
+                                            'TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS' : 'label label-primary',
+                                           'TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS' : 'label label-primary',
+                                           'TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS' : 'label label-primary',
+                                           'TRANSFORM_STATUS_SUCCESS' : 'label label-primary',
+                                           'TRANSFORM_STATUS_SUCCESS2' : 'label label-primary',
+                                           'TRANSFORM_STATUS_FAIL' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_VALIDATE_WORD' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_TRANSFORM' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_TRANSFORM_XML_TO_IQSXML_XSLT' : 'label label-danger',
+                                           'TRANSFORM_STATUS_XML_TO_IQSXML_XQUERY' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_IQS_VALIDATION' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_FILE_WRITE' : 'label label-danger'
+                                       }[transformation.transformStatus]">{{transformation.transformStatus | transformStatus}}
+                                    </span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Transformation warnings:</label>
+                                                        <span class="label label-default">{{transformation.message}}</span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Open XML Filename:</label>
+                                                        <input type="text" ng-model="transformation.openxmlfilename" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>PQS XML Filename:</label>
+                                                        <input type="text" ng-model="transformation.iqsxmlfilename" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Indesign XML Filename:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </tab>
+                                <tab heading="Downloads">
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Filename</th>
+                                            <th>Download</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="/download/{{transformation.imageId}}">
+                                                        <div class="file-name">
+                                                            {{transformation.wordfilename}}
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="/download/{{transformation.imageId}}">
+                                                        <div class="icon">
+                                                            <i class="fa fa-2x fa-file-word-o"></i>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <a href="/transformation/xml/{{transformation.id}}/download/">
+                                                        <div class="file-name">
+                                                            {{transformation.openxmlfilename}}
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="/transformation/xml/{{transformation.id}}/download/">
+                                                        <div class="icon">
+                                                            <i class="fa fa-2x fa-file-code-o"></i>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <a href="/processtransform/view/{{transformation.id}}">
+                                                        <div class="file-name">
+                                                            {{transformation.openxmlfilename}}
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="/processtransform/view/{{transformation.id}}">
+                                                        <div class="icon">
+                                                            <i class="fa fa-2x fa-file-text-o"></i>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        </table>
+                                </tab>
+
+                                <tab heading="Last activity">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Status</th>
+                                            <th>Date</th>
+                                            <th>Transform result</th>
+                                            <th>Comments</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <i alt="{{transformation.generalStatus}}"
+                                                   class="fa fa-2x" ng-class="{
+                   'GENERAL_STATUS_UNREAD' : 'fa-envelope',
+                   'GENERAL_STATUS_READ' : 'fa-envelope-o',
+                   'GENERAL_STATUS_MODIFIED' : 'fa-pencil-square-o',
+                   'GENERAL_STATUS_DELETED' : 'fa-trash-o'
+                   }[transformation.generalStatus]">
+                                                </i>
+                                                <br/>
+                                                <!--http://stackoverflow.com/questions/24200729/ng-if-not-equal-to-->
+                                                <small ng-cloak> {{transformation.generalStatus | generalStatus}} </small>
+                                            </td>
+                                            <td>
+                                                {{transformation.lastmodified}}
+                                            </td>
+                                            <td>
+                                                {{transformation.transformStatus | transformStatus}}
+                                            </td>
+                                            <td>
+                                                <p class="small">
+                                                    {{transformation.message}}
+                                                </p>
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </tab>
+
+                            </tabset>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

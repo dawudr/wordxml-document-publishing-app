@@ -72,7 +72,7 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public User getUserById(Long id) {
+    public User getUserById(Integer id) {
         User user = userRepository.getUserById(id);
         LOGGER.debug("Found User By Id[{}] - User[{}]", id, user);
         return user;

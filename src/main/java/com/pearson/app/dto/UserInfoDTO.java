@@ -13,13 +13,22 @@ import java.util.stream.Collectors;
  */
 public class UserInfoDTO {
 
-    private Long id;
+    private int id;
     private String username;
     private String password;
     private String email;
     private String firstname;
     private String lastname;
     private String role;
+
+    public UserInfoDTO() {
+        this.id = 0;
+        this.username = "unknown";
+        this.firstname = "unknown";
+        this.lastname = "unknown";
+        this.email = "unknown";
+        this.role = User.ROLE_VIEWER;
+    }
 
     public UserInfoDTO(User user) {
         this.id = user.getId();
@@ -31,7 +40,7 @@ public class UserInfoDTO {
         this.role = user.getRole();
     }
 
-    public UserInfoDTO(Long id, String username, String password, String email,
+    public UserInfoDTO(Integer id, String username, String password, String email,
                        String firstname, String lastname, String role) {
         this.id = id;
         this.username = username;
@@ -57,11 +66,11 @@ public class UserInfoDTO {
         return users.stream().map((user) -> mapFromUserEntity(user)).collect(Collectors.toList());
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -111,5 +120,18 @@ public class UserInfoDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfoDTO{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

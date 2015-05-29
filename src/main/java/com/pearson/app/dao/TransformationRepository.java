@@ -35,9 +35,10 @@ public class TransformationRepository implements TransformationDAOInterface {
     /**
      * create new transformation
      */
-    public void addTransformation(Transformation transformation) {
+    public int addTransformation(Transformation transformation) {
         em.persist(transformation);
         LOGGER.debug("Successfully created transformation[{}]", transformation);
+        return transformation.getId();
     }
 
     /**
@@ -77,7 +78,7 @@ public class TransformationRepository implements TransformationDAOInterface {
     /**
      * finds a transformation given its id
      */
-    public Transformation getTransformationById(Long id) {
+    public Transformation getTransformationById(Integer id) {
         return em.find(Transformation.class, id);
     }
 
@@ -123,7 +124,7 @@ public class TransformationRepository implements TransformationDAOInterface {
      * Delete a transformation, given its identifier
      * @param transformId - the id of the transformation to be deleted
      */
-    public void removeTransformation(Long transformId) {
+    public void removeTransformation(Integer transformId) {
         Transformation delete = em.find(Transformation.class, transformId);
         em.remove(delete);
     }

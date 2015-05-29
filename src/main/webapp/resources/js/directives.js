@@ -1,32 +1,4 @@
 /**
- * INSPINIA - Responsive Admin Theme
- * Copyright 2014 Webapplayers.com
- *
- * Main directives.js file
- * Define directives for used plugin
- *
- *
- * Functions (directives)
- *  - pageTitle
- *  - sideNavigation
- *  - iboxTools
- *  - minimalizaSidebar
- *  - vectorMap
- *  - morrisArea
- *  - morrisBar
- *  - morrisLine
- *  - morrisDonut
- *  - sparkline
- *  - icheck
- *  - ionRangeSlider
- *  - dropZone
- *  - fancyBox
- *  - responsiveVideo
- *
- */
-
-
-/**
  * pageTitle - Directive for set Page title - mata title
  */
 function pageTitle($rootScope, $timeout) {
@@ -58,31 +30,6 @@ function sideNavigation() {
         }
     };
 };
-
-/**
- * responsibleVideo - Directive for responsive video
- */
-function responsiveVideo() {
-    return {
-        restrict: 'A',
-        link:  function(scope, element) {
-            var figure = element;
-            var video = element.children();
-            video
-                .attr('data-aspectRatio', video.height() / video.width())
-                .removeAttr('height')
-                .removeAttr('width')
-
-            //We can use $watch on $window.innerWidth also.
-            $(window).resize(function() {
-                var newWidth = figure.width();
-                video
-                    .width(newWidth)
-                    .height(newWidth * video.attr('data-aspectRatio'));
-            }).resize();
-        }
-    }
-}
 
 /**
  * iboxTools - Directive for iBox tools elements in right corner of ibox
@@ -178,103 +125,6 @@ function vectorMap() {
     }
 }
 
-
-/**
- * morrisArea - Directive for Morris chart - type Area
- */
-function morrisArea() {
-    return {
-        restrict: 'A',
-        scope: {
-            chartOptions: '='
-        },
-        link: function(scope, element, attrs) {
-            var chartDetail = scope.chartOptions;
-            chartDetail.element = attrs.id;
-            var chart = new Morris.Area(chartDetail);
-            return chart;
-        }
-    }
-}
-
-/**
- * morrisBar - Directive for Morris chart - type Bar
- */
-function morrisBar() {
-    return {
-        restrict: 'A',
-        scope: {
-            chartOptions: '='
-        },
-        link: function(scope, element, attrs) {
-            var chartDetail = scope.chartOptions;
-            chartDetail.element = attrs.id;
-            var chart = new Morris.Bar(chartDetail);
-            return chart;
-        }
-    }
-}
-
-/**
- * morrisLine - Directive for Morris chart - type Line
- */
-function morrisLine() {
-    return {
-        restrict: 'A',
-        scope: {
-            chartOptions: '='
-        },
-        link: function(scope, element, attrs) {
-            var chartDetail = scope.chartOptions;
-            chartDetail.element = attrs.id;
-            var chart = new Morris.Line(chartDetail);
-            return chart;
-        }
-    }
-}
-
-/**
- * morrisDonut - Directive for Morris chart - type Donut
- */
-function morrisDonut() {
-    return {
-        restrict: 'A',
-        scope: {
-            chartOptions: '='
-        },
-        link: function(scope, element, attrs) {
-            var chartDetail = scope.chartOptions;
-            chartDetail.element = attrs.id;
-            var chart = new Morris.Donut(chartDetail);
-            return chart;
-        }
-    }
-}
-
-/**
- * sparkline - Directive for Sparkline chart
- */
-function sparkline() {
-    return {
-        restrict: 'A',
-        scope: {
-            sparkData: '=',
-            sparkOptions: '=',
-        },
-        link: function (scope, element, attrs) {
-            scope.$watch(scope.sparkData, function () {
-                render();
-            });
-            scope.$watch(scope.sparkOptions, function(){
-                render();
-            });
-            var render = function () {
-                $(element).sparkline(scope.sparkData, scope.sparkOptions);
-            };
-        }
-    }
-};
-
 /**
  * icheck - Directive for custom checkbox icheck
  */
@@ -312,92 +162,15 @@ function icheck($timeout) {
     };
 }
 
-/**
- * ionRangeSlider - Directive for Ion Range Slider
- */
-function ionRangeSlider() {
-    return {
-        restrict: 'A',
-        scope: {
-            rangeOptions: '='
-        },
-        link: function (scope, elem, attrs) {
-            elem.ionRangeSlider(scope.rangeOptions);
-        }
-    }
-}
-
-/**
- * dropZone - Directive for Drag and drop zone file upload plugin
- */
-function dropZone() {
-    return function(scope, element, attrs) {
-        element.dropzone({
-            url: "/upload",
-            maxFilesize: 100,
-            paramName: "uploadfile",
-            maxThumbnailFilesize: 5,
-            data: {'username': 'zouroto'}, // additional data to send
-            file: scope.file,
-            init: function() {
-                //scope.files.push({file: 'added'});
-                this.on('success', function(file, json) {
-                });
-                this.on('addedfile', function(file) {
-                    scope.$apply(function(){
-                        //alert(file);
-                        console.log('addedfile');
-                        console.log(file);
-                        //scope.files.push({file: 'added'});
-                    });
-                });
-                this.on('drop', function(file) {
-                    //alert('file');
-                    console.log('drop');
-                    console.log(file);
-                });
-            }
-        });
-    }
-}
-
-/**
- * fancyBox - Directive for Fancy Box plugin used in simple gallery view
- */
-function fancyBox() {
-    return {
-        restrict: 'A',
-        link: function(scope, element) {
-            element.fancybox({
-                openEffect	: 'none',
-                closeEffect	: 'none'
-            });
-        }
-    }
-}
-
-
-
-
 
 /**
  *
  * Pass all functions into module
  */
 angular
-    .module('inspinia')
+    .module('wordxmlplus')
     .directive('pageTitle', pageTitle)
     .directive('sideNavigation', sideNavigation)
     .directive('iboxTools', iboxTools)
     .directive('minimalizaSidebar', minimalizaSidebar)
-    //.directive('vectorMap', vectorMap)
-    //.directive('morrisArea', morrisArea)
-    //.directive('morrisBar', morrisBar)
-    //.directive('morrisLine', morrisLine)
-    //.directive('morrisDonut', morrisDonut)
-    //.directive('sparkline', sparkline)
     .directive('icheck', icheck)
-    //.directive('ionRangeSlider', ionRangeSlider)
-    //.directive('dropZone', dropZone)
-    //.directive('fancyBox', fancyBox)
-    //.directive('responsiveVideo', responsiveVideo)

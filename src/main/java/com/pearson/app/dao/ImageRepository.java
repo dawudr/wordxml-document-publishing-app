@@ -37,7 +37,7 @@ public class ImageRepository implements ImageDAOInterface {
         return image;
     }
 
-    public Image get(Long id) {
+    public Image get(int id) {
         LOGGER.debug("Getting image {}", id);
         return em.find(Image.class, id);
     }

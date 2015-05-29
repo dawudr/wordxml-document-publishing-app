@@ -15,10 +15,9 @@
 (function () {
     'use strict';
 
-    var isOnGitHub = window.location.hostname === 'blueimp.github.io',
-        url = isOnGitHub ? '//jquery-file-upload.appspot.com/' : '/processtransform';
+    var url = '/upload';
 
-    angular.module('demo', [
+    angular.module('filemanager', [
         'blueimp.fileupload'
     ])
         .config([
@@ -44,7 +43,7 @@
             }
         ])
 
-        .controller('DemoFileUploadController', [
+        .controller('FileUploadCtrl', [
             '$scope', '$http', '$filter', '$window',
             function ($scope, $http) {
                 $scope.options = {
@@ -54,14 +53,14 @@
                     $scope.loadingFiles = true;
                     $http.get(url)
                         .then(
-                            function (response) {
-                                $scope.loadingFiles = false;
-                                $scope.queue = response.data.files || [];
-                            },
-                            function () {
-                                $scope.loadingFiles = false;
-                            }
-                        );
+                        function (response) {
+                            $scope.loadingFiles = false;
+                            $scope.queue = response.data.files || [];
+                        },
+                        function () {
+                            $scope.loadingFiles = false;
+                        }
+                    );
                 }
             }
         ])

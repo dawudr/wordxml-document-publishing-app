@@ -1,4 +1,4 @@
-angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor', 'editableTableWidgets'])
+angular.module('loginApp', ['common', 'spring-security-csrf-token-interceptor'])
     .controller('LoginCtrl', ['$scope', '$http', function ($scope, $http) {
 
         $scope.onLogin = function () {

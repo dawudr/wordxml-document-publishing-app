@@ -3,17 +3,21 @@ package com.pearson.app.controllers;
 import com.pearson.app.dto.TransformationDTO;
 import com.pearson.app.dto.TransformationsDTO;
 import com.pearson.app.model.*;
+import com.pearson.app.services.ImageService;
 import com.pearson.app.services.TemplateService;
 import com.pearson.app.services.TransformationService;
 import com.pearson.app.services.UserService;
+import com.pearson.btec.service.ProcessWordDocument;
 import com.pearson.btec.service.TransformXmlDocument;
 import net.sf.json.JSON;
 import net.sf.json.xml.XMLSerializer;
 import net.sf.json.JSONArray;
 import org.apache.commons.io.IOUtils;
+import org.docx4j.openpackaging.exceptions.Docx4JException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,7 +26,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import javax.xml.transform.TransformerException;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -43,6 +49,9 @@ public class TransformationController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TransformationController.class);
     private static final int BUFFER_SIZE = 4096;
 
+    @Value("${file.upload.directory}")
+    private String fileUploadDirectory;
+
     @Autowired
     private TransformationService transformationService;
 
@@ -53,19 +62,129 @@ public class TransformationController {
     private TemplateService templateService;
 
     @Autowired
+    private ImageService imageService;
+
+    @Autowired
     ServletContext context;
 
+    @Transactional
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.POST, value = "/transformation")
-    public void addTransformation(@RequestBody Transformation transformation) {
-        transformationService.addTransformation(transformation);
-        LOGGER.debug("Add new Transformation[{}]", transformation.toString());
+    public void addTransformation(@RequestBody TransformationDTO transformationDTO) {
+        LOGGER.debug("POST new TransformationDTO[{}]", transformationDTO.toString());
+
+        // Date to for lastModified
+        Date lastModified = new Date();
+
+        // Get USER
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
+        LOGGER.debug("Getting user from Session - Username[{}], Principle[{}]", principal.getName(), principal);
+
+        User user = userService.getUserByUsername(principal.getName());
+        LOGGER.debug("Retrieved user[{}]", user);
+
+        // Set Image
+        Image image = imageService.getImage(transformationDTO.getImageId());
+        //LOGGER.debug("Found Image id[{}] -> Image[{}]", transformationDTO.getImageId(), image);
+        image.setLastUpdated(lastModified);
+        imageService.updateImage(image);
+        LOGGER.debug("Updated LastUpdated Date for Image id[{}] -> Image[{}]", transformationDTO.getImageId(), image);
+
+
+        // Set TEMPLATE
+        //Template template = templateService.getTemplateById(transformationDTO.getTemplateId());
+        //LOGGER.debug("Found Template id[{}] -> Image[{}]", transformationDTO.getTemplateId(), template);
+
+        // Create TRANSFORMATION object
+        Transformation newTransformation = new Transformation();
+        newTransformation.setUser(user);
+        newTransformation.setDate(new Date());
+        newTransformation.setLastmodified(lastModified);
+        newTransformation.setTemplateId(transformationDTO.getTemplateId());
+        newTransformation.setImage_id(transformationDTO.getImageId());
+        newTransformation.setWordfilename(transformationDTO.getWordfilename());
+        newTransformation.setOpenxmlfilename(transformationDTO.getOpenxmlfilename());
+        newTransformation.setIqsxmlfilename(transformationDTO.getIqsxmlfilename());
+        newTransformation.setTransformStatus(transformationDTO.getTransformStatus());
+        newTransformation.setQanNo(transformationDTO.getQanNo());
+        newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+
+        int newTransformationId = transformationService.addTransformation(newTransformation);
+        LOGGER.debug("Added new Transformation[{}]", newTransformation.toString());
+
+        // Get the newTransform id so we can set the transformation result now
+        newTransformation = transformationService.getTransformationById(newTransformationId);
+        newTransformation = processTransform(newTransformation);
+
+        // Update Transformation Record
+        transformationService.updateTransformation(newTransformation);
+
     }
+
+    /**
+     * Process transform, fail on Docx4j exception recording the error message
+     * @param newTransformation
+     * @return
+     */
+    public Transformation processTransform(Transformation newTransformation) {
+        String transformationStatus = null;
+        Image uploadedWordDoc = imageService.getImage(newTransformation.getImage_id());
+
+        // Start TRANSFORM process
+        LOGGER.debug("Reading properties and extracting content from Word newFile[{}]", uploadedWordDoc.getNewFilename());
+        ProcessWordDocument processWordDocument = null;
+        processWordDocument = new ProcessWordDocument(new File(fileUploadDirectory + "/" + uploadedWordDoc.getNewFilename()));
+
+        try {
+            processWordDocument.doTransformationWork();
+            processWordDocument.setTransformationStatus();
+            transformationStatus = processWordDocument.getTransformationStatus();
+            // update TRANSFORMATION
+            newTransformation.setTransformStatus(transformationStatus);
+//          transformationService.updateTransformation(newTransformation);
+//        StringBuilder openXmlFileName = new StringBuilder();
+//        openXmlFileName.append(processWordDocument.getTransformationUan().replaceAll("/", "_")).append("-open.xml");
+//        StringBuilder pqsFileName = new StringBuilder();
+//        pqsFileName.append(processWordDocument.getTransformationUan().replaceAll("/", "_")).append(".xml");
+            // update TRANSFORMATION
+//        newTransformation.setOpenxmlfilename(openXmlFileName.toString());
+//        newTransformation.setIqsxmlfilename(pqsFileName.toString());
+//        newTransformation.setLastmodified(new Date());
+            newTransformation.setQanNo(processWordDocument.getTransformationUan());
+            newTransformation.setUnitNo(processWordDocument.getTransformationUnitNo());
+            newTransformation.setUnitTitle(processWordDocument.getTransformationUnitTitle());
+            newTransformation.setAuthor(processWordDocument.getTransformationAuthor());
+            newTransformation.setMessage(processWordDocument.getTransformationMessage());
+            newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+
+            Specunit specunit = new Specunit();
+            specunit.setQanNo(processWordDocument.getTransformationUan());
+            specunit.setUnitXML(processWordDocument.getXmlStringContent());
+            //specUnitService.addSpecUnit(specunit);
+            // update TRANSFORMATION
+            newTransformation.setSpecunit(specunit);
+            //TODO: Test if SpecUnit record delete when Transformation is deleted.
+            //specunit.setTransformation(newTransformation);
+
+        } catch (Docx4JException e) {
+            transformationStatus = Transformation.TRANSFORM_STATUS_FAIL;
+            LOGGER.error("Error - transformationStatus[{}]. Transform has failed. Detailed Error Message - [{}]", transformationStatus, e.getMessage());
+            newTransformation.setMessage(" Transform has failed with transformationStatus[" + transformationStatus
+                    + "] and Detailed Error Message - " + e.getMessage() + " \n\r");
+            // update TRANSFORMATION
+            newTransformation.setTransformStatus(transformationStatus);
+            return newTransformation;
+        }
+
+        LOGGER.debug("Read Word document transformationStatus[{}], transformationMessage[{}]", transformationStatus, processWordDocument.getTransformationMessage());
+        return newTransformation;
+    }
+
 
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET, value = "transformation/list")
+    @RequestMapping(method = RequestMethod.GET, value = "/transformation")
     public List<TransformationDTO> listTransformations() {
         List<Transformation> transformations = transformationService.listTransformations();
         LOGGER.debug("Found [{}] All Transformations", transformations.size());
@@ -74,7 +193,7 @@ public class TransformationController {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET, value = "transformation/listrecent")
+    @RequestMapping(method = RequestMethod.GET, value = "/transformation/listrecent")
     public List<TransformationDTO> listRecentTransformations() {
         List<Transformation> transformations = transformationService.listTransformations();
         LOGGER.debug("Found [{}] Recent Transformations", transformations.size());
@@ -84,9 +203,10 @@ public class TransformationController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, value = "/transformation/{id}")
-    public TransformationDTO getTransformationById(@PathVariable Long id) {
+    public TransformationDTO getTransformationById(@PathVariable Integer id) {
         Transformation transformation = transformationService.getTransformationById(id);
-        LOGGER.debug("Found User id[{}] -> Transformation[{}]", id, transformation.toString());
+
+        LOGGER.debug("Found Transformation id[{}] -> Transformation[{}]", id, transformation.toString());
 
         if(transformation.getGeneralStatus().equals(Transformation.GENERAL_STATUS_UNREAD)) {
             transformation.setGeneralStatus(Transformation.GENERAL_STATUS_READ);
@@ -100,7 +220,7 @@ public class TransformationController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, value = "/transformation/xml/{id}")
-    public String getTransformationSpecUnitByIdAsXml(@PathVariable Long id) {
+    public String getTransformationSpecUnitByIdAsXml(@PathVariable Integer id) {
         Transformation transformation = transformationService.getTransformationById(id);
         Specunit specunit = transformation.getSpecunit();
         LOGGER.debug("Returning XML for User id[{}] -> SpecunitById[{}]", specunit);
@@ -110,7 +230,7 @@ public class TransformationController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, value = "/transformation/json/{id}")
-    public JSON getTransformationSpecUnitByIdAsJson(@PathVariable Long id) {
+    public JSON getTransformationSpecUnitByIdAsJson(@PathVariable Integer id) {
         Transformation transformation = transformationService.getTransformationById(id);
         Specunit specunit = transformation.getSpecunit();
 
@@ -127,7 +247,7 @@ public class TransformationController {
 
     @RequestMapping(value = "/transformation/xml/{id}/download", method = RequestMethod.GET)
     public void downloadTransformationSpecUnitByIdAsXMLFile (
-            @PathVariable Long id,
+            @PathVariable Integer id,
             HttpServletResponse response) {
 
         Transformation transformation = transformationService.getTransformationById(id);
@@ -171,7 +291,7 @@ public class TransformationController {
 
     @RequestMapping(value = "/transformation/pqs/{id}/download", method = RequestMethod.GET)
     public void downloadTransformationSpecUnitByIdAsPQSXMLFile (
-            @PathVariable Long id,
+            @PathVariable Integer id,
             HttpServletResponse response) {
 
         Transformation transformation = transformationService.getTransformationById(id);
@@ -230,7 +350,8 @@ public class TransformationController {
         User user = userService.getUserByUsername(principal.getName());
         LOGGER.debug("Retrieved user[{}]", user);
 
-        Template template = templateService.getTemplateById(transformationDTO.getTemplateId());
+        //Template template = templateService.getTemplateById(transformationDTO.getTemplateId());
+
 
         Transformation transformation = transformationService.getTransformationById(transformationDTO.getId());
         transformation.setDate(transformationDTO.getDate());
@@ -245,7 +366,9 @@ public class TransformationController {
         transformation.setTransformStatus(transformationDTO.getTransformStatus());
         transformation.setMessage(transformationDTO.getMessage());
         transformation.setGeneralStatus(Transformation.GENERAL_STATUS_MODIFIED);
-        transformation.setTemplate(template);
+        //transformation.setTemplate(template);
+        transformation.setTemplateId(transformationDTO.getTemplateId());
+
         transformationService.updateTransformation(transformation);
         LOGGER.debug("Updating Transformation[{}]", transformation.toString());
     }
@@ -270,7 +393,7 @@ public class TransformationController {
     //@ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.DELETE, value = "/transformation/{id}")
-    public void removeTransformations(@PathVariable("id") Long id) {
+    public void removeTransformations(@PathVariable("id") Integer id) {
         transformationService.removeTransformation(id);
         LOGGER.debug("Remove Transformation Id[{}]", id);
     }
@@ -301,13 +424,13 @@ public class TransformationController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.DELETE, value = "/transformation/delete/list")
-    public void removeTransformations(@RequestBody List<Long> ids) {
+    public void removeTransformations(@RequestBody List<Integer> ids) {
         transformationService.removeTransformation(ids);
     }
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET, value = "/transformation")
+    @RequestMapping(method = RequestMethod.GET, value = "/transformation/page")
     public TransformationsDTO listPaginatedTransformations(
             @RequestParam(value = "pageNumber") Integer pageNumber) {
 

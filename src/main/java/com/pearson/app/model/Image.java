@@ -24,9 +24,9 @@ public class Image extends AbstractEntity {
     private String contentType;
     @Column(name = "size_")
     private Long size;
-    @Temporal(TemporalType.TIMESTAMP)
+    //@Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
-    @Temporal(TemporalType.TIMESTAMP)
+    //@Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
     @Transient
     private String url;
@@ -35,9 +35,9 @@ public class Image extends AbstractEntity {
     @Transient
     private String deleteType;
 
-    @JsonIgnore
+/*    @JsonIgnore
     @OneToOne (mappedBy="image")
-    private Transformation transformation;
+    private Transformation transformation;*/
 
 
     public Image() {}
@@ -168,18 +168,10 @@ public class Image extends AbstractEntity {
         this.deleteType = deleteType;
     }
 
-    public Transformation getTransformation() {
-        return transformation;
-    }
-
-    public void setTransformation(Transformation transformation) {
-        this.transformation = transformation;
-    }
-
     @Override
     public String toString() {
         return "Image{" +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", newFilename='" + newFilename + '\'' +
                 ", contentType='" + contentType + '\'' +
                 ", size=" + size +

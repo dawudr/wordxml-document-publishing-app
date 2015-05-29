@@ -1,0 +1,174 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Settings</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>Manage</a>
+            </li>
+            <li class="active">
+                <strong>Settings</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jumbotron">
+            <div class="container">
+                <h2><strong>Configure Word Document Template</strong></h2>
+                <p>Enter details about the Microsoft Word BTEC Specification document templates used to create the Unit.
+                    This will be used to identify sections of content and filter out content for the
+                XML transformations.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Template</h5>
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <!-- Specify a Angular controller script that binds Javascript variables to the feedback messages.-->
+                <div class="message" ng-controller="alertMessagesController">
+                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+                <!--  Bind the pagination component to be displayed. -->
+                <div class="gridStyle" ng-grid="gridOptions"></div>
+                <br/>
+                <div class="row">
+                    <div class="col-sm-12 text-right">
+                        <button type="button" ng-click="addNewTemplate()" class="btn btn-success">Add new template</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<modal id="templateModal" title="Edit template" visible="showTemplateModal">
+
+    <form name="templateForm" novalidate>
+        <h2 class="m-t-none m-b">Template configuration</h2>
+        <div class="well">
+            <div class="row">
+            <div class="col-sm-6 b-r">
+                <p>Configure word document template properties:</p>
+                The template selected is {{ myTemplate.templateName }}.
+                <div class="form-group">
+                    <label>Template Id</label>
+                    <input type="text" disabled ng-model="myTemplate.id" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Template Name</label>
+                    <input type="text" placeholder="Enter template name" required ng-model="myTemplate.templateName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text"  placeholder="Enter description" required ng-model="myTemplate.description" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Revision</label>
+                    <input type="text"  placeholder="Enter revision" required ng-model="myTemplate.revision" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-6"><h2>Template Transformation Scripts and Schemas</h2>
+
+                <p>Configure the file path to the OpenXML transform script and output validation schemas:</p>
+
+                <div class="form-group">
+                    <label>XSD Schema file (Validates output)</label>
+                    <input type="text" ng-model="myTemplate.xsdScriptLocation" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>XSLT Transform stylesheet (Transforms XML document)</label>
+                    <input type="text" ng-model="myTemplate.xsltScriptLocation" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Xquery document query (Queries section XML data sets)</label>
+                    <input type="text" ng-model="myTemplate.xQueryScriptLocation" class="form-control">
+                </div>
+<!--                <div class="form-group">
+                    <button type="button" ng-click="clearForm()" class="btn btn-primary">Clear</button>
+                </div>-->
+            </div>
+        </div>
+        </div>
+
+        <h2 class="m-t-none m-b">Filters for Meta data, Sections, Tables and Paragraph</h2>
+        <div class="well">
+            <table class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th>Section Name</th>
+                    <th>Filter type</th>
+                    <th>Filter text</th>
+                    <th>Filter style</th>
+                    <th>Verify in Word</th>
+                    <th>Print XML field</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="section in myTemplate.templatesection" ng-model="myTemplate.templatesection">
+                    <td>
+                        <!--<input type="hidden" ng-model="myTemplate.templatesection[$index].id"/>-->
+                        <input type="text" ng-model="myTemplate.templatesection[$index].sectionName" class="form-control">
+                    </td>
+                    <td>
+                        <select ng-model="myTemplate.templatesection[$index].sectionType"
+                                ng-options="sectionType.type as sectionType.name for sectionType in sectionTypes"
+                                class="form-control">
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="myTemplate.templatesection[$index].sectionValue" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="myTemplate.templatesection[$index].sectionStyle" class="form-control">
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="myTemplate.templatesection[$index].validateInWordDoc"/>
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="myTemplate.templatesection[$index].showSection">
+                    </td>
+                    <td>
+                <span class="btn-group">
+                    <button type="button" ng-click="deleteSection($index)" class="btn btn-sm btn-danger">
+                        <span class="glyphicon glyphicon-remove remove"></span> Delete
+                    </button>
+                </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <a ng-click='myTemplate.templatesection.push({"sectionType":null,"sectionStyle":null,"sectionName":null,"sectionValue":null,"showSection":false,"validateInWordDoc":false})' class="btn btn-small btn-success">Add Section</a>
+                </div>
+            </div>
+        </div>
+<!--
+                <pre>
+                  {{myTemplate | json}}
+                </pre>
+                -->
+
+    </form>
+
+</modal>

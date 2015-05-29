@@ -46,15 +46,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Template Name</label>
-                                <input type="text" ng-model="myTemplate.templateName" class="form-control">
+                                <input type="text" placeholder="Enter template name" required ng-model="myTemplate.templateName" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <input type="text" ng-model="myTemplate.description" class="form-control">
+                                <input type="text"  placeholder="Enter description" required ng-model="myTemplate.description" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Revision</label>
-                                <input type="text" ng-model="myTemplate.revision" class="form-control">
+                                <input type="text"  placeholder="Enter revision" required ng-model="myTemplate.revision" class="form-control">
                             </div>
                         </form>
                     </div>
@@ -79,10 +79,10 @@
                 <div class="hr-line-dashed"></div>
                 <div class="row">
                     <div class="col-sm-12 text-right">
-                        <a ng-click='addNewTemplate()' class="btn btn-small btn-success">Add new Template</a>
+                        <button ng-click="addNewTemplate()" class="btn btn-small btn-success">Add new Template</button>
                         <button ng-click="deleteTemplate(myTemplate.id)" class="btn btn-danger" type="submit">Delete</button>
-                        <button ng-show="myTemplate.id == null" ng-click="createNewTemplate(myTemplate)" class="btn btn-primary" type="submit">Create</button>
-                        <button ng-show="myTemplate.id > 0" ng-click="updateTemplate(myTemplate)" class="btn btn-primary" type="submit">Save changes</button>
+                        <button ng-if="myTemplate.id == null" ng-click="createNewTemplate(myTemplate)" class="btn btn-primary" type="submit">Create</button>
+                        <button ng-if="myTemplate.id > 0" ng-click="updateTemplate(myTemplate)" class="btn btn-primary" type="submit">Save changes</button>
                         <button ng-click="cancel()" class="btn btn-white" type="submit">Cancel</button>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 package com.pearson.app.services;
 
 import com.pearson.app.dao.TemplateRepository;
+import com.pearson.app.dao.TemplateSectionRepository;
 import com.pearson.app.model.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,8 @@ public class TemplateService {
 
     @Autowired
     private TemplateRepository templateRepository;
-
+    @Autowired
+    private TemplateSectionRepository templateSectionRepository;
 
     @Transactional
     public void addTemplate(Template template) {
@@ -33,7 +35,7 @@ public class TemplateService {
     }
 
     @Transactional(readOnly = true)
-    public Template getTemplateById(Long id) {
+    public Template getTemplateById(int id) {
         return templateRepository.getTemplateById(id);
     }
 
@@ -45,10 +47,15 @@ public class TemplateService {
     @Transactional
     public void updateTemplate(Template template) {
         templateRepository.updateTemplate(template);
+//        List<TemplateSection> templateSections = template.getTemplateSections();
+//        for(TemplateSection templateSection : templateSections)
+//            templateSectionRepository.updateTemplateSection(templateSection);
     }
 
     @Transactional
     public void removeTemplate(Long id) {
         templateRepository.removeTemplate(id);
     }
+
+
 }

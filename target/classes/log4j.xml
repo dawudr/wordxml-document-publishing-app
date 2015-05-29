@@ -9,9 +9,9 @@
 			<param name="ConversionPattern" value="%d{HH:mm:ss} [%t] %-5p %c{4}:%L %x - %m%n" />
 		</layout>
 	</appender>
-
+<!--
 	<appender name="LOGFILE" class="org.apache.log4j.FileAppender">
-		<param name="file" value="logs/btecwordopenxmlapp.log"/>
+		<param name="file" value="/var/log/btecwordopenxmlapplog4j.log"/>
 		<param name="immediateFlush" value="true"/>
 		<param name="threshold" value="debug"/>
 		<param name="append" value="false"/>
@@ -19,6 +19,7 @@
 			<param name="conversionPattern" value="%d{HH:mm:ss} [%t] %-5p %c{4}:%L %x - %m%n"/>
 		</layout>
 	</appender>
+-->
 
 	<logger name="com.pearson.app">
 		<level value="debug" />
@@ -28,7 +29,7 @@
 		<level value="info" />
 	</logger>
 
-<!--	<logger name="org.springframework.core">
+	<logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
 	
@@ -70,7 +71,7 @@
 
 	<logger name="mvc.method.annotation.RequestMappingHandlerMapping">
 		<level value="info"/>
-	</logger>-->
+	</logger>
 
 	<logger name="org.docx4j">
 		<level value="error"/>
@@ -78,7 +79,7 @@
 
 	<logger name="log4j.rootLogger" additivity="false">
 		<level value="DEBUG"/>
-		<appender-ref ref="LOGFILE"/>
+		<appender-ref ref="console"/>
 	</logger>
 
 </log4j:configuration>

@@ -35,10 +35,10 @@ public class ProcessWordDocument {
     // Statuses
     private String transformationStatus = null;
     private String transformationMessage = null;
-    private String transformationUan = null;
+    private String transformationUan = "";
     private String transformationUnitNo = null;
     private String transformationUnitTitle = null;
-    private String transformationAuthor = null;
+    private String transformationAuthor = "";
     private String xmlStringContent = null;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProcessWordDocument.class);
@@ -66,25 +66,39 @@ public class ProcessWordDocument {
             HashMap docPropMap = new HashMap();
 
             String title = "Missing";
-            List<String> list = coreProps.getTitle().getValue().getContent();
-            if (list.size() > 0) {
-                title = list.get(0);
+            if(coreProps != null &&
+                    coreProps.getTitle() != null &&
+                    coreProps.getTitle().getValue() != null &&
+                    coreProps.getTitle().getValue().getContent() != null) {
+                List<String> list = coreProps.getTitle().getValue().getContent();
+                if (list.size() > 0) {
+                    title = list.get(0);
+                }
             }
             docPropMap.put("dc-title", title);
-            this.transformationUan = coreProps.getKeywords();
+            if(coreProps != null &&
+                    coreProps.getKeywords() != null) {
+                this.transformationUan = coreProps.getKeywords();
+            }
             LOGGER.debug("Found following property - transformationUan[{}]", this.transformationUan);
 
             docPropMap.put("uan", transformationUnitNo);
             docPropMap.put("dc-keyword", transformationUan);
-            List<String> authorList = coreProps.getCreator().getContent();
-            if (authorList.size() > 0) {
-                this.transformationAuthor = authorList.get(0);
-                LOGGER.debug("Found following property - author[{}]", this.transformationAuthor);
+            if(coreProps != null &&
+                    coreProps.getCreator() != null &&
+                    coreProps.getCreator().getContent() != null) {
+                        List<String> authorList = coreProps.getCreator().getContent();
+                        if (authorList.size() > 0) {
+                            this.transformationAuthor = authorList.get(0);
+                            LOGGER.debug("Found following property - author[{}]", this.transformationAuthor);
 
+                        }
             }
             docPropMap.put("author", transformationAuthor);
             String description = "Missing";
-            if(coreProps.getDescription() != null) {
+            if(coreProps.getDescription() != null &&
+                    coreProps.getDescription().getValue() != null &&
+                    coreProps.getDescription().getValue().getContent() != null) {
                 List<String> descriptionList = coreProps.getDescription().getValue().getContent();
                 if (descriptionList.size() > 0) {
                     description = descriptionList.get(0);

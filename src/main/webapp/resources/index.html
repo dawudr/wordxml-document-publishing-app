@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html ng-app="inspinia">
+<html ng-app="wordxmlplus">
 
 <head>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="1200;URL='/logout'" />
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="shortcut icon" href="/favicon.ico">
 
   <!-- Page title set in pageTitle directive -->
   <title page-title></title>
@@ -19,47 +23,11 @@
   <!-- Bootstrap and Fonts -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Full Calendar -->
-  <!--<link href="css/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">-->
-
-  <!-- Morris -->
-  <!--<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">-->
-
-  <!-- Style for wizard - based on Steps plugin-->
-  <link href="css/plugins/steps/jquery.steps.css" rel="stylesheet">
-
-  <!-- FancyBox -->
-  <!--<link href="js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">-->
-
-  <!-- Data Tables -->
-  <!--<link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">-->
-
-  <!-- iCheck -->
-  <!--<link href="css/plugins/iCheck/custom.css" rel="stylesheet">-->
-
-  <!-- Chosen Plugin -->
-  <!--<link href="css/plugins/chosen/chosen.css" rel="stylesheet">-->
-
-  <!-- Dropzone style -->
-  <!--<link href="css/plugins/dropzone/basic.css" rel="stylesheet">-->
-  <!--<link href="css/plugins/dropzone/dropzone.css" rel="stylesheet">-->
-
   <!-- Switchery iOS style -->
   <link href="css/plugins/switchery/switchery.css" rel="stylesheet">
 
-  <!-- noUiSlider for Range Slider-->
-  <link href="css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
-
-  <!-- DataPicker -->
-  <link href="css/plugins/datapicker/angular-datapicker.css" rel="stylesheet">
-
-  <!-- Ion Range Slider -->
-  <link href="css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
-  <link href="css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
-
   <!-- Ng-Grid -->
   <link href="js/plugins/nggrid/ng-grid.css" rel="stylesheet">
-
   <!-- Code Mirror -->
   <link href="css/plugins/codemirror/codemirror.css" rel="stylesheet">
   <link href="css/plugins/codemirror/ambiance.css" rel="stylesheet">
@@ -90,7 +58,7 @@
 </head>
 
 <!-- ControllerAs syntax -->
-<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
+<!-- Main controller -->
 <body ng-controller="MainCtrl as main" class="skin-1">
 
 <!-- Wrapper-->
@@ -120,7 +88,8 @@
 
 
 <!-- jQuery and Bootstrap -->
-<script src="js/jquery/jquery-2.1.3.min.js"></script>
+<!--<script src="js/jquery/jquery-2.1.3.min.js"></script>-->
+<script src="js/jquery/1.10.2/jquery.min.js"></script>
 <script src="js/plugins/jquery-ui/jquery-ui.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 
@@ -133,46 +102,11 @@
 <!-- SlimScroll -->
 <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-<!-- Flot -->
-<!--<script src="js/plugins/flot/jquery.flot.js"></script>-->
-<!--<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>-->
-<!--<script src="js/plugins/flot/jquery.flot.spline.js"></script>-->
-<!--<script src="js/plugins/flot/jquery.flot.resize.js"></script>-->
-<!--<script src="js/plugins/flot/jquery.flot.pie.js"></script>-->
-<!--<script src="js/plugins/flot/curvedLines.js"></script>-->
-
-<!-- Peity -->
-<!--<script src="js/plugins/peity/jquery.peity.min.js"></script>-->
-
-<!-- Morris -->
-<!--<script src="js/plugins/morris/raphael-2.1.0.min.js"></script>-->
-<!--<script src="js/plugins/morris/morris.js"></script>-->
-
 <!-- iCheck -->
 <script src="js/plugins/iCheck/icheck.min.js"></script>
 
-<!-- Chosen -->
-<!--<script src="js/plugins/chosen/chosen.jquery.js"></script>-->
-
 <!-- Peace JS -->
 <script src="js/plugins/pace/pace.min.js"></script>
-
-<!-- Fancy box -->
-<!--<script src="js/plugins/fancybox/jquery.fancybox.js"></script>-->
-
-<!-- Rickshaw -->
-<!--<script src="js/plugins/rickshaw/vendor/d3.v3.js"></script>-->
-<!--<script src="js/plugins/rickshaw/rickshaw.min.js"></script>-->
-
-<!-- Ion Range Slider-->
-<!--<script src="js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>-->
-
-<!-- NouSlider -->
-<!--<script src="js/plugins/nouslider/jquery.nouislider.min.js"></script>-->
-
-<!-- Jvectormap -->
-<!--<script src="js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>-->
-<!--<script src="js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>-->
 
 <!-- Input Mask-->
 <script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
@@ -180,37 +114,12 @@
 <!-- Switchery -->
 <script src="js/plugins/switchery/switchery.js"></script>
 
-<!-- Data Tables -->
-<!--<script src="js/plugins/dataTables/jquery.dataTables.js"></script>-->
-<!--<script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>-->
-
-<!-- EasyPIE -->
-<!--<script src="js/plugins/easypiechart/easypiechart.js"></script>-->
-
-<!-- Sparkline -->
-<!--<script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>-->
-
-<!-- Dropzone -->
-<!--<script src="js/plugins/dropzone/dropzone.js"></script>-->
-
-<!-- Cahrt JS -->
-<!--<script src="js/plugins/chartJs/Chart.min.js"></script>-->
-
-<!-- Knob -->
-<!--<script src="js/plugins/jsKnob/jquery.knob.js"></script>-->
-
 <!-- SUMMERNOTE -->
 <script src="js/plugins/summernote/summernote.min.js"></script>
-
-<!-- Full Calendar -->
-<!--<script src="js/plugins/fullcalendar/fullcalendar.min.js"></script>-->
 
 <!-- Code Mirror -->
 <script src="js/plugins/codemirror/codemirror.js"></script>
 <script src="js/plugins/codemirror/mode/javascript/javascript.js"></script>
-
-<!-- Custom and plugin javascript -->
-<script src="js/inspinia.js"></script>
 
 <!-- Angular scripts-->
 <script src="js/angular/angular.min.js"></script>
@@ -219,40 +128,26 @@
 <script src="js/bootstrap/ui-bootstrap-tpls-0.11.0.min.js"></script>
 
 <!-- Angular Dependiences -->
-<!--<script src="js/plugins/peity/angular-peity.js"></script>-->
-<!--<script src="js/plugins/easypiechart/angular.easypiechart.js"></script>-->
-<!--<script src="js/plugins/flot/angular-flot.js"></script>-->
-<!--<script src="js/plugins/rickshaw/angular-rickshaw.js"></script>-->
 <script src="js/plugins/summernote/angular-summernote.min.js"></script>
 <script src="js/bootstrap/angular-bootstrap-checkbox.js"></script>
-<!--<script src="js/plugins/jsKnob/angular-knob.js"></script>-->
 <script src="js/plugins/switchery/ng-switchery.js"></script>
-<!--<script src="js/plugins/nouslider/angular-nouislider.js"></script>-->
-<!--<script src="js/plugins/datapicker/datePicker.js"></script>-->
 <script src="js/plugins/chosen/chosen.js"></script>
 <!--<script src="js/plugins/dataTables/angular-datatables.min.js"></script>-->
-<!--<script src="js/plugins/fullcalendar/gcal.js"></script>-->
-<!--<script src="js/plugins/fullcalendar/calendar.js"></script>-->
-<!--<script src="js/plugins/chartJs/angles.js"></script>-->
 <script src="js/plugins/uievents/event.js"></script>
-<script src="js/plugins/nggrid/ng-grid-2.0.3.min.js"></script>
+<script src="js/plugins/nggrid/ng-grid-2.0.8.min.js"></script>
+
 <script src="js/plugins/ui-codemirror/ui-codemirror.min.js"></script>
 <script src="js/plugins/uiTree/angular-ui-tree.min.js"></script>
 
 
-<!-- Jquery file upload Dependencies -->
+
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <script src="js/plugins/jquery-file-upload/vendor/jquery.ui.widget.js"></script>
-<!-- The Templates plugin is included to render the upload/download listings -->
-<script src="js/plugins/jquery-file-upload/tmpl.min.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
 <script src="js/plugins/jquery-file-upload/load-image.all.min.js"></script>
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
 <script src="js/plugins/jquery-file-upload/canvas-to-blob.min.js"></script>
-<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
-<!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
-<!-- blueimp Gallery script -->
-<script src="js/plugins/jquery-file-upload/jquery.blueimp-gallery.min.js"></script>
+
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 <script src="js/plugins/jquery-file-upload/jquery.iframe-transport.js"></script>
 <!-- The basic File Upload plugin -->
@@ -269,22 +164,23 @@
 <script src="js/plugins/jquery-file-upload/jquery.fileupload-validate.js"></script>
 <!-- The File Upload Angular JS module -->
 <script src="js/plugins/jquery-file-upload/jquery.fileupload-angular.js"></script>
-<!-- The File Upload user interface plugin -->
-<script src="js/plugins/jquery-file-upload/jquery.fileupload-ui.js"></script>
-<!-- The main application script -->
-<script src="js/plugins/jquery-file-upload/main.js"></script>
-<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
-<!--[if (gte IE 8)&(lt IE 10)]>
-<script src="js/cors/jquery.xdr-transport.js"></script>
-<![endif]-->
+
+
 
 <!-- Anglar App Script -->
 <script src="js/app.js"></script>
 <script src="js/config.js"></script>
 <script src="js/directives.js"></script>
 <script src="js/controllers.js"></script>
-<script src="js/dashboard-app.js"></script>
-<script src="js/services.js"></script>
+<script src="wordxmlapp/services/fileupload-service.js"></script>
+<script src="wordxmlapp/services/settings-service.js"></script>
+<script src="wordxmlapp/services/transformation-service.js"></script>
+<script src="wordxmlapp/controllers/dashboard-controller.js"></script>
+<script src="wordxmlapp/controllers/downloads-controller.js"></script>
+<script src="wordxmlapp/controllers/transformations-controller.js"></script>
+<script src="wordxmlapp/controllers/settings-controller.js"></script>
+<script src="wordxmlapp/controllers/fileupload-controller.js"></script>
+<script src="wordxmlapp/controllers/users-controller.js"></script>
 <script src="public/js/login.js"></script>
 
 </body>

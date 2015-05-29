@@ -55,6 +55,7 @@ public class TestDataInitializer {
         User user10 = new User("testviewer", "Password123", "dawud.rahman@aqovia.com", "test", "Viewer", User.ROLE_VIEWER);
         session.persist(user10);*/
 
+/*
         TemplateSection templateSection = new TemplateSection();
         templateSection.setSectionName("uan");
         templateSection.setSectionType(TemplateSection.SECTION_TYPE_META);
@@ -186,6 +187,7 @@ public class TestDataInitializer {
             template2.setTemplateSections(templateSectionsBtecNational);
 
             session.persist(template2);
+*/
 
 
         Calendar calendarLastWeek = Calendar.getInstance();

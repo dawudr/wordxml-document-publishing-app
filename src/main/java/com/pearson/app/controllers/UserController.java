@@ -70,7 +70,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, value = "/user/{id}")
     //public UserInfoDTO getUserById(@PathVariable Long id) {
-    public User getUserById(@PathVariable Long id) {
+    public User getUserById(@PathVariable Integer id) {
         User user = userService.getUserById(id);
         LOGGER.debug("Found User id[{}] -> User[{}]", id, user.toString());
 /*

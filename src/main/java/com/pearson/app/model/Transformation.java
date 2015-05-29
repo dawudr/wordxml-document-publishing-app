@@ -38,18 +38,20 @@ public class Transformation extends AbstractEntity {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="image_id")
-    private Image image;
+
+    //@OneToOne //(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    //@JoinColumn(name="image_id")
+    //private Image image;
+    private int image_id;
 
     @OneToOne (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="specunit_id")
     private Specunit specunit;
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name="template_id")
-    private Template template;
+    private Template template;*/
 
-
+    private int templateId;
     private Date date;
     private String qanNo;
     private String wordfilename;
@@ -102,12 +104,20 @@ public class Transformation extends AbstractEntity {
         this.user = user;
     }
 
-    public Template getTemplate() {
+/*    public Template getTemplate() {
         return template;
     }
 
     public void setTemplate(Template template) {
         this.template = template;
+    }*/
+
+    public int getTemplateId() {
+        return templateId;
+    }
+
+    public void setTemplateId(int templateId) {
+        this.templateId = templateId;
     }
 
     public Date getDate() {
@@ -214,31 +224,33 @@ public class Transformation extends AbstractEntity {
         this.generalStatus = generalStatus;
     }
 
-    public Image getImage() {
-        return image;
+    public int getImage_id() {
+        return image_id;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImage_id(int image_id) {
+        this.image_id = image_id;
     }
 
     @Override
     public String toString() {
         return "Transformation{" +
                 "user=" + user +
+                ", image_id=" + image_id +
+                ", specunit=" + specunit +
+                ", templateId=" + templateId +
                 ", date=" + date +
                 ", qanNo='" + qanNo + '\'' +
                 ", wordfilename='" + wordfilename + '\'' +
-                ", openxmlfilename='" + specunit + '\'' +
+                ", openxmlfilename='" + openxmlfilename + '\'' +
                 ", iqsxmlfilename='" + iqsxmlfilename + '\'' +
                 ", unitNo='" + unitNo + '\'' +
                 ", unitTitle='" + unitTitle + '\'' +
                 ", author='" + author + '\'' +
                 ", lastmodified=" + lastmodified +
-                ", template='" + template + '\'' +
-                ", transformStatus=" + transformStatus +
+                ", transformStatus='" + transformStatus + '\'' +
                 ", message='" + message + '\'' +
-                ", generalStatus=" + generalStatus +
+                ", generalStatus='" + generalStatus + '\'' +
                 '}';
     }
 

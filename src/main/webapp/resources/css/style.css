@@ -2071,23 +2071,35 @@ label.error {
   border: 1px dotted #cc5965;
 }
 /* ngGrid */
-.gridStyle {
+/*.gridStyle {
   border: 1px solid #d4d4d4;
   width: 100%;
   height: 400px;
+}*/
+
+.gridStyle {
+  border: 1px solid #d4d4d4;
+  width: 100%;
+  height: 300px;
+  float: left;
 }
+
+.selectedItems{
+  float: left;
+}
+
 .gridStyle2 {
   border: 1px solid #d4d4d4;
   width: 500px;
   height: 300px;
 }
-.ngH eaderCell {
-  border-right: none;
-  border-bottom: 1px solid #e7eaec;
-}
+
+/*
 .ngCell {
   border-right: none;
 }
+*/
+
 .ngTopPanel {
   background: #F5F5F6;
 }
@@ -2102,10 +2114,39 @@ label.error {
 }
 .ngCell {
   background-color: transparent;
+  text-align: left;
 }
+/*
 .ngHeaderCell {
   border-right: none;
 }
+*/
+.ngHeaderText {
+  padding: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
+}
+
+.ngCellText {
+  padding: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
+}
+
 .sidebard-panel {
   width: 220px;
   background: #ebebed;
@@ -2255,6 +2296,15 @@ video {
 .modal-footer {
   margin-top: 0;
 }
+
+.modal.modal-wide .modal-dialog {
+  width: 98%;
+}
+
+.modal-wide .modal-body {
+  overflow-y: auto;
+}
+
 /* WRAPPERS */
 #wrapper {
   width: 100%;

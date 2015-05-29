@@ -1,7 +1,5 @@
 package com.pearson.app.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 /**
@@ -9,16 +7,22 @@ import javax.persistence.*;
  * The Template JPA entity.
  *
  */
+/*
 @Entity
-@Table(name = "templatesection", uniqueConstraints = {
+@Table(name = "templatesection")
+*/
+
+/*@Table(name = "templatesection", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id") })
 @NamedQueries({
         @NamedQuery(
                 name = TemplateSection.FIND_BY_TEMPLATE_SECTION_NAME,
                 query = "select t from TemplateSection t where id = :id"
         )
-})
-public class TemplateSection extends AbstractEntity {
+})*/
+//public class TemplateSection extends AbstractEntity {
+@Embeddable
+public class TemplateSection {
 
     public static final String FIND_BY_TEMPLATE_SECTION_NAME = "templatesection.findByTemplateSectionName";
     public static final String SECTION_TYPE_HEADER = "HEADER";
@@ -29,6 +33,12 @@ public class TemplateSection extends AbstractEntity {
     public static final String SECTION_TYPE_ROW = "ROW";
     public static final String SECTION_TYPE_COLUMN = "COLUMN";
 
+//    @Id
+    //@Column(name="templateSection_id")
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)
+   // private int templateSection_Id;
+//    @Column(name="id")
+//    private int templateId;
     private String sectionType; // SECTION, META, sub SECTION, PARAGRAPH
     private String sectionStyle;
     private String sectionName;
@@ -36,10 +46,10 @@ public class TemplateSection extends AbstractEntity {
     private boolean showSection;
     private boolean validateInWordDoc;
 
-    @JsonIgnore
-    @ManyToOne (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-    private Template template;
-
+    //@JsonIgnore
+    //@ManyToOne (cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    //@ManyToOne (cascade=CascadeType.ALL)
+    //private Template template;
     public TemplateSection() {
     }
 
@@ -92,11 +102,35 @@ public class TemplateSection extends AbstractEntity {
     }
 
 
+/*    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }*/
+
+  /*
     public Template getTemplate() {
         return template;
     }
 
     public void setTemplate(Template template) {
         this.template = template;
+    }
+*/
+
+
+    @Override
+    public String toString() {
+        return "TemplateSection{" +
+//                "id=" + id +
+                ", sectionType='" + sectionType + '\'' +
+                ", sectionStyle='" + sectionStyle + '\'' +
+                ", sectionName='" + sectionName + '\'' +
+                ", sectionValue='" + sectionValue + '\'' +
+                ", showSection=" + showSection +
+                ", validateInWordDoc=" + validateInWordDoc +
+                '}';
     }
 }

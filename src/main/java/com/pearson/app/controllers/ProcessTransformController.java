@@ -68,7 +68,8 @@ public class ProcessTransformController {
         // image.jsp
         return "processtransform";
     }
-
+/*
+    //TODO: Remove
     @RequestMapping(value = "/processtransform", method = RequestMethod.GET)
     public @ResponseBody
     Map list() {
@@ -85,6 +86,7 @@ public class ProcessTransformController {
         LOGGER.debug("Returning: {}", files);
         return files;
     }
+*/
 
     @RequestMapping(value = "/processtransform", method = RequestMethod.POST)
     public @ResponseBody
@@ -120,7 +122,8 @@ public class ProcessTransformController {
             Transformation newTransformation = new Transformation();
             newTransformation.setUser(user);
             newTransformation.setDate(new Date());
-            newTransformation.setTemplate(template);
+            //newTransformation.setTemplate(template);
+            newTransformation.setTemplateId(0);
             //transformationService.addTransformation(newTransformation);
 
 
@@ -164,7 +167,8 @@ public class ProcessTransformController {
             list.add(image);
             // update TRANSFORMATION
             newTransformation.setWordfilename(image.getName());
-            newTransformation.setImage(image);
+            //newTransformation.setImage(image);
+            newTransformation.setImage_id(image.getId());
             //newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS);
             //transformationService.updateTransformation(newTransformation);
 
@@ -221,8 +225,9 @@ public class ProcessTransformController {
         return files;
     }
 
+/*
     @RequestMapping(value = "/processtransform/view/{id}", method = RequestMethod.GET)
-    public void picture(HttpServletResponse response, @PathVariable Long id) {
+    public void picture(HttpServletResponse response, @PathVariable int id) {
         Image image = imageService.getImage(id);
         File imageFile = new File(fileUploadDirectory + File.separator + "uploads" + File.separator + image.getNewFilename());
         response.setContentType(image.getContentType());
@@ -234,11 +239,12 @@ public class ProcessTransformController {
             LOGGER.error("Could not show document " + id, e);
         }
     }
+*/
 
 
     @RequestMapping(value = "/processtransform/delete/{id}", method = RequestMethod.DELETE)
     public @ResponseBody
-    List delete(@PathVariable Long id) {
+    List delete(@PathVariable int id) {
         Image image = imageService.getImage(id);
         File imageFile = new File(fileUploadDirectory + File.separator + "uploads" + File.separator + image.getNewFilename());
         imageFile.delete();

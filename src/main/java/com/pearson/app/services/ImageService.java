@@ -38,7 +38,7 @@ public class ImageService {
     }
 
     @Transactional(readOnly = true)
-    public Image getImage(Long id) {
+    public Image getImage(int id) {
         return imageRepository.get(id);
     }
 
