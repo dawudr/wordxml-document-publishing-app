@@ -8,117 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e011ff25-fca9-4b2e-8c19-703dc1bf07b9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/dashboard-controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/downloads-controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/downloads-view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/filemanager.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/filemanager.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/fileupload-controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/fileupload-service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/fileupload-view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/nggrid/ng-grid-2.0.8.debug.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/nggrid/ng-grid-2.0.8.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/settings-controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/settings-service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/settings-view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/transformation-service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/transformations-controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/users-controller.js" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\btec_transform_status_report.rtf" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\dashboard.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\datetimepicker\jquery.datetimepicker.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\datetimepicker\jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\frontend-services.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\inspinia.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\datapicker\bootstrap-datepicker.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\datapicker\datePicker.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\datapicker\datePickerUtils.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\datapicker\dateRange.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\datapicker\input.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\dropzone\dropzone.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\ionRangeSlider\ion.rangeSlider.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\jeditable\jquery.jeditable.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\nouslider\angular-nouislider.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\nouslider\jquery.nouislider.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\run-dashboard-app.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\services.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\public\js\editable-table-widgets.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\register.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\skin-config.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\form_file_upload.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\form_wizard_multiple.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\form_wizard_single.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\test_page.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\wizard\step_one.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\wizard\step_three.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\wizard\step_two.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp.war" afterPath="$PROJECT_DIR$/target/btecopenxmlapp.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/AbstractEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/AbstractEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/DevelopmentConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/DevelopmentConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Image.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Image.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ImageController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ImageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageDAOInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageDAOInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/ImageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/ImageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ProcessTransformController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ProcessTransformController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/ProcessWordDocument.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/ProcessWordDocument.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Template.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Template.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TemplateController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TemplateController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TemplateDAOInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TemplateDAOInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TemplateRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TemplateRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/TemplateSection.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/TemplateSection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TemplateService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TemplateService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/pearson/app/TemplateServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/pearson/app/TemplateServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/init/TestDataInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/init/TestDataInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Transformation.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Transformation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationDAOInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationDAOInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TransformationDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TransformationDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/TransformationRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationServiceInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationServiceInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/pearson/app/TransformationServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/pearson/app/TransformationServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserDAOInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserDAOInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/UserInfoDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/UserInfoDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/pearson/app/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/pearson/app/UserServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/app.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/js/common.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/config.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/controllers.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/directives.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/local.properties" afterPath="$PROJECT_DIR$/src/main/resources/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/log4j.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/log4j.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/log4j.xml" afterPath="$PROJECT_DIR$/target/classes/log4j.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/logback.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/logback.xml" afterPath="$PROJECT_DIR$/target/classes/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/js/login.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/common/navigation.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/common/navigation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/js/new-user.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/js/new-user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/nggrid/ng-grid.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/plugins/nggrid/ng-grid.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/processtransform.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/processtransform.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/production.properties" afterPath="$PROJECT_DIR$/src/main/resources/production.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/classes/spring-context-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/target/classes/spring-context-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/btecopenxmlapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\dashboard-app.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/dashboard-app.js" />
-      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\dashboard_view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/dashboard-view.html" />
-      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\document_detail.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/document-view.html" />
-      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\downloads_view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/downloads-view-backup.html" />
-      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\form_settings.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/settings-view-backup.html" />
-      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\user_management.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/users-view.html" />
-      <change type="MOVED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\views\user_profile.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/userprofile-view.html" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -217,11 +107,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TemplateServiceTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TemplateServiceTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/pearson/app/TemplateServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.3954372" vertical-offset="2754" max-vertical-offset="3570">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2721" max-vertical-offset="3570">
               <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3357271" vertical-offset="0" max-vertical-offset="557">
+              <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -287,16 +187,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TransformationController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="7140">
-              <caret line="100" column="13" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -307,6 +197,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="dawudrahmanaqovia &lt;dawud.rahman@aqovia.com&gt;" />
         <option value="Dawud" />
         <option value="Dawud Rahman &lt;dawud.rahman@aqovia.com&gt;" />
       </list>
@@ -319,7 +210,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/transformation-service.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/dashboard-controller.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/transformations-controller.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" />
@@ -370,6 +260,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/downloads-view.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/downloads-controller.js" />
         <option value="$PROJECT_DIR$/src/test/java/com/pearson/app/UserServiceTest.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -1380,7 +1271,7 @@
       <workItem from="1432597325351" duration="343000" />
       <workItem from="1432597755758" duration="10066000" />
       <workItem from="1432624265895" duration="24535000" />
-      <workItem from="1432757167518" duration="31998000" />
+      <workItem from="1432757167518" duration="32952000" />
     </task>
     <task id="LOCAL-00001" summary="Commit of build">
       <created>1412090945578</created>
@@ -1508,11 +1399,23 @@
       <option name="project" value="LOCAL" />
       <updated>1427258245418</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Major Refactor and cleanup.">
+      <created>1432877461251</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1432877461251</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Major Refactor and cleanup.">
+      <created>1432878190667</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1432878190667</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1994542000" />
+    <option name="totallyTimeSpent" value="1995496000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1553,8 +1456,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26121077" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295964" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31390134" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36210763" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31390134" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36210763" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295964" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32623318" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13997555" sideWeight="0.52130044" order="3" side_tool="true" content_ui="tabs" />
@@ -1605,7 +1508,8 @@
     <MESSAGE value="Templates form binding with Template and TemplateSection tables" />
     <MESSAGE value="Hook up button events and write Service code to create, update, delete in Angular JS." />
     <MESSAGE value="Update Upload Wizards page with Template select" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Upload Wizards page with Template select" />
+    <MESSAGE value="Major Refactor and cleanup." />
+    <option name="LAST_COMMIT_MESSAGE" value="Major Refactor and cleanup." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1746,14 +1650,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/robots.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="862">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/common/navigation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-24.846153" vertical-offset="0" max-vertical-offset="1360">
@@ -1799,10 +1695,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="6303" max-vertical-offset="42789">
           <caret line="395" column="12" selection-start-line="395" selection-start-column="12" selection-end-line="395" selection-end-column="12" />
           <folding>
-            <marker date="1432877339577" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1432877339577" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1432877339577" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1432877339577" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1432878271230" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1432878271230" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1432878271230" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1432878271230" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -2169,8 +2065,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/pearson/app/TemplateServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.3954372" vertical-offset="2754" max-vertical-offset="3570">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2721" max-vertical-offset="3570">
           <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3357271" vertical-offset="0" max-vertical-offset="557">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
           <folding />
         </state>
       </provider>
