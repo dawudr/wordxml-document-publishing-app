@@ -120,7 +120,9 @@ public class ImageController {
         Image image = imageService.getImage(id);
         File imageFile = new File(fileUploadDirectory+"/"+image.getNewFilename());
         response.setContentType(image.getContentType());
+        response.setHeader("Content-Disposition", "attachment; filename =\"" + image.getName() + "\"");
         response.setContentLength(image.getSize().intValue());
+        log.debug("Downloading file {}",image.getName());
         try {
             InputStream is = new FileInputStream(imageFile);
             IOUtils.copy(is, response.getOutputStream());

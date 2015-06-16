@@ -1,4 +1,4 @@
-var wordxmlDownloadsApp = angular.module('wordxmlApp.downloads.controller',  ['ngResource', 'ngGrid', 'ui.bootstrap','wordxmlApp.transformation.service']);
+var wordxmlDownloadsApp = angular.module('wordxmlApp.downloads.controller',  ['ngResource', 'ngGrid', 'ui.bootstrap','ngSanitize','wordxmlApp.transformation.service','wordxmlApp.download.service']);
 
 /*wordxmlSettingsApp.run(function ($rootScope, $templateCache) {
     $rootScope.$on('$viewContentLoaded', function () {
@@ -6,7 +6,7 @@ var wordxmlDownloadsApp = angular.module('wordxmlApp.downloads.controller',  ['n
     });
 });*/
 
-wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, TransformationsFactory, TransformationFactory) {
+wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, $sce, TransformationsFactory, TransformationFactory, DataSource, PreviewJSONFactory) {
 
     /**
      * SETTING STUFF
@@ -177,8 +177,35 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, T
         console.log('Calling service- showRecord');
         TransformationFactory.show({id: transformId}).$promise.then(
             function(data) {
+                console.log("Transformation Record as JSON data:");
                 console.log(data);
                 $scope.transformation = data || [];
+
+
+/*                PreviewXMLFactory.fetchXML().success(function(response) {
+                    $scope.SOURCE_FILE = response;
+                });*/
+
+/* This is for XML2JSON Conversion for page rendering.
+Now we have moved this into the Java TransformationController
+where the serialisation to XML to JSON happens
+
+                xmlTransform = function(data) {
+                    console.log("transform data");
+                    var x2js = new X2JS();
+                    var json = x2js.xml_str2json( data );
+                    return json;
+                };
+
+                setData = function(data) {
+                    console.log($scope.unit);
+                    $scope.unit = data.unit;
+                };
+
+                SOURCE_FILE = "/transformation/xml/" + transformId;
+                DataSource.get(SOURCE_FILE,setData,xmlTransform);
+*/
+
             },
             function () {
                 // Broadcast the event for a server error.
@@ -186,6 +213,20 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, T
                 $rootScope.$broadcast('error');
             }
         )
+
+        PreviewJSONFactory.show({id: transformId}).$promise.then(
+            function(data) {
+                console.log("Transformation Content as JSON data:");
+                console.log(data);
+                $scope.unit = data;
+            },
+            function () {
+                // Broadcast the event for a server error.
+                $scope.unit = [];
+                $rootScope.$broadcast('error');
+            }
+        )
+
     };
 
 
@@ -234,6 +275,29 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, T
         }, 100);
     };
 
+    // this method filters, formats and prints the previews the data
+    $scope.filterContentField = function(items) {
+        var result = {};
+        var regex = new RegExp('@.*');
+        var title = '';
+
+        // remove items with keys prefixed with '@' and remove the key field where it is same as title.
+        angular.forEach(items, function(value, key) {
+            if(!regex.test(key + '')){
+                if(key.replace(/ /g,'').toLowerCase() == title) {
+                    result[''] = value;
+                } else if(key.toLowerCase() == 'table') {
+                    result[''] = value;
+                } else {
+                    result[key.charAt(0).toUpperCase()+ key.slice(1)] = value;
+                }
+            } else if(key.toLowerCase() == '@title') {
+                title = value.replace(/ /g,'').toLowerCase();
+            }
+        });
+        return result;
+    }
+
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
 
     $scope.$watch('pagingOptions', function (newVal, oldVal) {
@@ -248,6 +312,24 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, T
     }, true);
 
 });
+
+
+wordxmlDownloadsApp.directive('htmlText', function(){
+    return {
+        'restrict': 'A',
+        'require': 'ngModel',
+        'link': function(scope,element,attrs,model) {
+            model.$formatters.push(function(val){
+                return val.htmlField;
+            });
+
+            model.$parsers.push(function(val){
+                model.$modelValue.htmlField = val;
+            });
+        }
+    };
+});
+
 
 // Create a controller with name alertMessagesController to bind to the feedback messages section.
 wordxmlDownloadsApp.controller('alertMessagesController', function ($scope) {

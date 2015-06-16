@@ -3,12 +3,6 @@ angular.module('common',[])
 
         var fieldWithFocus;
 
-        $scope.vm = {
-            submitted: false,
-            errorMessages: [],
-            appReady: true
-        };
-
         $scope.focus = function (fieldName) {
             fieldWithFocus = fieldName;
         };
@@ -31,6 +25,7 @@ angular.module('common',[])
 
         $scope.login = function (username, password) {
             console.log("In BaseFormCtrl - login function: username=" + username + " password=" + password);
+            $scope.vm.appReady = false;
 
             var postData = $scope.preparePostData();
 
@@ -56,6 +51,11 @@ angular.module('common',[])
             });
         }
 
+        $scope.vm = {
+            submitted: false,
+            errorMessages: [],
+            appReady: true
+        };
 
     }])
     .directive('checkPasswordsMatch', function () {

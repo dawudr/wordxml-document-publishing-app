@@ -46,6 +46,7 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/main.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/plugins/jquery-file-upload/tmpl.min.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/robots.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/download-service.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/fileupload-service.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/settings-service.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/transformation-service.js" charset="UTF-8" />

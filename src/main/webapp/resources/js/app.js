@@ -15,6 +15,7 @@
         'blueimp.fileupload',         // jquery file upload
         'wordxmlApp.settings.service', // Settings Service
         'wordxmlApp.fileupload.service', // FileUpload Service
+        'wordxmlApp.download.service', // Download Service
         'wordxmlApp.transformation.service', // Transformation Service
         'wordxmlApp.fileupload.controller', // FileUpload Controller
         'wordxmlApp.settings.controller', // Settings Controller

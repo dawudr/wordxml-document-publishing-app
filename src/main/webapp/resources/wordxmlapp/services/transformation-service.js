@@ -26,7 +26,7 @@ services.factory('TransformationsFactory', function ($resource) {
 });
 
 services.factory('TransformationFactory', function ($resource) {
-    console.log('Calling TransformationsFactory- show, update, delete');
+    console.log('Calling TransformationFactory- show, update, delete');
 
     return $resource('/transformation/:id', {}, {
         show: { method: 'GET' },

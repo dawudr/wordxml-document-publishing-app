@@ -18,8 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -193,7 +192,7 @@ public class TransformationController {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET, value = "/transformation/listrecent")
+    @RequestMapping(method = RequestMethod.GET, value = "/transformation/list")
     public List<TransformationDTO> listRecentTransformations() {
         List<Transformation> transformations = transformationService.listTransformations();
         LOGGER.debug("Found [{}] Recent Transformations", transformations.size());
@@ -219,12 +218,21 @@ public class TransformationController {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET, value = "/transformation/xml/{id}")
-    public String getTransformationSpecUnitByIdAsXml(@PathVariable Integer id) {
+    @RequestMapping(
+            //produces = MediaType.APPLICATION_XML_VALUE,
+            method = RequestMethod.GET,
+            value = "/transformation/xml/{id}")
+    //public String getTransformationSpecUnitByIdAsXml(@PathVariable Integer id) {
+    public HttpEntity<byte[]> getTransformationSpecUnitByIdAsXml(@PathVariable Integer id) {
         Transformation transformation = transformationService.getTransformationById(id);
         Specunit specunit = transformation.getSpecunit();
         LOGGER.debug("Returning XML for User id[{}] -> SpecunitById[{}]", specunit);
-        return specunit.getUnitXML().toString();
+        String xml = specunit.getUnitXML().toString();
+        byte[] documentBody = xml.getBytes();
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType("application", "xml"));
+        header.setContentLength(documentBody.length);
+        return new HttpEntity<byte[]>(documentBody, header);
     }
 
     @ResponseBody
@@ -303,7 +311,7 @@ public class TransformationController {
             LOGGER.debug("Beginning XML file download of TransformationId[{}] QanNo[{}] -> PqsFileName[{}]",
                     transformation.getId(), transformation.getQanNo(), transformation.getIqsxmlfilename());
 
-            String root = "/var/tmp";//context.getRealPath("/");
+            String root = context.getRealPath("/");
             String pqsXmlString = transformXmlDocument.doTranformOpenXmlToIqsXml(root);
             InputStream inputStream = IOUtils.toInputStream(pqsXmlString);
 

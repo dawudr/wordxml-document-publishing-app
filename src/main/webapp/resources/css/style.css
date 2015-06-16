@@ -2675,7 +2675,7 @@ table.table-mail tr td {
 }
 /* BACKGROUNDS */
 .gray-bg {
-  background-color: #f3f3f4;
+  background-color: #4d5b69;
 }
 .white-bg {
   background-color: #ffffff;
@@ -4136,9 +4136,11 @@ body.skin-3 {
 }
 
 
+/* Custom Style for BtecWordOpenXMLApp here */
+
 /* Styles for the loading spinner */
 .please-wait-dialog {
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.8);
   border-radius: 4px;
   margin: 0 auto;
   z-index: 2000;
@@ -4161,3 +4163,10 @@ body.skin-3 {
   margin-top: -70px;
 }
 
+.modal-vertical-align {
+  margin-top: 140px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.8);
+}

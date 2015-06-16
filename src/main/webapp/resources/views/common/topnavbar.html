@@ -1,7 +1,14 @@
 <div class="row border-bottom" ng-controller="HeaderCtrl as headerVars">
 
     <div class="please-wait-dialog" ng-hide="vm.appReady">
-        <img class="please-wait-spinner" src="/img/loading.gif">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Please wait loading ...</strong>
+            </div>
+            <div class="panel-body text-center">
+                <img class="please-wait-spinner" src="/img/loading.gif">
+            </div>
+        </div>
     </div>
 
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">

@@ -236,6 +236,98 @@
                                         </tbody>
                                     </table>
                                 </tab>
+                                <tab heading="Preview">
+                                    <div>
+<!--                                        <pre>
+                                            {{SOURCE_FILE}}
+                                        </pre>-->
+<!--                                        <pre>
+                                            {{unit}}
+                                        </pre>-->
+
+                                    </div>
+
+                                    <!-- Unit section -->
+                                    <div class="panel-group" id="accordion">
+                                        <div class="panel panel-default">
+
+                                            <div class="panel-heading">
+                                                <h4><strong>Unit content preview</strong></h4>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <h2><strong>Unit {{unit.unitnumber}} - {{unit.unittitle}}</strong></h2>
+                                                <!-- Meta -->
+                                                <div class="row">
+                                                    <div class="col-xs-2">
+                                                        <label for="unitnumber" class="control-label">Unit No: </label>
+                                                        <input type="text" class="form-control input-sm" id="unitnumber" ng-model="unit.unitnumber" placeholder="{{unit.unitnumber}}">
+                                                    </div>
+                                                    <div class="col-xs-10">
+                                                            <label for="unittitle" class="control-label">Title: </label>
+                                                            <input type="text" class="form-control input-sm" id="unittitle" ng-model="unit.unittitle" placeholder="{{unit.unittitle}}">
+                                                            <!--<i class="icon-question-sign pull-right" data-toggle="popover" title="" data-content="The title should reflect the learning aims/assessment criteria" data-original-title="Title"/>-->
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-2">
+                                                        <label for="level" class="control-label">Level: </label>
+                                                        <input type="text" class="form-control input-sm" id="level" ng-model="unit.level" placeholder="{{unit.level}}">
+                                                    </div>
+                                                    <div class="col-xs-2">
+                                                        <label for="unittype" class="control-label">Unit Type: </label>
+                                                        <input type="text" class="form-control input-sm" id="unittype" ng-model="unit.unittype" placeholder="{{unit.unitnumber}}">
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <label for="glhvalue" class="control-label">Guided Learning Hours: </label>
+                                                        <input type="text" class="form-control input-sm" id="glhvalue" ng-model="unit.glhvalue" placeholder="{{unit.glhvalue}}">
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <label for="assessmenttype" class="control-label">Assessment Type: </label>
+                                                        <input type="text" class="form-control input-sm" id="assessmenttype" ng-model="unit.level" placeholder="{{unit.unittype}}">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-2">
+                                                        <label for="uan" class="control-label">UAN: </label>
+                                                        <input type="text" class="form-control input-sm" id="uan" ng-model="unit.uan" placeholder="{{unit.uan}}">
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <label for="author" class="control-label">Author: </label>
+                                                        <input type="text" class="form-control input-sm" id="author" ng-model="unit.author" placeholder="{{unit.author}}">
+                                                    </div>
+                                                    <!--                                                                <div class="col-xs-2">
+                                                                                                            <label for="company" class="control-label">Company: </label>
+                                                                                                            <input type="text" class="form-control input-sm" id="company" ng-model="unit.dc-company" placeholder="{{unit.dc-company}}">
+                                                                                                        </div>-->
+                                                    <!--                                                                <div class="col-xs-2">
+                                                                                                            <label for="template" class="control-label">Template: </label>
+                                                                                                            <input type="text" class="form-control input-sm" id="template" ng-model="unit.dc-title" placeholder="{{unit.dc-title}}">
+                                                                                                        </div>-->
+                                                </div>
+                                                <br/>
+                                                <!-- End Meta data section -->
+
+
+                                                <!--Section-->
+                                                <div class="row" ng-repeat="section in unit.section">
+                                                    <div class="col-xs-12">
+                                                        <h2><strong>{{section['@title']}}</strong><span class="pull-right label label-default">{{section['@style']}}</span></h2>
+                                                    </div>
+                                                    <div class="col-xs-12" ng-repeat="(key, value) in filterContentField(section)">
+                                                        <!--<label for="{{key}}" class="control-label">{{key}}</label>-->
+                                                        <!--<textarea class="form-control input-sm" id="{{key}}">{{value}}</textarea>-->
+                                                        <p ng-bind-html="value"></p>
+                                                    </div>
+<!--                                                    <pre>
+                                                        {{section | json}}
+                                                    </pre>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </tab>
 
                             </tabset>
 

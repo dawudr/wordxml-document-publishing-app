@@ -226,7 +226,7 @@ dashboardApp.controller('DashboardCtrlx', function ($scope, $http, $filter, $loc
          * DOCUMENT TRANSFORM STUFF
          */
 
-        $http.get('/transformation/listrecent').success(function (data) {
+        $http.get('/transformation/list').success(function (data) {
             $scope.recentTransformations = data;
         });
 
