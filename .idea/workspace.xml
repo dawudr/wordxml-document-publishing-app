@@ -7,187 +7,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ConvertController.java" line="56" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e011ff25-fca9-4b2e-8c19-703dc1bf07b9" name="Default" comment="Add Preview HTML Functionality and update Egg timer">
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__com_esotericsoftware_yamlbeans_yamlbeans_1_06.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__commons_io_commons_io_2_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__commons_lang_commons_lang_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__commons_logging_commons_logging_1_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_apache_httpcomponents_httpclient_4_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_apache_httpcomponents_httpcore_4_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_cloudfoundry_cloudfoundry_client_lib_1_0_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_codehaus_jackson_jackson_core_asl_1_9_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_slf4j_jcl_over_slf4j_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_slf4j_slf4j_log4j12_1_7_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_security_oauth_spring_security_oauth2_1_0_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_security_spring_security_config_3_1_3_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_security_spring_security_core_3_1_3_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_security_spring_security_web_3_1_3_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_spring_aop_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_spring_beans_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_spring_context_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_spring_core_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_spring_expression_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_spring_web_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__org_springframework_spring_webmvc_4_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__xalan_serializer_2_7_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\.idea\libraries\Maven__xalan_xalan_2_7_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\BtecWordOpenXMLApp.iml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\java\com\pearson\app\validator\FileUploadValidator.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\resources\META-INF\context.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\resources\META-INF\persistence.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\resources\message.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\fonts\FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\fonts\font-awesome.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\switchery\ng-switchery.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\switchery\switchery.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\js\plugins\ui-codemirror\ui-codemirror.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\wordxmlapp\views\downloads-view-backup.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\src\main\webapp\resources\wordxmlapp\views\settings-view-backup.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp.war" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\browsefolder.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\docx4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\log4j.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\logback.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\message.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\org\springframework\mvc\extensions\ajax\AjaxUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\classes\spring-context-servlet.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\convertsuccess.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\fileupload.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\fileuploadsuccess.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\activation-1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\antlr-2.7.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\antlr-runtime-3.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\aopalliance-1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\avalon-framework-api-4.3.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\avalon-framework-impl-4.3.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-anim-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-awt-util-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-bridge-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-css-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-dom-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-ext-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-extension-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-gvt-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-js-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-parser-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-script-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-svg-dom-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-svggen-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-transcoder-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-util-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\batik-xml-1.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\commons-codec-1.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\commons-fileupload-1.3.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\docx4j-3.2.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\fop-1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\guava-17.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\jaxb-api-2.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\jaxb-svg11-1.0.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\jaxb-xmldsig-core-1.0.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\jaxb-xslfo-1.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\jdom2-2.0.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\jstl-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\log4j-1.2.16.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\mbassador-1.1.10.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\poi-3.8.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\poi-scratchpad-3.8.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\slf4j-api-1.7.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\standard-1.1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\stax-api-1.0-2.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\stringtemplate-3.2.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\wmf2svg-0.9.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\lib\xmlgraphics-commons-1.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\systeminfo.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\transformsuccess.jsp" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\btecopenxmlapp\WEB-INF\web.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\docx4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\log4j.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\logback.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\message.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\org\springframework\mvc\extensions\ajax\AjaxUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\classes\spring-context-servlet.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target\maven-archiver\pom.properties" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/AppSecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/AppSecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/BtecWordOpenXMLApp_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/BtecWordOpenXMLApp_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/DevelopmentConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/DevelopmentConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtilHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtilHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/DocumentUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ImageController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ImageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/ImageRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/ImageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/ImageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/MainDocument.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/NewUserDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/NewUserDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/ParagraphUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ProcessTransformController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/ProcessTransformController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/ProcessWordDocument.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/ProcessWordDocument.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/SpecUnitController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/SpecUnitController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/SpecUnitRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/SpecUnitRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/SpecUnitService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/SpecUnitService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Specunit.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Specunit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/pearson/app/SpecunitServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/pearson/app/SpecunitServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContent.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/importers/TableContent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/TestConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/config/root/TestConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/init/TestDataInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/init/TestDataInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Transformation.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/Transformation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/TransformationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TransformationDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/TransformationDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/TransformationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/pearson/app/TransformationServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/pearson/app/TransformationServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitSection.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/model/UnitSection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitSection2xml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/btec/service/exporters/UnitTable2xml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/controllers/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserDAOInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserDAOInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/UserInfoDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dto/UserInfoDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/dao/UserRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/pearson/app/services/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/js/common.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/config.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/controllers.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/dashboard-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/dashboard-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/dashboard-view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/dashboard-view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/directives.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/document-view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/document-view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/download-service.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/download-service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/downloads-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/downloads-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/downloads-view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/downloads-view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/partials/error-messages.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/partials/error-messages.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/fileupload-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/fileupload-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/fileupload-service.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/fileupload-service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/fileupload-view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/fileupload-view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/font-awesome.min.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/font-awesome.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/common/footer.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/common/footer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/local.properties" afterPath="$PROJECT_DIR$/src/main/resources/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/log4j.xml" afterPath="$PROJECT_DIR$/src/main/resources/log4j.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/login.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/common/navigation.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/common/navigation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/new-user.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/new-user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/public/js/new-user.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/public/js/new-user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/production.properties" afterPath="$PROJECT_DIR$/src/main/resources/production.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/settings-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/settings-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/settings-view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/settings-view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-context-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/views/common/topnavbar.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/views/common/topnavbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/transformation-service.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/services/transformation-service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/transformations-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/transformations-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/users-controller.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/controllers/users-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/users-view.html" afterPath="$PROJECT_DIR$/src/main/webapp/resources/wordxmlapp/views/users-view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+    <list default="true" id="e011ff25-fca9-4b2e-8c19-703dc1bf07b9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/workspace.xml" />
@@ -1547,7 +1367,7 @@
       <workItem from="1444917047381" duration="743000" />
       <workItem from="1445779675514" duration="21000" />
       <workItem from="1445891084045" duration="879000" />
-      <workItem from="1445891993068" duration="13254000" />
+      <workItem from="1445891993068" duration="13333000" />
     </task>
     <task id="LOCAL-00001" summary="Commit of build">
       <created>1412090945578</created>
@@ -1705,11 +1525,17 @@
       <option name="project" value="LOCAL" />
       <updated>1434421390346</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Add Preview HTML Functionality and update Egg timer">
+      <created>1445909648442</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1445909648442</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3059985000" />
+    <option name="totallyTimeSpent" value="3060064000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
