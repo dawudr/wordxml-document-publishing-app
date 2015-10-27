@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/">
-    <!--<Realm className="org.apache.catalina.realm.MemoryRealm" pathname="/opt/tomcat7/webapps/ROOT/WEB-INF/users.xml"/>-->
-    <!--<Realm className="org.apache.catalina.realm.MemoryRealm" pathname="/apache-tomcat-8.0.14/webapps/ROOT/WEB-INF/users.xml"/>-->
-</Context>

@@ -31,15 +31,14 @@ function config($stateProvider, $urlRouterProvider) {
         })
         .state('fileupload', {
             url: "/fileupload",
-            controller: 'FileUploadCtrl',
             templateUrl: "wordxmlapp/views/fileupload-view.html",
             data: { pageTitle: 'File Upload' }
         })
         .state('document', {
             url: "/document/:transformationId",
             templateUrl: "wordxmlapp/views/document-view.html",
-            controller: 'DocumentDetailCtrl',
-            data: { pageTitle: 'Document detail' }
+            controller: 'DocumentCtrl',
+            data: { pageTitle: 'Document' }
         })
         .state('settings', {
             url: "/settings",

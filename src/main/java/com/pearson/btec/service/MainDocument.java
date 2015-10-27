@@ -25,7 +25,11 @@ public class MainDocument {
 
     public static void main(String[] args) {
         //String inputfilepath = System.getProperty("user.dir") + "/btecdocs/Unit_18short.docx";
-        String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/Unit 44_FBC.docx";
+       //String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/Unit 44_FBC.docx";
+       String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/230715 U16 - Astronomy and Space Science - Pre-Panel.docx";
+       // String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/Documentwithrowspanoverfourrows2.docx";
+
+        //String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/Unit 44_FBC_Metadata_LA_Paragraphs_only.docx";
         //String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/3DModelling.docx";
         //String inputfilepath = System.getProperty("user.dir") + "/btecdocs/Unit_18.docx";
 
@@ -57,30 +61,35 @@ public class MainDocument {
             org.docx4j.docProps.core.CoreProperties coreProps = (org.docx4j.docProps.core.CoreProperties)docPropsCorePart.getJaxbElement();
             HashMap docPropMap = new HashMap();
 
-            String title = "Missing";
-            List<String> list = coreProps.getTitle().getValue().getContent();
-            if (list.size() > 0) {
-                title = list.get(0);
-            }
-            docPropMap.put("dc-title", title);
-            String keyword = "Missing";
-            keyword = coreProps.getKeywords();
-            docPropMap.put("uan", keyword);
-            docPropMap.put("dc-keyword", keyword);
-            String author = "Missing";
-            List<String> authorList = coreProps.getCreator().getContent();
-            if (authorList.size() > 0) {
-                author = authorList.get(0);
-            }
-            docPropMap.put("author", author);
-            String description = "Missing";
-            if(coreProps.getDescription() != null) {
-                List<String> descriptionList = coreProps.getDescription().getValue().getContent();
-                if (descriptionList.size() > 0) {
-                    description = descriptionList.get(0);
+            if(coreProps != null) {
+                String title = "Missing";
+                if(coreProps.getTitle() != null && coreProps.getTitle().getValue() !=null && coreProps.getTitle().getValue().getContent() != null) {
+                    List<String> list = coreProps.getTitle().getValue().getContent();
+                    if (list.size() > 0) {
+                        title = list.get(0);
+                    }
                 }
+                docPropMap.put("dc-title", title);
+                String keyword = "Missing";
+                keyword = coreProps.getKeywords();
+                docPropMap.put("uan", keyword);
+                docPropMap.put("dc-keyword", keyword);
+                String author = "Missing";
+                List<String> authorList = coreProps.getCreator().getContent();
+                if (authorList.size() > 0) {
+                    author = authorList.get(0);
+                }
+                docPropMap.put("author", author);
+                String description = "Missing";
+                if (coreProps.getDescription() != null) {
+                    List<String> descriptionList = coreProps.getDescription().getValue().getContent();
+                    if (descriptionList.size() > 0) {
+                        description = descriptionList.get(0);
+                    }
+                }
+                docPropMap.put("dc-description", description);
             }
-            docPropMap.put("dc-description", description);
+
 
             // Let's look at the extended properties
             org.docx4j.openpackaging.parts.DocPropsExtendedPart docPropsExtendedPart = wordMLPackage.getDocPropsExtendedPart();

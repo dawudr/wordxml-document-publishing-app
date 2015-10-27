@@ -22,15 +22,17 @@
 -->
 
 	<logger name="com.pearson.app">
-		<level value="debug" />
+		<level value="DEBUG"/>
+		<appender-ref ref="console"/>
 	</logger>
 
 	<logger name="com.pearson.btec">
-		<level value="info" />
+		<level value="DEBUG"/>
+		<appender-ref ref="console"/>
 	</logger>
 
 	<logger name="org.springframework.core">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<logger name="org.springframework.beans">
@@ -46,7 +48,7 @@
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 
 	<logger name="org.springframework.security">
@@ -66,16 +68,21 @@
 	</logger>
 
 	<logger name="web.servlet.handler.SimpleUrlHandlerMapping">
-		<level value="info"/>
+		<level value="debug"/>
 	</logger>
 
 	<logger name="mvc.method.annotation.RequestMappingHandlerMapping">
-		<level value="info"/>
+		<level value="debug"/>
 	</logger>
 
 	<logger name="org.docx4j">
 		<level value="error"/>
 	</logger>
+
+	<logger name="org.apache.catalina.core.ContainerBase">
+		<level value="debug"/>
+	</logger>
+
 
 	<logger name="log4j.rootLogger" additivity="false">
 		<level value="DEBUG"/>

@@ -31,7 +31,7 @@ angular.module('common',[])
 
             $http({
                 method: 'POST',
-                url: '/authenticate',
+                url: '../authenticate',
                 data: postData,
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -40,9 +40,11 @@ angular.module('common',[])
             })
             .then(function(response) {
                 if (response.data == 'ok') {
-                    window.location.replace('/index.html');
+                    console.log("Login success");
+                    window.location.replace('../index.html');
                 }
                 else {
+                    console.log("Login Failure");
                     $scope.vm.errorMessages = [];
                     $scope.vm.errorMessages.push({description: 'Access denied'});
                 }

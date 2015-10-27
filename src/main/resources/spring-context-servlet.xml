@@ -26,48 +26,42 @@
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 
-	<!-- Configure the multipart resolver -->
 
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!-- Configure the multipart resolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="15000000" />
 	</bean>
 
 
-	<!-- Register the Customer.properties -->
-	<bean id="messageSource"
-		  class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="message" />
-	</bean>
-
-	<bean id="dataConfigPropertyConfigurer"
-		  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<bean id="dataConfigPropertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
 		<property name="ignoreResourceNotFound" value="true" />
 		<property name="ignoreUnresolvablePlaceholders" value="false" />
 		<property name="searchSystemEnvironment" value="true" />
 		<property name="locations">
 			<list>
-				<!--<value>classpath*:/local.properties</value>-->
-				<value>classpath*:/${ENV_NAME}.properties</value>
+				<value>classpath*:/local.properties</value>
+				<!--<value>classpath*:/${ENV_NAME}.properties</value>-->
 			</list>
 		</property>
 	</bean>
-
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
 		<property name="url" value="${jdbc.url}"/>
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-		<!--
-                <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://localhost:3306/pearsonbtecquals" />
-                <property name="username" value="root" />
-                <property name="password" value="password" />
-        -->
 	</bean>
 
+	<!--
+	This spring configuration is generic enough which can be used to access any JNDI datasource deployed on any J2EE Server. It’s not tied up with Tomcat. org.springframework.jndi.JndiObjectFactoryBean is used to lookup JNDI datasource and bind with javax.sql.DataSource.
+	Read more: http://javarevisited.blogspot.com/2013/01/how-to-setup-jndi-database-connection-pool-tomcat-spring-example-tutorial.html#ixzz3l9h2cNRx
+	-->
+<!--
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/pearsonbtecquals"/>
+	</bean>
+-->
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -85,12 +79,12 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<!--<prop key="hibernate.show_sql">false</prop>-->
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<!--<prop key="hibernate.format_sql">false</prop>-->
-				<!--<prop key="hibernate.use_sql_comments">false</prop>-->
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.use_sql_comments">false</prop>
 				<prop key="hibernate.cache.use_second_level_cache">true</prop>
-				<!--<prop key="hibernate.hbm2ddl.import_files">user.sql,transformation.sql,template.sql</prop>-->
+				<!--<prop key="hibernate.hbm2ddl.import_files">migration_data.sql</prop>-->
 			</props>
 		</property>
 	</bean>
@@ -113,8 +107,11 @@
 
 	<bean id="userDetailsService" class="com.pearson.app.security.SecurityUserDetailsService"/>
 
-	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
-		<property name="dataSource" ref="dataSource" />
+	<!-- This produces a container-managed EntityManagerFactory;
+         rather than application-managed EntityManagerFactory as in case of LocalEntityManagerFactoryBean-->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
 	</bean>
 
 	<context:component-scan base-package="com.pearson.app.dao">
@@ -122,11 +119,16 @@
 	</context:component-scan>
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
+	<!-- responsible for registering the necessary Spring components that power annotation-driven transaction management;
+            such as when @Transactional methods are invoked -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!--<tx:annotation-driven mode="aspectj" transaction-manager="transactionManager" />-->
 
+<!--	<context:spring-configured />
+	<context:annotation-config />-->
 
 	<!-- Resolves view names to protected .jsp resources within the /WEB-INF/views
 		directory -->

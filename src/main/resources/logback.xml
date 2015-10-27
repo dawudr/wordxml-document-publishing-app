@@ -10,21 +10,30 @@
         </encoder>
     </appender>-->
 
-<!--
-    <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/var/log/btecwordopenxmlapp.log</file>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
             <pattern>%d{yy/MM/dd HH:mm:ss.SSS}[%thread] %-5level %logger.%M [%F:%L] %msg %n</pattern>
         </encoder>
-      <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <maxIndex>10</maxIndex>
-            <FileNamePattern>btecwordopenxmlapp.log.%i</FileNamePattern>
-        </rollingPolicy>
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>1MB</MaxFileSize>
-        </triggeringPolicy>
     </appender>
-    -->
+
+    <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/var/log/wordxml/wordxml.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>tomcat.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yy/MM/dd HH:mm:ss.SSS}[%thread] %-5level %logger.%M [%F:%L] %msg %n</pattern>
+            <!--<pattern>%date %contextName %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>-->
+        </encoder>
+    </appender>
+
+<!--
 
     <appender name="LOGFILE" class="ch.qos.logback.core.FileAppender">
         <file>/var/log/tomcat8/BTECWORDOPENXML-APP.log</file>
@@ -33,6 +42,7 @@
         </encoder>
 
     </appender>
+-->
 
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -51,24 +61,25 @@
     </appender>
     -->
 
-    <logger name="org.springframework.core" level="debug" appender-ref="LOGFILE"/>
-    <logger name="org.springframework.beans" level="debug" appender-ref="LOGFILE"/>
-    <logger name="org.springframework.context" level="debug" appender-ref="LOGFILE"/>
-    <logger name="org.springframework.http" level="debug" appender-ref="LOGFILE"/>
-    <logger name="org.springframework.web" level="debug" appender-ref="LOGFILE"/>
-    <logger name="org.springframework.security" level="debug" appender-ref="LOGFILE"/>
-    <logger name="com.mysql" level="debug" appender-ref="LOGFILE"/>
-    <logger name="org.hibernate" level="debug" appender-ref="LOGFILE"/>
-    <logger name="org.hibernate.type" level="debug" appender-ref="LOGFILE"/>
+    <logger name="org.springframework.core" level="debug" appender-ref="STDOUT"/>
+    <logger name="org.springframework.beans" level="debug" appender-ref="STDOUT"/>
+    <logger name="org.springframework.context" level="debug" appender-ref="STDOUT"/>
+    <logger name="org.springframework.http" level="debug" appender-ref="STDOUT"/>
+    <logger name="org.springframework.web" level="debug" appender-ref="STDOUT"/>
+    <logger name="org.springframework.security" level="debug" appender-ref="STDOUT"/>
+    <logger name="com.mysql" level="debug" appender-ref="STDOUT"/>
+    <logger name="org.hibernate" level="debug" appender-ref="STDOUT"/>
+    <logger name="org.hibernate.type" level="debug" appender-ref="STDOUT"/>
     <logger name="org.docx4j" level="error"/>
 
 	<!-- Configure your top level package below -->
 	<!--<logger name="com.pearson" level="INFO" />-->
-    <logger name="com.pearson.app" level="debug" appender-ref="LOGFILE"/>
-    <logger name="com.pearson.btec" level="info" appender-ref="LOGFILE"/>
+    <logger name="com.pearson.app" level="debug" appender-ref="STDOUT"/>
+    <logger name="com.pearson.btec" level="info" appender-ref="STDOUT"/>
+    <logger name="org.apache.catalina.core.ContainerBase" level="debug" appender-ref="STDOUT"/>
 
     <!--<logger name="org.springframework.aop" level="trace" />-->
-	<logger name="org.springframework.test" level="debug" appender-ref="LOGFILE"/>
+	<logger name="org.springframework.test" level="debug" appender-ref="STDOUT"/>
 	<!--<logger name="org.junit" level="DEBUG" />-->
 
  	<!--<logger name="org.aspectj" level="trace" />-->

@@ -54,7 +54,7 @@ public class SpecUnitRepository {
     /**
      * finds a specUnits given its id
      */
-    public Specunit getSpecUnitById(Long id) {
+    public Specunit getSpecUnitById(Integer id) {
         Specunit specunit = em.find(Specunit.class, id);
         LOGGER.debug("Found matching Id[{}] ->  specunit[{}]", id, (specunit != null) ? specunit.toString() : "None");
         return specunit;
@@ -68,7 +68,7 @@ public class SpecUnitRepository {
      * @return  a matching specUnit, or null if no specUnit found.
      */
     public Specunit getSpecUnitByQanNo(String qanNo) {
-        List<Specunit> specunits = em.createNamedQuery(Specunit.FIND_BY_ID, Specunit.class)
+        List<Specunit> specunits = em.createNamedQuery(Specunit.FIND_BY_QAN, Specunit.class)
                 .setParameter("qanNo", qanNo)
                 .getResultList();
 
@@ -93,7 +93,7 @@ public class SpecUnitRepository {
      * Delete a SpecUnit, given its identifier
      * @param id - the id of the SpecUnit to be deleted
      */
-    public void removeSpecUnit(Long id) {
+    public void removeSpecUnit(Integer id) {
         Specunit delete = em.find(Specunit.class, id);
         em.remove(delete);
         LOGGER.debug("Removed User[{}]", delete.toString());

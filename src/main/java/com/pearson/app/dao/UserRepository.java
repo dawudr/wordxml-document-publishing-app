@@ -55,7 +55,7 @@ public class UserRepository implements UserDAOInterface {
      * @param id - the id of the searched user
      * @return  a matching user, or null if no user found.
      */
-    public User getUserById(Integer id) {
+    public User getUserById(int id) {
         User user = em.find(User.class, id);
         LOGGER.debug("Found matching Id[{}] ->  User[{}]", id, (user != null) ? user.toString() : "None");
         return user;
@@ -89,12 +89,11 @@ public class UserRepository implements UserDAOInterface {
      * Delete a User, given its identifier
      * @param id - the id of the User to be deleted
      */
-    public void removeUser(Long id) {
+    public void removeUser(int id) {
         User user = em.find(User.class, id);
         em.remove(user);
         LOGGER.debug("Removed User[{}]", user.toString());
     }
-
 
     /**
      * checks if a username is still available in the database

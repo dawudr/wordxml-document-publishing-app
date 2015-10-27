@@ -99,16 +99,23 @@ public class DocumentUtils {
                 } else {
                     // Process P Block child off the Root Parent block.
                     List pObjects = pBlock.getContent();
-                    for(Object pObject : pObjects) {
-                        if(pObject instanceof JAXBElement) {
+                    if(pObjects != null && pObjects.size() > 0) {
+                        List<Map> paragraphs = new ArrayList<Map>();
+                        for (Object pObject : pObjects) {
+                            if (pObject instanceof JAXBElement) {
+                                if (((JAXBElement) pObject).getValue() instanceof SdtRun) {
 
-                            if (((JAXBElement) pObject).getValue() instanceof SdtRun) {
-
-                                LOGGER.debug("SDTRUN...........................................");
-                                //System.out.println("--------------> SDTRUN");
-                                HashMap dataMap = DocumentUtils.traverseDocumentJAXBElementSdtBlock((JAXBElement) pObject);
-                                contentDataList.add(dataMap);
+                                    LOGGER.debug("SDTRUN...........................................");
+                                    //System.out.println("--------------> SDTRUN");
+                                    HashMap dataMap = DocumentUtils.traverseDocumentJAXBElementSdtBlock((JAXBElement) pObject);
+                                    paragraphs.add(dataMap);
+                                }
                             }
+                        }
+                        if(paragraphs.size() > 0) {
+                            UnitParagraph unitParagraph = new UnitParagraph();
+                            unitParagraph.setParagraphs(paragraphs);
+                            contentDataList.add(unitParagraph);
                         }
                     }
                 }
@@ -184,14 +191,15 @@ public class DocumentUtils {
                 LOGGER.debug("Paragraph SdtBlock [{}]", dataMap);
                 //System.out.println("Paragraph SdtBlock = " + dataMap);
                 contentDataList.add(dataMap);
-
             }
 
             // Last heading section left
             if(!bodyIterator.hasNext()) {
                 // Add this as a new section
-                currentUnitSection.setContentData(contentDataList);
-                unitSections.add(currentUnitSection);
+                if(currentUnitSection != null) {
+                    currentUnitSection.setContentData(contentDataList);
+                    unitSections.add(currentUnitSection);
+                }
             }
         }
 
@@ -332,6 +340,13 @@ public class DocumentUtils {
                                 }
                             }
                         }
+                    }
+                } else {
+                    //DR: 27/10/15 Added fix for some assessment criteria text is missing
+                    // Some objects are nested within <w:sdtContent>
+                    if (sdtContentObject instanceof JAXBElement && ((JAXBElement) sdtContentObject).getValue() instanceof SdtRun) {
+                        SdtRun sdtRunNested = (SdtRun) ((JAXBElement) sdtContentObject).getValue();
+                        sbTagValue.append(traverseSectionBlockHeadingMeta(sdtRunNested));
                     }
                 }
             }

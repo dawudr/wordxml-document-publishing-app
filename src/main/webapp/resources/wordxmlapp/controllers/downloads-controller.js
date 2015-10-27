@@ -1,12 +1,7 @@
 var wordxmlDownloadsApp = angular.module('wordxmlApp.downloads.controller',  ['ngResource', 'ngGrid', 'ui.bootstrap','ngSanitize','wordxmlApp.transformation.service','wordxmlApp.download.service']);
 
-/*wordxmlSettingsApp.run(function ($rootScope, $templateCache) {
-    $rootScope.$on('$viewContentLoaded', function () {
-        $templateCache.removeAll();
-    });
-});*/
 
-wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, $sce, TransformationsFactory, TransformationFactory, DataSource, PreviewJSONFactory) {
+wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope, $http, $rootScope, TransformationsFactory, TransformationFactory, TemplatesFactory, $sanitize) {
 
     /**
      * SETTING STUFF
@@ -33,6 +28,14 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, $
     $scope.transformation = [];
     $scope.transformations = [];
 
+    // Populates list of template for select
+    TemplatesFactory.query().$promise.then(
+        function(data) {
+            $scope.templates = data;
+        }
+    );
+
+    // Populates transforms list for ng-grid
     TransformationsFactory.query().$promise.then(
         function (data) {
             // success handler
@@ -40,38 +43,53 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, $
         }
     );
 
+    $scope.pagingOptions = { pageSizes: [25, 50, 100], pageSize: 25, totalServerItems: 0, currentPage: 1 }
+
+    $scope.mySelections = [];
+    // Button delete instead of checkbox
+    var ct_nocheck='<button type="button" ng-click="deleteRecord(row.entity)" class="btn btn-sm btn-danger" title="Delete"><span class="fa fa-1x fa-times"></span></button>';
+    // Hidden checkbox
+    // var ct_nocheck="<div class=\"ngSelectionCell\"><input style=\"display:none\" tabindex=\"-1\" class=\"ngSelectionCheckbox\" type=\"checkbox\" ng-checked=\"row.selected\" /></div>";
+
     $scope.gridOptions = {
         data: 'transformations',
+        checkboxHeaderTemplate: '<input class="ngSelectionHeader" type="checkbox" ng-model="allSelected" ng-change="toggleSelectAll(allSelected)"/>',
+        showSelectionCheckbox: true,
+        selectWithCheckboxOnly: false,
+        //checkboxCellTemplate:ct_nocheck,
+        jqueryUITheme: true,
         enableCellSelection: false,
         enableRowSelection: true,
         enableCellEdit: false,
         enableCellEditOnFocus: false,
+        rowHeight: 40,
         columnDefs: [
-            {name: 'id', field: 'id', width: 30, displayName: '#', enableCellEdit: false},
-            {field:'qanNo', displayName:'Qan', enableCellEdit: true},
-            {field:'unitNo', displayName:'Unit No', enableCellEdit: true},
+            {name: 'id', field: 'id', width: 40, displayName: '#', enableCellEdit: false},
+            {field:'qanNo', width: 100, displayName:'Qan', enableCellEdit: true},
+            {field:'unitNo', width: 60, displayName:'Unit #', enableCellEdit: true},
             {field:'unitTitle', displayName:'Title:', enableCellEdit: true},
             {field:'wordfilename', displayName:'File:', enableCellEdit: true},
-            {field:'lastmodified', displayName:'Created', enableCellEdit: true},
+            {field:'lastmodified', width: 140, displayName:'Created', enableCellEdit: true},
             //{field:'transformStatus', displayName:'Transform result', enableCellEdit: true},
-            {displayName:'Download', minWidth: 120, width: 120, enableCellEdit: false, cellTemplate:
-            '<a alt="Word file" href="/download/{{row.entity.imageId}}" class="btn btn-primary btn-sm">' +
-            '<i class="fa fa-file-word-o"></i>' +
+            {displayName:'Download', minWidth: 150, width: 150, enableCellEdit: false, cellTemplate:
+            '<a href="/download/{{row.entity.imageId}}" class="btn btn-success btn-sm" title="Download Word file">' +
+            '<i class="fa fa-2x fa-file-word-o"></i>' +
             '</a> ' +
-            '<a alt="Open XML file" href="/transformation/xml/{{row.entity.id}}/download/" class="btn btn-primary btn-sm">' +
-            '<i class="fa fa-file-code-o"></i>' +
+            '<a href="/transformation/xml/{{row.entity.id}}/download/" class="btn btn-success btn-sm" title="Download Word XML file">' +
+            '<i class="fa fa-2x fa-file-code-o"></i>' +
             '</a> ' +
-            '<a alt="PQS XML file" href="/transformation/pqs/{{row.entity.id}}/download/" class="btn btn-primary btn-sm">' +
-            '<i class="fa fa-file-text-o"></i>' +
+            '<a href="/transformation/pqs/{{row.entity.id}}/download/" class="btn btn-success btn-sm" title="Download PQS XML file">' +
+            '<i class="fa fa-2x fa-file-text-o"></i>' +
             '</a> '
             },
-            {displayName:'Action', minWidth: 80, width: 80, enableCellEdit: false, cellTemplate:
-            '<button type="button" ng-click="deleteRecord(row)" class="btn btn-sm btn-danger">' +
-            '<span class="glyphicon glyphicon-remove remove"></span>' +
-            '</button> ' +
-            '<a href="#/document/{{row.entity.id}}" class="btn btn-primary btn-sm">' +
-            '<span class="glyphicon glyphicon-edit"></span>' +
-            '</a> '
+            {displayName:'View', minWidth: 50, width: 50, enableCellEdit: false, cellTemplate:
+            //'<button type="button" ng-click="deleteRecord(row.entity)" class="btn btn-sm btn-danger" title="Delete">' +
+            //'<span class="fa fa-2x fa-times"></span>' +
+            //'</button> ' +
+            //'<a href="#/document/{{row.entity.id}}" class="btn btn-primary btn-sm" title="Preview">' +
+            '<button ng-controller="PreviewCtrl" type="button" ng-click="showModal(row.entity)" class="btn btn-primary btn-sm" title="Preview">' +
+            '<span class="fa fa-2x fa-desktop"></span>' +
+            '</button> '
             }
         ],
         enablePaging: true,
@@ -80,21 +98,25 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, $
         pagingOptions: $scope.pagingOptions,
         filterOptions: $scope.filterOptions,
         multiSelect: false,
-        selectedItems: [],
+        selectedItems: $scope.mySelections,
         // Broadcasts an event when a row is selected, to signal the form that it needs to load the row data.
         //TODO: Fix Bug when deleting, error deleting a delete template id
         afterSelectionChange: function (rowItem) {
+            //console.log('SelectedItem...')
+            //console.log($scope.gridOptions.selectedItems)
             if (rowItem.selected) {
-                console.log(rowItem);
-                $rootScope.$broadcast('recordSelected', $scope.gridOptions.selectedItems[0].id);
+                //console.log('RowItem...')
+                //console.log(rowItem);
+                //$rootScope.$broadcast('recordSelected', $scope.gridOptions.selectedItems[0].id);
+                $rootScope.$broadcast('recordSelected', rowItem.entity.id);
             }
         }
     };
 
 
     // Calls the rest method to save a transformation.
-    $scope.updateRecord = function () {
-        TransformationFactory.update($scope.transformation).$promise.then(
+    $scope.updateRecord = function (transformation) {
+        TransformationFactory.update(transformation).$promise.then(
             function () {
                 // Broadcast the event to refresh the grid.
                 $rootScope.$broadcast('refreshGrid');
@@ -120,23 +142,45 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, $
         }
     });
 
-    // Broadcast an event when an element in the grid is deleted. No real deletion is perfomed at this point.
-    $scope.deleteRecord = function (row) {
-        console.log('Calling - deleteRecord');
+    $scope.deleteAll = function(mySelections) {
+        console.log('Calling - deleteAll');
 
-        TransformationFactory.delete({id: row.entity.id}).$promise.then(
-            function () {
-                // Broadcast the event to refresh the grid.
-                $rootScope.$broadcast('refreshGrid');
-                // Broadcast the event to display a delete message.
-                $rootScope.$broadcast('recordDeleted');
-                $scope.clearForm();
-            },
-            function () {
-                // Broadcast the event for a server error.
-                $rootScope.$broadcast('error');
+        swal({
+                title: "Confirm Delete",
+                text: "Are you sure you want to delete transformations ?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                closeOnConfirm: true },
+            function() {
+                angular.forEach(mySelections, function (transformation) {
+                    $scope.deleteRecord(transformation)
+                })
             }
-        );
+        )
+        //swal("Deleted!", "Transformation has been deleted.", "success");
+    }
+
+    // Broadcast an event when an element in the grid is deleted. No real deletion is perfomed at this point.
+    $scope.deleteRecord = function (transformation) {
+        console.log('Calling - deleteRecord');
+        console.log(transformation);
+
+                TransformationFactory.delete({id: transformation.id}).$promise.then(
+                    function () {
+                        $scope.transformation = null;
+                        // Broadcast the event to refresh the grid.
+                        $rootScope.$broadcast('refreshGrid');
+                        // Broadcast the event to display a delete message.
+                        $rootScope.$broadcast('recordDeleted');
+                        $scope.clearForm();
+                    },
+                    function () {
+                        // Broadcast the event for a server error.
+                        $rootScope.$broadcast('error');
+                    }
+                );
     };
 
 
@@ -171,7 +215,6 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, $
         $rootScope.$broadcast('clear');
     };
 
-
     // callback for ng-click 'showRecord':
     $scope.showRecord = function (transformId) {
         console.log('Calling service- showRecord');
@@ -181,52 +224,17 @@ wordxmlDownloadsApp.controller('DownloadsCtrl', function ($scope,  $rootScope, $
                 console.log(data);
                 $scope.transformation = data || [];
 
-
-/*                PreviewXMLFactory.fetchXML().success(function(response) {
-                    $scope.SOURCE_FILE = response;
+/*                $http.get('/transformation/xml/' + transformId).success(function (data) {
+                    $scope.xmlUnit = data;
                 });*/
-
-/* This is for XML2JSON Conversion for page rendering.
-Now we have moved this into the Java TransformationController
-where the serialisation to XML to JSON happens
-
-                xmlTransform = function(data) {
-                    console.log("transform data");
-                    var x2js = new X2JS();
-                    var json = x2js.xml_str2json( data );
-                    return json;
-                };
-
-                setData = function(data) {
-                    console.log($scope.unit);
-                    $scope.unit = data.unit;
-                };
-
-                SOURCE_FILE = "/transformation/xml/" + transformId;
-                DataSource.get(SOURCE_FILE,setData,xmlTransform);
-*/
 
             },
             function () {
                 // Broadcast the event for a server error.
                 $scope.transformation = [];
-                $rootScope.$broadcast('error');
+                $rootScope.$broadcast('xmlloaderror');
             }
         )
-
-        PreviewJSONFactory.show({id: transformId}).$promise.then(
-            function(data) {
-                console.log("Transformation Content as JSON data:");
-                console.log(data);
-                $scope.unit = data;
-            },
-            function () {
-                // Broadcast the event for a server error.
-                $scope.unit = [];
-                $rootScope.$broadcast('error');
-            }
-        )
-
     };
 
 
@@ -282,13 +290,15 @@ where the serialisation to XML to JSON happens
         var title = '';
 
         // remove items with keys prefixed with '@' and remove the key field where it is same as title.
+        // remove items with keys prefixed with '@' and remove the key field where it is same as title.
         angular.forEach(items, function(value, key) {
-            if(!regex.test(key + '')){
-                if(key.replace(/ /g,'').toLowerCase() == title) {
+            if(!regex.test(key + '')) {
+                if (key.replace(/ /g, '').toLowerCase() == title) {
                     result[''] = value;
-                } else if(key.toLowerCase() == 'table') {
-                    result[''] = value;
+                    /*                } else if (key.toLowerCase() == 'table') {
+                     result[''] = value;*/
                 } else {
+                    // Set first letter to uppercase to use as label
                     result[key.charAt(0).toUpperCase()+ key.slice(1)] = value;
                 }
             } else if(key.toLowerCase() == '@title') {
@@ -296,6 +306,35 @@ where the serialisation to XML to JSON happens
             }
         });
         return result;
+    }
+
+    // this method filters content fields
+    $scope.isContentField = function (key) {
+        // remove items with keys prefixed with '@'
+        var regex = new RegExp('@.*');
+        return !regex.test(key + '')
+    }
+
+    var urlRegEx = /^https?:\/\//
+    $scope.type = function (thing) {
+        switch(typeof thing){
+            case "object":
+                if(Object.prototype.toString.call(thing) === "[object Array]"){
+                    return 'array'
+                } else if (thing == null) {
+                    return 'null'
+                } else {
+                    return 'hash'
+                }
+            case "string":
+                if(urlRegEx.test(thing)){
+                    return "url"
+                } else {
+                    return "string"
+                }
+            default:
+                return typeof thing
+        }
     }
 
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
@@ -310,6 +349,18 @@ where the serialisation to XML to JSON happens
             $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
         }
     }, true);
+
+    /* Angular-UI modal for preview and xml view */
+    $scope.openPreview = function (id) {
+        console.log('openPreview');
+        console.log(id);
+        var modalInstance = $modal.open({
+            templateUrl: '/preview.html?id=' + id,
+            //templateUrl: 'myModalContent.html',
+            controller: 'DocumentCtrl'
+        });
+    };
+
 
 });
 
@@ -336,31 +387,31 @@ wordxmlDownloadsApp.controller('alertMessagesController', function ($scope) {
     // Picks up the event to display a saved message.
     $scope.$on('recordSaved', function () {
         $scope.alerts = [
-            { type: 'success', msg: 'Record saved successfully!' }
+            { type: 'success', icon: 'fa fa-2x fa-check', msg: 'Record saved successfully!' }
         ];
     });
     // Picks up the event to display a saved message.
     $scope.$on('recordCreated', function () {
         $scope.alerts = [
-            { type: 'success', msg: 'Record created successfully!' }
+            { type: 'success', icon: 'fa fa-2x fa-check',  msg: 'Record created successfully!' }
         ];
     });
     // Picks up the event to display a deleted message.
     $scope.$on('recordDeleted', function () {
         $scope.alerts = [
-            { type: 'success', msg: 'Record deleted successfully!' }
+            { type: 'success', icon: 'fa fa-2x fa-check', msg: 'Record(s) deleted successfully!' }
         ];
     });
     // Picks up the event to display a selected message.
     $scope.$on('recordSelected', function () {
         $scope.alerts = [
-            { type: 'success', msg: 'Record selected' }
+            { type: 'success', icon: 'fa fa-2x fa-check', msg: 'Record selected' }
         ];
     });
     // Picks up the event to display a server error message.
     $scope.$on('error', function () {
         $scope.alerts = [
-            { type: 'danger', msg: 'There was a problem in the server!' }
+            { type: 'danger', icon: 'fa fa-2x fa-exclamation-circle', msg: 'There was a problem in the server!' }
         ];
     });
 
@@ -368,3 +419,4 @@ wordxmlDownloadsApp.controller('alertMessagesController', function ($scope) {
         $scope.alerts.splice(index, 1);
     };
 });
+

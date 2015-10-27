@@ -24,17 +24,20 @@ import java.util.Set;
         @NamedQuery(
                 name = User.FIND_BY_USERNAME,
                 query = "select u from User u where username = :username"
+        ),
+        @NamedQuery(
+                name = User.GET_USER_ROLES,
+                query = "select distinct role from User u"
         )
 })
 public class User extends AbstractEntity {
-
+    public static final String GET_USER_ROLES = "user.getUserRoles";
     public static final String FIND_BY_USERNAME = "user.findByUserName";
-    public static final String ROLE_UNASSIGNED = "ROLE_UNASSIGNED";
+    public static final String INACTIVE = "INACTIVE";
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
     public static final String ROLE_EDITOR = "ROLE_EDITOR";
     public static final String ROLE_AUTHOR = "ROLE_AUTHOR";
     public static final String ROLE_VIEWER = "ROLE_VIEWER";
-
 
     private String username;
     private String passwordDigest;
@@ -43,15 +46,25 @@ public class User extends AbstractEntity {
     private String lastname;
     private String role;
 
-    @OneToMany(mappedBy="user")
-    private Set<Transformation> transformation;
+/*    @OneToMany(mappedBy="user")
+    private Set<Transformation> transformation;*/
 
 
     public User() {
 
     }
 
-    public User(String username, String passwordDigest, String email, String firstname, String lastname, String role) {
+    public User(int id, String username, String passwordDigest, String firstname, String lastname, String email, String role) {
+        this.setId(id);
+        this.username = username;
+        this.passwordDigest = passwordDigest;
+        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.role = role;
+    }
+
+    public User(String username, String passwordDigest, String firstname, String lastname, String email, String role) {
         this.username = username;
         this.passwordDigest = passwordDigest;
         this.email = email;
@@ -108,6 +121,7 @@ public class User extends AbstractEntity {
         this.role = role;
     }
 
+/*
     public Set<Transformation> getTransformation() {
         return transformation;
     }
@@ -115,11 +129,12 @@ public class User extends AbstractEntity {
     public void setTransformation(Set<Transformation> transformation) {
         this.transformation = transformation;
     }
+*/
 
     @Override
     public String toString() {
         return "User{id=" + getId() + '\'' +
-                "username='" + username + '\'' +
+                ", username='" + username + '\'' +
                 ", passwordDigest='" + passwordDigest + '\'' +
                 ", email='" + email + '\'' +
                 ", firstname='" + firstname + '\'' +

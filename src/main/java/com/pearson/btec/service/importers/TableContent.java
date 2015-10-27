@@ -4,6 +4,7 @@ import org.docx4j.wml.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.print.Doc;
 import javax.xml.bind.JAXBElement;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,6 +38,10 @@ public class TableContent {
 
                 Tr tblRow = (Tr) tblObject;
                 List<Object> tblRowContents = tblRow.getContent();
+                // For RowSpan see VMerge
+                // http://www.docx4java.org/svn/docx4j/trunk/docx4j/src/main/java/org/docx4j/model/table/Cell.java
+
+
                 //for (Object tblRowContent : tblRowContents) {
                 for (int i = 0; i < tblRowContents.size(); i++) {
 
@@ -51,30 +56,56 @@ public class TableContent {
 
                             //System.out.println("TableData Tc Col Number=" + i);
 
-
-                            //Call getTcData
-                            List<Object> cellItems = cell.getContent();
                             // tableColumn can hold either another List of HashMap
                             List tableColumn = new ArrayList();
 
+
+                            // colspan
+                            int colSpan = 1;
+                            try {
+                                colSpan = cell.getTcPr().getGridSpan().getVal().intValue();
+                            } catch (NullPointerException ne) {
+                                // no gridSpan
+                            }
+
+                            // Add colspan to list cellsData
+                            if(colSpan > 1) {
+                                HashMap<String, Integer> colSpanMap = new HashMap<String, Integer>();
+                                colSpanMap.put(DocumentUtilHelper.XML_TABLE_CELL_COLSPAN, colSpan);
+                                tableColumn.add(colSpanMap);
+                            }
+
+                            // Add rowspan
+                            String rowSpan = null;
+                            try {
+                                if(cell.getTcPr().getVMerge() != null && cell.getTcPr().getVMerge().getVal() != null) {
+                                    // Check if vMerge - 'restart' value which is start of rowspan
+                                    rowSpan = cell.getTcPr().getVMerge().getVal();
+                                } else if(cell.getTcPr().getVMerge() != null) {
+                                    // Check if vMerge - cell is included in a rowspan
+                                    rowSpan = "continue";
+                                }
+                            } catch (NullPointerException ne) {
+                                // no vMerge
+                            }
+
+                            // Add rowspan to list cellsData
+                            if(rowSpan !=null) {
+                                HashMap<String, String> rowSpanMap = new HashMap<String, String>();
+                                rowSpanMap.put(DocumentUtilHelper.XML_TABLE_CELL_ROWSPAN, rowSpan);
+                                tableColumn.add(rowSpanMap);
+                            }
+
+                            //Call getTcData
+                            List<Object> cellItems = cell.getContent();
+
+                            // Add cell content to list cellsData
                             for (Object cellItem : cellItems) {
                                 //System.out.println("TableData Tc = " +  cellItem.getClass());
 
                                 if (cellItem instanceof P) {
 
                                     // Get Table Headings to use as row parent container
-
-                                    //TODO: Bug - this should be a cell data
-//                                    if(((P)cellItem).getPPr().getPStyle().getVal().equals("Tablehead")) {
-//                                        System.out.println("TableData Th P=" + ParagraphUtils.processDocumentPBlock((P) cellItem));
-//                                        HashMap map = new HashMap();
-//                                        map.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN, ParagraphUtils.processDocumentPBlock((P) cellItem));
-//                                        map.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN_STYLE, ((P) cellItem).getPPr().getPStyle().getVal());
-//
-//                                        tableColumn.add(map);
-//                                    }
-
-//                                    } else {
                                     // Get Table Contents
                                     // Fixed- DR 26/02/15 Now returns a list of cell items since there are several sdtruns with items of content.
                                     List cellsData = ParagraphUtils.getDataMapFromPBlock((P) cellItem);
@@ -82,31 +113,6 @@ public class TableContent {
                                     tableColumn.add(cellsData);
 
 
-
-
-/*
-                                List<Object> paragraphContents = ((P) cellItem).getContent();
-                                for (Object paragraphContent : paragraphContents) {
-                                    if (paragraphContent instanceof JAXBElement && ((JAXBElement) paragraphContent).getValue() instanceof SdtRun) {
-
-                                        SdtRun sdtRun = (SdtRun) ((JAXBElement) paragraphContent).getValue();
-                                        HashMap map = DocumentUtils.traverseSectionBlocks(sdtRun);
-                                        map.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN_STYLE, ((P)cellItem).getPPr().getPStyle().getVal());
-
-                                        tableColumn.add(map);
-                                        System.out.println("TableData Tc SdtRun = " + map);
-                                    } else {
-                                        HashMap map = new HashMap();
-                                        map.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN, ParagraphUtils.processDocumentPBlock((P) cellItem));
-                                        map.put(DocumentUtilHelper.XML_TABLE_HEADER_COLUMN_STYLE, ((P) cellItem).getPPr().getPStyle().getVal());
-                                        System.out.println("TableData Th P=" + map);
-                                        tableColumn.add(map);
-
-                                    }
-                                }
- */
-
-//                                    }
                                 } else if (cellItem instanceof SdtBlock) {
 
                                     SdtBlock sdtBlock = (SdtBlock) cellItem;

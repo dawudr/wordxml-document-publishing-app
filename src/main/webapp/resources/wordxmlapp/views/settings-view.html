@@ -42,7 +42,7 @@
             <div class="ibox-content">
                 <!-- Specify a Angular controller script that binds Javascript variables to the feedback messages.-->
                 <div class="message" ng-controller="alertMessagesController">
-                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><i class="{{alert.icon}}"></i> {{alert.msg}}</alert>
                 </div>
                 <!--  Bind the pagination component to be displayed. -->
                 <div class="gridStyle" ng-grid="gridOptions"></div>

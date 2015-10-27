@@ -24,30 +24,44 @@
                 <h2><strong>Download archive of transformed XML documents</strong></h2>
                 <p>All completed transformed documents will appear here where they are available for download
                 in several formats.</p>
+                <p>Click on a document transform record to open document details in the pane below.</p>
             </div>
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-lg-12">
         <!-- Specify a Angular controller script that binds Javascript variables to the feedback messages.-->
         <div class="message" ng-controller="alertMessagesController">
-            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><h3><i class="{{alert.icon}}"></i> {{alert.msg}}</h3></alert>
         </div>
 
+        <div class="ui-widget-content ngFooterPanel">
+            <button type="button" ng-click="deleteAll(mySelections)" class="pull-left btn btn-sm btn-primary" ng-disabled="mySelections.length < 1" title="Delete">
+                <span class="fa fa-1x fa-times"></span> Delete selected
+            </button>
+
+            <p class="pull-left">
+            <h5 ng-if="transformation.id==null">&nbsp;&nbsp;&nbsp;No document currently selected. Click on row item to view document details.</h5>
+            <h5 ng-if="transformation.id!=null">&nbsp;&nbsp;&nbsp;Selected document: {{transformation.wordfilename}}  [Transform ID:{{transformation.id}}]</h5>
+            </p>
+        </div>
+    </div>
+    <div class="col-lg-12">
         <!--  Bind the pagination component to be displayed. -->
         <div class="gridStyle" ng-grid="gridOptions"></div>
-
     </div>
 </div>
 
 <br/>
+<!--<pre>{{ mySelections | json}}</pre>-->
 
 <div class="row" data-ng-hide="transformation.id==null">
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Document Detail File: {{transformation.wordfilename}}</h5>
+                <h5>Document Detail File: {{transformation.wordfilename}}  [Transform ID:{{transformation.id}}]</h5>
                 <div ibox-tools></div>
             </div>
             <div class="ibox-content">
@@ -63,24 +77,35 @@
                                                 <div class="col-sm-6 b-r">
                                                     <div class="form-group">
                                                         <label>UAN No:</label>
-                                                        <input type="text" ng-model="transformation.qanNo" class="form-control">
+                                                        <input type="text" ng-model="transformation.qanNo" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Unit number:</label>
-                                                        <input type="text" ng-model="transformation.unitNo" class="form-control">
+                                                        <input type="text" ng-model="transformation.unitNo" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Unit Title:</label>
-                                                        <input type="text" ng-model="transformation.unitTitle" class="form-control">
+                                                        <input type="text" ng-model="transformation.unitTitle" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Author:</label>
-                                                        <input type="text" ng-model="transformation.author" class="form-control">
+                                                        <input type="text" ng-model="transformation.author" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Unit Template Type:</label>
-                                                        <input type="text" disabled ng-model="transformation.templateId" class="form-control">
+                                                        <!--<input type="text" disabled ng-model="transformation.templateId" class="form-control">-->
+                                                        <select name="selectedRole"
+                                                                class="form-control"
+                                                                ng-model="transformation.templateId"
+                                                                ng-disabled="editbutton"
+                                                                ng-init="editbutton=true">
+                                                            <option ng-repeat="template in templates"
+                                                                    value="{{template.id}}"
+                                                                    ng-selected="template.id==transformation.templateId">{{template.templateName}}</option>
+                                                        </select>
                                                     </div>
+
+
                                                 </div>
                                                 <div class="col-sm-6">
 
@@ -117,16 +142,39 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Open XML Filename:</label>
-                                                        <input type="text" ng-model="transformation.openxmlfilename" class="form-control">
+                                                        <input type="text" ng-model="transformation.openxmlfilename" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>PQS XML Filename:</label>
-                                                        <input type="text" ng-model="transformation.iqsxmlfilename" class="form-control">
+                                                        <input type="text" ng-model="transformation.iqsxmlfilename" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Indesign XML Filename:</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" class="form-control" disabled="true" ng-disabled="editbutton" required ng-init="editbutton=true">
                                                     </div>
+                                                    <div class="text-right">
+                                                        <div class="form-group">
+                                                            <!--<a href="/static/index.html#/userprofile/{{user.id}}" class="btn btn-white btn-sm"><i class="fa fa-user"></i> View profile </a>-->
+                                                            <a href="" class="btn btn-default btn-sm" ng-click="editbutton=!editbutton" ng-hide="editbutton">
+                                                                <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+                                                            </a>
+                                                            <a href="" class="btn btn-danger btn-sm" ng-click="deleteRecord(transformation)" ng-show="editbutton"><i class="fa fa-user-times"></i> Delete </a>
+                                                            <a href="" class="btn btn-primary btn-sm" ng-click="editbutton=!editbutton" ng-show="editbutton">
+                                                                <i class="fa fa-pencil"></i> Edit
+                                                            </a>
+                                                            <a href="" class="btn btn-primary btn-sm" ng-click="updateRecord(transformation);editbutton=!editbutton" required ng-init="editbutton=true" ng-hide="editbutton">
+                                                                <i class="fa fa-check"></i> Save
+                                                            </a>
+<!--                                                            <a href="#/document/{{transformation.id}}" class="btn btn-primary btn-sm" ng-show="editbutton">
+                                                                <span class="fa fa-desktop"></span> Preview
+                                                            </a>-->
+
+                                                            <button ng-controller="ViewXMLCtrl" type="button" class="btn btn-primary btn-sm" ng-click="showModal(transformation)"> <span class="fa fa-file-code-o"></span> View XML</button>
+
+                                                            <button ng-controller="PreviewCtrl" type="button" class="btn btn-primary btn-sm" ng-click="showModal(transformation)"> <span class="fa fa-desktop"></span> Preview</button>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -177,14 +225,14 @@
 
                                             <tr>
                                                 <td>
-                                                    <a href="/processtransform/view/{{transformation.id}}">
+                                                    <a href="/transformation/pqs/{{transformation.id}}/download/">
                                                         <div class="file-name">
-                                                            {{transformation.openxmlfilename}}
+                                                            {{transformation.iqsxmlfilename}}
                                                         </div>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="/processtransform/view/{{transformation.id}}">
+                                                    <a href="/transformation/pqs/{{transformation.id}}/download/">
                                                         <div class="icon">
                                                             <i class="fa fa-2x fa-file-text-o"></i>
                                                         </div>
@@ -232,103 +280,9 @@
                                                 </p>
                                             </td>
                                         </tr>
-
                                         </tbody>
                                     </table>
                                 </tab>
-                                <tab heading="Preview">
-                                    <div>
-<!--                                        <pre>
-                                            {{SOURCE_FILE}}
-                                        </pre>-->
-<!--                                        <pre>
-                                            {{unit}}
-                                        </pre>-->
-
-                                    </div>
-
-                                    <!-- Unit section -->
-                                    <div class="panel-group" id="accordion">
-                                        <div class="panel panel-default">
-
-                                            <div class="panel-heading">
-                                                <h4><strong>Unit content preview</strong></h4>
-                                            </div>
-
-                                            <div class="panel-body">
-                                                <h2><strong>Unit {{unit.unitnumber}} - {{unit.unittitle}}</strong></h2>
-                                                <!-- Meta -->
-                                                <div class="row">
-                                                    <div class="col-xs-2">
-                                                        <label for="unitnumber" class="control-label">Unit No: </label>
-                                                        <input type="text" class="form-control input-sm" id="unitnumber" ng-model="unit.unitnumber" placeholder="{{unit.unitnumber}}">
-                                                    </div>
-                                                    <div class="col-xs-10">
-                                                            <label for="unittitle" class="control-label">Title: </label>
-                                                            <input type="text" class="form-control input-sm" id="unittitle" ng-model="unit.unittitle" placeholder="{{unit.unittitle}}">
-                                                            <!--<i class="icon-question-sign pull-right" data-toggle="popover" title="" data-content="The title should reflect the learning aims/assessment criteria" data-original-title="Title"/>-->
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-xs-2">
-                                                        <label for="level" class="control-label">Level: </label>
-                                                        <input type="text" class="form-control input-sm" id="level" ng-model="unit.level" placeholder="{{unit.level}}">
-                                                    </div>
-                                                    <div class="col-xs-2">
-                                                        <label for="unittype" class="control-label">Unit Type: </label>
-                                                        <input type="text" class="form-control input-sm" id="unittype" ng-model="unit.unittype" placeholder="{{unit.unitnumber}}">
-                                                    </div>
-                                                    <div class="col-xs-4">
-                                                        <label for="glhvalue" class="control-label">Guided Learning Hours: </label>
-                                                        <input type="text" class="form-control input-sm" id="glhvalue" ng-model="unit.glhvalue" placeholder="{{unit.glhvalue}}">
-                                                    </div>
-                                                    <div class="col-xs-4">
-                                                        <label for="assessmenttype" class="control-label">Assessment Type: </label>
-                                                        <input type="text" class="form-control input-sm" id="assessmenttype" ng-model="unit.level" placeholder="{{unit.unittype}}">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-xs-2">
-                                                        <label for="uan" class="control-label">UAN: </label>
-                                                        <input type="text" class="form-control input-sm" id="uan" ng-model="unit.uan" placeholder="{{unit.uan}}">
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        <label for="author" class="control-label">Author: </label>
-                                                        <input type="text" class="form-control input-sm" id="author" ng-model="unit.author" placeholder="{{unit.author}}">
-                                                    </div>
-                                                    <!--                                                                <div class="col-xs-2">
-                                                                                                            <label for="company" class="control-label">Company: </label>
-                                                                                                            <input type="text" class="form-control input-sm" id="company" ng-model="unit.dc-company" placeholder="{{unit.dc-company}}">
-                                                                                                        </div>-->
-                                                    <!--                                                                <div class="col-xs-2">
-                                                                                                            <label for="template" class="control-label">Template: </label>
-                                                                                                            <input type="text" class="form-control input-sm" id="template" ng-model="unit.dc-title" placeholder="{{unit.dc-title}}">
-                                                                                                        </div>-->
-                                                </div>
-                                                <br/>
-                                                <!-- End Meta data section -->
-
-
-                                                <!--Section-->
-                                                <div class="row" ng-repeat="section in unit.section">
-                                                    <div class="col-xs-12">
-                                                        <h2><strong>{{section['@title']}}</strong><span class="pull-right label label-default">{{section['@style']}}</span></h2>
-                                                    </div>
-                                                    <div class="col-xs-12" ng-repeat="(key, value) in filterContentField(section)">
-                                                        <!--<label for="{{key}}" class="control-label">{{key}}</label>-->
-                                                        <!--<textarea class="form-control input-sm" id="{{key}}">{{value}}</textarea>-->
-                                                        <p ng-bind-html="value"></p>
-                                                    </div>
-<!--                                                    <pre>
-                                                        {{section | json}}
-                                                    </pre>-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </tab>
-
                             </tabset>
 
                         </div>

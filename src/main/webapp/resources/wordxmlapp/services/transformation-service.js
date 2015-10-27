@@ -19,6 +19,7 @@ var services = angular.module('wordxmlApp.transformation.service', ['ngResource'
 
 services.factory('TransformationsFactory', function ($resource) {
     console.log('Calling TransformationsFactory- query, create');
+
     return $resource('/transformation', {}, {
         query: {method: 'GET', isArray: true},
         create: { method: 'POST' }

@@ -14,83 +14,380 @@
         </ol>
     </div>
 </div>
-<div class="row wrapper border-bottom white-bg">
-    <br/>
-    <div class="col-lg-3 pull-right">
-        <div class="input-group"><input ng-model="searchUser" type="text" placeholder="Search username" class="input-sm form-control ng-pristine ng-valid"> <span class="input-group-btn">
-                                            <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
-    </div>
-    <br/><br/>
-</div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
-<div class="row">
-<div class="col-lg-6" ng-repeat="user in users | filter : { username : searchUser}">
-    <div class="contact-box">
-        <a ui-sref="profile">
-            <div class="col-sm-4">
-                <div class="text-center">
-                    <i class="img-circle m-t-xs fa fa-user fa-4x"></i>
-                    <div class="m-t-xs font-bold">
-                    </div>
-                </div>
 
-                <dl class="dd-list">
-                    <dt>User ID:</dt>
-                    <dd>{{user.id}}</dd>
-                    <dt>Username ID:</dt>
-                    <dd>{{user.username}}</dd>
-                    <dt>Role:</dt>
-                </dl>
-                <div class="form-group-sm">
-                    <input type="text" class="form-control" ng-model="user.role" ng-disabled="editbutton" required ng-init="editbutton=true">
-                </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="jumbotron">
+                <div class="container">
+                    <h2><strong>User Management</strong></h2>
+                    <p>Create, Modify and Delete users using the controls below. Upon creating a user, a login account will
+                        be created and the user will be granted access rights according to their assigned role. This page is
+                        only visible for system administrators. Notify users when their login accounts have been created.</p>
 
-            </div>
-            <div class="col-sm-8">
-                <form role="form" class="ng-pristine ng-valid">
-                    <div class="form-group-sm">
-                        <label>First name</label>
-                        <input type="text"  class="form-control" ng-model="user.firstname" ng-disabled="editbutton" required ng-init="editbutton=true">
-                    </div>
-                    <div class="form-group-sm">
-                        <label>Last name</label>
-                        <input type="text" class="form-control" ng-model="user.lastname" ng-disabled="editbutton" required ng-init="editbutton=true"></div>
-
-                    <div class="form-group-sm">
-                        <label>Email</label>
-                        <input type="email" placeholder="Enter email" class="form-control" ng-model="user.email" ng-disabled="editbutton" required ng-init="editbutton=true">
-                    </div>
-                    <label>Password</label>
-                    <div class="input-group">
-                        <input type="password" placeholder="Password" class="form-control input-sm" ng-model="user.password" ng-disabled="changepasswordbutton" required ng-init="changepasswordbutton=true" ng-show="changepasswordbutton">
-                        <input type="text" placeholder="Password" class="form-control input-sm" ng-model="user.password" ng-disabled="changepasswordbutton" required ng-init="changepasswordbutton=true" ng-hide="changepasswordbutton">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-white btn-sm" ng-click="changepasswordbutton=!changepasswordbutton;" required ng-init="changepasswordbutton=true" ng-show="changepasswordbutton">
-                                <i class="fa fa-key"></i> Edit
-                            </button>
-                            <button type="button" class="btn btn-white btn-sm" ng-click="changepasswordbutton=!changepasswordbutton" required ng-init="changepasswordbutton=true" ng-hide="changepasswordbutton">
-                                <i class="fa fa-check"></i> Save
-                            </button>
-                        </span>
-                    </div>
                     <br/>
-                    <div class="form-group">
-                        <a href="/static/index.html#/userprofile/{{user.id}}" class="btn btn-white btn-sm"><i class="fa fa-user"></i> View profile </a>
-                        <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash"></i> Delete </a>
-                        <a href="" class="btn btn-white btn-sm" ng-click="editbutton=!editbutton" ng-show="editbutton">
-                            <i class="fa fa-pencil"></i> Edit
-                        </a>
-                        <a href="" class="btn btn-white btn-sm" ng-click="editbutton=!editbutton" ng-hide="editbutton">
-                           <i class="fa fa-check"></i> Save
-                        </a>
-                    </div>
-                </form>
+
+                        <div class="col-sm-3">
+                            <div class="form-group-sm">
+                                <button type="btn btn-sm" ng-click="addNewUser()" class="btn btn-success">
+                                    <i class="img-circle m-t-xs fa fa-user-plus"></i> Create New User</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <div class="input-group"><input ng-model="searchUser" type="text" placeholder="Search username" class="input-sm form-control ng-pristine ng-valid"> <span class="input-group-btn">
+                                <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                            </div>
+                        </div>
+                </div>
             </div>
-            <div class="clearfix"></div>
-            <!--<pre>form = {{user | json}}</pre>-->
-        </a>
+            <div class="alert alert-danger" ng-show="(users | filter: { role : 'INACTIVE'}).length > 0">
+                    <i class="fa fa-2x fa-exclamation-circle"></i> You have <strong>{{ (users | filter: { role : 'INACTIVE'}).length }}</strong> new user(s) registration requiring approval. Please activate new user registration by clicking on 'Edit' and assign a user role.
+            </div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Specify a Angular controller script that binds Javascript variables to the feedback messages.-->
+            <div class="message" ng-controller="alertMessagesController">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><i class="{{alert.icon}}"></i> {{alert.msg}}</alert>
+            </div>
+            <br/>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-6" ng-repeat="user in users | filter : { role : 'INACTIVE'}">
+            <div class="contact-box">
+
+                <div class="alert alert-danger" ng-show="user.role=='INACTIVE'">
+                    <i class="fa fa-2x fa-exclamation-circle"></i>  Please activate new user registration by assigning a role.
+
+                    <select name="selectedRole" ng-model="user.role" ng-change='updateUser(user)'>
+                        <option ng:repeat="userrole in userroles" value="{{userrole.id}}" ng-selected="userrole.id==user.role">{{userrole.name}}</option>
+                    </select>
+                </div>
+
+                <a ui-sref="profile">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <i class="img-circle m-t-xs fa fa-user fa-4x"></i>
+                            <div class="m-t-xs font-bold">
+                            </div>
+                        </div>
+
+                        <dl class="dd-list">
+                            <dt>User ID:</dt>
+                            <dd><input type="text" class="form-control" ng-model="user.id" disabled="true"></dd>
+                            <dt>Username:</dt>
+                            <dd>
+                                <input type="text"  class="form-control" ng-model="user.username" ng-disabled="editbutton" required ng-init="editbutton=true">
+                            </dd>
+                            <dt>Role:</dt>
+                        </dl>
+                        <div class="form-group-sm">
+                            <!--<input type="text" class="form-control" ng-model="user.role" ng-disabled="editbutton" required ng-init="editbutton=true">-->
+
+                            <select name="selectedRole" class="form-control" ng-model="user.role" ng-disabled="editbutton" required ng-init="editbutton=true">
+                                <option ng:repeat="userrole in userroles" value="{{userrole.id}}" ng-selected="userrole.id==user.role">{{userrole.name}}</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-8">
+                        <form role="form" class="ng-pristine ng-valid">
+                            <div class="form-group-sm">
+                                <label>First name</label>
+                                <input type="text"  class="form-control" ng-model="user.firstname" ng-disabled="editbutton" required ng-init="editbutton=true">
+                            </div>
+                            <div class="form-group-sm">
+                                <label>Last name</label>
+                                <input type="text" class="form-control" ng-model="user.lastname" ng-disabled="editbutton" required ng-init="editbutton=true"></div>
+
+                            <div class="form-group-sm">
+                                <label>Email</label>
+                                <input type="email" placeholder="Enter email" class="form-control" ng-model="user.email" ng-disabled="editbutton" required ng-init="editbutton=true">
+                            </div>
+                            <label>Password</label>
+                            <div class="input-group">
+                                <!--<input type="password" placeholder="**********" class="form-control input-sm" ng-model="user.password" ng-disabled="editbutton" required ng-init="editbutton=true">-->
+                                <input type="password" class="input-sm" ng-model="user.passwordDigest" ng-disabled="editbutton" required ng-init="editbutton=true"/>
+                                <!--                                &nbsp;<input type="checkbox" id="checkbox" ng-model="passwordCheckbox" ng-hide="editbutton" ng-click="hideShowPassword()" />
+                                                                <label for="checkbox" ng-if="passwordCheckbox" ng-hide="editbutton" ng-click="inputType='password'">Hide password</label>
+                                                                <label for="checkbox" ng-if="!passwordCheckbox" ng-hide="editbutton" ng-click="inputType='text'">Show password</label>-->
+                                <!--                                <span class="input-group-btn">
+                                                                    <button type="button" class="btn btn-white btn-sm" ng-click="changepasswordbutton=!changepasswordbutton;" required ng-show="changepasswordbutton">
+                                                                        <i class="fa fa-key"></i> Change
+                                                                    </button>
+                                                                     <button type="button" class="btn btn-white btn-sm" ng-click="changepasswordbutton=!changepasswordbutton;" required ng-hide="changepasswordbutton">
+                                                                         <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+                                                                     </button>
+                                                                    <button type="button" class="btn btn-white btn-sm" ng-click="updateUser(user);changepasswordbutton=!changepasswordbutton" required ng-init="changepasswordbutton=true" ng-hide="changepasswordbutton">
+                                                                        <i class="fa fa-check"></i> Save
+                                                                    </button>
+                                                                </span>-->
+                            </div>
+                            <br/>
+                            <div class="text-right">
+                                <div class="form-group">
+                                    <!--<a href="/static/index.html#/userprofile/{{user.id}}" class="btn btn-white btn-sm"><i class="fa fa-user"></i> View profile </a>-->
+                                    <a href="" class="btn btn-default btn-sm" ng-click="editbutton=!editbutton" ng-hide="editbutton">
+                                        <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+                                    </a>
+                                    <a href="" class="btn btn-white btn-sm" ng-click="deleteUser(user)" ng-show="editbutton"><i class="fa fa-user-times"></i> Delete </a>
+                                    <a href="" class="btn btn-white btn-sm" ng-click="editbutton=!editbutton" ng-show="editbutton">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                    <a href="" class="btn btn-white btn-sm" ng-click="updateUser(user);editbutton=!editbutton" required ng-init="editbutton=true" ng-hide="editbutton">
+                                        <i class="fa fa-check"></i> Save
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-lg-6" ng-repeat="user in users | filter : { username : searchUser} | filter: {role : '!INACTIVE'}">
+            <div class="contact-box">
+
+                <a ui-sref="profile">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <i class="img-circle m-t-xs fa fa-user fa-4x"></i>
+                            <div class="m-t-xs font-bold">
+                            </div>
+                        </div>
+
+                        <dl class="dd-list">
+                            <dt>User ID:</dt>
+                            <dd><input type="text" class="form-control" ng-model="user.id" disabled="true"></dd>
+                            <dt>Username:</dt>
+                            <dd>
+                                <input type="text"  class="form-control" ng-model="user.username" ng-disabled="editbutton" required ng-init="editbutton=true">
+                            </dd>
+                            <dt>Role:</dt>
+                        </dl>
+                        <div class="form-group-sm">
+                            <!--<input type="text" class="form-control" ng-model="user.role" ng-disabled="editbutton" required ng-init="editbutton=true">-->
+
+                            <select name="selectedRole" class="form-control" ng-model="user.role" ng-disabled="editbutton" required ng-init="editbutton=true">
+                                <option ng:repeat="userrole in userroles" value="{{userrole.id}}" ng-selected="userrole.id==user.role">{{userrole.name}}</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-8">
+                        <form role="form" class="ng-pristine ng-valid">
+                            <div class="form-group-sm">
+                                <label>First name</label>
+                                <input type="text"  class="form-control" ng-model="user.firstname" ng-disabled="editbutton" required ng-init="editbutton=true">
+                            </div>
+                            <div class="form-group-sm">
+                                <label>Last name</label>
+                                <input type="text" class="form-control" ng-model="user.lastname" ng-disabled="editbutton" required ng-init="editbutton=true"></div>
+
+                            <div class="form-group-sm">
+                                <label>Email</label>
+                                <input type="email" placeholder="Enter email" class="form-control" ng-model="user.email" ng-disabled="editbutton" required ng-init="editbutton=true">
+                            </div>
+                            <label>Password</label>
+                            <div class="input-group">
+                                <!--<input type="password" placeholder="**********" class="form-control input-sm" ng-model="user.password" ng-disabled="editbutton" required ng-init="editbutton=true">-->
+                                <input type="password" class="input-sm" ng-model="user.passwordDigest" ng-disabled="editbutton" required ng-init="editbutton=true"/>
+<!--                                &nbsp;<input type="checkbox" id="checkbox" ng-model="passwordCheckbox" ng-hide="editbutton" ng-click="hideShowPassword()" />
+                                <label for="checkbox" ng-if="passwordCheckbox" ng-hide="editbutton" ng-click="inputType='password'">Hide password</label>
+                                <label for="checkbox" ng-if="!passwordCheckbox" ng-hide="editbutton" ng-click="inputType='text'">Show password</label>-->
+                                <!--                                <span class="input-group-btn">
+                                                                    <button type="button" class="btn btn-white btn-sm" ng-click="changepasswordbutton=!changepasswordbutton;" required ng-show="changepasswordbutton">
+                                                                        <i class="fa fa-key"></i> Change
+                                                                    </button>
+                                                                     <button type="button" class="btn btn-white btn-sm" ng-click="changepasswordbutton=!changepasswordbutton;" required ng-hide="changepasswordbutton">
+                                                                         <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+                                                                     </button>
+                                                                    <button type="button" class="btn btn-white btn-sm" ng-click="updateUser(user);changepasswordbutton=!changepasswordbutton" required ng-init="changepasswordbutton=true" ng-hide="changepasswordbutton">
+                                                                        <i class="fa fa-check"></i> Save
+                                                                    </button>
+                                                                </span>-->
+                            </div>
+                            <br/>
+                            <div class="text-right">
+                            <div class="form-group">
+                                <!--<a href="/static/index.html#/userprofile/{{user.id}}" class="btn btn-white btn-sm"><i class="fa fa-user"></i> View profile </a>-->
+                                <a href="" class="btn btn-default btn-sm" ng-click="editbutton=!editbutton" ng-hide="editbutton">
+                                    <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+                                </a>
+                                <a href="" class="btn btn-white btn-sm" ng-click="deleteUser(user)" ng-show="editbutton"><i class="fa fa-user-times"></i> Delete </a>
+                                <a href="" class="btn btn-white btn-sm" ng-click="editbutton=!editbutton" ng-show="editbutton">
+                                    <i class="fa fa-pencil"></i> Edit
+                                </a>
+                                <a href="" class="btn btn-white btn-sm" ng-click="updateUser(user);editbutton=!editbutton" required ng-init="editbutton=true" ng-hide="editbutton">
+                                    <i class="fa fa-check"></i> Save
+                                </a>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
 </div>
-</div>
-</div>
+
+
+<modalform id="userModal" title="Create New User" visible="showUserModal">
+    <div class="modal-body">
+    <form name="form" novalidate>
+        <fieldset>
+        <div class="contact-box">
+
+            <a ui-sref="profile">
+                <div class="col-sm-4">
+                    <div class="text-center">
+                        <i class="img-circle m-t-xs fa fa-user fa-4x"></i>
+                        <div class="m-t-xs font-bold">
+                        </div>
+                    </div>
+                    <dl class="dd-list">
+                        <dt>Username:</dt>
+                        <dd>
+
+                            <input type="text" name="username" class="form-control"
+                                   ng-focus="focus('username')"
+                                   ng-blur="blur('username')"
+                                   ng-model="myUser.username"
+                                   placeholder="Username" required
+                                   ng-minlength="6">
+
+                            <div class="error-messages" ng-show="isMessagesVisible('username')"
+                                 ng-messages="form.username.$error" ng-cloak>
+                                <div ng-message="required">The username is mandatory</div>
+                                <div ng-message="minlength">must have minimum 6 characters</div>
+                            </div>
+
+                        </dd>
+                        <dt>Role:</dt>
+                    </dl>
+                    <div class="form-group-sm">
+                        <!--<input type="text" class="form-control" ng-model="user.role" ng-disabled="editbutton" required ng-init="editbutton=true">-->
+
+                        <select name="selectedRole" class="form-control" ng-model="myUser.role"
+                                required ng-options="userrole.id as userrole.name for userrole in userroles">
+                            <option selected value="myUser.role">{{myUser.role}}</option>
+                            <option ng:repeat="userrole in userroles" value="{{userrole.id}}">{{userrole.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                        <div class="form-group-sm">
+                            <label>First name</label>
+                            <input type="text" name="firstname" class="form-control"
+                                   ng-focus="focus('firstname')"
+                                   ng-blur="blur('firstname')"
+                                   ng-model="myUser.firstname"
+                                   placeholder="Enter Firstname"
+                                   required ng-minlength="2">
+                        </div>
+                        <div class="error-messages" ng-show="isMessagesVisible('firstname')"
+                             ng-messages="form.firstname.$error" ng-cloak>
+                            <div ng-message="required">The firstname is mandatory</div>
+                            <div ng-message="minlength">must have minimum 2 characters</div>
+                        </div>
+
+                        <div class="form-group-sm">
+                            <label>Last name</label>
+                            <input type="text" name="lastname" class="form-control"
+                                   ng-model="myUser.lastname"
+                                   ng-focus="focus('lastname')"
+                                   ng-blur="blur('lastname')"
+                                   placeholder="Enter Lastname"
+                                   ng-minlength="2" required>
+                        </div>
+                        <div class="error-messages" ng-show="isMessagesVisible('lastname')"
+                             ng-messages="form.lastname.$error" ng-cloak>
+                            <div ng-message="required">The lastname is mandatory</div>
+                            <div ng-message="minlength">must have minimum 2 characters</div>
+                        </div>
+                        <div class="form-group-sm">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control"
+                                   ng-focus="focus('email')"
+                                   ng-blur="blur('email')"
+                                   ng-model="myUser.email"
+                                   placeholder="Enter Email" required>
+
+                            <div class="error-messages" ng-show="isMessagesVisible('email')"
+                                 ng-messages="form.email.$error"
+                                 ng-cloak>
+                                <div ng-message="required">The email is mandatory</div>
+                                <div ng-message="email">must be a valid email</div>
+                            </div>
+
+                        </div>
+                        <label>Password</label>
+                        <div class="input-group">
+                            <input type="password" name="password" class="form-control input-sm"
+                                   ng-focus="focus('password')"
+                                   ng-blur="blur('password')"
+                                   ng-model="myUser.password"
+                                   placeholder="Enter Password" required
+                                   ng-minlength="6"
+                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+
+                            <div class="error-messages" ng-show="isMessagesVisible('password')"
+                                 ng-messages="form.password.$error" ng-cloak>
+                                <div ng-message="required">The password is mandatory</div>
+                                <div ng-message="minlength">must have minimum 6 characters</div>
+                                <div ng-message="pattern">At least one number and uppercase</div>
+                            </div>
+
+                        </div>
+                </div>
+                <div class="clearfix"></div>
+<!--            <pre>{{myUser | json}}
+            </pre>-->
+            </a>
+        </div>
+        </fieldset>
+    </form>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" type="submit" ng-click="saveForm()" ng-disabled="!form.$valid">Save changes</button>
+    </div>
+</modalform>
+
+
+
+<div id="shortModal" class="modal modal-wide fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

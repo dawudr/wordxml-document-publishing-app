@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BtecWordOpenXMLApp.iml" filepath="$PROJECT_DIR$/BtecWordOpenXMLApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wordxml.iml" filepath="$PROJECT_DIR$/wordxml.iml" />
     </modules>
   </component>
 </project>
-

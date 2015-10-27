@@ -14,6 +14,7 @@
 
     </div>
 </div>
+
 <div class="row">
     <div class="col-lg-12">
         <div class="wrapper wrapper-content">
@@ -65,12 +66,22 @@
             </div>
 
 
+            <div class="ibox float-e-margins">
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                            <div class="input-group"><input ng-model="searchText" type="text" placeholder="Search for a keyword" class="input-sm form-control"> <span class="input-group-btn">
+                                            <button type="button" class="btn btn-sm btn-primary"> Search</button> </span></div>
+                    </div>
+                </div>
+
+            </div>
+
 
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Updates - showing page: {{currentPage}} / {{numOfPagesRecent}}  out of a total {{totalResultsRecent}} transformed documents</h5>
-
-                    <span class="label label-primary">Updated {{lastUpdateDate}}</span>
+                    <h5><i class="fa fa-envelope"></i> New documents</h5>
 
 
                     <div ibox-tools="" class="ng-scope"><div class="ibox-tools dropdown" dropdown="">
@@ -87,45 +98,53 @@
                         <a ng-click="closebox()"><i class="fa fa-times"></i></a>
                     </div></div>
                 </div>
-                <div class="ibox-content">
-                    <h3><i class="fa fa-envelope"></i> {{recentNewDocumentsCount}} New documents</h3>
 
-                    <div class="row">
-                        <div class="col-sm-3 m-b-xs">
-                            Filter
-                            <div class="btn-group" data-toggle="buttons-radio">
-                                <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('all')">All</a>
-                                <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('today')">Today</a>
-                                <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastWeek')">Week</a>
-                                <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastMonth')">Month</a>
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="input-group"><input ng-model="search" type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
-                        </div>
-                        <div class="col-sm-4">
-                            <pagination style="margin: 0px;"
-                                    total-items="totalResults"
-                                    ng-model="currentPage"
-                                    boundary-links="true"
-                                    num-pages="noOfPages"
-                                    max-size="maxSize"
-                                    item-per-page="numPerPage"
-                                    class="btn-group">
-                            </pagination>
-                        </div>
-                    </div>
-                </div>
+
+                <!--
+                               <div class="ibox-content">
+
+
+                                   <div class="row">
+                                       <div class="col-sm-3 m-b-xs">
+                                           Filter
+                                           <div class="btn-group" data-toggle="buttons-radio">
+                                               <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('all')">All</a>
+                                               <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('today')">Today</a>
+                                               <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastWeek')">Week</a>
+                                               <a href class="btn btn-sm btn-white" ng-click="eventDateFilter('pastMonth')">Month</a>
+                                           </div>
+                                       </div>
+
+                                       <div class="col-sm-12">
+                                           <div class="input-group"><input ng-model="searchText" type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                                       <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                                       </div>
+
+                                       <div class="col-sm-4">
+                                           <pagination style="margin: 0px;"
+                                                   total-items="totalResults"
+                                                   ng-model="currentPage"
+                                                   boundary-links="true"
+                                                   num-pages="noOfPages"
+                                                   max-size="maxSize"
+                                                   item-per-page="numPerPage"
+                                                   class="btn-group">
+                                           </pagination>
+                                       </div>
+                                   </div>
+                               </div>
+               -->
                 <div class="ibox-content">
                     <div class="feed-activity-list">
 
                         <!--<div class="feed-element" ng-repeat="transformation in filteredPagnRecentTransformations" ng-if="transformation.date > dateRange">-->
-                        <div class="feed-element" ng-repeat="transformation in filteredPagnRecentTransformations">
+                        <div class="feed-element" ng-repeat="transformation in filteredRecentTransformations | filter: searchText">
                             <div>
                                 <small class="pull-right">{{transformation.lastmodified}}</small>
 
-                                <a href="#/userprofile/{{transformation.user.id}}"><i class="fa fa-user"></i><strong> {{transformation.user.username}} </strong> - {{transformation.user.firstname}} {{transformation.user.lastname}} </a>
+                                <!--<a href="#/userprofile/{{transformation.user.id}}">-->
+                                    <i class="fa fa-user"></i><strong> {{transformation.user.username}} </strong> - {{transformation.user.firstname}} {{transformation.user.lastname}}
+                                <!--</a>-->
 
                                 <div ng-show="transformation.transformStatus == 'TRANSFORM_STATUS_SUCCESS' ||
                                     transformation.transformStatus == 'TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS' ||
@@ -219,7 +238,7 @@
                                     <br/>
                                     {{transformation.wordfilename}}
                                     <br/>
-                                    <small>Added: {{transformation.lastmodified}}</small>
+                                    <small>Created: {{transformation.date}}</small>
                                 </div>
                             </a>
                         </div>

@@ -46,7 +46,7 @@ public class SpecUnitController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, value = "/specunit/{id}")
-    public Specunit getSpecUnitById(@PathVariable Long id) {
+    public Specunit getSpecUnitById(@PathVariable Integer id) {
         Specunit specunit = specUnitService.getSpecUnitById(id);
         LOGGER.debug("Found SpecUnit id[{}] -> SpecUnit[{}]", id, specunit.toString());
         return specunit;
@@ -79,7 +79,7 @@ public class SpecUnitController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.DELETE, value = "/specunit/remove/{id}")
-    public void deleteSpecUnits(@RequestBody Long id) {
+    public void deleteSpecUnits(@RequestBody Integer id) {
         specUnitService.removeSpecUnit(id);
         LOGGER.debug("Remove SpecUnit Id[{}]", id);
     }

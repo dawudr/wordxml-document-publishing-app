@@ -82,6 +82,7 @@ public class TransformationDTO {
             this.imageId = transformation.getImage().getId();
         }*/
         this.imageId = transformation.getImage_id();
+        this.specunit = transformation.getSpecunit().getId();
     }
 
     public TransformationDTO(Integer id, UserInfoDTO user, Date date, String qanNo,
@@ -115,7 +116,6 @@ public class TransformationDTO {
     public static TransformationDTO mapFromTransformationEntity(Transformation transformation) {
 
         String templateName = "";
-        int templateId = 0;
 /*        Template t = transformation.getTemplate();
         if(t!=null) {
             templateName = t.getTemplateName();
@@ -152,7 +152,7 @@ public class TransformationDTO {
                 transformation.getUnitNo(),
                 transformation.getUnitTitle(),
                 transformation.getAuthor(),
-                templateId,
+                transformation.getTemplateId(),
 
                 transformation.getLastmodified(),
                 transformation.getTransformStatus(),

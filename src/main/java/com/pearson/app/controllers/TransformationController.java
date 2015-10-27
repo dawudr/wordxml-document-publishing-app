@@ -3,10 +3,7 @@ package com.pearson.app.controllers;
 import com.pearson.app.dto.TransformationDTO;
 import com.pearson.app.dto.TransformationsDTO;
 import com.pearson.app.model.*;
-import com.pearson.app.services.ImageService;
-import com.pearson.app.services.TemplateService;
-import com.pearson.app.services.TransformationService;
-import com.pearson.app.services.UserService;
+import com.pearson.app.services.*;
 import com.pearson.btec.service.ProcessWordDocument;
 import com.pearson.btec.service.TransformXmlDocument;
 import net.sf.json.JSON;
@@ -25,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
@@ -64,9 +61,12 @@ public class TransformationController {
     private ImageService imageService;
 
     @Autowired
+    private SpecUnitService specUnitService;
+
+    @Autowired
     ServletContext context;
 
-    @Transactional
+//    @Transactional
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.POST, value = "/transformation")
     public void addTransformation(@RequestBody TransformationDTO transformationDTO) {
@@ -97,7 +97,7 @@ public class TransformationController {
         // Create TRANSFORMATION object
         Transformation newTransformation = new Transformation();
         newTransformation.setUser(user);
-        newTransformation.setDate(new Date());
+        newTransformation.setDate(image.getDateCreated());
         newTransformation.setLastmodified(lastModified);
         newTransformation.setTemplateId(transformationDTO.getTemplateId());
         newTransformation.setImage_id(transformationDTO.getImageId());
@@ -140,15 +140,6 @@ public class TransformationController {
             transformationStatus = processWordDocument.getTransformationStatus();
             // update TRANSFORMATION
             newTransformation.setTransformStatus(transformationStatus);
-//          transformationService.updateTransformation(newTransformation);
-//        StringBuilder openXmlFileName = new StringBuilder();
-//        openXmlFileName.append(processWordDocument.getTransformationUan().replaceAll("/", "_")).append("-open.xml");
-//        StringBuilder pqsFileName = new StringBuilder();
-//        pqsFileName.append(processWordDocument.getTransformationUan().replaceAll("/", "_")).append(".xml");
-            // update TRANSFORMATION
-//        newTransformation.setOpenxmlfilename(openXmlFileName.toString());
-//        newTransformation.setIqsxmlfilename(pqsFileName.toString());
-//        newTransformation.setLastmodified(new Date());
             newTransformation.setQanNo(processWordDocument.getTransformationUan());
             newTransformation.setUnitNo(processWordDocument.getTransformationUnitNo());
             newTransformation.setUnitTitle(processWordDocument.getTransformationUnitTitle());
@@ -159,11 +150,8 @@ public class TransformationController {
             Specunit specunit = new Specunit();
             specunit.setQanNo(processWordDocument.getTransformationUan());
             specunit.setUnitXML(processWordDocument.getXmlStringContent());
-            //specUnitService.addSpecUnit(specunit);
             // update TRANSFORMATION
             newTransformation.setSpecunit(specunit);
-            //TODO: Test if SpecUnit record delete when Transformation is deleted.
-            //specunit.setTransformation(newTransformation);
 
         } catch (Docx4JException e) {
             transformationStatus = Transformation.TRANSFORM_STATUS_FAIL;
@@ -349,7 +337,7 @@ public class TransformationController {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.POST, value = "/transformation/update")
+    @RequestMapping(method = RequestMethod.PUT, value = "/transformation/{id}")
     public void updateTransformation(@RequestBody TransformationDTO transformationDTO) {
 
         Principal principal = SecurityContextHolder.getContext().getAuthentication();
@@ -377,6 +365,15 @@ public class TransformationController {
         //transformation.setTemplate(template);
         transformation.setTemplateId(transformationDTO.getTemplateId());
 
+        // Now update the XML from the SpecUnit Table
+        //specUnitService.updateSpecUnitMetadata(transformationDTO);
+        Specunit result_specunit = transformation.getSpecunit();
+        result_specunit.setQanNo(transformationDTO.getQanNo());
+        String result_unit_xml = specUnitService.updateSpecUnitXMLNode(result_specunit.getUnitXML(), transformationDTO);
+        result_specunit.setUnitXML(result_unit_xml);
+
+        transformation.setSpecunit(result_specunit);
+
         transformationService.updateTransformation(transformation);
         LOGGER.debug("Updating Transformation[{}]", transformation.toString());
     }
@@ -403,7 +400,7 @@ public class TransformationController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/transformation/{id}")
     public void removeTransformations(@PathVariable("id") Integer id) {
         transformationService.removeTransformation(id);
-        LOGGER.debug("Remove Transformation Id[{}]", id);
+        LOGGER.debug("Successfully deleted Transformation Id[{}]", id);
     }
 
 

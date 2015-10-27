@@ -12,8 +12,8 @@ public interface UserDAOInterface {
 
         public void addUser(User user);
         public List<User> listUsers();
-        public User getUserById(Integer id);
+        public User getUserById(int id);
         public User getUserByUsername(String username);
         public void updateUser(User user);
-        public void removeUser(Long id);
+        public void removeUser(int id);
 }

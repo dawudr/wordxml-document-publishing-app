@@ -34,7 +34,7 @@ public class ProcessWordDocument {
 
     // Statuses
     private String transformationStatus = null;
-    private String transformationMessage = null;
+    private String transformationMessage = "";
     private String transformationUan = "";
     private String transformationUnitNo = null;
     private String transformationUnitTitle = null;
@@ -65,7 +65,7 @@ public class ProcessWordDocument {
             org.docx4j.docProps.core.CoreProperties coreProps = (org.docx4j.docProps.core.CoreProperties)docPropsCorePart.getJaxbElement();
             HashMap docPropMap = new HashMap();
 
-            String title = "Missing";
+            String title = "";
             if(coreProps != null &&
                     coreProps.getTitle() != null &&
                     coreProps.getTitle().getValue() != null &&
@@ -95,7 +95,7 @@ public class ProcessWordDocument {
                         }
             }
             docPropMap.put("author", transformationAuthor);
-            String description = "Missing";
+            String description = "";
             if(coreProps.getDescription() != null &&
                     coreProps.getDescription().getValue() != null &&
                     coreProps.getDescription().getValue().getContent() != null) {
@@ -193,7 +193,7 @@ public class ProcessWordDocument {
         }
         else {
             transformationStatus = Transformation.TRANSFORM_STATUS_SUCCESS;
-            if(transformationMessage == null) {
+            if(transformationMessage == "") {
                 Date now = Calendar.getInstance().getTime();
                 transformationMessage = "Last transformation successfully completed on " + now;
             }
@@ -281,9 +281,10 @@ public class ProcessWordDocument {
 
     public static void main(String[] args) {
         //String inputfilepath = System.getProperty("user.dir") + "/btecdocs/Unit_18short.docx";
-        String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/Unit 44_FBC.docx";
+        //String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/Unit 44_FBC.docx";
         //String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/3DModelling.docx";
         //String inputfilepath = System.getProperty("user.dir") + "/btecdocs/Unit_18.docx";
+        String inputfilepath = System.getProperty("user.dir") + "/src/test/resources/230715 U16 - Astronomy and Space Science - Pre-Panel.docx";
 
 /*
         MainDocument mainDocument = new MainDocument(new File(inputfilepath));
@@ -297,10 +298,7 @@ public class ProcessWordDocument {
             System.out.println(p.getTransformationUnitNo());
             System.out.println(p.getTransformationUnitTitle());
             System.out.println(p.getTransformationAuthor());
-            System.out.println(truncate(p.getXMLDocumentAsString(),1000));
-
-
-
+            System.out.println(p.getXMLDocumentAsString());
 
     }
 }

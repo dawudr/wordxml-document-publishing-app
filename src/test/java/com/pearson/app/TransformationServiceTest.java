@@ -1,5 +1,6 @@
 package com.pearson.app;
 
+import com.pearson.app.dto.TransformationDTO;
 import com.pearson.app.model.*;
 import com.pearson.app.services.*;
 import com.pearson.config.root.RootContextConfig;
@@ -97,7 +98,7 @@ public class TransformationServiceTest extends TestCase {
     public void firstTransformationsExist() {
         User user = userService.getUserByUsername("btectest1");
         if(user == null) {
-            userService.addUser(new User("btectest1", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
+            userService.addUser(new User("btectest1", "Password123", "Btec", "Test",  "test@email.com", User.ROLE_ADMIN));
             user = userService.getUserByUsername("btectest1");
         }
 
@@ -430,10 +431,10 @@ public class TransformationServiceTest extends TestCase {
         specunit.setUnitXML(textXml);
         specUnitService.addSpecUnit(specunit);
 
-        User user = userService.getUserByUsername("btectest7");
+        User user = userService.getUserByUsername("btectest");
         if(user == null) {
-            userService.addUser(new User("btectest7", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
-            user = userService.getUserByUsername("btectest7");
+            userService.addUser(new User("btectest", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
+            user = userService.getUserByUsername("btectest");
         }
 
 
@@ -464,6 +465,72 @@ public class TransformationServiceTest extends TestCase {
                 Specunit.truncate(transformation1.getSpecunit().getUnitXML(), 50), transformation1.getSpecunit().getQanNo().equals("T/999/0011"));
         System.out.println("SpecUnitId=" + transformation1.getSpecunit().getId());
         System.out.println("SpecUnit XML=" + transformation1.getSpecunit().getUnitXML());
+    }
+
+    @Test
+    public void testUpdateTransformation() {
+        Specunit specunit = new Specunit();
+        specunit.setQanNo("T/111/1111");
+        specunit.setUnitXML(textXml);
+        specUnitService.addSpecUnit(specunit);
+
+        User user = userService.getUserByUsername("btectest");
+        if(user == null) {
+            userService.addUser(new User("btectest", "Password123", "test@email.com", "Btec", "Test", User.ROLE_ADMIN));
+            user = userService.getUserByUsername("btectest");
+        }
+
+        Transformation transformation = transformationService.getTransformationByQan("T/111/1111");
+        if(transformation == null) {
+            Transformation newTransformation = new Transformation();
+            newTransformation.setUser(user);
+            newTransformation.setDate(new Date());
+            newTransformation.setQanNo("T/111/1111");
+            newTransformation.setUnitNo("44");
+            newTransformation.setUnitTitle("Manufacturing Secondary Machining Processes");
+            newTransformation.setAuthor("Paul Winser");
+            //newTransformation.setTemplate(this.template);
+            newTransformation.setTemplateId(1);
+            newTransformation.setWordfilename("Unit 44_FBC.doc");
+            newTransformation.setSpecunit(specunit);
+            newTransformation.setOpenxmlfilename("Unit 44_FBC-open.xml");
+            newTransformation.setIqsxmlfilename("S_123_1234.xml");
+            newTransformation.setLastmodified(new Date());
+            newTransformation.setTransformStatus(Transformation.TRANSFORM_STATUS_SUCCESS);
+            newTransformation.setMessage("No errors were found");
+            newTransformation.setGeneralStatus(Transformation.GENERAL_STATUS_UNREAD);
+            newTransformation.setImage_id(createImageRecord("T/111/1111").getId());
+            transformationService.updateTransformation(newTransformation);
+        }
+
+        // Now get the Transformed XML
+        Transformation result_transformation = transformationService.getTransformationByQan("T/111/1111");
+        TransformationDTO transformationDTO = new TransformationDTO(result_transformation);
+
+        // Make changes
+        transformationDTO.setQanNo("U/111/1111");
+        transformationDTO.setUnitNo("00");
+        transformationDTO.setUnitTitle("NONE");
+        transformationDTO.setAuthor("Anonymous");
+
+        // Update the Spec Unit table XML
+        //specUnitService.updateSpecUnitMetadata(transformationDTO);
+//        Specunit result_specunit = result_transformation.getSpecunit();
+//        result_specunit.setQanNo(transformationDTO.getQanNo());
+//        String result_unit_xml = specUnitService.updateSpecUnitXMLNode(result_specunit.getUnitXML(), transformationDTO);
+//        result_specunit.setUnitXML(result_unit_xml);
+//
+//        result_transformation.setSpecunit(result_specunit);
+        result_transformation.setQanNo(transformationDTO.getQanNo());
+        result_transformation.setUnitNo(transformationDTO.getUnitNo());
+        result_transformation.setUnitTitle(transformationDTO.getUnitTitle());
+        result_transformation.setAuthor(transformationDTO.getAuthor());
+        transformationService.updateTransformation(result_transformation);
+
+        Specunit test_result_specunit = specUnitService.getSpecUnitById(transformationDTO.getSpecunit());
+//        assertTrue("SpecUnit QAN not updated: " + result_specunit.getQanNo(), "U/111/1111".equals(result_specunit.getQanNo()));
+
+        assertTrue("Transformation Qan not updated: " + result_transformation.getQanNo(), "U/111/1111".equals(result_transformation.getQanNo()));
     }
 
     public static final String textXml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +

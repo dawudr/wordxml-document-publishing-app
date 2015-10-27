@@ -5,7 +5,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="1200;URL='/logout'" />
+  <meta http-equiv="refresh" content="180000;URL='../logout'" />
 
   <link rel="icon" href="/favicon.ico">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -42,10 +42,13 @@
 
   <!-- Jquery file upload styles -->
   <!-- blueimp Gallery styles -->
-  <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="css/blueimp-gallery.min.css">
   <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
   <link rel="stylesheet" href="css/plugins/jquery-file-upload/jquery.fileupload.css">
   <link rel="stylesheet" href="css/plugins/jquery-file-upload/jquery.fileupload-ui.css">
+  <link rel="stylesheet" type="text/css" href="js/plugins/sweetalert-master/dist/sweetalert.css">
+  <link rel="stylesheet" type="text/css" href="js/plugins/sweetalert-master/themes/facebook/facebook.css">
+
   <!-- CSS adjustments for browsers with JavaScript disabled -->
   <noscript><link rel="stylesheet" href="css/plugins/jquery-file-upload/jquery.fileupload-noscript.css"></noscript>
   <noscript><link rel="stylesheet" href="css/plugins/jquery-file-upload/jquery.fileupload-ui-noscript.css"></noscript>
@@ -111,9 +114,6 @@
 <!-- Input Mask-->
 <script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
 
-<!-- Switchery -->
-<script src="js/plugins/switchery/switchery.js"></script>
-
 <!-- SUMMERNOTE -->
 <script src="js/plugins/summernote/summernote.min.js"></script>
 
@@ -126,18 +126,22 @@
 <script src="js/ui-router/angular-ui-router.min.js"></script>
 <script src="js/angular/angular-resource.js"></script>
 <script src="js/bootstrap/ui-bootstrap-tpls-0.11.0.min.js"></script>
+<!--<script src="http://code.angularjs.org/1.2.4/angular-route.js"></script>-->
 
 <!-- Angular Dependiences -->
 <script src="js/plugins/summernote/angular-summernote.min.js"></script>
 <script src="js/bootstrap/angular-bootstrap-checkbox.js"></script>
-<script src="js/plugins/switchery/ng-switchery.js"></script>
 <script src="js/plugins/chosen/chosen.js"></script>
-<!--<script src="js/plugins/dataTables/angular-datatables.min.js"></script>-->
 <script src="js/plugins/uievents/event.js"></script>
 <script src="js/plugins/nggrid/ng-grid-2.0.8.min.js"></script>
 
 <script src="js/plugins/ui-codemirror/ui-codemirror.min.js"></script>
 <script src="js/plugins/uiTree/angular-ui-tree.min.js"></script>
+
+<script src="js/plugins/underscorejs/underscore-min.js"></script>
+
+
+<script src="js/plugins/sweetalert-master/dist/sweetalert.min.js"></script>
 
 
 
@@ -166,10 +170,8 @@
 <script src="js/plugins/jquery-file-upload/jquery.fileupload-angular.js"></script>
 <!-- The ngSanitize to render HTML strings in Angular -->
 <script src="js/plugins/angular-sanitize/angular-sanitize.js"></script>
-
-<!-- XML <=> JSon Javascript convert/mapping Library -->
-<script src="js/plugins/x2js/xml2json.min.js"></script>
-
+<!-- Ng-Json to pick Xpath like nodes in Json used for Preview -->
+<script src="js/plugins/ng-jsonpath/ng-jsonpath.min.js"></script>
 <!-- Anglar App Script -->
 <script src="js/app.js"></script>
 <script src="js/config.js"></script>
@@ -179,13 +181,19 @@
 <script src="wordxmlapp/services/fileupload-service.js"></script>
 <script src="wordxmlapp/services/settings-service.js"></script>
 <script src="wordxmlapp/services/transformation-service.js"></script>
+<script src="wordxmlapp/services/users-service.js"></script>
 <script src="wordxmlapp/controllers/dashboard-controller.js"></script>
+<script src="wordxmlapp/controllers/document-controller.js"></script>
 <script src="wordxmlapp/controllers/downloads-controller.js"></script>
 <script src="wordxmlapp/controllers/transformations-controller.js"></script>
 <script src="wordxmlapp/controllers/settings-controller.js"></script>
 <script src="wordxmlapp/controllers/fileupload-controller.js"></script>
 <script src="wordxmlapp/controllers/users-controller.js"></script>
+<script src="wordxmlapp/controllers/preview-controller.js"></script>
+<script src="wordxmlapp/controllers/viewxml-controller.js"></script>
 <script src="public/js/login.js"></script>
+<script src="public/js/common.js"></script>
+
 
 </body>
 </html>

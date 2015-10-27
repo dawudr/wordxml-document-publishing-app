@@ -122,8 +122,24 @@ wordxmlTransformationsApp.controller('TransformationsCtrl', function ($scope, $f
 
     // callback for ng-click 'deleteTransformation':
     $scope.deleteTransformation = function (id) {
-        TransformationFactory.delete({ id: id });
-        $scope.transformations = TransformationsFactory.query();
+
+        swal({
+                title: "Confirm Delete",
+                text: "Are you sure you want transformation record Id: " + id + ") ?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                closeOnConfirm: false },
+            function(){
+
+                TransformationFactory.delete({ id: id });
+                swal("Deleted!", "Transformation has been deleted.", "success");
+
+                $scope.transformations = TransformationsFactory.query();
+            }
+        )
+
         $location.path('#/downloads');
     };
 

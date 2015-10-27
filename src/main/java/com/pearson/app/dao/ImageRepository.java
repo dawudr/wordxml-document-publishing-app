@@ -49,7 +49,7 @@ public class ImageRepository implements ImageDAOInterface {
     }
 
     public void delete(Image image) {
-        LOGGER.debug("Deleting image {}", image.getName());
+        LOGGER.debug("Deleting Word Document filename[{}] Actual Document filename [{}]", image.getName(), image.getNewFilename());
         em.remove(em.contains(image) ? image : em.merge(image));
     }
     

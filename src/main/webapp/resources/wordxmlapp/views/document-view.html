@@ -14,256 +14,250 @@
         </ol>
     </div>
 </div>
-<div class="row">
-<div class="col-lg-9">
-<div class="wrapper wrapper-content animated fadeInUp">
-<div class="ibox">
-<div class="ibox-content">
-<div class="row">
-    <div class="col-lg-12">
-        <div class="m-b-md">
-            <a href="" class="btn btn-white btn-xs pull-right">Edit project</a>
-
-            <h2>Transformation Results</h2>
-        </div>
-        <dl class="dl-horizontal">
-            <dt>Transform Status:</dt>
-            <dd>
-             <span ng-class="{
-                    'TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS' : 'label label-primary',
-                   'TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS' : 'label label-primary',
-                   'TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS' : 'label label-primary',
-                   'TRANSFORM_STATUS_SUCCESS' : 'label label-primary',
-                   'TRANSFORM_STATUS_SUCCESS2' : 'label label-primary',
-                   'TRANSFORM_STATUS_FAIL' : 'label label-danger',
-                   'TRANSFORM_STATUS_FAIL_VALIDATE_WORD' : 'label label-danger',
-                   'TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML' : 'label label-danger',
-                   'TRANSFORM_STATUS_FAIL_TRANSFORM' : 'label label-danger',
-                   'TRANSFORM_STATUS_FAIL_TRANSFORM_XML_TO_IQSXML_XSLT' : 'label label-danger',
-                   'TRANSFORM_STATUS_XML_TO_IQSXML_XQUERY' : 'label label-danger',
-                   'TRANSFORM_STATUS_FAIL_IQS_VALIDATION' : 'label label-danger',
-                   'TRANSFORM_STATUS_FAIL_FILE_WRITE' : 'label label-danger'
-               }[transformation.transformStatus]">{{transformation.transformStatus | transformStatus}}
-            </span>
-            </dd>
-            <dt>Messages:</dt>
-            <dd> {{transformation.message}}</dd>
-        </dl>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <dl class="dl-horizontal">
-            <dt>Document Status:</dt>
-            <dd><span class="label label-default">{{transformation.generalStatus | generalStatus}}</span></dd>
-            <dt>Created by:</dt>
-            <dd><strong> {{transformation.user.username}} </strong> - {{transformation.user.firstname}} {{transformation.user.lastname}}</dd>
-            <dt>Created:</dt>
-            <dd> {{transformation.date}}</dd>
-            <dt>Last Updated:</dt>
-            <dd> {{transformation.lastmodified}}</dd>
-            <dt>Template name:</dt>
-            <dd><a href="" class="text-navy"> {{transformation.template}}</a></dd>
-            <dt>Qan No:</dt>
-            <dd> {{transformation.qanNo}}</dd>
-            <dt>Unit number:</dt>
-            <dd> {{transformation.unitNo}}</dd>
-            <dt>Unit Title:</dt>
-            <dd> {{transformation.unitTitle}}</dd>
-            <dt>Author:</dt>
-            <dd> {{transformation.author}} </dd>
-        </dl>
-    </div>
-</div>
-
 
 <div class="row">
-    <div class="col-lg-12">
-        <dl class="dl-horizontal">
-            <dt>Project files:</dt>
-            <dd>
-                <ul class="list-unstyled project-files">
-                    <li><a target="_self" href="/processtransform/view/{{transformation.wordfilename}}" class="text-navy"><i class="fa fa-file-word-o"></i> {{transformation.wordfilename}}</a></li>
-                    <li><a target="_self" href="/tranformation/xml/{{transformation.id}}/download" class="text-navy"><i class="fa fa fa-file-code-o"></i>{{transformation.openxmlfilename}}</a></li>
-                    <li><a target="_self" href="/tranformation/pqs/{{transformation.id}}/download" class="text-navy"><i class="fa fa fa-file-text-o"></i>{{transformation.iqsxmlfilename}}</a></li>
-                </ul>
-            </dd>
-        </dl>
-    </div>
-</div>
-
-<div class="row m-t-sm">
 <div class="col-lg-12">
-<div class="panel blank-panel ui-tab">
+<div class="wrapper wrapper-content animated fadeInUp">
 
-<h4>Project History</h4>
-<tabset>
-    <tab heading="Last activity">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Status</th>
-                <th>Date</th>
-                <th>Transform result</th>
-                <th>Comments</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <i alt="{{transformation.generalStatus}}"
-                       class="fa fa-2x" ng-class="{
+
+    <div class="row" data-ng-hide="transformation.id==null">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Document Detail File: {{transformation.wordfilename}}</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="row m-t-sm">
+                        <div class="col-lg-12">
+                            <div class="panel blank-panel ui-tab">
+                                <tabset>
+                                    <tab heading="Details">
+                                        <form name="templateForm" novalidate>
+                                            <div class="well">
+                                                <div class="row">
+                                                    <div class="col-sm-6 b-r">
+                                                        <div class="form-group">
+                                                            <label>UAN No:</label>
+                                                            <input type="text" ng-model="transformation.qanNo" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Unit number:</label>
+                                                            <input type="text" ng-model="transformation.unitNo" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Unit Title:</label>
+                                                            <input type="text" ng-model="transformation.unitTitle" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Author:</label>
+                                                            <input type="text" ng-model="transformation.author" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Unit Template Type:</label>
+                                                            <!--<input type="text" disabled ng-model="transformation.templateId" class="form-control">-->
+                                                            <select name="selectedRole"
+                                                                    class="form-control"
+                                                                    ng-model="transformation.templateId"
+                                                                    ng-disabled="editbutton"
+                                                                    ng-init="editbutton=true">
+                                                                <option ng-repeat="template in templates"
+                                                                        value="{{template.id}}"
+                                                                        ng-selected="template.id==transformation.templateId">{{template.templateName}}</option>
+                                                            </select>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="col-sm-6">
+
+                                                        <div class="form-group">
+                                                            <label>Created:</label>
+                                                            <span class="label label-default"> {{transformation.lastmodified}} </span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Created by:</label>
+                                                            <span class="label label-default"> {{transformation.user.username}}</span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Transformation Status:</label>
+                                     <span ng-class="{
+                                            'TRANSFORM_STATUS_FILE_UPLOAD_IN_PROGRESS' : 'label label-primary',
+                                           'TRANSFORM_STATUS_EXTRACTION_IN_PROGRESS' : 'label label-primary',
+                                           'TRANSFORM_STATUS_TRANSFORM_IN_PROGRESS' : 'label label-primary',
+                                           'TRANSFORM_STATUS_SUCCESS' : 'label label-primary',
+                                           'TRANSFORM_STATUS_SUCCESS2' : 'label label-primary',
+                                           'TRANSFORM_STATUS_FAIL' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_VALIDATE_WORD' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_EXTRACT_WORD_TO_XML' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_TRANSFORM' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_TRANSFORM_XML_TO_IQSXML_XSLT' : 'label label-danger',
+                                           'TRANSFORM_STATUS_XML_TO_IQSXML_XQUERY' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_IQS_VALIDATION' : 'label label-danger',
+                                           'TRANSFORM_STATUS_FAIL_FILE_WRITE' : 'label label-danger'
+                                       }[transformation.transformStatus]">{{transformation.transformStatus | transformStatus}}
+                                    </span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Transformation warnings:</label>
+                                                            <span class="label label-default">{{transformation.message}}</span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Open XML Filename:</label>
+                                                            <input type="text" ng-model="transformation.openxmlfilename" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>PQS XML Filename:</label>
+                                                            <input type="text" ng-model="transformation.iqsxmlfilename" class="form-control" ng-disabled="editbutton" required ng-init="editbutton=true">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Indesign XML Filename:</label>
+                                                            <input type="text" class="form-control" disabled="true" ng-disabled="editbutton" required ng-init="editbutton=true">
+                                                        </div>
+                                                        <div class="text-right">
+                                                            <div class="form-group">
+                                                                <!--<a href="/static/index.html#/userprofile/{{user.id}}" class="btn btn-white btn-sm"><i class="fa fa-user"></i> View profile </a>-->
+                                                                <a href="" class="btn btn-default btn-sm" ng-click="editbutton=!editbutton" ng-hide="editbutton">
+                                                                    <i class="glyphicon glyphicon-ban-circle"></i> Cancel
+                                                                </a>
+                                                                <a href="" class="btn btn-danger btn-sm" ng-click="deleteRecord(transformation)" ng-show="editbutton"><i class="fa fa-user-times"></i> Delete </a>
+                                                                <a href="" class="btn btn-primary btn-sm" ng-click="editbutton=!editbutton" ng-show="editbutton">
+                                                                    <i class="fa fa-pencil"></i> Edit
+                                                                </a>
+                                                                <a href="" class="btn btn-primary btn-sm" ng-click="updateRecord(transformation);editbutton=!editbutton" required ng-init="editbutton=true" ng-hide="editbutton">
+                                                                    <i class="fa fa-check"></i> Save
+                                                                </a>
+                                                                <!--                                                            <a href="#/document/{{transformation.id}}" class="btn btn-primary btn-sm" ng-show="editbutton">
+                                                                                                                                <span class="fa fa-desktop"></span> Preview
+                                                                                                                            </a>-->
+                                                                <button ng-controller="ViewXMLCtrl" type="button" class="btn btn-primary btn-sm" ng-click="showModal(transformation)"> <span class="fa fa-file-code-o"></span> View XML</button>
+
+                                                                <button ng-controller="PreviewCtrl" type="button" class="btn btn-primary btn-sm" ng-click="showModal(transformation)"> <span class="fa fa-desktop"></span> Preview</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </tab>
+                                    <tab heading="Downloads">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>Filename</th>
+                                                <th>Download</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="/download/{{transformation.imageId}}">
+                                                        <div class="file-name">
+                                                            {{transformation.wordfilename}}
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="/download/{{transformation.imageId}}">
+                                                        <div class="icon">
+                                                            <i class="fa fa-2x fa-file-word-o"></i>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <a href="/transformation/xml/{{transformation.id}}/download/">
+                                                        <div class="file-name">
+                                                            {{transformation.openxmlfilename}}
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="/transformation/xml/{{transformation.id}}/download/">
+                                                        <div class="icon">
+                                                            <i class="fa fa-2x fa-file-code-o"></i>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <a href="/transformation/pqs/{{transformation.id}}/download/">
+                                                        <div class="file-name">
+                                                            {{transformation.iqsxmlfilename}}
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="/transformation/pqs/{{transformation.id}}/download/">
+                                                        <div class="icon">
+                                                            <i class="fa fa-2x fa-file-text-o"></i>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </tab>
+
+                                    <tab heading="Last activity">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Status</th>
+                                                <th>Date</th>
+                                                <th>Transform result</th>
+                                                <th>Comments</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <i alt="{{transformation.generalStatus}}"
+                                                       class="fa fa-2x" ng-class="{
                    'GENERAL_STATUS_UNREAD' : 'fa-envelope',
                    'GENERAL_STATUS_READ' : 'fa-envelope-o',
                    'GENERAL_STATUS_MODIFIED' : 'fa-pencil-square-o',
                    'GENERAL_STATUS_DELETED' : 'fa-trash-o'
                    }[transformation.generalStatus]">
-                    </i>
-                    <br/>
-                    <!--http://stackoverflow.com/questions/24200729/ng-if-not-equal-to-->
-                     <small ng-cloak> {{transformation.generalStatus | generalStatus}} </small>
-                </td>
-                <td>
-                    {{transformation.date}}
-                </td>
-                <td>
-                    {{transformation.transformStatus | transformStatus}}
-                </td>
-                <td>
-                    <p class="small">
-                        {{transformation.message}}
-                    </p>
-                </td>
-
-            </tr>
-
-            </tbody>
-        </table>
-    </tab>
-
-</tabset>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-</div>
-</div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Word XML View - Edit and Save</h5>
-                    <button id="edit" class="btn btn-primary btn-xs m-l-sm" onclick="edit()" type="button">Edit</button>
-                    <button id="save" class="btn btn-primary  btn-xs" onclick="save()" type="button">Save</button>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        </a>
-
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="ibox-content no-padding">
-
-
-                    <div class="panel-group" id="accordion">
-                        <div class="panel panel-default">
-                            <div class="panel panel-danger">
-                                <div class="panel-heading">
-                                    <span class="panel-title" >
-                                          Title
-                                    </span>
-                                </div>
-
-                                <div id="collapseMeta" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-
-                                        <form class="form-inline" role="form">
-                                            <div class="form-group">
-
-                                                <div class="row">
-
-                                                    Unit Title
-                                                    number | level | type | guided_learning_hours | assessment_type
-
-                                                </div>
-
-                                            </div>
-                                        </form>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="panel-body">
-
+                                                    </i>
+                                                    <br/>
+                                                    <!--http://stackoverflow.com/questions/24200729/ng-if-not-equal-to-->
+                                                    <small ng-cloak> {{transformation.generalStatus | generalStatus}} </small>
+                                                </td>
+                                                <td>
+                                                    {{transformation.lastmodified}}
+                                                </td>
+                                                <td>
+                                                    {{transformation.transformStatus | transformStatus}}
+                                                </td>
+                                                <td>
+                                                    <p class="small">
+                                                        {{transformation.message}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </tab>
+                                </tabset>
 
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-                <div class="row" ng-repeat="section in specunit.section">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                {{section.data('title')}}
-                            </div>
-                            <div class="panel-body">
-
-                                <div class="click2edit wrapper p-md">
-                                    {{section.table}}
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
                 </div>
             </div>
         </div>
     </div>
 
-</div>
-</div>
 
 </div>
+</div>
 
-<!-- SUMMERNOTE -->
-<script src="js/plugins/summernote/summernote.min.js"></script>
-
-<script>
-    $(document).ready(function(){
-
-        $('.summernote').summernote();
-
-    });
-    var edit = function() {
-        $('.click2edit').summernote({focus: true});
-    };
-    var save = function() {
-        var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
-        $('.click2edit').destroy();
-    };
-</script>
+</div>

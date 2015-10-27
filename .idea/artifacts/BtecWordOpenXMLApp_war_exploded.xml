@@ -4,7 +4,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="BtecWordOpenXMLApp" />
+          <element id="module-output" name="wordxml" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.1.3.RELEASE" />
@@ -100,7 +100,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="D:\WorkspacePearsonBtecSpecs\BtecWordOpenXMLApp\target/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="BtecWordOpenXMLApp/web/Web" />
+      <element id="javaee-facet-resources" facet="wordxml/web/Web" />
     </root>
   </artifact>
 </component>

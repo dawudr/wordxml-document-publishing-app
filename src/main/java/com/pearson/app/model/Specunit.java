@@ -83,7 +83,7 @@ public class Specunit extends AbstractEntity {
     public String toString() {
         return "SpecUnit{" +
                 "qanNo='" + qanNo + '\'' +
-                ", unitXML='" + truncate(unitXML,50) + '\'' +
+                //", unitXML='" + truncate(unitXML,50) + '\'' +
                 '}';
     }
 

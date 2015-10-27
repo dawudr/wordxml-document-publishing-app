@@ -207,6 +207,27 @@ public class ParagraphUtils {
                         runSb.append(processDocumentRBlock(r));
                     }
                 }
+                /**
+                 * DR: TODO: Fix for cell which have RowSpan - get content from these cells
+                 */
+            } else if (pContentObject instanceof JAXBElement) {
+                LOGGER.debug("CTSdtContentRun - found content within Rowspan");
+
+                if(((JAXBElement) pContentObject).getValue() instanceof SdtRun) {
+                    SdtRun sdtRun = (SdtRun)((JAXBElement) pContentObject).getValue();
+                    runSb.append(DocumentUtilHelper.findTextFromSdtBoth(sdtRun));
+
+/*                    if(sdtRun.getSdtContent() instanceof CTSdtContentRun) {
+                        CTSdtContentRun ctSdtContentRun = (CTSdtContentRun) sdtRun.getSdtContent();
+                        List<Object> ctSdtContentRunList = ctSdtContentRun.getContent();
+                        for(Object ctSdtContentRunObject : ctSdtContentRunList) {
+                            if (ctSdtContentRunObject instanceof R) {
+                                R r = (R) ctSdtContentRunObject;
+                                runSb.append(processDocumentRBlock(r));
+                            }
+                        }
+                    }*/
+                }
             }
         }
         //System.out.println("P=" + runSb.toString());

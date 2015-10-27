@@ -8,7 +8,7 @@ package com.pearson.app.dto;
 public class NewUserDTO {
 
     private String username;
-    private String plainTextPassword;
+    private String password;
     private String email;
     private String firstname;
     private String lastname;
@@ -33,12 +33,12 @@ public class NewUserDTO {
         this.email = email;
     }
 
-    public String getPlainTextPassword() {
-        return plainTextPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPlainTextPassword(String plainTextPassword) {
-        this.plainTextPassword = plainTextPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstname() {

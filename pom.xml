@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.pearson.btec</groupId>
-    <artifactId>BtecWordOpenXMLApp</artifactId>
+    <artifactId>wordxml</artifactId>
 
     <version>1.0-SNAPSHOT</version>
     <name>Btec Word OpenXML App</name>
@@ -51,6 +51,8 @@
             <artifactId>jaxb-api</artifactId>
             <version>2.1</version>
         </dependency>
+
+        <!-- Spring MVC support -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -125,7 +127,6 @@
             <version>${org.slf4j-version}</version>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -379,7 +380,7 @@
     </dependencies>
 
     <build>
-        <finalName>btecopenxmlapp</finalName>
+        <finalName>ROOT</finalName>
         <plugins>
         <plugin>
             <artifactId>maven-compiler-plugin</artifactId>
@@ -395,26 +396,6 @@
                 <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
             </configuration>
         </plugin>
-
-            <!-- CloudFoundry -->
-<!--        <plugin>
-            <groupId>org.cloudfoundry</groupId>
-            <artifactId>cf-maven-plugin</artifactId>
-            <version>1.0.4</version>
-            <configuration>
-                <target>http://api.run.pivotal.io</target>
-                <org>BtecWordOpenXMLApp</org>
-                <space>development</space>
-                <appname>btecopenxmlapp</appname>
-                <url>btecopenxmlapp.cfapps.io</url>
-                <instances>1</instances>
-                <server>
-                    <id>dawudr</id>
-                    <username>dawudr@email.com</username>
-                    <password>pass4me</password>
-                </server>
-            </configuration>
-        </plugin>-->
 
         </plugins>
     </build>

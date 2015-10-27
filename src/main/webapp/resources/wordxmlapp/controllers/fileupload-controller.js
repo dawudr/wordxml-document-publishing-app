@@ -1,6 +1,6 @@
-var wordxmlFileUploadApp = angular.module('wordxmlApp.fileupload.controller', ['ngResource','wordxmlApp.fileupload.service', 'wordxmlApp.transformation.service']);
+var wordxmlFileUploadApp = angular.module('wordxmlApp.fileupload.controller', ['ngResource', 'wordxmlApp.fileupload.service', 'wordxmlApp.transformation.service']);
 
-wordxmlFileUploadApp.controller('FileUploadCtrl', function($scope,  $rootScope, $http, $filter, $window, TemplatesFactory, TemplateFactory, FileUploadsFactory, TransformationsFactory) {
+wordxmlFileUploadApp.controller('FileUploadCtrl', function($scope, $rootScope, $http, $filter, $window, $q, TemplatesFactory, TemplateFactory, FileUploadsFactory, FileUploadFactory, TransformationsFactory) {
 
     // Initialise Files page
 
@@ -9,40 +9,69 @@ wordxmlFileUploadApp.controller('FileUploadCtrl', function($scope,  $rootScope, 
      */
     var url = '/upload';
     $scope.myTransforms = [];
+    $scope.defaultTemplate = {};
+    $scope.vm = {
+        appLoaded: false
+    };
 
     $scope.options = {
         url: url,
         maxFileSize: 5000000,
-        acceptFileTypes: /(\.|\/)(docx|doc|rtf)$/i
+        acceptFileTypes: /(\.|\/)(docx|doc|rtf)$/i,
+        singleFileUploads: true,
+        limitMultiFileUploads: 1
     };
     $scope.loadingFiles = true;
+
+    $scope.log = [
+    ];
+
 
     // Retrieve list of files uploaded
     FileUploadsFactory.query().$promise.then(
         function (data) {
-            $scope.loadingFiles = false;
-            $scope.queue = data.files || [];
-            $scope.updateTransformsList();
+            if($scope.loadingFiles) {
+                $scope.loadingFiles = false;
+                console.log('In FileUploadsFactory Reload.....');
+                $scope.queue = data.files || [];
+                console.log($scope.queue);
+            }
+            $scope.vm.appLoaded = true;
+            console.log('In FileUploadsFactory.query()');
         },
         function () {
             $scope.loadingFiles = false;
+            $scope.vm.appLoaded = true;
         }
     );
 
-    // Update Transform list by copying files list to transforms
-    $scope.updateTransformsList = function() {
+    // Upload button task to fill in Tranform form
+    $scope.prePopulateUploadForm = function() {
+        console.log('In prePopulateUploadForm');
+        console.log($scope.queue);
         $scope.myTransforms = [];
-        angular.forEach($scope.queue, function(value, key) {
+        angular.forEach($scope.queue, function(queue) {
             // New Image files will be uploaded with lastModified date being null
-            if(value.lastUpdated == null) {
-                $scope.myTransforms.push({
-                    file: value,
-                    openxmlfilename: replaceSpaces(value.name) + '.xml',
-                    iqsxmlfilename: replaceSpaces(value.name) + '-pqs.xml'
-                });
-            }
+            queue.qanNo = '';
+            queue.openxmlfilename = replaceSpaces(queue.name) + '.xml';
+            queue.iqsxmlfilename = replaceSpaces(queue.name) + '-pqs.xml';
+            queue.template = '';
+            queue.deleteUrl = '/delete/' + queue.id;
+            queue.url = '/download/' + queue.id;
+            queue.transforming = false;
         });
     }
+
+    $scope.prePopulateUploadFormTemplate = function() {
+        console.log('In prePopulateUploadFormTemplate');
+        console.log($scope.defaultTemplate);
+        console.log($scope.queue);
+        $scope.myTransforms = [];
+        angular.forEach($scope.queue, function(queue) {
+            queue.template = $scope.defaultTemplate;
+        });
+    }
+
 
     function replaceSpaces(str) {
         return str.slice(0, str.lastIndexOf('.')).replace(/([^a-z0-9]+)/gi, '_');
@@ -65,12 +94,81 @@ wordxmlFileUploadApp.controller('FileUploadCtrl', function($scope,  $rootScope, 
         $scope.refresh();
     });
 
+    // callback for ng-click 'delete' for CANCEL button: Cancel Pending upload files or delete uploaded files
+    $scope.delete = function() {
+        angular.forEach($scope.queue, function(file) {
+            console.log('Calling delete...')
 
-    // callback for ng-click 'createTransformation':
+            if (file instanceof File){
+                console.log('Removing non persisted file upload object from Queue List...')
+                $scope.queue.splice(0,1)
+            } else if(angular.isObject(file)) {
+                console.log('Removing Persisted file object from Queue List...')
+                // Delete files already uploaded
+                FileUploadFactory.delete({ id: file.id }).$promise.then(
+                    function () {
+                        // Broadcast the event to display a delete message.
+                        console.log('Splicing...')
+                        console.log($scope.queue)
+                        $scope.queue.splice(0,1)
+                        $rootScope.$broadcast('recordDeleted');
+                    },
+                    function () {
+                        // Broadcast the event for a server error.
+                        $rootScope.$broadcast('error');
+                    }
+                );
+            }
+        })
+    }
+
+    $scope.hasFilesPendingTransform = function () {
+        for (var i = 0, len = $scope.queue.length; i < len; i++) {
+            var file = $scope.queue[i]
+            if(angular.isObject(file) && !(file instanceof File)) {
+                //console.log('Found pending transform file...')
+                //console.log(file)
+                return true
+                break;
+            }
+        }
+        return false;
+    }
+
+    // callback for ng-click 'createTransformations' for Transform ALL button:
+    $scope.createTransformations = function (queue) {
+        console.log('Calling service- createTransformations');
+        $scope.log.length = 0;
+        console.log($scope.log);
+
+        function next() {
+            // process the first item on the queue and remove it so queue list becomes empty
+            if (queue.length > 0) {
+                console.log('Running createTransformation for:');
+                console.log(queue[0]);
+                $scope.queue[0].transforming = true;
+                $scope.createTransformation(queue[0]).then( function (){
+                        next();
+                    }
+                );
+            }
+        }
+        next();
+
+    };
+
+
+    // Transform button task to post Transform form data
+    // callback for ng-click 'createTransformation' for the Transform button:
     $scope.createTransformation = function (item) {
         console.log('Calling service- createTransformation');
+        // get index of file record to remove
+        var index = $scope.queue.indexOf(item);
+
         //console.log(item);
-        $scope.myTransformation =  {
+        //-$scope.vm.appLoaded = false;
+        $scope.queue[index].transforming = true;
+        $scope.myTransformation = {
             //"id":1,
 /*            "user": {
                 "id":2,
@@ -83,7 +181,7 @@ wordxmlFileUploadApp.controller('FileUploadCtrl', function($scope,  $rootScope, 
             },*/
             "date": item.date,
             "qanNo": item.qanNo,
-            "wordfilename": item.file.name,
+            "wordfilename": item.name,
             "openxmlfilename": item.openxmlfilename,
             "iqsxmlfilename": item.iqsxmlfilename,
             //"unitNo":"44",
@@ -96,52 +194,36 @@ wordxmlFileUploadApp.controller('FileUploadCtrl', function($scope,  $rootScope, 
             //"message":"No errors were found",
             //"generalStatus":"GENERAL_STATUS_UNREAD",
             //"specunit":1,
-            "imageId": item.file.id
+            "imageId": item.id,
+            "transforming" : false
         }
         console.log($scope.myTransformation);
 
+        var deferred = $q.defer();
         TransformationsFactory.create($scope.myTransformation).$promise.then(
             function () {
-                // Broadcast the event to refresh the grid.
-                //$rootScope.$broadcast('refreshGrid');
                 // Broadcast the event to display a save message.
                 $rootScope.$broadcast('recordCreated');
+                //- $scope.vm.appLoaded = true;
+                // remove file from queue list so the page updates
+                deferred.resolve()
+                $scope.queue.splice(index, 1);
             },
             function () {
                 // Broadcast the event for a server error.
                 $rootScope.$broadcast('error');
+                //- $scope.vm.appLoaded = true;
+                $scope.queue[index].transforming = false;
+                $scope.queue[index].error = true;
+                deferred.reject(error);
             }
-        );
-        // Broadcast an event when an element in the grid is deleted. No real deletion is perfomed at this point.
-        //$scope.updateTemplate($scope.myTemplate);
-        //$rootScope.$broadcast('recordDeleted');
+        )
+        return deferred.promise;
     };
-
-
-/*
-    $http.get(url)
-        .then(
-        function (response) {
-            $scope.loadingFiles = false;
-            $scope.queue = response.data.files || [];
-            //console.log($scope.queue);
-        },
-        function () {
-            $scope.loadingFiles = false;
-        }
-    );
-*/
-
-        // Watch the sortInfo variable. If changes are detected than we need to refresh the grid.
-        // This also works for the first page access, since we assign the initial sorting in the initialize section.
-/*        $scope.$watch('queue', function () {
-            console.log('Watching');
-            $scope.updateTransformsList();
-        }, true);*/
     })
     .controller('FileDestroyController', [
-        '$scope', '$http',
-        function ($scope, $http) {
+        '$scope', '$http', '$rootScope',
+        function ($scope, $http, $rootScope) {
             var file = $scope.file,
                 state;
             if (file.url) {
@@ -150,6 +232,8 @@ wordxmlFileUploadApp.controller('FileUploadCtrl', function($scope,  $rootScope, 
                 };
                 file.$destroy = function () {
                     state = 'pending';
+                    console.log('Deleting file...')
+                    console.log(file)
                     return $http({
                         url: file.deleteUrl,
                         method: file.deleteType
@@ -165,10 +249,13 @@ wordxmlFileUploadApp.controller('FileUploadCtrl', function($scope,  $rootScope, 
                 };
             } else if (!file.$cancel && !file._index) {
                 file.$cancel = function () {
+                    console.log('Cancelling uploads...')
                     $scope.clear(file);
                 };
             }
+            $scope.prePopulateUploadForm($scope.queue);
         }
+
     ]);
 
 
@@ -183,7 +270,7 @@ wordxmlFileUploadApp.controller('alertMessagesFileUploadController', function ($
     // Picks up the event to display a saved message.
     $scope.$on('recordCreated', function () {
         $scope.alerts = [
-            { type: 'success', msg: 'Transformation validated successfully! Review Updates in Dashboard' }
+            { type: 'success', msg: 'Document transformed successfully! Please click on Dashboard or Downloads to view XML document' }
         ];
     });
     // Picks up the event to display a deleted message.
@@ -201,9 +288,24 @@ wordxmlFileUploadApp.controller('alertMessagesFileUploadController', function ($
     // Picks up the event to display a server error message.
     $scope.$on('error', function () {
         $scope.alerts = [
-            { type: 'danger', msg: 'There was a problem in the server!' }
+            { type: 'danger', msg: 'The document has errors and does not match the Template type. Please check the document and try again.' }
         ];
     });
+
+    $scope.$on('cancel', function () {
+        console.log('Upload cancelled');
+        $scope.alerts = [
+            { type: 'success', msg: 'Upload cancelled' }
+        ];
+    });
+
+    $scope.$on('fileuploaded', function () {
+        console.log('Fileuploaded ok!');
+        $scope.alerts = [
+            { type: 'success', msg: 'File upload success. Now check details and click on Transform' }
+        ];
+    });
+
 
     $scope.closeAlert = function (index) {
         $scope.alerts.splice(index, 1);

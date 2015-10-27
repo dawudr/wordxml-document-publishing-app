@@ -34,14 +34,16 @@ servicesDownload.factory('DataSource', ['$http',function($http){
     };
 }]);
 
-servicesDownload.factory('PreviewXMLFactory', ['$http',function($http){
-    console.log('Calling PreviewXMLFactory- query');
-    var obj = {};
-    obj.fetchXML = function() {
-        return $http.get('/transformation/xml/3');
-    }
-    return obj;
-}]);
+servicesDownload.factory('PreviewXMLFactory', function ($resource) {
+    console.log('Calling PreviewXMLFactory-  show, update, delete');
+    return $resource('/transformation/xml/:id', {}, {
+        show: { method: 'GET', headers:{
+            'Content-Type':'application/xml; charset=UTF-8'
+        } },
+        update: { method: 'PUT', params: {id: '@id'} },
+        delete: { method: 'DELETE', params: {id: '@id'} }
+    })
+});
 
 servicesDownload.factory('PreviewJSONFactory', function ($resource) {
     console.log('Calling PreviewJSONFactory- show, update, delete');

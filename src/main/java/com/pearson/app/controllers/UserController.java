@@ -42,14 +42,14 @@ public class UserController {
 
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.POST, value = "/user")
+    @RequestMapping(method = RequestMethod.POST, value = "/users")
     public void addUser(@RequestBody NewUserDTO newUserDTO) {
         User user = new User(
                 newUserDTO.getUsername(),
-                newUserDTO.getPlainTextPassword(),
-                newUserDTO.getEmail(),
+                newUserDTO.getPassword(),
                 newUserDTO.getFirstname(),
                 newUserDTO.getLastname(),
+                newUserDTO.getEmail(),
                 newUserDTO.getRole());
         userService.addUser(user);
         LOGGER.debug("Add new user[{}]", user.toString());
@@ -57,13 +57,15 @@ public class UserController {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET, value= "/user/list")
+    @RequestMapping(method = RequestMethod.GET, value= "/users")
     //public UserInfosDTO listUsers() {
-    public List<UserInfoDTO> listUsers() {
+//    public List<UserInfoDTO> listUsers() {
+    public List<User> listUsers() {
         List<User> users = userService.listUsers();
         LOGGER.debug("Found {} Users", users.size());
         //return new UserInfosDTO(UserInfoDTO.mapFromUsersEntities(users));
-        return UserInfoDTO.mapFromUsersEntities(users);
+//        return UserInfoDTO.mapFromUsersEntities(users);
+        return users;
     }
 
     @ResponseBody
@@ -83,24 +85,27 @@ public class UserController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET, value = "/user/username/{username}")
-    public UserInfoDTO getUserByUsername(Principal principal) {
+    //public UserInfoDTO getUserByUsername(Principal principal) {
+    public User getUserByUsername(Principal principal) {
         User user = userService.getUserByUsername(principal.getName());
         LOGGER.debug("Found User username[{}] -> User[{}]", principal.getName(), user.toString());
-        return user != null ? new UserInfoDTO(user) : null;
+        //return user != null ? new UserInfoDTO(user) : null;
+        return user;
     }
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.POST, value = "/user/update")
+    @RequestMapping(method = RequestMethod.PUT, value = "/user/{id}")
     public void updateUser(@RequestBody UserInfoDTO userInfoDTO) {
+        LOGGER.debug("PUT UserInfoDTO[{}]", userInfoDTO.toString());
+        User user = userService.getUserById(userInfoDTO.getId());
+        user.setUsername(userInfoDTO.getUsername());
+        user.setFirstname(userInfoDTO.getFirstname());
+        user.setLastname(userInfoDTO.getLastname());
+        user.setEmail(userInfoDTO.getEmail());
+        user.setRole(userInfoDTO.getRole());
+        user.setPasswordDigest(userInfoDTO.getPasswordDigest());
 
-        User user = new User(
-                userInfoDTO.getUsername(),
-                userInfoDTO.getPassword(),
-                userInfoDTO.getFirstname(),
-                userInfoDTO.getLastname(),
-                userInfoDTO.getEmail(),
-                userInfoDTO.getRole());
         userService.updateUser(user);
         LOGGER.debug("Update User[{}]", user.toString());
 
@@ -108,8 +113,8 @@ public class UserController {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.DELETE, value = "/user/remove/{id}")
-    public void removeUser(@PathVariable Long id) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/user/{id}")
+    public void removeUser(@PathVariable int id) {
         userService.removeUser(id);
         LOGGER.debug("Remove User Id[{}]", id);
     }

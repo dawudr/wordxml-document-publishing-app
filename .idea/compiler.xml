@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="BtecWordOpenXMLApp" />
+        <module name="wordxml" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="BtecWordOpenXMLApp" target="1.8" />
+      <module name="wordxml" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

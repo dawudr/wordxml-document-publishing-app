@@ -250,7 +250,15 @@ public class ProcessTransformController {
         imageFile.delete();
         //File thumbnailFile = new File(fileUploadDirectory+"/"+image.getThumbnailFilename());
         //thumbnailFile.delete();
-        imageService.removeImage(image);
+
+        try {
+            imageService.removeImage(image);
+            // Then delete the Transformation record
+            LOGGER.debug("Deleted Image [{}]", image);
+        } catch (Exception e) {
+            LOGGER.error("Error deleting Image[{}] Technical error message:[{}]", image, e.getMessage());
+        }
+
         List<Map<String, Object>> results = new ArrayList<>();
         Map<String, Object> success = new HashMap<>();
         success.put("success", true);

@@ -38,8 +38,8 @@ public class UserService {
         assertMinimumLength(user.getUsername(), 6, "Username must have at least 6 characters.");
         assertNotBlank(user.getEmail(), "Email cannot be empty.");
         assertMatches(user.getEmail(), EMAIL_REGEX, "Invalid email.");
-        assertNotBlank(user.getPasswordDigest(), "Password cannot be empty.");
-        assertMatches(user.getPasswordDigest(), PASSWORD_REGEX, "Password must have at least 6 characters, with 1 numeric and 1 uppercase character.");
+        //assertNotBlank(user.getPasswordDigest(), "Password cannot be empty.");
+        //assertMatches(user.getPasswordDigest(), PASSWORD_REGEX, "Password must have at least 6 characters, with 1 numeric and 1 uppercase character.");
         assertNotBlank(user.getFirstname(), "firstname cannot be empty.");
         assertNotBlank(user.getLastname(), "lastname cannot be empty.");
 
@@ -51,7 +51,7 @@ public class UserService {
 
         // default to Role to Viewer permission if not selected
         if(user.getRole() != null && user.getRole().isEmpty()) {
-            user.setRole(User.ROLE_UNASSIGNED);
+            user.setRole(User.INACTIVE);
         }
 
         //User user = new User(username, new BCryptPasswordEncoder().encode(password), email, firstname, lastname, role);
@@ -72,7 +72,7 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public User getUserById(Integer id) {
+    public User getUserById(int id) {
         User user = userRepository.getUserById(id);
         LOGGER.debug("Found User By Id[{}] - User[{}]", id, user);
         return user;
@@ -92,14 +92,8 @@ public class UserService {
     }
 
     @Transactional
-    public void removeUser(Long id) {
+    public void removeUser(int id) {
         userRepository.removeUser(id);
         LOGGER.debug("Removed User id[{}]", id);
     }
-
-
-
-
-
-
 }

@@ -37,6 +37,8 @@ public class TransformationService {
     TemplateRepository templateRepository;
     @Autowired
     ImageRepository imageRepository;
+    @Autowired
+    ImageService imageService;
 
 /*    @Autowired
     User user;*/
@@ -152,17 +154,27 @@ public class TransformationService {
         // Delete the Image file
         Transformation deleteTransformation = transformationRepository.getTransformationById(id);
         if(deleteTransformation != null && deleteTransformation.getImage_id() > 0) {
+            // Get image record from database
             Image deleteImage = imageRepository.get(deleteTransformation.getImage_id());
             LOGGER.debug("Found Image id[{}] -> Image[{}]", deleteTransformation.getImage_id(), deleteImage);
             if(deleteImage != null && deleteImage.getId() > 0) {
-                imageRepository.delete(deleteImage);
+                try {
+                    imageService.removeImage(deleteImage);
+                    // Then delete the Transformation record
+                    transformationRepository.removeTransformation(id);
+                    LOGGER.debug("Deleted Image [{}] and Transformation id[{}]", deleteImage, id);
+                } catch (Exception e) {
+                    LOGGER.error("Error deleting Transformation id[{}] Technical error message:[{}]", deleteTransformation.getImage_id(), e.getMessage());
+                }
+
+                //imageRepository.delete(deleteImage);
                 LOGGER.debug("Deleted Image id[{}]", deleteTransformation.getImage_id());
+            } else {
+                // Then delete the Transformation record
+                transformationRepository.removeTransformation(id);
+                LOGGER.debug("Deleted Transformation id[{}]", id);
             }
         }
-
-        // Then delete the Transformation record
-        transformationRepository.removeTransformation(id);
-        LOGGER.debug("Deleted Transformation id[{}]", id);
     }
 
     @Transactional

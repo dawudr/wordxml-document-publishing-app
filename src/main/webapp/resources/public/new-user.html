@@ -10,7 +10,6 @@
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../fonts/font-awesome.css" rel="stylesheet">
-
     <link href="../css/animate.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 
@@ -25,7 +24,7 @@
                 <strong>Please wait loading ...</strong>
             </div>
             <div class="panel-body text-center">
-                <img class="please-wait-spinner" src="/img/loading.gif">
+                <img class="please-wait-spinner" src="../img/loading.gif">
             </div>
         </div>
     </div>
@@ -49,92 +48,161 @@
                                 <h3>Extraction and Transformation Tool</h3>
 
                                 <tt-error-messages extra-styles="access-screen"></tt-error-messages>
+                                <div class="alert alert-success form-messages errors" ng-show="vm.errorMessages.length > 0" ng-cloak>
+                                    <img class="error-icon" src="../img/info-icon.png">
+
+                                    <div class="messages-group">
+                                        <div ng-repeat="error in vm.errorMessages">{{error.description}}</div>
+                                    </div>
+                                </div>
+
+
                                 <form ng-submit="createUser()" name="form" class="m-t" novalidate
                                       ng-controller="NewUserCtrl">
                                     <fieldset ng-show="!vm.success">
                                         <p>Please sign up to request access and wait for your account to be
                                             approved.</p>
 
-                                        <div class="form-group">
-                                            <input type="text" ng-focus="focus('firstname')" ng-blur="blur('firstname')"
-                                                   ng-model="vm.firstname"
-                                                   name="firstname" class="form-control" placeholder="Firstname"
-                                                   required ng-minlength="2">
+                                        <div class="form-group-sm">
+                                            <div class="control-group" ng-class="{true: 'error'}[submitted && form.firstname.$invalid]">
+                                                <label class="control-label pull-left" for="firstname">Firstname</label>
+                                                <div class="controls">
+                                                    <input type="text" ng-blur="blur('firstname')"
+                                                               ng-model="vm.firstname"
+                                                               name="firstname" class="form-control" placeholder="Firstname"
+                                                               required ng-minlength="2">
 
-                                            <div class="error-messages" ng-show="isMessagesVisible('firstname')"
-                                                 ng-messages="form.firstname.$error" ng-cloak>
-                                                <div ng-message="required">The firstname is mandatory</div>
-                                                <div ng-message="minlength">must have minimum 2 characters</div>
+                                                    <span class="help-inline" ng-show="submitted && form.firstname.$error.required">Required</span>
+                                                    <span class="help-inline" ng-show="submitted && form.firstname.$error.minlength">must have minimum 2 characters</span>
+
+<!--                                                    <div class="error-messages" ng-show="isMessagesVisible('firstname')"
+                                                         ng-messages="form.firstname.$error" ng-cloak>
+                                                        <div ng-message="required">The firstname is mandatory</div>
+                                                        <div ng-message="minlength">must have minimum 2 characters</div>
+                                                    </div>-->
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" ng-focus="focus('lastname')" ng-blur="blur('lastname')"
-                                                   ng-model="vm.lastname"
-                                                   name="lastname" class="form-control" placeholder="Lastname" required
-                                                   ng-minlength="2">
 
-                                            <div class="error-messages" ng-show="isMessagesVisible('lastname')"
-                                                 ng-messages="form.lastname.$error" ng-cloak>
-                                                <div ng-message="required">The lastname is mandatory</div>
-                                                <div ng-message="minlength">must have minimum 2 characters</div>
+                                        <div class="form-group-sm">
+                                            <div class="control-group" ng-class="{true: 'error'}[submitted && form.lastname.$invalid]">
+                                                <label class="control-label pull-left" for="lastname">Lastname</label>
+                                                <div class="controls">
+                                                    <input type="text" ng-blur="blur('lastname')"
+                                                           ng-model="vm.lastname"
+                                                           name="lastname" class="form-control" placeholder="Lastname" required
+                                                           ng-minlength="2">
+
+                                                    <span class="help-inline" ng-show="submitted && form.lastname.$error.required">Required</span>
+                                                    <span class="help-inline" ng-show="submitted && form.lastname.$error.minlength">must have minimum 2 characters</span>
+
+<!--                                                    <div class="error-messages" ng-show="isMessagesVisible('lastname')"
+                                                         ng-messages="form.lastname.$error" ng-cloak>
+                                                        <div ng-message="required">The lastname is mandatory</div>
+                                                        <div ng-message="minlength">must have minimum 2 characters</div>
+                                                    </div>-->
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" ng-focus="focus('username')" ng-blur="blur('username')"
-                                                   ng-model="vm.username"
-                                                   name="username" class="form-control" placeholder="Username" required
-                                                   ng-minlength="6">
 
-                                            <div class="error-messages" ng-show="isMessagesVisible('username')"
-                                                 ng-messages="form.username.$error" ng-cloak>
-                                                <div ng-message="required">The username is mandatory</div>
-                                                <div ng-message="minlength">must have minimum 6 characters</div>
+                                        <div class="form-group-sm">
+                                            <div class="control-group" ng-class="{true: 'error'}[submitted && form.username.$invalid]">
+                                                <label class="control-label pull-left" for="username">Username</label>
+                                                <div class="controls">
+
+                                                    <input type="text" ng-focus="focus('username')" ng-blur="blur('username')"
+                                                           ng-model="vm.username"
+                                                           name="username" class="form-control" placeholder="Username" required
+                                                           ng-minlength="6">
+
+                                                    <span class="help-inline" ng-show="submitted && form.username.$error.required">Required</span>
+                                                    <span class="help-inline" ng-show="submitted && form.username.$error.minlength">must have minimum 6 characters</span>
+
+<!--                                                    <div class="error-messages" ng-show="isMessagesVisible('username')"
+                                                         ng-messages="form.username.$error" ng-cloak>
+                                                        <div ng-message="required">The username is mandatory</div>
+                                                        <div ng-message="minlength">must have minimum 6 characters</div>
+                                                    </div>-->
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="email" ng-focus="focus('email')" ng-blur="blur('email')"
-                                                   ng-model="vm.email"
-                                                   name="email" class="form-control" placeholder="Email" required>
 
-                                            <div class="error-messages" ng-show="isMessagesVisible('email')"
+                                        <div class="form-group-sm">
+                                            <div class="control-group" ng-class="{true: 'error'}[submitted && form.email.$invalid]">
+                                                <label class="control-label pull-left" for="email">Your email address</label>
+                                                <div class="controls">
+                                                <input type="email" ng-blur="blur('email')"
+                                                       ng-model="vm.email"
+                                                       name="email" class="form-control" placeholder="Email" required>
+
+                                                <span class="help-inline" ng-show="submitted && form.email.$error.required">Required</span>
+                                                <span class="help-inline" ng-show="submitted && form.email.$error.email">Invalid email</span>
+                                                </div>
+                                            </div>
+
+<!--                                            <div class="error-messages" ng-show="isMessagesVisible('email')"
                                                  ng-messages="form.email.$error"
                                                  ng-cloak>
                                                 <div ng-message="required">The email is mandatory</div>
                                                 <div ng-message="email">must be a valid email</div>
+                                            </div>-->
+                                        </div>
+
+                                        <div class="form-group-sm">
+                                            <div class="control-group" ng-class="{true: 'error'}[submitted && form.password.$invalid]">
+                                                <label class="control-label pull-left" for="password">Password</label>
+                                                <div class="controls">
+
+                                                    <input type="password" ng-focus="focus('password')"
+                                                           ng-blur="blur('password')" ng-model="vm.password"
+                                                           name="password" class="form-control" placeholder="Password" required
+                                                           ng-minlength="6"
+                                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+
+                                                    <span class="help-inline" ng-show="submitted && form.password.$error.required">Required</span>
+                                                    <span class="help-inline" ng-show="submitted && form.password.$error.minlength">must have minimum 6 characters</span>
+                                                    <span class="help-inline" ng-show="submitted && form.password.$error.pattern">At least one number and uppercase</span>
+
+<!--                                                    <div class="error-messages" ng-show="isMessagesVisible('password')"
+                                                         ng-messages="form.password.$error" ng-cloak>
+                                                        <div ng-message="required">The password is mandatory</div>
+                                                        <div ng-message="minlength">must have minimum 6 characters</div>
+                                                        <div ng-message="pattern">At least one number and uppercase</div>
+                                                    </div>-->
+
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <input type="password" ng-focus="focus('password')"
-                                                   ng-blur="blur('password')" ng-model="vm.password"
-                                                   name="password" class="form-control" placeholder="Password" required
-                                                   ng-minlength="6"
-                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+                                        <div class="form-group-sm">
+                                            <div class="control-group" ng-class="{true: 'error'}[submitted && form.confirmPassword.$invalid]">
+                                                <label class="control-label pull-left" for="confirmPassword">Confirm Password</label>
+                                                <div class="controls">
 
-                                            <div class="error-messages" ng-show="isMessagesVisible('password')"
-                                                 ng-messages="form.password.$error" ng-cloak>
-                                                <div ng-message="required">The password is mandatory</div>
-                                                <div ng-message="minlength">must have minimum 6 characters</div>
-                                                <div ng-message="pattern">At least one number and uppercase</div>
+                                                    <input type="password" ng-focus="focus('confirmPassword')"
+                                                           ng-blur="blur('confirmPassword')"
+                                                           ng-model="vm.confirmPassword" name="confirmPassword"
+                                                           class="form-control"
+                                                           placeholder="Confirm Password" required ng-minlength="6"
+                                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" check-passwords-match>
+
+                                                    <span class="help-inline" ng-show="submitted && form.confirmPassword.$error.required">Required</span>
+                                                    <span class="help-inline" ng-show="submitted && form.confirmPassword.$error.minlength">must have minimum 6 characters</span>
+                                                    <span class="help-inline" ng-show="submitted && form.confirmPassword.$error.pattern">At least one number and uppercase</span>
+                                                    <span class="help-inline" ng-show="submitted && form.confirmPassword.$error.checkPasswordsMatch">Passwords must match</span>
+
+<!--                                                    <div class="error-messages" ng-show="isMessagesVisible('confirmPassword')"
+                                                         ng-messages="form.confirmPassword.$error" ng-cloak>
+                                                        <div ng-message="required">The password is mandatory</div>
+                                                        <div ng-message="minlength">must have minimum 6 characters</div>
+                                                        <div ng-message="pattern">At least one number and uppercase</div>
+                                                        <div ng-message="checkPasswordsMatch">Passwords must match</div>
+                                                    </div>-->
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" ng-focus="focus('confirmPassword')"
-                                                   ng-blur="blur('confirmPassword')"
-                                                   ng-model="vm.confirmPassword" name="confirmPassword"
-                                                   class="form-control"
-                                                   placeholder="Confirm Password" required ng-minlength="6"
-                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" check-passwords-match>
 
-                                            <div class="error-messages" ng-show="isMessagesVisible('confirmPassword')"
-                                                 ng-messages="form.confirmPassword.$error" ng-cloak>
-                                                <div ng-message="required">The password is mandatory</div>
-                                                <div ng-message="minlength">must have minimum 6 characters</div>
-                                                <div ng-message="pattern">At least one number and uppercase</div>
-                                                <div ng-message="checkPasswordsMatch">Passwords must match</div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" ng-click="vm.appReady=false"
+                                        <button type="submit" ng-click="submitted=true;vm.appReady=false"
                                                 class="btn btn-primary block full-width m-b">Request access
                                         </button>
                                     </fieldset>
@@ -158,16 +226,16 @@
 </main>
 
 
-<script src="/js/jquery/jquery-2.1.3.min.js"></script>
-<script src="/js/bootstrap/bootstrap.min.js"></script>
-<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="/bower_components/angular-messages/angular-messages.js"></script>
+<script src="../js/jquery/jquery-2.1.3.min.js"></script>
+<script src="../js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="../bower_components/angular-messages/angular-messages.js"></script>
 <script type="text/javascript"
-        src="/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
-<script type="text/javascript" src="/bower_components/lodash/dist/lodash.js"></script>
-<script type="text/javascript" src="/public/js/editable-table-widgets.js"></script>
-<script type="text/javascript" src="/public/js/common.js"></script>
-<script type="text/javascript" src="/public/js/new-user.js"></script>
+        src="../bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
+<script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
+<!--<script type="text/javascript" src="/public/js/editable-table-widgets.js"></script>-->
+<script type="text/javascript" src="../public/js/common.js"></script>
+<script type="text/javascript" src="../public/js/new-user.js"></script>
 
 </body>
 </html>

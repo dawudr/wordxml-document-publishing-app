@@ -33,67 +33,106 @@
 
     <!-- Specify a Angular controller script that binds Javascript variables to the feedback messages.-->
     <div class="message" ng-controller="alertMessagesFileUploadController">
-        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><i class="{{alert.icon}}"></i> {{alert.msg}}</alert>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Step 1 </h5>
+                    <h5>Upload and Transform</h5>
 
                     <div ibox-tools="" class="ng-scope"><div class="ibox-tools dropdown" dropdown="">
                     </div></div>
                 </div>
                 <div class="ibox-content">
-                    <h2>
-                        Upload Word document
-                    </h2>
-
                     <p>
-                        Upload your BTEC Specification Word document by either drag and dropping Word documents file
-                        on to this page or choose a Word document by clicking on 'Add files'.</p>
-
+                        Follow these steps to upload your BTEC Specification Word documents here and begin transforming your documents to XML:
+                        <ol>
+                            <li>Drag and drop Word documents file on to this page or choose a Word document by clicking on
+                                <strong><span>Add files...</span></strong></li>
+                            <li>Upload the document either by clicking on
+                                <strong><span>Upload</span></strong>
+                                or <strong><span>Upload All</span></strong>
+                                for multiple documents.</li>
+                            <li>Then select Template type or tick checkbox:
+                                <strong> Use same template for all </strong>
+                                if all Word document uses the same Word template</li>
+                            <li>Start transform by clicking on
+                                <strong><span>Transform</span></strong>
+                                or
+                                <strong><span>Transform All</span></strong>
+                                for multiple documents.</li>
+                            <li>The alert status will indicate process status. Once complete goto the Dashboard or Downloads</li>
+                        </ol>
+                    <br/>
+                    </p>
                         <!-- The file upload form used as target for the file upload widget -->
                     <form id="fileupload" action="/upload" method="POST" enctype="multipart/form-data" data-ng-controller="FileUploadCtrl" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
+
                             <!-- Redirect browsers with JavaScript disabled to the origin page -->
                             <noscript><input type="hidden" name="redirect" value="https://blueimp.github.io/jQuery-File-Upload/"></noscript>
                             <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                             <div class="row fileupload-buttonbar">
-                                <div class="col-lg-7">
+                                <div class="col-lg-12">
+
                                     <!-- The fileinput-button span is used to style the file input field as button -->
                                     <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">
                                         <i class="glyphicon glyphicon-plus"></i>
                                         <span>Add files...</span>
                                         <input type="file" name="files[]" multiple ng-disabled="disabled">
                                     </span>
-                                    <button type="button" class="btn btn-primary start" data-ng-click="submit()">
+                                    <button type="button" class="btn btn-primary start" data-ng-click="submit()" ng-show="!!queue.length">
                                         <i class="glyphicon glyphicon-upload"></i>
-                                        <span>Start upload</span>
+                                        <span>Upload All</span>
                                     </button>
-                                    <button type="button" class="btn btn-warning cancel" data-ng-click="cancel()">
+<!--                                    <button type="button" class="btn btn-warning cancel" data-ng-click="cancel()" alt="Cancel uploading of pending files">
                                         <i class="glyphicon glyphicon-ban-circle"></i>
-                                        <span>Cancel upload</span>
+                                        <span>Cancel</span>
+                                    </button>-->
+                                    <button type="button" class="btn btn-warning cancel" ng-show="!!queue.length" data-ng-click="delete()" alt="Cancel pending file to upload and delete uploaded files ">
+                                        <i class="glyphicon glyphicon-ban-circle"></i>
+                                        <span>Cancel</span>
                                     </button>
+                                    <button type="button" class="btn btn-success pull-right" ng-show="hasFilesPendingTransform()"
+                                            ng-click="createTransformations(queue)" ng-disabled="defaultTemplate==null || !checkbox.defaultTemplate">
+                                        <i class="fa fa-magic fa-1x"></i>
+                                            <span>Transform All </span>
+                                    </button>
+                                    <div class="form-inline input-sm pull-right" ng-show="hasFilesPendingTransform()">
+                                        <label class="label label-default"><input type="checkbox" ng-model="checkbox.defaultTemplate" ng-init="checkbox.defaultTemplate=false"> Use same template for all: </label>
+                                        <select ng-model="defaultTemplate" class="form-control"
+                                                    data-ng-options="o.templateName for o in templates"
+                                                    ng-click="prePopulateUploadFormTemplate(queue)"
+                                                    ng-init="defaultTemplate=null">
+                                                <option value="">-- Select template --</option>
+                                        </select>
+                                    </div>
+
+
+
                                     <!-- The global file processing state -->
                                     <span class="fileupload-process"></span>
                                 </div>
                                 <!-- The global progress state -->
-                                <div class="col-lg-5 fade" data-ng-class="{in: active()}">
+                                <div class="col-lg-12 fade" data-ng-class="{in: active()}">
                                     <!-- The global progress bar -->
                                     <div class="progress progress-striped active" data-file-upload-progress="progress()"><div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div></div>
                                     <!-- The extended global progress state -->
                                     <div class="progress-extended">&nbsp;</div>
                                 </div>
                             </div>
+
                             <!-- The table listing the files available for upload/download -->
                             <table class="table table-striped files ng-cloak">
                                 <tr data-ng-repeat="file in queue" data-ng-class="{'processing': file.$processing()}">
                                     <td data-ng-switch data-on="!!file.thumbnailUrl">
+
                                         <div class="preview" data-ng-switch-when="true">
-                                            <a data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery><img data-ng-src="{{file.thumbnailUrl}}" alt=""></a>
+                                           <a data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery><img data-ng-src="{{file.thumbnailUrl}}" alt=""></a>
                                         </div>
                                         <div class="preview" data-ng-switch-default data-file-upload-preview="file"></div>
+
                                     </td>
                                     <td>
                                         <p class="name" data-ng-switch data-on="!!file.url">
@@ -102,6 +141,38 @@
                                                 <a data-ng-switch-default data-ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}">{{file.name}}</a>
                                             </span>
                                             <span data-ng-switch-default>{{file.name}}</span>
+
+                                            <br/>
+                                            <table class="table">
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <input type="hidden" ng-model="file.name" class="form-control input-sm">
+                                                        <label>OpenXML Filename:</label>
+                                                        <input type="text" ng-model="file.openxmlfilename" class="form-control input-sm">
+                                                        <br/>
+                                                        <label>PQS XML Filename:</label>
+                                                        <input type="text" ng-model="file.iqsxmlfilename" class="form-control input-sm">
+                                                        <strong data-ng-show="file.error" class="error text-danger">{{file.error}}</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr data-ng-hide="!file.$destroy">
+<!--                                                    <td>
+                                                        <label>UAN number (if available):</label>
+                                                        <input type="text" ng-model="file.qanNo" class="form-control">
+                                                    </td>-->
+                                                    <td colspan="2">
+                                                        <label>Select Template:*</label>
+                                                        <select ng-model="file.template"
+                                                                class="form-control input-sm"
+                                                                data-ng-options="o.templateName for o in templates"
+                                                                ng-disabled="checkbox.defaultTemplate">
+                                                            <option value="">-- Select template --</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
                                         </p>
                                         <strong data-ng-show="file.error" class="error text-danger">{{file.error}}</strong>
                                     </td>
@@ -112,25 +183,43 @@
                                     <td>
                                         <button type="button" class="btn btn-primary start" data-ng-click="file.$submit()" data-ng-hide="!file.$submit || options.autoUpload" data-ng-disabled="file.$state() == 'pending' || file.$state() == 'rejected'">
                                             <i class="glyphicon glyphicon-upload"></i>
-                                            <span>Start</span>
+                                            <span>Upload</span>
                                         </button>
                                         <button type="button" class="btn btn-warning cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
                                             <i class="glyphicon glyphicon-ban-circle"></i>
                                             <span>Cancel</span>
                                         </button>
-                                        <button data-ng-controller="FileDestroyController" type="button" class="btn btn-danger destroy" data-ng-click="file.$destroy()" data-ng-hide="!file.$destroy && file.lastUpdated == null">
+
+                                        <!--Selected: {{myUpload.template.templateName}} {{myUpload.template.id}}-->
+                                        <!--File:{{file.name}} {{file.id}}-->
+                                        <span class="btn btn-success" ng-click="createTransformation(file)" ng-disabled="file.template.templateName==null || checkbox.defaultTemplate" data-ng-hide="!file.$destroy">
+                                            <i class="fa fa-magic fa-1x"></i>
+                                            Transform
+                                        </span>
+
+                                        <button data-ng-controller="FileDestroyController" type="button" class="btn btn-danger destroy" data-ng-click="file.$destroy()" data-ng-hide="!file.$destroy">
                                             <i class="glyphicon glyphicon-trash"></i>
                                             <span>Delete</span>
                                         </button>
+
+
+                                        <div data-ng-hide="!file.transforming">
+                                            <strong>Please wait processing ...</strong>
+                                            <div class="panel-body text-center">
+                                                <img class="please-wait-spinner" src="img/loading.gif">
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-danger" data-ng-hide="!file.error">
+                                            <i class="fa fa-2x fa-exclamation-circle"></i>  The document has errors and does not match the Template type. Please check the document and try again
+                                        </div>
+
                                     </td>
                                 </tr>
                             </table>
-                            <!--<pre class="ng-binding">{{queue | json}}</pre>-->
+<!--
+                            <pre class="ng-binding">{{queue |  filter: {lastUpdated:'!'} | json}}</pre>
+-->
                         </form>
-                            <button class="btn btn-primary pull-right" ng-click="refresh()">
-                                <i class="fa fa-refresh fa-1x"></i> Refresh
-                            </button>
-                        <br>
 
 
 <!--    <pre ng-controller="FileUploadCtrl">
@@ -148,7 +237,8 @@
 
 
 
-    <div class="row" data-ng-hide="myTransforms[0]==null">
+<!--
+    <div class="row" ng-controller="FileUploadCtrl">
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
@@ -167,48 +257,81 @@
                         <br>
                         * Required fields
                     </p>
+-->
 
-                        <table class="table table-striped files ng-cloak">
-                            <tr data-ng-repeat="item in myTransforms">
+                    <!--
+                    //TODO: Explanation - Checking nulls
+
+                    You can filter null items without writing a custom filter.
+
+                    Using the code in your plunk, this will return the null items:
+
+                    <ul ng-repeat="p in foo | filter:{state:'!'}" >
+                        <li>{{p.name}}</li>
+                    </ul>
+                    Conversely, this will return all non-null items:
+
+                    <ul ng-repeat="p in foo | filter:{state:'!!'}" >
+                        <li>{{p.name}}</li>
+                    </ul>
+
+
+                    http://stackoverflow.com/questions/25879507/ng-repeat-filter-null-value-not-displaying
+                    The double not operator converts any value to boolean: the first not operator ! converts a truthy value to a boolean false, the second one inverts the boolean back to true. In my tests the filter actually works just by using state:'' but I would use !! just to be on the safe side...
+-->
+
+<!--                        <table class="table table-striped files ng-cloak">
+
+                            <tr data-ng-repeat="file in queue | filter:{lastUpdated:'!'}">
                                 <td>
                                     <label>Word Document Filename:</label>
                                     <p class="name">
-                                        <span>{{item.file.name}}</span>
+                                        <input type="text" ng-model="file.name" class="form-control">
                                     </p>
                                     <label>OpenXML Filename:</label>
-                                    <input type="text" ng-model="item.openxmlfilename" class="form-control">
+                                    <input type="text" ng-model="file.openxmlfilename" class="form-control">
                                     <label>PQS XML Filename:</label>
-                                    <input type="text" ng-model="item.iqsxmlfilename" class="form-control">
-                                    <strong data-ng-show="item.file.error" class="error text-danger">{{item.file.error}}</strong>
+                                    <input type="text" ng-model="file.iqsxmlfilename" class="form-control">
+                                    <strong data-ng-show="file.error" class="error text-danger">{{file.error}}</strong>
                                 </td>
                                 <td>
                                     <div class="form-horizontal">
                                         <label>Select Template:*</label>
-                                        <select ng-model="item.template"
+                                        <select ng-model="file.template"
                                                 class="form-control"
                                                 data-ng-options="o.templateName for o in templates">
                                             <option value="">-- Select template --</option>
                                         </select>
                                         <label>UAN number (if available):</label>
-                                        <input type="text" ng-model="item.qanNo" class="form-control">
+                                        <input type="text" ng-model="file.qanNo" class="form-control">
                                     </div>
                                 </td>
                                 <td>
-                                    <!--Selected: {{myUpload.template.templateName}} {{myUpload.template.id}}-->
-                                        <!--File:{{file.name}} {{file.id}}-->
-                                        <button class="btn btn-success" ng-click="createTransformation(item)" ng-disabled="item.template.templateName==null">
+                                    &lt;!&ndash;Selected: {{myUpload.template.templateName}} {{myUpload.template.id}}&ndash;&gt;
+                                        &lt;!&ndash;File:{{file.name}} {{file.id}}&ndash;&gt;
+                                        <span class="btn btn-success" ng-click="createTransformation(file)" ng-disabled="file.template.templateName==null">
                                             <i class="fa fa-magic fa-1x"></i>
                                             Transform
-                                        </button>
-                                    <!--<pre class="ng-binding">{{myTransforms | json}}</pre>-->
+                                        </span>
+                                    &lt;!&ndash;<pre class="ng-binding">{{myTransforms | json}}</pre>&ndash;&gt;
                                 </td>
                             </tr>
                         </table>
-                        <!--<pre class="ng-binding">{{myUpload | json}}</pre>-->
                 </div>
             </div>
         </div>
 
-    </div>
+    </div>-->
 
+</div>
+
+<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-header">
+        <h1>Processing...</h1>
+    </div>
+    <div class="modal-body">
+        <div class="progress progress-striped active">
+            <div class="bar" style="width: 100%;"></div>
+        </div>
+    </div>
 </div>

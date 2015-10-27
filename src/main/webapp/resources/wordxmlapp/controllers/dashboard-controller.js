@@ -175,20 +175,4 @@ dashboardApp.controller('DashboardCtrl', function ($scope, $http, $filter, $loca
             $scope.users = data;
         });
 
-    })
-    .controller('DocumentDetailCtrl', function ($scope, $http, $stateParams) {
-        /**
-         * DOCUMENT DETAIL STUFF
-         */
-
-
-
-        $http.get('/transformation/' + $stateParams.transformationId).success(function (data) {
-            $scope.transformation = data;
-        });
-
-        $http.get('/transformation/json/' + $stateParams.transformationId).success(function (data) {
-            $scope.specunit = data;
-        });
-
     });

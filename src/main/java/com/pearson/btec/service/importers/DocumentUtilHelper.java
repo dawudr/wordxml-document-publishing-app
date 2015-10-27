@@ -24,6 +24,8 @@ public class DocumentUtilHelper {
     public static final String XML_SECTION_TITLE = "title";
     public static final String XML_TABLE_HEADER_COLUMN_STYLE = "style";
     public static final String XML_TABLE_HEADER_COLUMN = "column-name";
+    public static final String XML_TABLE_CELL_COLSPAN = "colspan";
+    public static final String XML_TABLE_CELL_ROWSPAN = "rowspan";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DocumentUtilHelper.class);
 
@@ -87,7 +89,6 @@ public class DocumentUtilHelper {
             // No P Blocks found so search for R Blocks only.
         } else {
 
-            //TODO: Remove if not required
             //System.out.println("** OUTSIDE of P BLOCK = " + sdtObject.getClass().toString());
             ClassFinder rfinder = new ClassFinder(R.class); // <----- change this to suit
             if(sdtObject instanceof SdtBlock) {

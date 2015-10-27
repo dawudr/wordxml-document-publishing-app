@@ -6,6 +6,9 @@ import com.pearson.app.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +28,14 @@ public class TestDataInitializer {
 
 
     public void init() throws Exception {
+
+//          Deprecated remove complain about hibernate.cfg.xml not found
+// Building Hibernate SessionFactory from Service Registry
+            //Configuration configuration = new Configuration().configure();
+            //ServiceRegistryBuilder registry = new ServiceRegistryBuilder();
+            //registry.applySettings(configuration.getProperties());
+            //ServiceRegistry serviceRegistry = registry.buildServiceRegistry();
+            //SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
         SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
 

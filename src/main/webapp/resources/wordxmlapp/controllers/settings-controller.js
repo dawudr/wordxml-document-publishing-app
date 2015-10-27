@@ -1,11 +1,5 @@
 var wordxmlSettingsApp = angular.module('wordxmlApp.settings.controller',  ['ngResource', 'ngGrid', 'ui.bootstrap','wordxmlApp.settings.service']);
 
-/*wordxmlSettingsApp.run(function ($rootScope, $templateCache) {
-    $rootScope.$on('$viewContentLoaded', function () {
-        $templateCache.removeAll();
-    });
-});*/
-
 wordxmlSettingsApp.controller('SettingsCtrl', function ($scope,  $rootScope, TemplatesFactory, TemplateFactory) {
 
     /**
@@ -45,10 +39,12 @@ wordxmlSettingsApp.controller('SettingsCtrl', function ($scope,  $rootScope, Tem
     // Bind to the grid templates
     $scope.gridOptions = {
         data: 'templates',
+        jqueryUITheme: true,
         //useExternalSorting: true,
         //sortInfo: $scope.sortInfo,
         enableCellSelection: true,
         enableRowSelection: true,
+        rowHeight: 40,
         //enableCellEditOnFocus: true,
         columnDefs: [{field: 'id', width: 35, displayName: 'ID', enableCellEdit: true},
             {field:'templateName', displayName:'Template Name', enableCellEdit: true},
@@ -56,10 +52,10 @@ wordxmlSettingsApp.controller('SettingsCtrl', function ($scope,  $rootScope, Tem
             {field:'revision', width: 72, displayName:'Revision', enableCellEdit: true},
             {displayName:'Action', width: 160,  enableCellEdit: true, cellTemplate:
                 '<button type="button" ng-click="deleteTemplate(row)" class="btn btn-sm btn-danger">' +
-                '<span class="glyphicon glyphicon-remove remove"></span> Delete' +
+                '<h3 class="glyphicon glyphicon-remove remove"></h3> Delete' +
                 '</button> ' +
                 '<button type="button" ng-click="toggleModal()" class="btn btn-sm btn-primary">' +
-                '<span class="glyphicon glyphicon-edit"></span> Edit' +
+                '<h3 class="glyphicon glyphicon-edit"></h3> Edit' +
                 '</button>'
             }
         ],
@@ -172,24 +168,40 @@ wordxmlSettingsApp.controller('SettingsCtrl', function ($scope,  $rootScope, Tem
     $scope.deleteTemplate = function (row) {
         console.log('Calling service- deleteTemplate');
         console.log(row);
-        if(row.entity.id != null) {
-            TemplateFactory.delete({id: row.entity.id}).$promise.then(
-                function () {
-                    // Broadcast the event to refresh the grid.
-                    $rootScope.$broadcast('refreshGrid');
-                    // Broadcast the event to display a delete message.
-                    $rootScope.$broadcast('recordDeleted');
-                },
-                function () {
-                    // Broadcast the event for a server error.
-                    $rootScope.$broadcast('error');
-                });
-        } else {
-            $scope.templates.pop($scope.myTemplate);
-            console.log($scope.myTemplate);
-            // Broadcast an event when an element in the grid is deleted. No real deletion is perfomed at this point.
-            $rootScope.$broadcast('deleteTemplate', row.entity.id);
-        }
+
+        swal({
+                title: "Confirm Delete",
+                text: "Are you sure you want to delete Template: " + row.entity.templateName + " (Id: " + row.entity.id + ") ?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                closeOnConfirm: false },
+            function() {
+
+                if (row.entity.id != null) {
+                    TemplateFactory.delete({id: row.entity.id}).$promise.then(
+                        function () {
+
+                            swal("Deleted!", "Template has been deleted.", "success");
+
+                            // Broadcast the event to refresh the grid.
+                            $rootScope.$broadcast('refreshGrid');
+                            // Broadcast the event to display a delete message.
+                            $rootScope.$broadcast('recordDeleted');
+                        },
+                        function () {
+                            // Broadcast the event for a server error.
+                            $rootScope.$broadcast('error');
+                        });
+                } else {
+                    $scope.templates.pop($scope.myTemplate);
+                    console.log($scope.myTemplate);
+                    // Broadcast an event when an element in the grid is deleted. No real deletion is perfomed at this point.
+                    $rootScope.$broadcast('deleteTemplate', row.entity.id);
+                }
+            }
+        );
     };
 
     $scope.deleteSection = function (sectionListIndex) {
@@ -308,78 +320,31 @@ wordxmlSettingsApp.controller('SettingsCtrl', function ($scope,  $rootScope, Tem
     }
 });
 
-wordxmlSettingsApp.directive('modal', function () {
-    return {
-        template: '<div class="modal modal-wide fade">' +
-        '<div class="modal-dialog">' +
-        '<div class="modal-content">' +
-        '<div class="modal-header">' +
-        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
-        '<h4 class="modal-title">{{ title }}</h4>' +
-        '</div>' +
-        '<div class="modal-body" ng-transclude></div>' +
-        '<div class="modal-footer">' +
-        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
-        '<button type="button" class="btn btn-primary" ng-click="saveForm()">Save changes</button>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>',
-        restrict: 'E',
-        transclude: true,
-        replace:true,
-        scope:true,
-        link: function postLink(scope, element, attrs) {
-            scope.title = attrs.title;
-
-            scope.$watch(attrs.visible, function(value){
-                if(value == true)
-                    $(element).modal('show');
-                else
-                    $(element).modal('hide');
-            });
-
-            $(element).on('shown.bs.modal', function(){
-                scope.$apply(function(){
-                    scope.$parent[attrs.visible] = true;
-                });
-            });
-
-            // Nice explanations http://www.sitepoint.com/understanding-bootstrap-modals/
-            $(element).on('hidden.bs.modal', function(){
-                scope.$apply(function(){
-                    scope.$parent[attrs.visible] = false;
-                });
-            });
-        }
-    };
-});
-
 // Create a controller with name alertMessagesController to bind to the feedback messages section.
 wordxmlSettingsApp.controller('alertMessagesController', function ($scope) {
     // Picks up the event to display a saved message.
     $scope.$on('recordSaved', function () {
         $scope.alerts = [
-            { type: 'success', msg: 'Record saved successfully!' }
+            { type: 'success', icon: 'fa fa-2x fa-check', msg: 'Record saved successfully!' }
         ];
     });
     // Picks up the event to display a saved message.
     $scope.$on('recordCreated', function () {
         $scope.alerts = [
-            { type: 'success', msg: 'Record created successfully!' }
+            { type: 'success', icon: 'fa fa-2x fa-check', msg: 'Record created successfully!' }
         ];
     });
     // Picks up the event to display a deleted message.
     $scope.$on('recordDeleted', function () {
         $scope.alerts = [
-            { type: 'success', msg: 'Record deleted successfully!' }
+            { type: 'success', icon: 'fa fa-2x fa-check', msg: 'Record deleted successfully!' }
         ];
     });
 
     // Picks up the event to display a server error message.
     $scope.$on('error', function () {
         $scope.alerts = [
-            { type: 'danger', msg: 'There was a problem in the server!' }
+            { type: 'danger', icon: 'fa fa-2x fa-exclamation-circle', msg: 'There was a problem in the server!' }
         ];
     });
 

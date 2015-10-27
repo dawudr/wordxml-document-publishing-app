@@ -3,7 +3,6 @@
         'ui.router',                    // Routing
         'ui.bootstrap',                 // Bootstrap
         'ui.checkbox',                  // Custom checkbox
-        'ui.switchery',                 // iOS7 swich style
         'summernote',                   // Text editor
         //'datePicker',                   // Datapicker
         //'datatables',                   // Dynamic tables
@@ -16,11 +15,16 @@
         'wordxmlApp.settings.service', // Settings Service
         'wordxmlApp.fileupload.service', // FileUpload Service
         'wordxmlApp.download.service', // Download Service
+        'wordxmlApp.users.service', // Users Service
         'wordxmlApp.transformation.service', // Transformation Service
         'wordxmlApp.fileupload.controller', // FileUpload Controller
         'wordxmlApp.settings.controller', // Settings Controller
         'wordxmlApp.downloads.controller', // Downloads Controller
+        'wordxmlApp.document.controller', // Document Controller
         'wordxmlApp.transformations.controller', // Transformations Controller
-        'wordxmlApp.users.controller' // Users Controller
+        'wordxmlApp.users.controller', // Users Controller
+        'wordxmlApp.preview', // Preview Controller
+        'wordxmlApp.viewxml' // View XML Controller
+
     ])
 })();

@@ -12,7 +12,7 @@ public class UnitSection {
 
     Map heading;
     //List<HashMap> paragraphs;
-    // Can be List with Table or HashMap
+    // Can be List with Table or Paragraph (No more HashMaps)
     List<Object> contentData;
 
     public UnitSection(Map heading) {

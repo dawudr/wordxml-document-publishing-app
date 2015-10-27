@@ -26,11 +26,11 @@ servicesFiles.factory('FileUploadsFactory', function ($resource) {
         create: { method: 'POST' }
     })
 });
-/*
+
 servicesFiles.factory('FileUploadFactory', function ($resource) {
     console.log('Calling FileUploadFactory- show, update, delete');
     return $resource('/delete/:id', {}, {
         delete: { method: 'DELETE', params: {id: '@id'} }
     })
 });
-*/
+

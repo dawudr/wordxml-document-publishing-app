@@ -8,11 +8,11 @@
 
     <title>Pearson Qualification Tool | Login</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/fonts/font-awesome.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../fonts/font-awesome.css" rel="stylesheet">
 
-    <link href="/css/animate.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
 </head>
 
@@ -26,10 +26,9 @@
                 <strong>Please wait loading ...</strong>
             </div>
             <div class="panel-body text-center">
-                <img class="please-wait-spinner" src="/img/loading.gif">
+                <img class="please-wait-spinner" src="../img/loading.gif">
             </div>
         </div>
-
     </div>
 
         <div class="container">
@@ -61,6 +60,13 @@
 
                                     <p>
                                         <tt-error-messages extra-styles="access-screen"></tt-error-messages>
+                                        <div class="alert alert-danger form-messages errors" ng-show="vm.errorMessages.length > 0" ng-cloak>
+                                            <img class="error-icon" src="../img/error-icon.png">
+
+                                            <div class="messages-group">
+                                                <div ng-repeat="error in vm.errorMessages">{{error.description}}</div>
+                                            </div>
+                                        </div>
                                     </p>
                                     <form ng-submit="onLogin()" name="form" class="m-t" novalidate
                                           ng-controller="LoginCtrl">
@@ -118,16 +124,16 @@
         src="/static/bower_components/requirejs/require.js"></script>
 -->
 
-<script src="/js/jquery/jquery-2.1.3.min.js"></script>
-<script src="/js/bootstrap/bootstrap.min.js"></script>
-<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="/bower_components/angular-messages/angular-messages.js"></script>
+<script src="../js/jquery/jquery-2.1.3.min.js"></script>
+<script src="../js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="../bower_components/angular-messages/angular-messages.js"></script>
 <script type="text/javascript"
-        src="/bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
-<script type="text/javascript" src="/bower_components/lodash/dist/lodash.js"></script>
-<script type="text/javascript" src="/public/js/editable-table-widgets.js"></script>
-<script type="text/javascript" src="/public/js/common.js"></script>
-<script type="text/javascript" src="/public/js/login.js"></script>
+        src="../bower_components/spring-security-csrf-token-interceptor/dist/spring-security-csrf-token-interceptor.min.js"></script>
+<script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
+<!--<script type="text/javascript" src="/public/js/editable-table-widgets.js"></script>-->
+<script type="text/javascript" src="../public/js/common.js"></script>
+<script type="text/javascript" src="../public/js/login.js"></script>
 
 </body>
 </html>

@@ -17,13 +17,15 @@ angular.module('newUserApp', ['common', 'spring-security-csrf-token-interceptor'
                 firstname: $scope.vm.firstname,
                 lastname: $scope.vm.lastname,
                 username: $scope.vm.username,
-                plainTextPassword: $scope.vm.password,
-                email: $scope.vm.email
+                password: $scope.vm.password,
+                email: $scope.vm.email,
+                role: "INACTIVE"
             };
+            console.log(postData);
 
             $http({
                 method: 'POST',
-                url: '/user',
+                url: '../users',
                 data: postData,
                 headers: {
                     "Content-Type": "application/json",

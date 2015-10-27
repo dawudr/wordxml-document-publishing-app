@@ -15,7 +15,7 @@ public class UserInfoDTO {
 
     private int id;
     private String username;
-    private String password;
+    private String passwordDigest;
     private String email;
     private String firstname;
     private String lastname;
@@ -27,24 +27,25 @@ public class UserInfoDTO {
         this.firstname = "unknown";
         this.lastname = "unknown";
         this.email = "unknown";
+        this.passwordDigest = "";
         this.role = User.ROLE_VIEWER;
     }
 
     public UserInfoDTO(User user) {
         this.id = user.getId();
         this.username = user.getUsername();
-        this.password = user.getPasswordDigest();
+        this.passwordDigest = user.getPasswordDigest();
         this.email = user.getEmail();
         this.firstname = user.getFirstname();
         this.lastname = user.getLastname();
         this.role = user.getRole();
     }
 
-    public UserInfoDTO(Integer id, String username, String password, String email,
+    public UserInfoDTO(Integer id, String username, String passwordDigest, String email,
                        String firstname, String lastname, String role) {
         this.id = id;
         this.username = username;
-        this.password = password;
+        this.passwordDigest = passwordDigest;
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -82,12 +83,12 @@ public class UserInfoDTO {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordDigest() {
+        return passwordDigest;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordDigest(String passwordDigest) {
+        this.passwordDigest = passwordDigest;
     }
 
     public String getEmail() {
@@ -127,7 +128,7 @@ public class UserInfoDTO {
         return "UserInfoDTO{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
+                ", passwordDigest='" + passwordDigest + '\'' +
                 ", email='" + email + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +

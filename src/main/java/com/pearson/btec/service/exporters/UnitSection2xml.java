@@ -1,6 +1,7 @@
 package com.pearson.btec.service.exporters;
 
 import com.pearson.btec.model.Unit;
+import com.pearson.btec.model.UnitParagraph;
 import com.pearson.btec.model.UnitSection;
 import com.pearson.btec.model.UnitTable;
 import com.pearson.btec.service.importers.DocumentUtilHelper;
@@ -44,6 +45,7 @@ public class UnitSection2xml {
 
             Object paraObject = iterator.next();
 
+            //TODO: 22/06/15 I think I will replace this HashMap object with UnitParagraph
             // Deal with Paragraphs
             if (paraObject instanceof  HashMap) {
                 HashMap paraMap = (HashMap) paraObject;
@@ -59,6 +61,11 @@ public class UnitSection2xml {
                 }
                 sectionElement.addContent(paraElement);
 
+            }
+            else if (paraObject instanceof UnitParagraph) {
+                UnitParagraph unitParagraph = (UnitParagraph) paraObject;
+                UnitParagraph2xml unitParagraph2xml = new UnitParagraph2xml(unitParagraph);
+                sectionElement.addContent(unitParagraph2xml.toXml());
             }
             // Deal with Tables
             else if (paraObject instanceof UnitTable) {

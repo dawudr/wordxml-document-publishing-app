@@ -148,8 +148,8 @@ public class Transformation extends AbstractEntity {
         return specunit;
     }
 
-    public void setSpecunit(Specunit openxmlfilename) {
-        this.specunit = openxmlfilename;
+    public void setSpecunit(Specunit specunit) {
+        this.specunit = specunit;
     }
 
     public String getIqsxmlfilename() {
