@@ -12,5 +12,5 @@ Transformation to IQS is handled by XSLT layer.
 The app is packaged as a War and deployed onto Amazon AWS Cloud service.
 Demo is available here:
 
-http://default-environment-njnfptyyjp.elasticbeanstalk.com/index.html
+http://wordxmltool.elasticbeanstalk.com/index.html
 
