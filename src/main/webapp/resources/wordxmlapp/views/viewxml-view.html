@@ -1,0 +1,18 @@
+<div class="modal-wide">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">View XML: <strong>{{item.transformation.wordfilename}} <h5>[Transformation Id: {{item.transformation.id}}]</h5></strong></h4>
+</div>
+<div ng-controller="ViewXMLCtrl" class="modal-body">
+
+    <div class="textwrapper">
+        <textarea cols="100" rows="38" ng-bind="xmlUnit"></textarea>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">Close</button>
+</div>
+</div>
+</div>

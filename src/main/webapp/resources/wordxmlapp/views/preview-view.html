@@ -1,0 +1,156 @@
+<div class="modal-wide">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Preview: <strong>{{item.transformation.wordfilename}} [Transform ID:{{item.transformation.id}}]</strong></h4>
+</div>
+<div ng-controller="PreviewCtrl" class="modal-body">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel blank-panel">
+
+                        <!-- Unit section -->
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    <h4><strong>Unit content preview</strong>  KEY: <span class="label label-primary">Word STYLE</span> | <span class="label label-default">Word XML TAG</span></h4>
+                                </div>
+
+                                <div class="panel-body">
+                                    <h2><strong>Unit {{unit.unitnumber}} - {{unit.unittitle}}</strong></h2>
+                                    <!-- Meta -->
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label for="unitnumber" class="control-label">Unit No: </label>
+                                            <input type="text" class="form-control input-sm" id="unitnumber"
+                                                   ng-model="unit.unitnumber" placeholder="{{unit.unitnumber}}">
+                                        </div>
+                                        <div class="col-xs-10">
+                                            <label for="unittitle" class="control-label">Title: </label>
+                                            <input type="text" class="form-control input-sm" id="unittitle"
+                                                   ng-model="unit.unittitle" placeholder="{{unit.unittitle}}">
+                                            <!--<i class="icon-question-sign pull-right" data-toggle="popover" title="" data-content="The title should reflect the learning aims/assessment criteria" data-original-title="Title"/>-->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label for="level" class="control-label">Level: </label>
+                                            <input type="text" class="form-control input-sm" id="level"
+                                                   ng-model="unit.level" placeholder="{{unit.level}}">
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <label for="unittype" class="control-label">Unit Type: </label>
+                                            <input type="text" class="form-control input-sm" id="unittype"
+                                                   ng-model="unit.unittype" placeholder="{{unit.unitnumber}}">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <label for="glhvalue" class="control-label">Guided Learning Hours: </label>
+                                            <input type="text" class="form-control input-sm" id="glhvalue"
+                                                   ng-model="unit.glhvalue" placeholder="{{unit.glhvalue}}">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <label for="assessmenttype" class="control-label">Assessment Type: </label>
+                                            <input type="text" class="form-control input-sm" id="assessmenttype"
+                                                   ng-model="unit.level" placeholder="{{unit.unittype}}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <label for="uan" class="control-label">UAN: </label>
+                                            <input type="text" class="form-control input-sm" id="uan"
+                                                   ng-model="unit.uan" placeholder="{{unit.uan}}">
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <label for="author" class="control-label">Author: </label>
+                                            <input type="text" class="form-control input-sm" id="author"
+                                                   ng-model="unit.author" placeholder="{{unit.author}}">
+                                        </div>
+
+                                    </div>
+                                    <br/>
+                                    <!-- End Meta data section -->
+
+                                    <!--Section-->
+                                    <div class="row" ng-repeat="section in unit.section">
+                                        <div class="col-xs-12">
+                                            <h2><strong>{{section['@title']}}</strong><span
+                                                    class="pull-right label label-primary">{{section['@style']}}</span>
+                                            </h2>
+                                        </div>
+                                        <div class="col-xs-12" ng-repeat="(key, value) in filterContentField(section)">
+
+
+
+                                <span ng-switch="type(value)">
+                                    <span ng-switch-when="string">
+                                       <!--<textarea class="form-control input-sm" id="{{key}}" ng-bind-html="value"></textarea>-->
+                                        <label class="control-label" ng-if="type(value) == 'string'">{{key}}</label>
+                                        <div class="well well-sm" ng-if="type(value) == 'string'"
+                                             ng-bind-html="value"></div>
+                                    </span>
+
+                                    <span ng-switch-when="array">
+                                        <span ng-switch="key">
+                                            <span ng-switch-when="Paragraph">
+                                                <div class="well well-sm">
+                                                    <div class="row" ng-repeat="items in value">
+                                                        <div class="col-xs-6"
+                                                             ng-repeat="(pkey, pvalue) in filterContentField(items)">
+                                                            <label for="{{pkey}}" class="control-label">{{pkey}}</label>
+                                                            <input type="text" class="form-control input-sm"
+                                                                   id="{{pkey}}" ng-model="pvalue">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+
+                                            <span ng-switch-when="Table">
+                                                <div ng-init="table = tabulateContents(value)">
+                                                    <table class="table table-bordered table-striped">
+                                                        <tr ng-repeat="row in table">
+                                                            <td ng-repeat="column in row" colspan="{{column.colspan}}" rowspan="{{column.rowspan}}">
+                                                                    <span ng-bind-html="column.content"></span>
+<!--                                                                COLSPAN={{column.colspan}} <br/>
+                                                                ROWSPAN={{column.rowspan}}-->
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <!--<pre>{{ table | json}}</pre>-->
+                                                </div>
+                                            </span>
+
+                                            <span ng-switch-default>
+                                                <!--<pre>{{ value | json}}</pre>-->
+                                                <div class="well well-sm">
+                                                    <span ng-repeat="itemsOther in value">
+                                                        <span ng-bind-html="itemsOther"></span>
+                                                    </span>
+                                                </div>
+                                            </span>
+                                        </span>
+
+                                    </span>
+                                </span>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">Close</button>
+</div>
+</div>
+</div>
